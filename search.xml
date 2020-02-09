@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>记一次对思维方式的思考</title>
+      <link href="/2020/02/09/ji-yi-ci-dui-si-wei-fang-shi-de-si-kao/"/>
+      <url>/2020/02/09/ji-yi-ci-dui-si-wei-fang-shi-de-si-kao/</url>
+      
+        <content type="html"><![CDATA[<p>在部署Hexo博客的过程中，自己的思维方式存在的问题：</p><ul><li>在长时间持续做某一件事（集中注意力）且难以找到解决问题的方法时，容易陷入一种“焦虑”“鲁莽”“冲动”的状态，从而像陷入死循环一样、倾向于选择简单粗暴（尽管思考一下还有更简洁的）做法，而这种做法又使自己更加“焦虑”“鲁莽”“冲动”。</li></ul><p>在这种情况下，需要主动打破死锁，强制脱离当前的问题，然后灵魂三问“发现问题”“提出问题”“解决问题”。主观臆断的方法十分不好。</p><p>可行的预防方法：</p><ul><li>避免过度集中注意力：如打开音乐（不适合学习时）。</li><li>定番茄钟：倒计时一段时间，就提醒自己休息一下。<br><img src="//tva2.sinaimg.cn/mw690/005JD0Ejgy1gbq30gai0vj30u00gvqi5.jpg" alt="image"></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日志 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 思维方式 </tag>
+            
+            <tag> 杂谈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>搭建Hexo+GitPage博客记录</title>
       <link href="/2020/02/08/da-jian-hexo-gitpage-bo-ke-ji-lu/"/>
       <url>/2020/02/08/da-jian-hexo-gitpage-bo-ke-ji-lu/</url>
