@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="搭建Hexo+GitPage博客记录, LitnWu">
-    <meta name="description" content="在写这篇博客时我已经把Hexo博客的主题配置好了，我花了一个白天终于把博客配置成自己喜欢的样子。让我感受最深的是这个配置要改文件有点麻烦，要是有可视化的界面来配置就好了，毕竟自己是一个前端小白hhh
-搭建直接百度了一个教程，介绍得十分详细：">
+    <meta name="keywords" content="解决mathjax与代码高亮的冲突, LitnWu">
+    <meta name="description" content="如果你按照教程安装了代码高亮插件hexo-prism-plugin，单独使用是没有问题的，但如果你又使用了mathjax，并且按照网上教程，安装kramed插件并修改了js文件里的正则表达式（为了解决markdown和mathjax的语法冲">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>搭建Hexo+GitPage博客记录 | LitnWu</title>
+    <title>解决mathjax与代码高亮的冲突 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -220,12 +219,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://tva2.sinaimg.cn/mw690/005JD0Ejgy1gbp7kweodxj32401eou0z.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">搭建Hexo+GitPage博客记录</h1>
+                    <h1 class="description center-align post-title">解决mathjax与代码高亮的冲突</h1>
                 </div>
             </div>
         </div>
@@ -346,8 +345,12 @@
                                 <span class="chip bg-color">Hexo</span>
                             </a>
                         
-                            <a href="/tags/GitPage/">
-                                <span class="chip bg-color">GitPage</span>
+                            <a href="/tags/mathjax/">
+                                <span class="chip bg-color">mathjax</span>
+                            </a>
+                        
+                            <a href="/tags/matery/">
+                                <span class="chip bg-color">matery</span>
                             </a>
                         
                     </div>
@@ -358,8 +361,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Markdown/" class="post-category">
-                                Markdown
+                            <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                搭建博客
                             </a>
                         
                     </div>
@@ -371,7 +374,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-08
+                    2020-02-10
                 </div>
                 
 
@@ -385,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    629
+                    394
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -403,21 +406,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在写这篇博客时我已经把Hexo博客的主题配置好了，我花了一个白天终于把博客配置成自己喜欢的样子。让我感受最深的是这个配置要改文件有点麻烦，要是有可视化的界面来配置就好了，毕竟自己是一个前端小白hhh</p>
-<h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><p>直接百度了一个教程，介绍得十分详细：<a href="https://segmentfault.com/a/1190000017986794" target="_blank" rel="noopener">链接</a>。  </p>
-<p>  不过教程有两个步骤的顺序颠倒了，就是先要登录 Github 上添加刚刚生成的SSH key，再确认并添加主机到本机SSH可信列表：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ssh</span> -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>第一次弄这个，所以在这里卡住了，其他的没什么，一步一步走就ok了。</p>
-<h2 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h2><p>大部分时间都花在这里，毕竟直接照搬主题太没个性了，还是要改一改的。  </p>
-<p>我用的是matery的主题（<a href="https://github.com/blinkfox/hexo-theme-matery/" target="_blank" rel="noopener">链接</a>），布局看起来也很简洁，也是照着教程走，只是我当时看得急把一些步骤看错了。</p>
-<p>主要修改Hexo根目录配置文件和主题目录下的配置文件，这两个名字都为<code>_config.yml</code>，所以别搞混了。</p>
-<h3 id="改网站logo"><a href="#改网站logo" class="headerlink" title="改网站logo"></a>改网站logo</h3><p>其实只要替换主题文件夹里的图片就好了。</p>
-<p>不过我一开始想用网页链接，所以我改了<strong>主题配置文件</strong>，后来改回来的时候/medias漏了’/‘号。</p>
-<p>在找错的时候get到了一个新技能，就是看别人的博客网页时，用浏览器的检查功能可以看到布局信息了 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span> 然后照着改就能实现那个网页的效果了。</p>
-<p>另外，想做个圆形的logo及头像，发现win10自带的照片编辑居然没有将照片裁剪成圆形的功能，不过可以用word来做：插入一个圆形的形状，然后填充设置为你想要的图片，再另存为图片就ok了。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>显而易见，个性化强，怎么顺眼怎么改，就是对前端小白不太友好哈哈哈 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span></p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>github.io访问有点慢呐！资金够的话还是部署到自己的服务器比较好 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f613.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f613.png?v8">😓</span></p>
-<h2 id="MarkDown表情包"><a href="#MarkDown表情包" class="headerlink" title="MarkDown表情包"></a>MarkDown表情包</h2><p>最后附上markdown表情包哈哈哈，以后可以用。<br><img src="https://img2018.cnblogs.com/blog/1137258/201906/1137258-20190618213943766-1389148263.png" alt="表情包"></p>
+                <p>如果你按照教程安装了代码高亮插件<code>hexo-prism-plugin</code>，单独使用是没有问题的，但如果你又使用了<code>mathjax</code>，并且按照网上教程，安装<code>kramed</code>插件并修改了<code>js</code>文件里的正则表达式（为了解决<code>markdown</code>和<code>mathjax</code>的语法冲突），那你的代码就无法高亮了。解决方法很简单，别用<code>kramed</code>插件了，还用原来自带的<code>marked</code>插件，直接改它的正则表达式就行了。</p>
+<h2 id="卸载kramed插件"><a href="#卸载kramed插件" class="headerlink" title="卸载kramed插件"></a>卸载kramed插件</h2><p>如果没安装就不用这一步。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-kramed --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="安装marked插件"><a href="#安装marked插件" class="headerlink" title="安装marked插件"></a>安装marked插件</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-marked --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="加数学公式显示"><a href="#加数学公式显示" class="headerlink" title="加数学公式显示"></a>加数学公式显示</h2><p>打开<code>/themes/matery/layout</code>中的<code>post.ejs</code>文件，在最下方粘贴如下代码：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"><a href="#由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。" class="headerlink" title="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"></a>由于<code>markdown</code>语法与<code>mathjax</code>语法存在冲突，所以还需要修改源文件。</h2><p>修改node_modules/marked/lib/marked.js文件中的escape和em两行（在第536行、548行左右），改成下面：</p>
+<pre><code>escape: /^\\([`*\[\]()#$+\-.!_&gt;])/,
+em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</code></pre><h2 id="注意！"><a href="#注意！" class="headerlink" title="注意！!"></a>注意！!</h2><p>这时在文章里写数学公式基本没有问题了，但是要注意：</p>
+<p><strong>数学公式中如果出现了连续两个{，中间一定要加空格！</strong></p>
+<p>举个例子:</p>
+<p>行内公式：$y = f(x)$</p>
+<p>代码：</p>
+<pre class="line-numbers language-tex"><code class="language-tex">
+$y = f(x)$
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>行间公式：</p>
+<p>\[y = {f_{ {g_1}}}(x)\]</p>
+<p>代码：</p>
+<pre class="line-numbers language-tex"><code class="language-tex">
+\\[y = {f_{ {g_1}}}(x)\\]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>注意上面花括号之间有空格！</p>
+</blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -461,7 +474,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/02/08/da-jian-hexo-gitpage-bo-ke-ji-lu/">https://litnwu.gitee.io/2020/02/08/da-jian-hexo-gitpage-bo-ke-ji-lu/</a>
+                    <a href="https://litnwu.gitee.io/2020/02/10/jie-jue-mathjax-yu-dai-ma-gao-liang-de-chong-tu/">https://litnwu.gitee.io/2020/02/10/jie-jue-mathjax-yu-dai-ma-gao-liang-de-chong-tu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -503,8 +516,12 @@
                                     <span class="chip bg-color">Hexo</span>
                                 </a>
                             
-                                <a href="/tags/GitPage/">
-                                    <span class="chip bg-color">GitPage</span>
+                                <a href="/tags/mathjax/">
+                                    <span class="chip bg-color">mathjax</span>
+                                </a>
+                            
+                                <a href="/tags/matery/">
+                                    <span class="chip bg-color">matery</span>
                                 </a>
                             
                         </div>
@@ -670,51 +687,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/09/ji-yi-ci-dui-si-wei-fang-shi-de-si-kao/">
+                <a href="/2020/02/10/jie-jue-mathjax-yu-dai-ma-gao-liang-de-chong-tu/">
                     <div class="card-image">
                         
-                        <img src="https:////tvax3.sinaimg.cn/mw690/005JD0Ejgy1gbq30gai0vj30u00gvqi5.jpg" class="responsive-img" alt="记一次对思维方式的思考">
                         
-                        <span class="card-title">记一次对思维方式的思考</span>
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="解决mathjax与代码高亮的冲突">
+                        
+                        <span class="card-title">解决mathjax与代码高亮的冲突</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在部署Hexo博客的过程中，自己的思维方式存在的问题：
-
-在长时间持续做某一件事（集中注意力）且难以找到解决问题的方法时，容易陷入一种“焦虑”“鲁莽”“冲动”的状态，从而像陷入死循环一样、倾向于选择简单粗暴（尽管思考一下还有更简洁的）做法，
+                            如果你按照教程安装了代码高亮插件hexo-prism-plugin，单独使用是没有问题的，但如果你又使用了mathjax，并且按照网上教程，安装kramed插件并修改了js文件里的正则表达式（为了解决markdown和mathjax的语法冲
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%97%A5%E5%BF%97/" class="post-category">
-                                    日志
+                            <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    搭建博客
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%80%9D%E7%BB%B4%E6%96%B9%E5%BC%8F/">
-                        <span class="chip bg-color">思维方式</span>
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
                     </a>
                     
-                    <a href="/tags/%E6%9D%82%E8%B0%88/">
-                        <span class="chip bg-color">杂谈</span>
+                    <a href="/tags/mathjax/">
+                        <span class="chip bg-color">mathjax</span>
+                    </a>
+                    
+                    <a href="/tags/matery/">
+                        <span class="chip bg-color">matery</span>
                     </a>
                     
                 </div>
@@ -728,35 +750,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/08/ni-hao-shi-jie/">
+                <a href="/2020/02/10/top-k-wen-ti/">
                     <div class="card-image">
                         
-                        <img src="http://xxx.fishc.com/forum/201706/13/200636xg4x373b3outolwt.png" class="responsive-img" alt="你好 世界">
                         
-                        <span class="card-title">你好 世界</span>
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Top(k)-问题">
+                        
+                        <span class="card-title">Top(k)-问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            你好mark: 基于GitHub Page搭建博客成功！
-halo!
-
+                            1. 直接全部排序（只适用于内存够的情况）2. 快速排序（只适用于内存够的情况）3. 最小堆法4. 分治法5. Hash法
         document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-      
+       
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
@@ -766,12 +786,24 @@ halo!
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Typora/">
-                        <span class="chip bg-color">Typora</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                        <span class="chip bg-color">排序</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/">
+                        <span class="chip bg-color">最小堆</span>
+                    </a>
+                    
+                    <a href="/tags/Hash/">
+                        <span class="chip bg-color">Hash</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%88%86%E6%B2%BB/">
+                        <span class="chip bg-color">分治</span>
                     </a>
                     
                 </div>
@@ -909,6 +941,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
