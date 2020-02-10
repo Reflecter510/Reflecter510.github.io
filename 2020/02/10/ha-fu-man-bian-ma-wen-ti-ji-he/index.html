@@ -395,7 +395,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    925
+                    952
                 </div>
                 
 
@@ -421,6 +421,7 @@
 <p>使用哈夫曼编码：首先需要知道每种字符出现的频率，其中 $P(A)=\frac{3}{7}$,$P(B)=\frac{1}{7}$，$P(C)=\frac{2}{7}$，$P(D)=\frac{1}{7}$。</p>
 <p>过程：首先，B和D的频率最小，所以合并成一棵树。此时$P(B+D)=\frac{1}{7}+\frac{1}{7}=\frac{2}{7}$，与$P(C)$相等，却比$P(A)$小，所以与C合并，最后合并A。</p>
 <p><img src="//tva4.sinaimg.cn/mw690/005JD0Ejgy1gbrcrxfi83j306705fq34.jpg" alt="构造出的哈夫曼树"></p>
+<p>从根结点出发可得编码： A：0， C：10，  B：110， D：111 。电文 ‘ABACCDA’ 便为 ‘0110010101110’（共 13 位）。</p>
 <h2 id="2-哈夫曼贪心算法如何实现？"><a href="#2-哈夫曼贪心算法如何实现？" class="headerlink" title="2. 哈夫曼贪心算法如何实现？"></a>2. 哈夫曼贪心算法如何实现？</h2><h3 id="伪代码"><a href="#伪代码" class="headerlink" title="* 伪代码"></a>* 伪代码</h3><p>我们假定C是一个n个字符的集合，而其中每个字符 $c \in C$ 都是一个对象，其属性 c.freq 给出了字符出现的频率。算法自底向上地构造出对应最优编码地二叉树T。它从|C|个结点开始，执行|C|-1个“合并”操作创建出最终的二叉树。算法使用一个以属性freq为关键字最小优先队列Q，以识别两个最低频率的对象将其合并。当合并两个对象时，得到的新对象的频率设置为原来两个对象的频率之和。</p>
 <pre class="line-numbers language-python"><code class="language-python">HUFFMAN<span class="token punctuation">(</span>C<span class="token punctuation">)</span>
     n<span class="token operator">=</span><span class="token operator">|</span>C<span class="token operator">|</span>
@@ -823,12 +824,12 @@ Node<span class="token operator">*</span> <span class="token function">Huffman</
                         <span class="chip bg-color">面试</span>
                     </a>
                     
-                    <a href="/tags/B-%E6%A0%91/">
-                        <span class="chip bg-color">B+树</span>
-                    </a>
-                    
                     <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                         <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/B-%E6%A0%91/">
+                        <span class="chip bg-color">B+树</span>
                     </a>
                     
                 </div>
@@ -886,12 +887,12 @@ content!!!
                         <span class="chip bg-color">面试</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
                     <a href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/">
                         <span class="chip bg-color">红黑树</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>
