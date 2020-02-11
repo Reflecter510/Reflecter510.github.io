@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-10
+                    2020-02-11
                 </div>
                 
 
@@ -409,7 +409,7 @@
                 <p>如果你按照教程安装了代码高亮插件<code>hexo-prism-plugin</code>，单独使用是没有问题的，但如果你又使用了<code>mathjax</code>，并且按照网上教程，安装<code>kramed</code>插件并修改了<code>js</code>文件里的正则表达式（为了解决<code>markdown</code>和<code>mathjax</code>的语法冲突），那你的代码就无法高亮了。解决方法很简单，别用<code>kramed</code>插件了，还用原来自带的<code>marked</code>插件，直接改它的正则表达式就行了。</p>
 <h2 id="卸载kramed插件"><a href="#卸载kramed插件" class="headerlink" title="卸载kramed插件"></a>卸载kramed插件</h2><p>如果没安装就不用这一步。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-kramed --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="安装marked插件"><a href="#安装marked插件" class="headerlink" title="安装marked插件"></a>安装marked插件</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-marked --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="安装marked插件"><a href="#安装marked插件" class="headerlink" title="安装marked插件"></a>安装marked插件</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-renderer-marked --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="加数学公式显示"><a href="#加数学公式显示" class="headerlink" title="加数学公式显示"></a>加数学公式显示</h2><p>打开<code>/themes/matery/layout</code>中的<code>post.ejs</code>文件，在最下方粘贴如下代码：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"><a href="#由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。" class="headerlink" title="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"></a>由于<code>markdown</code>语法与<code>mathjax</code>语法存在冲突，所以还需要修改源文件。</h2><p>修改node_modules/marked/lib/marked.js文件中的escape和em两行（在第536行、548行左右），改成下面：</p>

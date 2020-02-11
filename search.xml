@@ -8,7 +8,7 @@
       <link href="/2020/02/10/jie-jue-mathjax-yu-dai-ma-gao-liang-de-chong-tu/"/>
       <url>/2020/02/10/jie-jue-mathjax-yu-dai-ma-gao-liang-de-chong-tu/</url>
       
-        <content type="html"><![CDATA[<p>如果你按照教程安装了代码高亮插件<code>hexo-prism-plugin</code>，单独使用是没有问题的，但如果你又使用了<code>mathjax</code>，并且按照网上教程，安装<code>kramed</code>插件并修改了<code>js</code>文件里的正则表达式（为了解决<code>markdown</code>和<code>mathjax</code>的语法冲突），那你的代码就无法高亮了。解决方法很简单，别用<code>kramed</code>插件了，还用原来自带的<code>marked</code>插件，直接改它的正则表达式就行了。</p><h2 id="卸载kramed插件"><a href="#卸载kramed插件" class="headerlink" title="卸载kramed插件"></a>卸载kramed插件</h2><p>如果没安装就不用这一步。</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-kramed --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="安装marked插件"><a href="#安装marked插件" class="headerlink" title="安装marked插件"></a>安装marked插件</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-marked --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="加数学公式显示"><a href="#加数学公式显示" class="headerlink" title="加数学公式显示"></a>加数学公式显示</h2><p>打开<code>/themes/matery/layout</code>中的<code>post.ejs</code>文件，在最下方粘贴如下代码：</p><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"><a href="#由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。" class="headerlink" title="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"></a>由于<code>markdown</code>语法与<code>mathjax</code>语法存在冲突，所以还需要修改源文件。</h2><p>修改node_modules/marked/lib/marked.js文件中的escape和em两行（在第536行、548行左右），改成下面：</p><pre><code>escape: /^\\([`*\[\]()#$+\-.!_&gt;])/,em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</code></pre><h2 id="注意！"><a href="#注意！" class="headerlink" title="注意！!"></a>注意！!</h2><p>这时在文章里写数学公式基本没有问题了，但是要注意：</p><p><strong>数学公式中如果出现了连续两个{，中间一定要加空格！</strong></p><p>举个例子:</p><p>行内公式：$y = f(x)$</p><p>代码：</p><pre class="line-numbers language-tex"><code class="language-tex">$y = f(x)$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>行间公式：</p><p>\[y = {f_{ {g_1}}}(x)\]</p><p>代码：</p><pre class="line-numbers language-tex"><code class="language-tex">\\[y = {f_{ {g_1}}}(x)\\]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><blockquote><p>注意上面花括号之间有空格！</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<p>如果你按照教程安装了代码高亮插件<code>hexo-prism-plugin</code>，单独使用是没有问题的，但如果你又使用了<code>mathjax</code>，并且按照网上教程，安装<code>kramed</code>插件并修改了<code>js</code>文件里的正则表达式（为了解决<code>markdown</code>和<code>mathjax</code>的语法冲突），那你的代码就无法高亮了。解决方法很简单，别用<code>kramed</code>插件了，还用原来自带的<code>marked</code>插件，直接改它的正则表达式就行了。</p><h2 id="卸载kramed插件"><a href="#卸载kramed插件" class="headerlink" title="卸载kramed插件"></a>卸载kramed插件</h2><p>如果没安装就不用这一步。</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-kramed --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="安装marked插件"><a href="#安装marked插件" class="headerlink" title="安装marked插件"></a>安装marked插件</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-renderer-marked --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="加数学公式显示"><a href="#加数学公式显示" class="headerlink" title="加数学公式显示"></a>加数学公式显示</h2><p>打开<code>/themes/matery/layout</code>中的<code>post.ejs</code>文件，在最下方粘贴如下代码：</p><pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"><a href="#由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。" class="headerlink" title="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"></a>由于<code>markdown</code>语法与<code>mathjax</code>语法存在冲突，所以还需要修改源文件。</h2><p>修改node_modules/marked/lib/marked.js文件中的escape和em两行（在第536行、548行左右），改成下面：</p><pre><code>escape: /^\\([`*\[\]()#$+\-.!_&gt;])/,em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</code></pre><h2 id="注意！"><a href="#注意！" class="headerlink" title="注意！!"></a>注意！!</h2><p>这时在文章里写数学公式基本没有问题了，但是要注意：</p><p><strong>数学公式中如果出现了连续两个{，中间一定要加空格！</strong></p><p>举个例子:</p><p>行内公式：$y = f(x)$</p><p>代码：</p><pre class="line-numbers language-tex"><code class="language-tex">$y = f(x)$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>行间公式：</p><p>\[y = {f_{ {g_1}}}(x)\]</p><p>代码：</p><pre class="line-numbers language-tex"><code class="language-tex">\\[y = {f_{ {g_1}}}(x)\\]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><blockquote><p>注意上面花括号之间有空格！</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
@@ -84,9 +84,9 @@
             
             <tag> 面试 </tag>
             
-            <tag> 数据结构 </tag>
-            
             <tag> Map </tag>
+            
+            <tag> 数据结构 </tag>
             
         </tags>
       
@@ -111,11 +111,11 @@
       
         <tags>
             
+            <tag> 树 </tag>
+            
             <tag> 面试 </tag>
             
             <tag> 数据结构 </tag>
-            
-            <tag> B+树 </tag>
             
         </tags>
       
@@ -140,11 +140,11 @@
       
         <tags>
             
+            <tag> 树 </tag>
+            
             <tag> 面试 </tag>
             
             <tag> 数据结构 </tag>
-            
-            <tag> 哈夫曼编码 </tag>
             
             <tag> 算法导论阅读笔记 </tag>
             
@@ -159,7 +159,7 @@
       <link href="/2020/02/10/hong-hei-shu-wen-ti-ji-he/"/>
       <url>/2020/02/10/hong-hei-shu-wen-ti-ji-he/</url>
       
-        <content type="html"><![CDATA[<h2 id="1-什么是红黑树？"><a href="#1-什么是红黑树？" class="headerlink" title="1. 什么是红黑树？"></a>1. 什么是红黑树？</h2><details><summary>查看内容</summary><pre><code>content!!!</code></pre></details><h2 id="2-红黑树有什么特点（性质）？"><a href="#2-红黑树有什么特点（性质）？" class="headerlink" title="2. 红黑树有什么特点（性质）？"></a>2. 红黑树有什么特点（性质）？</h2><h2 id="3-红黑树与AVL树的区别？"><a href="#3-红黑树与AVL树的区别？" class="headerlink" title="3. 红黑树与AVL树的区别？"></a>3. 红黑树与AVL树的区别？</h2><h2 id="4-红黑树底层为什么用map实现？"><a href="#4-红黑树底层为什么用map实现？" class="headerlink" title="4. 红黑树底层为什么用map实现？"></a>4. 红黑树底层为什么用map实现？</h2><h2 id="5-Linux-epoll机制是怎么实现的？"><a href="#5-Linux-epoll机制是怎么实现的？" class="headerlink" title="5. Linux epoll机制是怎么实现的？"></a>5. Linux epoll机制是怎么实现的？</h2><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h2 id="1-什么是红黑树？"><a href="#1-什么是红黑树？" class="headerlink" title="1. 什么是红黑树？"></a>1. 什么是红黑树？</h2><details><summary>查看内容</summary><pre><code>content!!!</code></pre></details><h2 id="2-红黑树有什么特点（性质）？"><a href="#2-红黑树有什么特点（性质）？" class="headerlink" title="2. 红黑树有什么特点（性质）？"></a>2. 红黑树有什么特点（性质）？</h2><h2 id="3-红黑树与AVL树的区别？"><a href="#3-红黑树与AVL树的区别？" class="headerlink" title="3. 红黑树与AVL树的区别？"></a>3. 红黑树与AVL树的区别？</h2><h2 id="4-红黑树底层为什么用map实现？"><a href="#4-红黑树底层为什么用map实现？" class="headerlink" title="4. 红黑树底层为什么用map实现？"></a>4. 红黑树底层为什么用map实现？</h2><h2 id="5-说一说红黑树的左右旋转"><a href="#5-说一说红黑树的左右旋转" class="headerlink" title="5. 说一说红黑树的左右旋转"></a>5. 说一说红黑树的左右旋转</h2><h2 id="6-Linux-epoll机制是怎么实现的？"><a href="#6-Linux-epoll机制是怎么实现的？" class="headerlink" title="6. Linux epoll机制是怎么实现的？"></a>6. Linux epoll机制是怎么实现的？</h2><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
@@ -171,9 +171,9 @@
       
         <tags>
             
-            <tag> 面试 </tag>
+            <tag> 树 </tag>
             
-            <tag> 红黑树 </tag>
+            <tag> 面试 </tag>
             
             <tag> 数据结构 </tag>
             
