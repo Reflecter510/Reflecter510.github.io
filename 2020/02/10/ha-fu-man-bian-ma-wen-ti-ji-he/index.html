@@ -388,14 +388,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-10
+                    2020-02-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    952
+                    950
                 </div>
                 
 
@@ -428,8 +428,8 @@
     Q<span class="token operator">=</span>C                 <span class="token operator">//</span>最小优先队列Q
     <span class="token keyword">for</span> i<span class="token operator">=</span><span class="token number">1</span> to n<span class="token number">-1</span>
         allocate a new node z
-        z<span class="token punctuation">.</span>left<span class="token operator">=</span>x<span class="token operator">=</span>EXTRACT<span class="token operator">-</span>MIN<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>
-        z<span class="token punctuation">.</span>right<span class="token operator">=</span>y<span class="token operator">=</span>EXTRACT<span class="token operator">-</span>MIN<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>
+        z<span class="token punctuation">.</span>left<span class="token operator">=</span>x<span class="token operator">=</span>EXTRACT_MIN<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>
+        z<span class="token punctuation">.</span>right<span class="token operator">=</span>y<span class="token operator">=</span>EXTRACT_MIN<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>
         z<span class="token punctuation">.</span>freq<span class="token operator">=</span>x<span class="token punctuation">.</span>freq<span class="token operator">+</span>y<span class="token punctuation">.</span>freq
         INSERT<span class="token punctuation">(</span>Q<span class="token punctuation">,</span>z<span class="token punctuation">)</span>
     <span class="token keyword">return</span> EXTRACT<span class="token operator">-</span>MIN<span class="token punctuation">(</span>Q<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
