@@ -385,7 +385,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    807
+                    806
                 </div>
                 
 
@@ -404,21 +404,16 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="1-为什么要引入auto？"><a href="#1-为什么要引入auto？" class="headerlink" title="1. 为什么要引入auto？"></a>1. 为什么要引入auto？</h2><p>通常，在把表达式的值赋给变量时，我们需要在声明变量时准确地声明是什么类型。但是，有时候很难知道表达式到底是什么类型的，因此引入了auto类型说明符。auto会让编译器通过初始值来推算变量的类型。</p>
-<h2 id="2-使用auto需要注意的是"><a href="#2-使用auto需要注意的是" class="headerlink" title="2. 使用auto需要注意的是"></a>2. 使用auto需要注意的是</h2><ul>
-<li><strong>auto定义的变量必须有初始值</strong><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> item <span class="token operator">=</span> val1 <span class="token operator">+</span> val2<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//由val1和val2相加的结果可以推断出item的类型 </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><strong>一条auto声明语句只能有一个基本数据类型</strong><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//正确：i是整数，p是整型指针</span>
+<h2 id="2-使用auto需要注意的是"><a href="#2-使用auto需要注意的是" class="headerlink" title="2. 使用auto需要注意的是"></a>2. 使用auto需要注意的是</h2><h3 id="auto定义的变量必须有初始值"><a href="#auto定义的变量必须有初始值" class="headerlink" title="auto定义的变量必须有初始值"></a><strong>auto定义的变量必须有初始值</strong></h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> item <span class="token operator">=</span> val1 <span class="token operator">+</span> val2<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//由val1和val2相加的结果可以推断出item的类型 </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="一条auto声明语句只能有一个基本数据类型"><a href="#一条auto声明语句只能有一个基本数据类型" class="headerlink" title="一条auto声明语句只能有一个基本数据类型"></a><strong>一条auto声明语句只能有一个基本数据类型</strong></h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//正确：i是整数，p是整型指针</span>
 <span class="token keyword">auto</span> sz <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> pi <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//错误：sz和pi的类型不一致</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
+<ul>
 <li><strong>编译器会改变推断结果使其更符合初始化规则</strong></li>
 </ul>
 <p>比如，我们在使用一个引用时，其实就是使用该引用的对象。特别是引用被用作初始值时，真正参加初始化的其实是引用对象的值。此时编译器以引用对象的类型作为auto的类型：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>r <span class="token operator">=</span> i<span class="token punctuation">;</span>
 <span class="token keyword">auto</span> a <span class="token operator">=</span> r<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//a是一个整数（r是i的别名，而i是一个整数）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ul>
-<li><strong>auto一般会忽略顶层const，保留底层const</strong></li>
-</ul>
-<blockquote>
+<h3 id="auto一般会忽略顶层const，保留底层const"><a href="#auto一般会忽略顶层const，保留底层const" class="headerlink" title="auto一般会忽略顶层const，保留底层const"></a><strong>auto一般会忽略顶层const，保留底层const</strong></h3><blockquote>
 <p>顶层const表示指针本身是个常量<br>底层const表示表示指针所指的对象是个常量</p>
 </blockquote>
 <ol>
