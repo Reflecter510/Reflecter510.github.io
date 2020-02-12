@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="解决mathjax与代码高亮的冲突, LitnWu">
-    <meta name="description" content="如果你按照教程安装了代码高亮插件hexo-prism-plugin，单独使用是没有问题的，但如果你又使用了mathjax，并且按照网上教程，安装kramed插件并修改了js文件里的正则表达式（为了解决markdown和mathjax的语法冲">
+    <meta name="keywords" content="C++11新特性auto的用法, LitnWu">
+    <meta name="description" content="1. 为什么要引入auto？通常，在把表达式的值赋给变量时，我们需要在声明变量时准确地声明是什么类型。但是，有时候很难知道表达式到底是什么类型的，因此引入了auto类型说明符。auto会让编译器通过初始值来推算变量的类型。
+2. 使用aut">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>解决mathjax与代码高亮的冲突 | LitnWu</title>
+    <title>C++11新特性auto的用法 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,12 +220,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">解决mathjax与代码高亮的冲突</h1>
+                    <h1 class="description center-align post-title">C++11新特性auto的用法</h1>
                 </div>
             </div>
         </div>
@@ -341,16 +342,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
-                            </a>
-                        
-                            <a href="/tags/mathjax/">
-                                <span class="chip bg-color">mathjax</span>
-                            </a>
-                        
-                            <a href="/tags/matery/">
-                                <span class="chip bg-color">matery</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
                             </a>
                         
                     </div>
@@ -361,8 +354,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                搭建博客
+                            <a href="/categories/algorithm/" class="post-category">
+                                algorithm
                             </a>
                         
                     </div>
@@ -374,28 +367,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-10
+                    2020-02-12
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-11
+                    2020-02-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    394
+                    807
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -406,31 +399,44 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>如果你按照教程安装了代码高亮插件<code>hexo-prism-plugin</code>，单独使用是没有问题的，但如果你又使用了<code>mathjax</code>，并且按照网上教程，安装<code>kramed</code>插件并修改了<code>js</code>文件里的正则表达式（为了解决<code>markdown</code>和<code>mathjax</code>的语法冲突），那你的代码就无法高亮了。解决方法很简单，别用<code>kramed</code>插件了，还用原来自带的<code>marked</code>插件，直接改它的正则表达式就行了。</p>
-<h2 id="卸载kramed插件"><a href="#卸载kramed插件" class="headerlink" title="卸载kramed插件"></a>卸载kramed插件</h2><p>如果没安装就不用这一步。</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-kramed --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="安装marked插件"><a href="#安装marked插件" class="headerlink" title="安装marked插件"></a>安装marked插件</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-renderer-marked --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="加数学公式显示"><a href="#加数学公式显示" class="headerlink" title="加数学公式显示"></a>加数学公式显示</h2><p>打开<code>/themes/matery/layout</code>中的<code>post.ejs</code>文件，在最下方粘贴如下代码：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span> src<span class="token operator">=</span><span class="token string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"><a href="#由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。" class="headerlink" title="由于markdown语法与mathjax语法存在冲突，所以还需要修改源文件。"></a>由于<code>markdown</code>语法与<code>mathjax</code>语法存在冲突，所以还需要修改源文件。</h2><p>修改node_modules/marked/lib/marked.js文件中的escape和em两行（在第536行、548行左右），改成下面：</p>
-<pre><code>escape: /^\\([`*\[\]()#$+\-.!_&gt;])/,
-em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</code></pre><h2 id="注意！"><a href="#注意！" class="headerlink" title="注意！!"></a>注意！!</h2><p>这时在文章里写数学公式基本没有问题了，但是要注意：</p>
-<p><strong>数学公式中如果出现了连续两个{，中间一定要加空格！</strong></p>
-<p>举个例子:</p>
-<p>行内公式：$y = f(x)$</p>
-<p>代码：</p>
-<pre class="line-numbers language-tex"><code class="language-tex">
-$y = f(x)$
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>行间公式：</p>
-<p>\[y = {f_{ {g_1}}}(x)\]</p>
-<p>代码：</p>
-<pre class="line-numbers language-tex"><code class="language-tex">
-\\[y = {f_{ {g_1}}}(x)\\]
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h2 id="1-为什么要引入auto？"><a href="#1-为什么要引入auto？" class="headerlink" title="1. 为什么要引入auto？"></a>1. 为什么要引入auto？</h2><p>通常，在把表达式的值赋给变量时，我们需要在声明变量时准确地声明是什么类型。但是，有时候很难知道表达式到底是什么类型的，因此引入了auto类型说明符。auto会让编译器通过初始值来推算变量的类型。</p>
+<h2 id="2-使用auto需要注意的是"><a href="#2-使用auto需要注意的是" class="headerlink" title="2. 使用auto需要注意的是"></a>2. 使用auto需要注意的是</h2><ul>
+<li><strong>auto定义的变量必须有初始值</strong><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> item <span class="token operator">=</span> val1 <span class="token operator">+</span> val2<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//由val1和val2相加的结果可以推断出item的类型 </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><strong>一条auto声明语句只能有一个基本数据类型</strong><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//正确：i是整数，p是整型指针</span>
+<span class="token keyword">auto</span> sz <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> pi <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//错误：sz和pi的类型不一致</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><strong>编译器会改变推断结果使其更符合初始化规则</strong></li>
+</ul>
+<p>比如，我们在使用一个引用时，其实就是使用该引用的对象。特别是引用被用作初始值时，真正参加初始化的其实是引用对象的值。此时编译器以引用对象的类型作为auto的类型：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>r <span class="token operator">=</span> i<span class="token punctuation">;</span>
+<span class="token keyword">auto</span> a <span class="token operator">=</span> r<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//a是一个整数（r是i的别名，而i是一个整数）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>auto一般会忽略顶层const，保留底层const</strong></li>
+</ul>
 <blockquote>
-<p>注意上面花括号之间有空格！</p>
+<p>顶层const表示指针本身是个常量<br>底层const表示表示指针所指的对象是个常量</p>
 </blockquote>
+<ol>
+<li>比如当初始值指向一个常量指针时：<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> ci <span class="token operator">=</span> i<span class="token punctuation">,</span> <span class="token operator">&amp;</span>cr <span class="token operator">=</span> ci<span class="token punctuation">;</span>
+<span class="token keyword">auto</span> b <span class="token operator">=</span> ci<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//b是一个整数（ci的顶层特性被忽略掉了）</span>
+<span class="token keyword">auto</span> c <span class="token operator">=</span> cr<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//c是一个整数（cr是ci的别名，而ci本身是一个顶层const）</span>
+<span class="token keyword">auto</span> d <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//d是一个整型指针（整数的指针就是指向整数的指针）</span>
+<span class="token keyword">auto</span> e <span class="token operator">=</span> <span class="token operator">&amp;</span>ci<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//e是一个指向整数常量的指针（对常量对象取地址是一种底层const）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>如果希望推断出的auto类型是一个顶层const，需要明确指出：<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">auto</span> f <span class="token operator">=</span> ci<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//ci的推演类型是int，f是const int</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>引用的类型设为auto，原来的初始化规则仍然适用<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> <span class="token operator">&amp;</span>g <span class="token operator">=</span> ci<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//g是一个整型常量引用，绑定到ci</span>
+<span class="token keyword">auto</span> <span class="token operator">&amp;</span>h <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//错误：不能为非常量引用绑定字面值</span>
+<span class="token keyword">const</span> <span class="token keyword">auto</span> <span class="token operator">&amp;</span>j <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//正确：可以为常量引用绑定字面值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+设置一个auto类型的引用时，初始值中的顶层常量属性仍然保留。和往常一样，如果我们给初值绑定一个引用，则此时的常量就不是顶层常量了。<blockquote>
+<p>要在一条语句中定义多个变量，切记，符号&amp;和*只从属于某个声明符，而非基本数据类型的一部分，因此初始值必须是同一种类型。</p>
+</blockquote>
+</li>
+</ol>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> k <span class="token operator">=</span> ci<span class="token punctuation">,</span> <span class="token operator">&amp;</span>l <span class="token operator">=</span> i<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//k是整数，l是整型引用</span>
+<span class="token keyword">auto</span> <span class="token operator">&amp;</span>m <span class="token operator">=</span> ci<span class="token punctuation">,</span> <span class="token operator">*</span>p <span class="token operator">=</span> ci<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//m是整型常量的引用，p是指向整型常量的指针</span>
+<span class="token keyword">auto</span> <span class="token operator">&amp;</span>n <span class="token operator">=</span> i<span class="token punctuation">,</span> <span class="token operator">*</span>p2 <span class="token operator">=</span> <span class="token operator">&amp;</span>ci<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//错误：i是整型int，而&amp;ci是整型常量const int</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -474,7 +480,7 @@ $y = f(x)$
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/02/10/jie-jue-mathjax-yu-dai-ma-gao-liang-de-chong-tu/">https://litnwu.gitee.io/2020/02/10/jie-jue-mathjax-yu-dai-ma-gao-liang-de-chong-tu/</a>
+                    <a href="https://litnwu.gitee.io/2020/02/12/c-11-xin-te-xing-auto-de-yong-fa/">https://litnwu.gitee.io/2020/02/12/c-11-xin-te-xing-auto-de-yong-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -512,16 +518,8 @@ $y = f(x)$
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
-                                </a>
-                            
-                                <a href="/tags/mathjax/">
-                                    <span class="chip bg-color">mathjax</span>
-                                </a>
-                            
-                                <a href="/tags/matery/">
-                                    <span class="chip bg-color">matery</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
                                 </a>
                             
                         </div>
@@ -687,9 +685,10 @@ $y = f(x)$
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/12/c-11-xin-te-xing-auto-de-yong-fa/">
                     <div class="card-image">
@@ -707,9 +706,9 @@ $y = f(x)$
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -722,6 +721,7 @@ $y = f(x)$
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -740,21 +740,19 @@ $y = f(x)$
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/10/top-k-wen-ti/">
+                <a href="/2020/02/10/jie-jue-mathjax-yu-dai-ma-gao-liang-de-chong-tu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Top(k)-问题">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="解决mathjax与代码高亮的冲突">
                         
-                        <span class="card-title">Top(k)-问题</span>
+                        <span class="card-title">解决mathjax与代码高亮的冲突</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 直接全部排序（只适用于内存够的情况）2. 快速排序（只适用于内存够的情况）3. 最小堆法4. 分治法5. Hash法
-        document.querySelectorAll('.github-emoji')
-       
+                            如果你按照教程安装了代码高亮插件hexo-prism-plugin，单独使用是没有问题的，但如果你又使用了mathjax，并且按照网上教程，安装kramed插件并修改了js文件里的正则表达式（为了解决markdown和mathjax的语法冲
                         
                     </div>
                     <div class="publish-info">
@@ -765,8 +763,8 @@ $y = f(x)$
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/algorithm/" class="post-category">
-                                    algorithm
+                            <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    搭建博客
                                 </a>
                             
                             
@@ -776,24 +774,16 @@ $y = f(x)$
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
                     </a>
                     
-                    <a href="/tags/%E6%8E%92%E5%BA%8F/">
-                        <span class="chip bg-color">排序</span>
+                    <a href="/tags/mathjax/">
+                        <span class="chip bg-color">mathjax</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/">
-                        <span class="chip bg-color">最小堆</span>
-                    </a>
-                    
-                    <a href="/tags/Hash/">
-                        <span class="chip bg-color">Hash</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%88%86%E6%B2%BB/">
-                        <span class="chip bg-color">分治</span>
+                    <a href="/tags/matery/">
+                        <span class="chip bg-color">matery</span>
                     </a>
                     
                 </div>
@@ -931,13 +921,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
