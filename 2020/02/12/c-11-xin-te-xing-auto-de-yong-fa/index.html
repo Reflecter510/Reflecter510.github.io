@@ -425,7 +425,8 @@
 <li>引用的类型设为auto，原来的初始化规则仍然适用<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> <span class="token operator">&amp;</span>g <span class="token operator">=</span> ci<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//g是一个整型常量引用，绑定到ci</span>
 <span class="token keyword">auto</span> <span class="token operator">&amp;</span>h <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//错误：不能为非常量引用绑定字面值</span>
 <span class="token keyword">const</span> <span class="token keyword">auto</span> <span class="token operator">&amp;</span>j <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//正确：可以为常量引用绑定字面值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-设置一个auto类型的引用时，初始值中的顶层常量属性仍然保留。和往常一样，如果我们给初值绑定一个引用，则此时的常量就不是顶层常量了。<blockquote>
+</li>
+<li>设置一个auto类型的引用时，初始值中的顶层常量属性仍然保留。和往常一样，如果我们给初值绑定一个引用，则此时的常量就不是顶层常量了。<blockquote>
 <p>要在一条语句中定义多个变量，切记，符号&amp;和*只从属于某个声明符，而非基本数据类型的一部分，因此初始值必须是同一种类型。</p>
 </blockquote>
 </li>
