@@ -13,7 +13,7 @@
       
       <categories>
           
-          <category> algorithm </category>
+          <category> C++ </category>
           
       </categories>
       
@@ -21,6 +21,8 @@
         <tags>
             
             <tag> 面试 </tag>
+            
+            <tag> C++11 </tag>
             
         </tags>
       
