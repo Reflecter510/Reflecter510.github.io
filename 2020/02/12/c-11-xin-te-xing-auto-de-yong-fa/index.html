@@ -385,14 +385,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    806
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -417,7 +417,7 @@
 <li>比如当初始值指向一个常量指针时：<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> ci <span class="token operator">=</span> i<span class="token punctuation">,</span> <span class="token operator">&amp;</span>cr <span class="token operator">=</span> ci<span class="token punctuation">;</span>
 <span class="token keyword">auto</span> b <span class="token operator">=</span> ci<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//b是一个整数（ci的顶层特性被忽略掉了）</span>
 <span class="token keyword">auto</span> c <span class="token operator">=</span> cr<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//c是一个整数（cr是ci的别名，而ci本身是一个顶层const）</span>
-<span class="token keyword">auto</span> d <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//d是一个整型指针（整数的指针就是指向整数的指针）</span>
+<span class="token keyword">auto</span> d <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//d是一个整型指针（整数的地址就是指向整数的指针）</span>
 <span class="token keyword">auto</span> e <span class="token operator">=</span> <span class="token operator">&amp;</span>ci<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//e是一个指向整数常量的指针（对常量对象取地址是一种底层const）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>如果希望推断出的auto类型是一个顶层const，需要明确指出：<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">auto</span> f <span class="token operator">=</span> ci<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//ci的推演类型是int，f是const int</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -434,6 +434,21 @@
 </blockquote>
 </li>
 </ol>
+<h2 id="完整实例代码"><a href="#完整实例代码" class="headerlink" title="完整实例代码"></a>完整实例代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> item <span class="token operator">=</span> val1 <span class="token operator">+</span> val2<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//由val1和val2相加的结果可以推断出item的类型 </span>
+<span class="token keyword">auto</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//正确：i是整数，p是整型指针</span>
+<span class="token keyword">auto</span> sz <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> pi <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//错误：sz和pi的类型不一致</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> ci <span class="token operator">=</span> i<span class="token punctuation">,</span> <span class="token operator">&amp;</span>cr <span class="token operator">=</span> ci<span class="token punctuation">;</span>
+<span class="token keyword">auto</span> b <span class="token operator">=</span> ci<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//b是一个整数（ci的顶层特性被忽略掉了）</span>
+<span class="token keyword">auto</span> c <span class="token operator">=</span> cr<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//c是一个整数（cr是ci的别名，而ci本身是一个顶层const）</span>
+<span class="token keyword">auto</span> d <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//d是一个整型指针（整数的地址就是指向整数的指针）</span>
+<span class="token keyword">auto</span> e <span class="token operator">=</span> <span class="token operator">&amp;</span>ci<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//e是一个指向整数常量的指针（对常量对象取地址是一种底层const）</span>
+<span class="token keyword">const</span> <span class="token keyword">auto</span> f <span class="token operator">=</span> ci<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//ci的推演类型是int，f是const int</span>
+<span class="token keyword">auto</span> <span class="token operator">&amp;</span>g <span class="token operator">=</span> ci<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//g是一个整型常量引用，绑定到ci</span>
+<span class="token keyword">auto</span> <span class="token operator">&amp;</span>h <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//错误：不能为非常量引用绑定字面值</span>
+<span class="token keyword">const</span> <span class="token keyword">auto</span> <span class="token operator">&amp;</span>j <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//正确：可以为常量引用绑定字面值</span>
+<span class="token keyword">auto</span> k <span class="token operator">=</span> ci<span class="token punctuation">,</span> <span class="token operator">&amp;</span>l <span class="token operator">=</span> i<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//k是整数，l是整型引用</span>
+<span class="token keyword">auto</span> <span class="token operator">&amp;</span>m <span class="token operator">=</span> ci<span class="token punctuation">,</span> <span class="token operator">*</span>p <span class="token operator">=</span> ci<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//m是整型常量的引用，p是指向整型常量的指针</span>
+<span class="token keyword">auto</span> <span class="token operator">&amp;</span>n <span class="token operator">=</span> i<span class="token punctuation">,</span> <span class="token operator">*</span>p2 <span class="token operator">=</span> <span class="token operator">&amp;</span>ci<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//错误：i是整型int，而&amp;ci是整型常量const int</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
