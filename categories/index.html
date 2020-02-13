@@ -269,10 +269,19 @@
                 
                 
                 
+                <a href="/categories/algorithm/" title="algorithm: 6">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">algorithm
+                        <span class="tag-length">6</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Markdown/" title="Markdown: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">Markdown
+                            style="background-color: #F5EEF8;">Markdown
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -281,17 +290,8 @@
                 <a href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="搭建博客: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">搭建博客
+                            style="background-color: #D5F5E3;">搭建博客
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/algorithm/" title="algorithm: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">algorithm
-                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -355,7 +355,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"Markdown","max":6},{"name":"搭建博客","max":6},{"name":"algorithm","max":6},{"name":"日志","max":6},{"name":"C++","max":6}],
+            indicator: [{"name":"algorithm","max":7},{"name":"Markdown","max":7},{"name":"搭建博客","max":7},{"name":"日志","max":7},{"name":"C++","max":7}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -366,7 +366,7 @@
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [1,2,5,1,1],
+                    value : [6,1,2,1,1],
                     name : '文章分类数量'
                 }
             ]
@@ -382,10 +382,10 @@
 
     <footer class="page-footer bg-color">
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
-            <span id="year">2019</span>
+            <span id="year">2020</span>
             <a href="https://litnwu.gitee.io" target="_blank">LitnWu</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -408,6 +408,50 @@
             </span>
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "2";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             

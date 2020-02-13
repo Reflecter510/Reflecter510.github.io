@@ -703,44 +703,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/12/c-11-xin-te-xing-auto-de-yong-fa/">
+                <a href="/2020/02/14/zui-chang-hui-wen-zi-chuan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="C++11新特性auto的用法">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="最长回文子串">
                         
-                        <span class="card-title">C++11新特性auto的用法</span>
+                        <span class="card-title">最长回文子串</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 为什么要引入auto？通常，在把表达式的值赋给变量时，我们需要在声明变量时准确地声明是什么类型。但是，有时候很难知道表达式到底是什么类型的，因此引入了auto类型说明符。auto会让编译器通过初始值来推算变量的类型。
-2. 使用aut
+                            题目（Leetcode 5.）给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+示例 1：
+输入: "babad"
+输出: "bab" 
+注意: "aba" 也是一个有效答案。示例 2：
+输入: "c
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -748,8 +750,16 @@
                         <span class="chip bg-color">面试</span>
                     </a>
                     
-                    <a href="/tags/C-11/">
-                        <span class="chip bg-color">C++11</span>
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
+                    </a>
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
@@ -819,6 +829,43 @@
 
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: LitnWu<br />'
+            + '文章作者: LitnWu<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者LitnWu所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
 <!-- 代码块功能依赖 -->
@@ -951,10 +998,10 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <footer class="page-footer bg-color">
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
-            <span id="year">2019</span>
+            <span id="year">2020</span>
             <a href="https://litnwu.gitee.io" target="_blank">LitnWu</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -977,6 +1024,50 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             </span>
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "2";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             

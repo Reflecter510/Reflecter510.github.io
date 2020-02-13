@@ -4,11 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="哈夫曼编码-问题集合, LitnWu">
-    <meta name="description" content="1. 什么是哈夫曼编码？哈夫曼编码是哈夫曼树的一种应用，广泛用于数据压缩（通常可以节省20%~90%的空间）。
-哈夫曼编码是变长编码 ，也是前缀码。
-变长编码:  每种字符长度不一定相同。
-前缀码:  没有任何码字是其他码字的前缀哈夫曼编码">
+    <meta name="keywords" content="最长回文子串, LitnWu">
+    <meta name="description" content="题目（Leetcode 5.）给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+示例 1：
+输入: &#34;babad&#34;
+输出: &#34;bab&#34; 
+注意: &#34;aba&#34; 也是一个有效答案。示例 2：
+输入: &#34;c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>哈夫曼编码-问题集合 | LitnWu</title>
+    <title>最长回文子串 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -222,12 +224,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">哈夫曼编码-问题集合</h1>
+                    <h1 class="description center-align post-title">最长回文子串</h1>
                 </div>
             </div>
         </div>
@@ -344,20 +346,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%A0%91/">
-                                <span class="chip bg-color">树</span>
-                            </a>
-                        
                             <a href="/tags/%E9%9D%A2%E8%AF%95/">
                                 <span class="chip bg-color">面试</span>
                             </a>
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
+                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                <span class="chip bg-color">字符串</span>
                             </a>
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                                <span class="chip bg-color">算法导论阅读笔记</span>
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">动态规划</span>
+                            </a>
+                        
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
                     </div>
@@ -381,28 +383,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-10
+                    2020-02-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-11
+                    2020-02-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    950
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -413,112 +415,71 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-什么是哈夫曼编码？"><a href="#1-什么是哈夫曼编码？" class="headerlink" title="1. 什么是哈夫曼编码？"></a>1. 什么是哈夫曼编码？</h2><p>哈夫曼编码是哈夫曼树的一种应用，广泛用于数据压缩（通常可以节省20%~90%的空间）。</p>
-<p>哈夫曼编码是变长编码 ，也是前缀码。</p>
-<pre><code>变长编码:  每种字符长度不一定相同。
-前缀码:  没有任何码字是其他码字的前缀</code></pre><p>哈夫曼编码算法使用字符在文件中出现的频率来建立0和1表示字符的最优二进制表示。其思想是<strong>赋予高频字符短码字，赋予低频字符长码字</strong>。</p>
-<h3 id="编码举例"><a href="#编码举例" class="headerlink" title="编码举例"></a>编码举例</h3><p>如果需传送的电文为 ‘ABACCDA’，它只用到四种字符，用两位二进制编码便可分辨。假设 A, B, C, D 的编码分别为 00, 01,10, 11，则上述电文便为 ‘00010010101100’（共 14 位），译码员按两位进行分组译码，便可恢复原来的电文。</p>
-<p>使用哈夫曼编码：首先需要知道每种字符出现的频率，其中 $P(A)=\frac{3}{7}$,$P(B)=\frac{1}{7}$，$P(C)=\frac{2}{7}$，$P(D)=\frac{1}{7}$。</p>
-<p>过程：首先，B和D的频率最小，所以合并成一棵树。此时$P(B+D)=\frac{1}{7}+\frac{1}{7}=\frac{2}{7}$，与$P(C)$相等，却比$P(A)$小，所以与C合并，最后合并A。</p>
-<p><img src="//tva4.sinaimg.cn/mw690/005JD0Ejgy1gbrcrxfi83j306705fq34.jpg" alt="构造出的哈夫曼树"></p>
-<p>从根结点出发可得编码： A：0， C：10，  B：110， D：111 。电文 ‘ABACCDA’ 便为 ‘0110010101110’（共 13 位）。</p>
-<h2 id="2-哈夫曼贪心算法如何实现？"><a href="#2-哈夫曼贪心算法如何实现？" class="headerlink" title="2. 哈夫曼贪心算法如何实现？"></a>2. 哈夫曼贪心算法如何实现？</h2><h3 id="伪代码"><a href="#伪代码" class="headerlink" title="* 伪代码"></a>* 伪代码</h3><p>我们假定C是一个n个字符的集合，而其中每个字符 $c \in C$ 都是一个对象，其属性 c.freq 给出了字符出现的频率。算法自底向上地构造出对应最优编码地二叉树T。它从|C|个结点开始，执行|C|-1个“合并”操作创建出最终的二叉树。算法使用一个以属性freq为关键字最小优先队列Q，以识别两个最低频率的对象将其合并。当合并两个对象时，得到的新对象的频率设置为原来两个对象的频率之和。</p>
-<pre class="line-numbers language-python"><code class="language-python">HUFFMAN<span class="token punctuation">(</span>C<span class="token punctuation">)</span>
-    n<span class="token operator">=</span><span class="token operator">|</span>C<span class="token operator">|</span>
-    Q<span class="token operator">=</span>C                 <span class="token operator">//</span>最小优先队列Q
-    <span class="token keyword">for</span> i<span class="token operator">=</span><span class="token number">1</span> to n<span class="token number">-1</span>
-        allocate a new node z
-        z<span class="token punctuation">.</span>left<span class="token operator">=</span>x<span class="token operator">=</span>EXTRACT_MIN<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>
-        z<span class="token punctuation">.</span>right<span class="token operator">=</span>y<span class="token operator">=</span>EXTRACT_MIN<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>
-        z<span class="token punctuation">.</span>freq<span class="token operator">=</span>x<span class="token punctuation">.</span>freq<span class="token operator">+</span>y<span class="token punctuation">.</span>freq
-        INSERT<span class="token punctuation">(</span>Q<span class="token punctuation">,</span>z<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> EXTRACT<span class="token operator">-</span>MIN<span class="token punctuation">(</span>Q<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="C-代码"><a href="#C-代码" class="headerlink" title="* C++代码"></a>* C++代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token punctuation">{</span>
-<span class="token keyword">private</span><span class="token operator">:</span>
+                <h2 id="题目（Leetcode-5-）"><a href="#题目（Leetcode-5-）" class="headerlink" title="题目（Leetcode 5.）"></a>题目（Leetcode 5.）</h2><p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。</p>
+<p><strong>示例 1：</strong></p>
+<pre><code>输入: "babad"
+输出: "bab" 
+注意: "aba" 也是一个有效答案。</code></pre><p><strong>示例 2：</strong></p>
+<pre><code>输入: "cbbd"
+输出: "bb"</code></pre><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>题意很简洁，就是找一个字符串的最长回文子串。</p>
+<p>  可以知道的是，我们无法事先估计这个子串的长度，以及在原字符串的起始位置。如果要使用枚举法的话，就要枚举所有可能长度的子串，然后检查是不是回文串：首先枚举起始位置<code>i（0..n-1）</code>，然后枚举长度<code>j（1..n-i）</code>，接着遍历子串<code>i..i+j</code>检查是否符合回文串规则。</p>
+<p>  显然，这样的时间复杂度是 $O(n^3)$ ，提交肯定会超时。</p>
+<p>  有没有更好的解法呢？答案是有的。多想几个例子就会发现，这个问题存在<strong>重叠子问题性质</strong>：比如，对于<code>s="fghdscmnanmc"</code>，这个字符串存在多个长度大于1回文子串：<code>"nan"</code>、<code>"mnamn"</code>、<code>"cmnanmc"</code>。可以看到，<code>"mnamn"</code>是由<code>"m"+"nan"+"m"</code>构造而来，<code>"cmnanmc"</code>也是同理。</p>
+<p>  但是，我们在暴力枚举的时候把所有子串都枚举了一遍，并没有使用上面的性质。也就是说，在检查发现<code>"nan"</code>是回文子串后，继续枚举到<code>"mnamn"</code>，依然把<code>"mnamn"</code>整个子串重新遍历一遍来检查是否满足回文串，而不是只检查<code>"nan"</code>左右两旁的字符是否相同。因此时间复杂度可以优化。</p>
+<p>  还有一种可能的例子是：<code>s="fcmnaanmc"</code>。与上一个例子有所不同，就是最长回文子串的中间是一个偶数的回文子串<code>"aa"</code>，而上一个例子是<code>"a"</code>。那么，可知，当问题规模不断减小，直至最小时，应有两种情况：</p>
+<pre><code>1. 子串长度为1：显然只有一个字符的回文串肯定是回文串。
+2. 子串长度为2：如果这两个字符相同，那么就是一个回文串。</code></pre><p>  现在我们得到最小规模问题的解了，接下来我们试着将问题规模变大，再来求解问题：显然，在已知一个回文串<code>s</code>后，我们需要检查回文串<code>s</code>左右两边的字符是否相等，如果相等，那么新的子串<code>g='A'+s+'A'</code>，其中<code>'A'</code>表示一个字符：</p>
+<p>  这个性质不难想到，但是怎么转换成代码是一个问题。因为我们遍历字符串只能一个一个挨个遍历，不像人眼可以直接看到哪些是对称的。</p>
+<p>  再回到子串本身，如何定位一个子串？一种办法是保存起始下标和末尾下标；另一种方法是保存起始下标，以及子串的长度。显然，无论怎样，都是需要至少二维的信息才能确定一个子串，因此可以用二维数组<code>dp[i][j]</code>，表示<code>i...j</code>的子串是否为回文串。</p>
+<p>  那么递推方程是怎么样的呢？</p>
+<p>  先看初始时:</p>
+<p><code>dp[i][i] = true (for i in 0..n-1)</code></p>
+<p><code>dp[i][i+1] = true (if s[i]==s[i+1]), else false (for i in 0..n-1)</code></p>
+<p>  递推方程：</p>
+<p>  <code>dp[i][j] = (s[i]==s[j] &amp;&amp; dp[i+1][j-1])</code> </p>
+<p>其中<code>i</code>和<code>j</code>分别表示起始下标和末尾下标</p>
+<p>但是，实际写代码的时候并不是这样写代码，因为：先枚举起始下标i，再枚举起始下标j，这样递推方程的更新过程是：三元，四元…n元，三元，四元…n元，三元……这就造成了在有一些三元的子串还不知道是否满足回文串，就去更新四元的结果，最终造成错误。</p>
+<p>举一个例子：<code>"abcba"</code>。</p>
+<p>最终我们采取定位子串的第二种方案，可以保证三元的所有结果都更新完再更新四元五元等等的结果。</p>
+<p>  <code>dp[i][i+j] = (s[i]==s[i+j] &amp;&amp; dp[i+1][i+j-1])</code></p>
+<p>其中<code>i</code>表示起始下标，<code>j</code>表示子串的长度</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    Node <span class="token operator">*</span>left<span class="token punctuation">;</span>
-    Node <span class="token operator">*</span>right<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> freq<span class="token punctuation">;</span>
-    <span class="token function">Node</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">freq</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">left</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">right</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-    <span class="token function">Node</span><span class="token punctuation">(</span><span class="token keyword">int</span> v<span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">freq</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">left</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">right</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    string <span class="token function">longestPalindrome</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">bool</span> dp<span class="token punctuation">[</span><span class="token number">1001</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//dp[i][j]表示 i...j 的字串是否为回文串</span>
+        string ans<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> left<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>right<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//下标初值</span>
+        <span class="token keyword">int</span> len<span class="token operator">=</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">memset</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//运行环境的坑</span>
+            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//初始化一元的情况</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token number">1</span> <span class="token operator">></span> right<span class="token operator">-</span>left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>   <span class="token comment" spellcheck="true">//保存结果（下标）max</span>
+                right<span class="token operator">=</span>left<span class="token operator">=</span>i<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token operator">&lt;</span>len <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span>s<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>dp<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//初始化二元的情况</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token operator">&amp;&amp;</span>  <span class="token number">2</span> <span class="token operator">></span>right<span class="token operator">-</span>left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//保存结果（下标）max</span>
+                    left<span class="token operator">=</span>i<span class="token punctuation">;</span>
+                    right<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//递推三元以上的情况</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>len<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//长度依次增加</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">+</span>j<span class="token operator">&lt;</span>len<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//起始下标依次增加</span>
+                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token punctuation">]</span><span class="token operator">=</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span>s<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> dp<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//递推</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>i<span class="token operator">+</span>j<span class="token operator">-</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">></span> right<span class="token operator">-</span>left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//保存结果（下标）max</span>
+                    left<span class="token operator">=</span>i<span class="token punctuation">;</span>
+                    right<span class="token operator">=</span>i<span class="token operator">+</span>j<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// 自定义类指针比较  </span>
-<span class="token keyword">class</span> <span class="token class-name">CompareNode</span><span class="token punctuation">{</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">const</span> Node<span class="token operator">*</span> left<span class="token punctuation">,</span><span class="token keyword">const</span> Node<span class="token operator">*</span> right<span class="token punctuation">)</span><span class="token keyword">const</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token operator">==</span>left<span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> 
-            <span class="token keyword">return</span> <span class="token punctuation">(</span>left<span class="token operator">-</span><span class="token operator">></span>freq <span class="token operator">></span> right<span class="token operator">-</span><span class="token operator">></span>freq<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>right<span class="token operator">==</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span>right<span class="token operator">-</span>left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">typedef</span> std<span class="token operator">::</span>priority_queue<span class="token operator">&lt;</span>Node<span class="token operator">*</span><span class="token punctuation">,</span>vector<span class="token operator">&lt;</span>Node<span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">,</span>CompareNode<span class="token operator">></span> queue_t<span class="token punctuation">;</span>
-
-Node<span class="token operator">*</span> z<span class="token punctuation">;</span>
-Node<span class="token operator">*</span> <span class="token function">Huffman</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>Node<span class="token operator">*</span><span class="token operator">></span><span class="token operator">&amp;</span> C<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> n<span class="token operator">=</span>C<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    queue_t Q<span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">auto</span> it<span class="token operator">:</span>C<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token number">-1</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        z<span class="token operator">=</span><span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        z<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">=</span>Q<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> Q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        z<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">=</span>Q<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> Q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        z<span class="token operator">-</span><span class="token operator">></span>freq<span class="token operator">=</span><span class="token punctuation">(</span>z<span class="token operator">-</span><span class="token operator">></span>left<span class="token operator">-</span><span class="token operator">></span>freq<span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span>z<span class="token operator">-</span><span class="token operator">></span>right<span class="token operator">-</span><span class="token operator">></span>freq<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">return</span> Q<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">void</span> <span class="token function">pre_print</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>root<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>root<span class="token operator">==</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    cout<span class="token operator">&lt;&lt;</span>root<span class="token operator">-</span><span class="token operator">></span>freq<span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span>
-    <span class="token function">pre_print</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">pre_print</span><span class="token punctuation">(</span>root<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>  
-<span class="token punctuation">}</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    vector<span class="token operator">&lt;</span>Node<span class="token operator">*</span><span class="token operator">></span> vec<span class="token punctuation">;</span>
-    Node <span class="token function">a</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">b</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">c</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    vec<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    vec<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    vec<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    vec<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Node <span class="token operator">*</span>root<span class="token operator">=</span><span class="token function">Huffman</span><span class="token punctuation">(</span>vec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">pre_print</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>测试输出结点（先序遍历）：</p>
-<pre><code>7 3 4 2 2 1 1 </code></pre><p>ok，符合预期。</p>
-<h3 id="遇到的问题："><a href="#遇到的问题：" class="headerlink" title="遇到的问题："></a>遇到的问题：</h3><ol>
-<li><p>如何重载类指针比较符？（已解决，如上代码）</p>
-</li>
-<li><p>尝试尽可能与伪代码接近时，发现以下代码在编译时出错（已解决）：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"> Node<span class="token operator">*</span> x<span class="token punctuation">,</span>y<span class="token punctuation">;</span>
- x<span class="token operator">=</span>Q<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- y<span class="token operator">=</span>Q<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//此行报错</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p> 在显示的出错信息为：</p>
-<pre><code>  error: invalid user-defined conversion from 'const value_type' {aka 'Node* const'} to 'const Node&amp;' </code></pre><blockquote>
-<p>解决：wsl，指针的定义都忘记了：<code>Node *x,*y;</code></p>
-</blockquote>
-</li>
-</ol>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -562,7 +523,7 @@ Node<span class="token operator">*</span> <span class="token function">Huffman</
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/02/10/ha-fu-man-bian-ma-wen-ti-ji-he/">https://litnwu.gitee.io/2020/02/10/ha-fu-man-bian-ma-wen-ti-ji-he/</a>
+                    <a href="https://litnwu.gitee.io/2020/02/14/zui-chang-hui-wen-zi-chuan/">https://litnwu.gitee.io/2020/02/14/zui-chang-hui-wen-zi-chuan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -600,20 +561,20 @@ Node<span class="token operator">*</span> <span class="token function">Huffman</
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%A0%91/">
-                                    <span class="chip bg-color">树</span>
-                                </a>
-                            
                                 <a href="/tags/%E9%9D%A2%E8%AF%95/">
                                     <span class="chip bg-color">面试</span>
                                 </a>
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
+                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                    <span class="chip bg-color">字符串</span>
                                 </a>
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                                    <span class="chip bg-color">算法导论阅读笔记</span>
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">动态规划</span>
+                                </a>
+                            
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
                                 </a>
                             
                         </div>
@@ -779,94 +740,34 @@ Node<span class="token operator">*</span> <span class="token function">Huffman</
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/10/b-shu-wen-ti-ji-he/">
+                <a href="/2020/02/14/zui-chang-hui-wen-zi-chuan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="B+树-问题集合">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="最长回文子串">
                         
-                        <span class="card-title">B+树-问题集合</span>
+                        <span class="card-title">最长回文子串</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 什么是B+树？
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-10
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/algorithm/" class="post-category">
-                                    algorithm
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%A0%91/">
-                        <span class="chip bg-color">树</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/10/hong-hei-shu-wen-ti-ji-he/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="红黑树-问题集合">
-                        
-                        <span class="card-title">红黑树-问题集合</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            1. 什么是红黑树？
-查看内容
-
-content!!!
-
-2. 红黑树有什么特点（性质）？3. 红黑树与AVL树的区别？4. 红黑树底层为什么用map实现？5. 说一说红黑树的左右旋转6. Linux epoll机制是怎么实现的？
-    
+                            题目（Leetcode 5.）给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+示例 1：
+输入: "babad"
+输出: "bab" 
+注意: "aba" 也是一个有效答案。示例 2：
+输入: "c
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-14
                             </span>
                         <span class="publish-author">
                             
@@ -880,19 +781,78 @@ content!!!
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%A0%91/">
-                        <span class="chip bg-color">树</span>
-                    </a>
                     
                     <a href="/tags/%E9%9D%A2%E8%AF%95/">
                         <span class="chip bg-color">面试</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
+                    </a>
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/02/12/c-11-xin-te-xing-auto-de-yong-fa/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="C++11新特性auto的用法">
+                        
+                        <span class="card-title">C++11新特性auto的用法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1. 为什么要引入auto？通常，在把表达式的值赋给变量时，我们需要在声明变量时准确地声明是什么类型。但是，有时候很难知道表达式到底是什么类型的，因此引入了auto类型说明符。auto会让编译器通过初始值来推算变量的类型。
+2. 使用aut
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
+                    </a>
+                    
+                    <a href="/tags/C-11/">
+                        <span class="chip bg-color">C++11</span>
                     </a>
                     
                 </div>
