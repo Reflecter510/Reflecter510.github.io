@@ -438,9 +438,9 @@
 <p>  递推方程：</p>
 <p>  <code>dp[i][j] = (s[i]==s[j] &amp;&amp; dp[i+1][j-1])</code> </p>
 <p>其中<code>i</code>和<code>j</code>分别表示起始下标和末尾下标</p>
-<p>但是，实际写代码的时候并不是这样写代码，因为：先枚举起始下标i，再枚举起始下标j，这样递推方程的更新过程是：三元，四元…n元，三元，四元…n元，三元……这就造成了在有一些三元的子串还不知道是否满足回文串，就去更新四元的结果，最终造成错误。</p>
-<p>举一个例子：<code>"abcba"</code>。</p>
-<p>最终我们采取定位子串的第二种方案，可以保证三元的所有结果都更新完再更新四元五元等等的结果。</p>
+<p>  但是，实际写代码的时候并不是这样写代码，因为：先枚举起始下标i，再枚举末尾下标j，这样递推方程的更新过程是：三元，四元…n元，三元，四元…n元，三元……这就造成了在有一些三元的子串还不知道是否满足回文串，就去更新四元的结果，最终造成错误。</p>
+<p>  举一个例子：<code>"abcba"</code>。</p>
+<p>  最终我们采取定位子串的第二种方案，可以保证三元的所有结果都更新完再更新四元五元等等的结果。</p>
 <p>  <code>dp[i][i+j] = (s[i]==s[i+j] &amp;&amp; dp[i+1][i+j-1])</code></p>
 <p>其中<code>i</code>表示起始下标，<code>j</code>表示子串的长度</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
