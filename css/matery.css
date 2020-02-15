@@ -34,16 +34,16 @@
 }
 
 body {
-    background-color: #eaeaea;
+    /* background-color: #eaeaea;
     margin: 0;
-    color: #34495e;
-    /* background:url(/medias/banner/0.jpg);
+    color: #34495e; */
+    background:url(/medias/bg.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position:center;
  
-    opacity: 0.9; */
+    opacity: 0.9;
 }
 
 h1 {
