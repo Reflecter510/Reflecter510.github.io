@@ -570,7 +570,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-13
+                    2020-02-15
                 </div>
                 
 
@@ -628,7 +628,7 @@
 <span class="token keyword">auto</span> <span class="token operator">&amp;</span>n <span class="token operator">=</span> i<span class="token punctuation">,</span> <span class="token operator">*</span>p2 <span class="token operator">=</span> <span class="token operator">&amp;</span>ci<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//错误：i是整型int，而&amp;ci是整型常量const int</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
-<h2 id="完整实例代码"><a href="#完整实例代码" class="headerlink" title="完整实例代码"></a>完整实例代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> item <span class="token operator">=</span> val1 <span class="token operator">+</span> val2<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//由val1和val2相加的结果可以推断出item的类型 </span>
+<h2 id="3-完整实例代码"><a href="#3-完整实例代码" class="headerlink" title="3. 完整实例代码"></a>3. 完整实例代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> item <span class="token operator">=</span> val1 <span class="token operator">+</span> val2<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//由val1和val2相加的结果可以推断出item的类型 </span>
 <span class="token keyword">auto</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//正确：i是整数，p是整型指针</span>
 <span class="token keyword">auto</span> sz <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> pi <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//错误：sz和pi的类型不一致</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> ci <span class="token operator">=</span> i<span class="token punctuation">,</span> <span class="token operator">&amp;</span>cr <span class="token operator">=</span> ci<span class="token punctuation">;</span>
