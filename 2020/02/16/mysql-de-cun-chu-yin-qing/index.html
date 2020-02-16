@@ -635,14 +635,14 @@ show variables like &#39;%engine%&#39;;
 <li>对于InnoDB表，自动增长列必须是索引。如果是组合索引，也必须是组合索引的第一项。但是对于MyISAM表，自动增长列可以是组合索引的其他列。</li>
 </ul>
 <h3 id="InnoDB特性2-外键约束"><a href="#InnoDB特性2-外键约束" class="headerlink" title="InnoDB特性2 :外键约束"></a>InnoDB特性2 :外键约束</h3><p>在MySQL中支持外键的只有InnoDB。在创建外键时，要求父表必须有对应的索引，子表在创建外键时也会自动生成对应的索引。在创建索引时，可以指定父表在更新或删除时，对子表进行相应的操作。</p>
-<h3 id="InnoDB索引结构"><a href="#InnoDB索引结构" class="headerlink" title="InnoDB索引结构"></a>InnoDB索引结构</h3><p>InnoDB也是B+Tree索引结构。Innodb的索引文件本身就是数据文件，即B+Tree的数据域存储的就是实际的数据，这种索引就是聚集索引。这个索引的key就是数据表的主键，因此InnoDB表数据文件本身就是主索引。</p>
+<h3 id="InnoDB索引结构"><a href="#InnoDB索引结构" class="headerlink" title="InnoDB索引结构"></a>InnoDB索引结构</h3><p>InnoDB也是B+ Tree索引结构。Innodb的索引文件本身就是数据文件，即B+ Tree的数据域存储的就是实际的数据，这种索引就是聚集索引。这个索引的key就是数据表的主键，因此InnoDB表数据文件本身就是主索引。</p>
 <p>InnoDB的辅助索引数据域存储的也是相应记录主键的值而不是地址，所以当以辅助索引查找时，会先根据辅助索引找到主键，再根据主键索引找到实际的数据。所以Innodb不建议使用过长的主键，否则会使辅助索引变得过大。建议使用自增的字段作为主键，这样B+Tree的每一个结点都会被顺序的填满，而不会频繁的分裂调整，会有效的提升插入数据的效率。</p>
 <h2 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h2><p>MyISAM不支持事务，也不支持行级锁和外键，其优势是访问的速度快。但当<code>INSERT</code>或<code>UPDATE</code>数据时即写操作需要锁定整个表，效率便会低一些。MyIsam 存储引擎独立于操作系统，也就是可以在windows上使用，也可以比较简单的将数据转移到linux操作系统上去。</p>
 <p>缺点：就是不能在表损坏后主动恢复数据.</p>
 <h3 id="MyISAM适用场景"><a href="#MyISAM适用场景" class="headerlink" title="MyISAM适用场景"></a>MyISAM适用场景</h3><ul>
 <li>不支持事务的设计，但是并不代表着有事务操作的项目不能用MyIsam存储引擎，可以在service层进行根据自己的业务需求进行相应的控制。</li>
 <li>不支持外键的表设计。</li>
-<li>查询速度很快，如果数据库insert和update的操作比较多的话比较适用。</li>
+<li>查询速度很快，如果数据库<code>insert</code>和<code>update</code>的操作比较多的话比较适用。</li>
 <li>整天对表进行加锁的场景。</li>
 <li>MyISAM极度强调快速读取操作。</li>
 <li>MyIASM中存储了表的行数，于是<code>SELECT COUNT(*) FROM TABLE</code>时只需要直接读取已经保存好的值而不需要进行全表扫描。如果表的读操作远远多于写操作且不需要数据库事务的支持，那么MyIASM也是很好的选择。</li>
