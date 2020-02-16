@@ -645,7 +645,7 @@ show variables like &#39;%engine%&#39;;
 <li>查询速度很快，如果数据库insert和update的操作比较多的话比较适用。</li>
 <li>整天对表进行加锁的场景。</li>
 <li>MyISAM极度强调快速读取操作。</li>
-<li>MyIASM中存储了表的行数，于是SELECT COUNT(*) FROM TABLE时只需要直接读取已经保存好的值而不需要进行全表扫描。如果表的读操作远远多于写操作且不需要数据库事务的支持，那么MyIASM也是很好的选择。</li>
+<li>MyIASM中存储了表的行数，于是<code>SELECT COUNT(*) FROM TABLE</code>时只需要直接读取已经保存好的值而不需要进行全表扫描。如果表的读操作远远多于写操作且不需要数据库事务的支持，那么MyIASM也是很好的选择。</li>
 </ul>
 <h3 id="MyISAM索引结构"><a href="#MyISAM索引结构" class="headerlink" title="MyISAM索引结构"></a>MyISAM索引结构</h3><p>MyISAM索引用的B+ tree来储存数据，MyISAM索引的指针指向的是键值的地址，地址存储的是数据。B+Tree的数据域存储的内容为实际数据的地址，也就是说它的索引和实际的数据是分开的，只不过是用索引指向了实际的数据，这种索引就是所谓的非聚集索引。</p>
 <script>
