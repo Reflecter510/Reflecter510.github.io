@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>MySQL的存储引擎</title>
+      <link href="/2020/02/16/mysql-de-cun-chu-yin-qing/"/>
+      <url>/2020/02/16/mysql-de-cun-chu-yin-qing/</url>
+      
+        <content type="html"><![CDATA[<h2 id="MySQL默认存储引擎"><a href="#MySQL默认存储引擎" class="headerlink" title="MySQL默认存储引擎"></a>MySQL默认存储引擎</h2><p>查看MySQL当前的版本</p><pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> version<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="//tvax3.sinaimg.cn/mw690/005JD0Ejgy1gbygazvpmqj30hq088wht.jpg" alt="MySQL版本"></p><p>查看MySQL默认存储引擎</p><pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">show</span> variables <span class="token operator">like</span> <span class="token string">'%engine%'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="//tvax4.sinaimg.cn/mw690/005JD0Ejgy1gbyh9m9s7oj30rf0bcjz0.jpg" alt="默认存储引擎"></p><p>可以看到默认的存储引擎是InnoDB，5.5版本之后都是InnoDB，而在5.5之前是MyISAM。</p><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>MySQL中的数据用各种不同的技术存储在文件（或者内存）中。这些技术中的每一种技术都使用不同的存储机制、索引技巧、锁定水平并且最终提供广泛的不同的功能和能力。通过选择不同的技术，你能够获得额外的速度或者功能，从而改善你的应用的整体功能。</p><p>数据库引擎是用于存储、处理和保护数据的核心服务。利用数据库引擎可控制访问权限并快速处理事务，从而满足企业内大多数需要处理大量数据的应用程序的要求。使用数据库引擎创建用于联机事务处理或联机分析处理数据的关系数据库。这包括创建用于存储数据的表和用于查看、管理和保护数据安全的数据库对象（如索引、视图和存储过程）。</p><h2 id="MySQL支持多种存储引擎"><a href="#MySQL支持多种存储引擎" class="headerlink" title="MySQL支持多种存储引擎"></a>MySQL支持多种存储引擎</h2><p>MySQL默认支持多种存储引擎，用户可以根据应用的需要选择使用不同的存储引擎，以提高效率。这种插件式存储引擎是MySQL数据库最重要的特性之一。</p><h2 id="各种存储引擎的特性"><a href="#各种存储引擎的特性" class="headerlink" title="各种存储引擎的特性"></a>各种存储引擎的特性</h2><p>先上图：<br><img src="//tva2.sinaimg.cn/mw690/005JD0Ejgy1gbyhq0n0cpj31ei0rmkgf.jpg" alt="常用存储引擎对比"></p><p>MySQL存储引擎主要有： MyIsam、InnoDB、Memory、Blackhole、CSV、Performance_Schema、Archive、Federated、Mrg_Myisam。<br>最常用的有4种：InnoDB、MyISAM、MEMERY和MERGE。</p><h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><ul><li>InnoDB支持事务安全，具有提交、回滚、和崩溃恢复能力。</li><li>Innodb引擎提供了对数据库ACID事务的支持，并且实现了SQL标准的四种隔离级别。</li><li>该引擎还提供了行级锁和外键约束。</li></ul><p>它的设计目标是处理大容量数据库系统，它本身其实就是基于MySQL后台的完整数据库系统，MySQL运行时Innodb会在内存中建立缓冲池，用于缓冲数据和索引。但是该引擎不支持FULLTEXT类型的索引，而且它没有保存表的行数，当<code>SELECT COUNT(*) FROM TABLE</code>时需要扫描全表。当需要使用数据库事务时，该引擎当然是首选。由于锁的粒度更小，写操作不会锁定全表，所以在并发较高时，使用Innodb引擎会提升效率。但是使用行级锁也不是绝对的，如果在执行一个SQL语句时MySQL不能确定要扫描的范围，InnoDB表同样会锁全表。</p><h3 id="InnoDB适用场景"><a href="#InnoDB适用场景" class="headerlink" title="InnoDB适用场景"></a>InnoDB适用场景</h3><ul><li>经常更新的表，适合处理多重并发的更新请求。</li><li>支持事务。</li><li>可以从灾难中恢复（通过bin-log日志等）。</li><li>外键约束。只有它支持外键。</li><li>支持自动增加列属性auto_increment。</li></ul><p>用于事务处理应用程序，支持外键。如果应用对事务完整性有比较高的要求，在并发条件下要求数据的一致性，数据操作除了插入和查询以外，还包括很多的更新、删除操作，那么InnoDB是比较合适的选择。</p><p>InnoDB除了有效地降低由于删除和更新导致的锁定，还可以确保事务的完整提交（Commit）和回滚（Rollback），对于类似计费系统或财务系统等数据准确性要求比较高的系统，InnoDB都是合适的选择。</p><h3 id="InnoDB特性1-自动增长列"><a href="#InnoDB特性1-自动增长列" class="headerlink" title="InnoDB特性1 :自动增长列"></a>InnoDB特性1 :自动增长列</h3><p>自动增长列和外键约束是InnoDB不同于其他存储引擎的表的特点。</p><p>自动增长列的定义是在创建表的时候某一列加入关键字<code>auto_increment</code></p><ul><li>InnoDB表的自动增长列可以手动插入，但是插入的值如果是空或者0，则实际插入的值是自动增长后的值。</li><li>使用<code>LAST_INSERT_ID()</code>可查询当前线程最后插入记录使用的值</li><li>对于InnoDB表，自动增长列必须是索引。如果是组合索引，也必须是组合索引的第一项。但是对于MyISAM表，自动增长列可以是组合索引的其他列。</li></ul><h3 id="InnoDB特性2-外键约束"><a href="#InnoDB特性2-外键约束" class="headerlink" title="InnoDB特性2 :外键约束"></a>InnoDB特性2 :外键约束</h3><p>在MySQL中支持外键的只有InnoDB。在创建外键时，要求父表必须有对应的索引，子表在创建外键时也会自动生成对应的索引。在创建索引时，可以指定父表在更新或删除时，对子表进行相应的操作。</p><h3 id="InnoDB索引结构"><a href="#InnoDB索引结构" class="headerlink" title="InnoDB索引结构"></a>InnoDB索引结构</h3><p>InnoDB也是B+Tree索引结构。Innodb的索引文件本身就是数据文件，即B+Tree的数据域存储的就是实际的数据，这种索引就是聚集索引。这个索引的key就是数据表的主键，因此InnoDB表数据文件本身就是主索引。</p><p>InnoDB的辅助索引数据域存储的也是相应记录主键的值而不是地址，所以当以辅助索引查找时，会先根据辅助索引找到主键，再根据主键索引找到实际的数据。所以Innodb不建议使用过长的主键，否则会使辅助索引变得过大。建议使用自增的字段作为主键，这样B+Tree的每一个结点都会被顺序的填满，而不会频繁的分裂调整，会有效的提升插入数据的效率。</p><h2 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h2><p>MyISAM不支持事务，也不支持行级锁和外键，其优势是访问的速度快。但当<code>INSERT</code>或<code>UPDATE</code>数据时即写操作需要锁定整个表，效率便会低一些。MyIsam 存储引擎独立于操作系统，也就是可以在windows上使用，也可以比较简单的将数据转移到linux操作系统上去。</p><p>缺点：就是不能在表损坏后主动恢复数据.</p><h3 id="MyISAM适用场景"><a href="#MyISAM适用场景" class="headerlink" title="MyISAM适用场景"></a>MyISAM适用场景</h3><ul><li>不支持事务的设计，但是并不代表着有事务操作的项目不能用MyIsam存储引擎，可以在service层进行根据自己的业务需求进行相应的控制。</li><li>不支持外键的表设计。</li><li>查询速度很快，如果数据库insert和update的操作比较多的话比较适用。</li><li>整天对表进行加锁的场景。</li><li>MyISAM极度强调快速读取操作。</li><li>MyIASM中存储了表的行数，于是SELECT COUNT(*) FROM TABLE时只需要直接读取已经保存好的值而不需要进行全表扫描。如果表的读操作远远多于写操作且不需要数据库事务的支持，那么MyIASM也是很好的选择。</li></ul><h3 id="MyISAM索引结构"><a href="#MyISAM索引结构" class="headerlink" title="MyISAM索引结构"></a>MyISAM索引结构</h3><p>MyISAM索引用的B+ tree来储存数据，MyISAM索引的指针指向的是键值的地址，地址存储的是数据。B+Tree的数据域存储的内容为实际数据的地址，也就是说它的索引和实际的数据是分开的，只不过是用索引指向了实际的数据，这种索引就是所谓的非聚集索引。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>最长回文子串</title>
       <link href="/2020/02/14/zui-chang-hui-wen-zi-chuan/"/>
       <url>/2020/02/14/zui-chang-hui-wen-zi-chuan/</url>
@@ -144,9 +171,9 @@
             
             <tag> 面试 </tag>
             
-            <tag> Map </tag>
-            
             <tag> 数据结构 </tag>
+            
+            <tag> Map </tag>
             
         </tags>
       
