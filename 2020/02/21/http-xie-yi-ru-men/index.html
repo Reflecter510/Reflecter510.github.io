@@ -652,7 +652,7 @@
 <h4 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h4><p>PUT 方法用来传输文件。就像 FTP 协议的文件上传一样，要求在请 求报文的主体中包含文件内容，然后保存到请求 URI 指定的位置。</p>
 <h4 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h4><p>PUT 方法用来传输文件。就像 FTP 协议的文件上传一样，要求在请 求报文的主体中包含文件内容，然后保存到请求 URI 指定的位置。</p>
 <h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><p>DELETE 方法用来删除文件，是与 PUT 相反的方法。DELETE 方法按 请求 URI 删除指定的资源。</p>
-<p>但是，HTTP/1.1 的 DELETE 方法本身和 PUT 方法一样不带验证机 制，所以一般的 Web 网站也不使用 DELETE 方法。当配合 Web 应用 程序的验证机制，或遵守 REST 标准时还是有可能会开放使用的。<br><img src="//tvax2.sinaimg.cn/large/005JD0Ejgy1gc4268wo3aj315x0e2grt.jpg" alt=""></p>
+<p>但是，HTTP/1.1 的 DELETE 方法本身和 PUT 方法一样不带验证机 制，所以一般的 Web 网站也不使用 DELETE 方法。当配合 Web 应用 程序的验证机制，或遵守 REST 标准时还是有可能会开放使用的。<br><img src="//tvax2.sinaimg.cn/large/005JD0Ejgy1gc4268wo3aj315x0e2grt.jpg" alt="请求报文"></p>
 <h3 id="响应报文："><a href="#响应报文：" class="headerlink" title="响应报文："></a><strong>响应报文：</strong></h3><ul>
 <li>协议版本、状态码（表示请求成功或失败的数字代 码）、用以解释状态码的原因短语</li>
 <li>可选的响应首部字段</li>
@@ -663,7 +663,7 @@
 <p>与请求报文一样，响应报文必须后跟空白行。响应数据跟随空白行。在前面的示例中，响应主体将是HTML文件response.html。</p>
 <p>HTTP1.1的默认操作是保持连接开放一段时间，以便客户端可以在短时间内发出多个请求<br>无需重新建立与服务器的通信连接</p>
 <h4 id="状态码的类别"><a href="#状态码的类别" class="headerlink" title="状态码的类别"></a>状态码的类别</h4><p>一种更常见的状态代码是一个用户从不希望看到的代码：404 Not Found，这表示找不到所请求的文件。当然，用户希望看到200 OK，因为这意味着该请求已正确处理。500代码表示服务器遇到问题，无法满足请求。<br><img src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gc41mi4h5ij30yv0bbwh6.jpg" alt=""></p>
-<p><img src="//tva1.sinaimg.cn/large/005JD0Ejgy1gc426qdtnoj315l0mztid.jpg" alt=""></p>
+<p><img src="//tva1.sinaimg.cn/large/005JD0Ejgy1gc426qdtnoj315l0mztid.jpg" alt="响应报文"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
