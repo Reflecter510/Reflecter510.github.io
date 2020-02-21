@@ -4,10 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="计算机网络概述, LitnWu">
-    <meta name="description" content="计算机网络定义把分布在不同地点且具有独立功能的计算机，通过通信设备和通信线路连接起来，在功能完善的网络软件运行环境下，以实现资源共享为目标的系统。
-计算机网络的组成
-通信子网：网络信息的传输和交换。包括集线器、路由器、交换机等等，通信线路。">
+    <meta name="keywords" content="HTTP协议学习, LitnWu">
+    <meta name="description" content="与HTTP关系密切的协议负责传输的 IP 协议按层次分，IP（Internet Protocol）网际协议位于网络层。Internet Protocol 这个名称可能听起来有点夸张，但事实正是如此，因为几乎 所有使用网络的系统都会用到 IP">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>计算机网络概述 | LitnWu</title>
+    <title>HTTP协议学习 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -413,12 +411,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://tva2.sinaimg.cn/large/005JD0Ejgy1gc42cdq6yej30yd0luwpf.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">计算机网络概述</h1>
+                    <h1 class="description center-align post-title">HTTP协议学习</h1>
                 </div>
             </div>
         </div>
@@ -535,8 +533,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                                <span class="chip bg-color">计算机网络</span>
+                            <a href="/tags/HTTP/">
+                                <span class="chip bg-color">HTTP</span>
+                            </a>
+                        
+                            <a href="/tags/TCP-IP/">
+                                <span class="chip bg-color">TCP/IP</span>
                             </a>
                         
                     </div>
@@ -560,28 +562,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-17
+                    2020-02-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-17
+                    2020-02-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    940
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    8 分
                 </div>
                 
 
@@ -592,70 +594,76 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="计算机网络定义"><a href="#计算机网络定义" class="headerlink" title="计算机网络定义"></a>计算机网络定义</h2><p>把分布在不同地点且<strong>具有独立功能</strong>的计算机，通过<strong>通信设备和通信线路</strong>连接起来，在<strong>功能完善的网络软件</strong>运行环境下，以实现<strong>资源共享</strong>为目标的系统。</p>
-<h2 id="计算机网络的组成"><a href="#计算机网络的组成" class="headerlink" title="计算机网络的组成"></a>计算机网络的组成</h2><ul>
-<li><strong>通信子网</strong>：网络信息的传输和交换。包括集线器、路由器、交换机等等，通信线路。</li>
-<li><strong>终端系统</strong>：负责信息的处理。包括主机、服务器等。</li>
+                <h2 id="与HTTP关系密切的协议"><a href="#与HTTP关系密切的协议" class="headerlink" title="与HTTP关系密切的协议"></a>与HTTP关系密切的协议</h2><h3 id="负责传输的-IP-协议"><a href="#负责传输的-IP-协议" class="headerlink" title="负责传输的 IP 协议"></a>负责传输的 IP 协议</h3><p>按层次分，IP（Internet Protocol）网际协议位于网络层。Internet Protocol 这个名称可能听起来有点夸张，但事实正是如此，因为几乎 所有使用网络的系统都会用到 IP 协议。TCP/IP 协议族中的 IP 指的就 是网际协议，协议名称中占据了一半位置，其重要性可见一斑。可能 有人会把“IP”和“IP 地址”搞混，“IP”其实是一种协议的名称。</p>
+<p>IP 协议的作用是把各种数据包传送给对方。而要保证确实传送到对方 那里，则需要满足各类条件。其中两个重要的条件是IP地址和 MAC 地址（Media Access Control Address）。</p>
+<p>IP 地址指明了节点被分配到的地址，MAC 地址是指网卡所属的固定 地址。IP 地址可以和 MAC 地址进行配对。IP 地址可变换，但 MAC 地址基本上不会更改。</p>
+<p><strong>使用 ARP 协议凭借 MAC 地址进行通信</strong></p>
+<p>IP 间的通信依赖 MAC 地址。在网络上，通信的双方在同一局域网 （LAN）内的情况是很少的，通常是经过多台计算机和网络设备中转 才能连接到对方。而在进行中转时，会利用下一站中转设备的 MAC 地址来搜索下一个中转目标。这时，会采用 ARP 协议（Address Resolution Protocol）。ARP 是一种用以解析地址的协议，根据通信方 的 IP 地址就可以反查出对应的 MAC 地址。</p>
+<p><strong>没有人能够全面掌握互联网中的传输状况</strong></p>
+<p>在到达通信目标前的中转过程中，那些计算机和路由器等网络设备只 能获悉很粗略的传输路线。<br>这种机制称为路由选择（routing），有点像快递公司的送货过程。想 要寄快递的人，只要将自己的货物送到集散中心，就可以知道快递公 司是否肯收件发货，该快递公司的集散中心检查货物的送达地址，明 确下站该送往哪个区域的集散中心。接着，那个区域的集散中心自会 判断是否能送到对方的家中。</p>
+<p>我们是想通过这个比喻说明，无论哪台计算机、哪台网络设备，它们 都无法全面掌握互联网中的细节。</p>
+<h3 id="确保可靠性的TCP协议"><a href="#确保可靠性的TCP协议" class="headerlink" title="确保可靠性的TCP协议"></a>确保可靠性的TCP协议</h3><p>按层次分，TCP 位于传输层，提供可靠的字节流服务。</p>
+<p>所谓的字节流服务（Byte Stream Service）是指，为了方便传输，将大 块数据分割成以报文段（segment）为单位的数据包进行管理。而可 靠的传输服务是指，能够把数据准确可靠地传给对方。一言以蔽之， TCP 协议为了更容易传送大数据才把数据分割，而且 TCP 协议能够 确认数据最终是否送达到对方。</p>
+<p><strong>确保数据能到达目标</strong></p>
+<p>为了准确无误地将数据送达目标处，TCP 协议采用了三次握手 （three-way handshaking）策略。用 TCP 协议把数据包送出去后，TCP 不会对传送后的情况置之不理，它一定会向对方确认是否成功送达</p>
+<p>握手过程中使用了 TCP 的标志（flag） —— SYN（synchronize） 和 ACK（acknowledgement）。</p>
+<p>发送端首先发送一个带 SYN 标志的数据包给对方。接收端收到后， 回传一个带有 SYN/ACK 标志的数据包以示传达确认信息。最后，发 送端再回传一个带 ACK 标志的数据包，代表“握手”结束。</p>
+<p>若在握手过程中某个阶段莫名中断，TCP 协议会再次以相同的顺序发 送相同的数据包。</p>
+<p><strong>三次握手</strong><br><img src="//tva4.sinaimg.cn/large/005JD0Ejgy1gc3ypbofhrj312s0kadz2.jpg" alt=""></p>
+<p>除了上述三次握手，TCP 协议还有其他各种手段来保证通信的可靠性。</p>
+<h3 id="负责域名解析的-DNS-服务"><a href="#负责域名解析的-DNS-服务" class="headerlink" title="负责域名解析的 DNS 服务"></a>负责域名解析的 DNS 服务</h3><p>DNS（Domain Name System）服务是和 HTTP 协议一样位于应用层的 协议。它提供域名到 IP 地址之间的解析服务。</p>
+<p>计算机既可以被赋予 IP 地址，也可以被赋予主机名和域名。比如 <a href="http://www.hackr.jp。" target="_blank" rel="noopener">www.hackr.jp。</a></p>
+<p>用户通常使用主机名或域名来访问对方的计算机，而不是直接通过 IP 地址访问。因为与 IP 地址的一组纯数字相比，用字母配合数字的表 示形式来指定计算机名更符合人类的记忆习惯。</p>
+<p>但要让计算机去理解名称，相对而言就变得困难了。因为计算机更擅 长处理一长串数字。</p>
+<p>为了解决上述的问题，DNS 服务应运而生。DNS 协议提供通过域名 查找 IP 地址，或逆向从 IP 地址反查域名的服务</p>
+<h2 id="在浏览器输入网址，回车后发生了什么？"><a href="#在浏览器输入网址，回车后发生了什么？" class="headerlink" title="在浏览器输入网址，回车后发生了什么？"></a>在浏览器输入网址，回车后发生了什么？</h2><p><img src="//tva4.sinaimg.cn/large/005JD0Ejgy1gc3zp7xrl3j30rv14hqua.jpg" alt=""></p>
+<h2 id="HTTP包含两个阶段："><a href="#HTTP包含两个阶段：" class="headerlink" title="HTTP包含两个阶段："></a>HTTP包含两个阶段：</h2><p>请求和响应。</p>
+<p>HTTP 协议和 TCP/IP 协议族内的其他众多的协议相同，用于客户端和 服务器之间的通信。</p>
+<p>请求访问文本或图像等资源的一端称为客户端，而提供资源响应的一 端称为服务器端。</p>
+<h2 id="HTTP通信组成"><a href="#HTTP通信组成" class="headerlink" title="HTTP通信组成"></a>HTTP通信组成</h2><ul>
+<li>首部字段包含有关通信的信息；</li>
+<li>内容实体包含通讯数据（如果有）。</li>
 </ul>
-<h2 id="计算机通信与网络发展的四个阶段"><a href="#计算机通信与网络发展的四个阶段" class="headerlink" title="计算机通信与网络发展的四个阶段"></a>计算机通信与网络发展的四个阶段</h2><h3 id="1、面向终端的计算机网络"><a href="#1、面向终端的计算机网络" class="headerlink" title="1、面向终端的计算机网络"></a>1、面向终端的计算机网络</h3><p>以主机为中心，主机控制整个系统的全部运行功能和通信过程，终端仅提供输入输出的功能，完全作为主机的从属设备.</p>
-<p>特点：</p>
+<p><strong>首部字段分类：</strong></p>
+<ol>
+<li>常规：用于常规信息，例如日期</li>
+<li>请求：包含在请求首部字段中，仅在请求报文使用</li>
+<li>响应：用于响应首部字段，仅在响应报文使用</li>
+<li>实体：在请求和响应首部字段中均使用</li>
+</ol>
+<p>一个常见的请求字段是“接受”字段，它指定浏览器对所请求文档的MIME类型的偏好。如果浏览器愿意接受一种以上格式的文档，则可以指定多个“接受”字段。例如，我们可能具有以下任何一项：</p>
 <ul>
-<li><strong>系统由主机和终端构成，数据处理和通信处理都是由主机完成。</strong></li>
-<li><strong>主机通信开销较大，通信线路利用率低，对主机系统依赖性较大。</strong></li>
-<li>集中式处理</li>
-<li>有限的数据传输速率</li>
-<li>系统的可靠性和性能取决于主机的可靠性和性能，便于维护、管理。数据的一致性好。</li>
-<li>规模小，终端数量少；</li>
+<li>Accept: text/plain</li>
+<li>Accept: text/html</li>
+<li>Accept: image/gif</li>
 </ul>
-<h3 id="2、多台计算机互连的计算机网络"><a href="#2、多台计算机互连的计算机网络" class="headerlink" title="2、多台计算机互连的计算机网络"></a>2、多台计算机互连的计算机网络</h3><p>以网络为中心，主机都处在网络的外围。</p>
-<p>成果：</p>
-<ul>
-<li><strong>提出分组交换技术</strong></li>
-<li><strong>形成TCP/IP协议雏形</strong></li>
-<li>提出以太网技术</li>
+<p>If-Modified-Since：date请求字段指定仅在自给定日期以来对其进行了修改的情况下才应发送所请求的文件。</p>
+<p>如果请求具有主体，则必须使用Content-length字段来指定该主体的长度，该字段以字节为单位给出响应主体的长度。POST方法请求需要此字段，因为它们将数据发送到服务器。</p>
+<p>请求的标头必须后跟空白行，该行用于将标头与请求的正文分开。使用GET，HEAD和DELETE方法的请求没有正文。在这些情况下，空行表示请求结束。</p>
+<h3 id="请求报文："><a href="#请求报文：" class="headerlink" title="请求报文："></a><strong>请求报文：</strong></h3><ul>
+<li>请求方法、请求URI、协议版本、</li>
+<li>可选的请求首部字段 （可能多个）</li>
+<li>空白行</li>
+<li>内容实体。</li>
 </ul>
-<p>特点：</p>
-<ul>
-<li>优点是建立了计算机与计算机的互连与通信，实现了计算机资源的共享。</li>
-<li>但缺点是没有形成统一的互连标准，使网络在规模与应用等方面受到了限制。</li>
+<h3 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h3><h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>GET 方法用来请求访问已被 URI 识别的资源。指定的资源经服务器 端解析后返回响应内容。也就是说，如果请求的资源是文本，那就保 持原样返回；如果是像 CGI（Common Gateway Interface，通用网关接 口）那样的程序，则返回经过执行后的输出结果。</p>
+<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><p>POST最初用于诸如将新闻文章发布到新闻组之类的任务。</p>
+<p>现在，它最常见的用途是将表单数据从浏览器发送到服务器，以及在服务器上执行将处理数据的服务器驻留程序的请求。</p>
+<h4 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h4><p>PUT 方法用来传输文件。就像 FTP 协议的文件上传一样，要求在请 求报文的主体中包含文件内容，然后保存到请求 URI 指定的位置。</p>
+<h4 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h4><p>PUT 方法用来传输文件。就像 FTP 协议的文件上传一样，要求在请 求报文的主体中包含文件内容，然后保存到请求 URI 指定的位置。</p>
+<h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><p>DELETE 方法用来删除文件，是与 PUT 相反的方法。DELETE 方法按 请求 URI 删除指定的资源。</p>
+<p>但是，HTTP/1.1 的 DELETE 方法本身和 PUT 方法一样不带验证机 制，所以一般的 Web 网站也不使用 DELETE 方法。当配合 Web 应用 程序的验证机制，或遵守 REST 标准时还是有可能会开放使用的。<br><img src="//tvax2.sinaimg.cn/large/005JD0Ejgy1gc4268wo3aj315x0e2grt.jpg" alt=""></p>
+<h3 id="响应报文："><a href="#响应报文：" class="headerlink" title="响应报文："></a><strong>响应报文：</strong></h3><ul>
+<li>协议版本、状态码（表示请求成功或失败的数字代 码）、用以解释状态码的原因短语</li>
+<li>可选的响应首部字段</li>
+<li>空白行</li>
+<li>实体主体。</li>
 </ul>
-<h3 id="3、面向标准化的计算机网络"><a href="#3、面向标准化的计算机网络" class="headerlink" title="3、面向标准化的计算机网络"></a>3、面向标准化的计算机网络</h3><p>标志性成果：</p>
-<ul>
-<li>制定网络体系结构：开放系统互连基本参考模型（OSI-RM模型）</li>
-<li>形成TCP/IP系统结构</li>
-<li>形成以太网、公用数据网等标准，如X.25标准等X系列建议</li>
-<li>提出Web技术与开发浏览器</li>
-</ul>
-<h3 id="4、面向全球互连的计算机网络"><a href="#4、面向全球互连的计算机网络" class="headerlink" title="4、面向全球互连的计算机网络"></a>4、面向全球互连的计算机网络</h3><p>美国提出构建国家信息高速公路，即建设一个覆盖全美的高速宽带通信与计算机网络。许多国家和地区纷纷效仿。这一切在全球范围内极大地推动了计算机网络及其应用的发展，使计算机网络进入了一个新的发展阶段。</p>
-<p>这一时期在计算机通信与网络技术方面以高速率、高服务质量、高可靠性等为指标，出现了高速以太网、VPN、无线网络、P2P 网络、NGN 等技术</p>
-<h2 id="网络拓扑结构"><a href="#网络拓扑结构" class="headerlink" title="网络拓扑结构"></a>网络拓扑结构</h2><ul>
-<li>定义：网络中各节点的互联构形、连接布线的方式。</li>
-<li>分类：星型、树型、总线型、环型、网状型。</li>
-</ul>
-<h3 id="星型"><a href="#星型" class="headerlink" title="星型"></a>星型</h3><p>星型结构的特点是存在一个中心节点，其他计算机与中心节点互连，系统的连通性与中心节点的可靠性有很大的关系。</p>
-<div align="center" width="25%">
-<img width="25%" src="//tva3.sinaimg.cn/mw690/005JD0Ejgy1gbz979sfzzj30h70kkdgh.jpg">
-</div>
-
-<h3 id="树型"><a href="#树型" class="headerlink" title="树型"></a>树型</h3><p>树型结构的特点是从根节点到叶子节点呈现层次性</p>
-<div align="center" width="25%">
-<img width="25%" src="//tvax2.sinaimg.cn/mw690/005JD0Ejgy1gbz98cj7y3j30js0k3dgy.jpg">
-</div>
-
-<h3 id="总线型"><a href="#总线型" class="headerlink" title="总线型"></a>总线型</h3><p>总线型结构的特点是存在一条主干线，所有的计算机连接到主干线上</p>
-<div align="center" width="25%">
-<img width="25%" src="//tvax3.sinaimg.cn/mw690/005JD0Ejgy1gbz981xt8yj30ia0goaai.jpg">
-</div>
-
-<h3 id="环型"><a href="#环型" class="headerlink" title="环型"></a>环型</h3><p>环型结构的网络存在一个环形的总线，节点到节点间存在两条通路</p>
-<div align="center" width="25%">
-<img width="25%" src="//tva3.sinaimg.cn/mw690/005JD0Ejgy1gbz97nqrmkj30gh0kcgm8.jpg">
-</div>
-
-<h3 id="网状型"><a href="#网状型" class="headerlink" title="网状型"></a>网状型</h3><p>网络型是一种不规则的连接，其特点是一个节点到另一个节点之间可能存在多条连接。</p>
-<div align="center" width="25%">
-<img width="25%" src="//tva3.sinaimg.cn/mw690/005JD0Ejgy1gbz98cj7y3j30js0k3dgy.jpg">
-</div>
+<p>在状态行之后，服务器发送响应报文，其中可以包含有关响应的几行信息，每行都以字段的形式。标头的唯一必填字段是Content-type</p>
+<p>与请求报文一样，响应报文必须后跟空白行。响应数据跟随空白行。在前面的示例中，响应主体将是HTML文件response.html。</p>
+<p>HTTP1.1的默认操作是保持连接开放一段时间，以便客户端可以在短时间内发出多个请求<br>无需重新建立与服务器的通信连接</p>
+<h4 id="状态码的类别"><a href="#状态码的类别" class="headerlink" title="状态码的类别"></a>状态码的类别</h4><p>一种更常见的状态代码是一个用户从不希望看到的代码：404 Not Found，这表示找不到所请求的文件。当然，用户希望看到200 OK，因为这意味着该请求已正确处理。500代码表示服务器遇到问题，无法满足请求。<br><img src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gc41mi4h5ij30yv0bbwh6.jpg" alt=""></p>
+<p><img src="//tva1.sinaimg.cn/large/005JD0Ejgy1gc426qdtnoj315l0mztid.jpg" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -699,7 +707,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/02/17/ji-suan-ji-wang-luo-gai-shu/">https://litnwu.gitee.io/2020/02/17/ji-suan-ji-wang-luo-gai-shu/</a>
+                    <a href="https://litnwu.gitee.io/2020/02/21/http-xie-yi-ru-men/">https://litnwu.gitee.io/2020/02/21/http-xie-yi-ru-men/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -737,8 +745,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                                    <span class="chip bg-color">计算机网络</span>
+                                <a href="/tags/HTTP/">
+                                    <span class="chip bg-color">HTTP</span>
+                                </a>
+                            
+                                <a href="/tags/TCP-IP/">
+                                    <span class="chip bg-color">TCP/IP</span>
                                 </a>
                             
                         </div>
@@ -904,30 +916,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/19/wang-luo-ti-xi-jie-gou/">
+                <a href="/2020/02/21/http-xie-yi-ru-men/">
                     <div class="card-image">
                         
+                        <img src="http://tva2.sinaimg.cn/large/005JD0Ejgy1gc42cdq6yej30yd0luwpf.jpg" class="responsive-img" alt="HTTP协议学习">
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="网络体系结构:OSI-RM与TCP/IP">
-                        
-                        <span class="card-title">网络体系结构:OSI-RM与TCP/IP</span>
+                        <span class="card-title">HTTP协议学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是协议？协议是指通信双方必须遵守的、控制信息交换的规则的集合。协议是网络技术中为数据交换而设置的标准、规则和约定的集合。
-计算机与网络设备要相互通信，双方就必须基于相同的方法。比如， 如何探测到通信目标、由哪一边先发起通信、使用哪种语言
+                            与HTTP关系密切的协议负责传输的 IP 协议按层次分，IP（Internet Protocol）网际协议位于网络层。Internet Protocol 这个名称可能听起来有点夸张，但事实正是如此，因为几乎 所有使用网络的系统都会用到 IP
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -940,8 +951,13 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/HTTP/">
+                        <span class="chip bg-color">HTTP</span>
+                    </a>
                     
                     <a href="/tags/TCP-IP/">
                         <span class="chip bg-color">TCP/IP</span>
@@ -958,33 +974,32 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/16/jin-cheng-yu-xian-cheng-de-qu-bie-he-lian-xi-yu-zuo-ye-de-qu-bie-he-lian-xi/">
+                <a href="/2020/02/20/ruan-jian-gong-cheng-ren-yue-shen-hua/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="进程与线程的区别和联系，与作业的区别和联系">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="软件工程--《人月神话》">
                         
-                        <span class="card-title">进程与线程的区别和联系，与作业的区别和联系</span>
+                        <span class="card-title">软件工程--《人月神话》</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            进程的定义：　　进程是具有独立功能的程序关于某个数据集合上的一次运行活动，是系统资源分配、调度和保护的独立单位。
-　　进程是为了描述程序在并发执行时对系统资源的共享，所需的一个描述程序执行时的动态特征的概念。
-　　进程三要素：程序、数据、进
+                            软件工程布置的作业，读完写读后感，感觉能学到一些观点，当然有些也已经略显过时，毕竟1975出版的书，真是历经岁月。
+不得不说的是，作为一本计算机类的书，历经45年后，再读，发现里面的大多数观点也不显过时，实属不易。我觉得，这本书十分适合软件
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                    软件工程
                                 </a>
                             
                             
@@ -994,8 +1009,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BF%9B%E7%A8%8B/">
-                        <span class="chip bg-color">进程</span>
+                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+                        <span class="chip bg-color">软件工程</span>
                     </a>
                     
                 </div>

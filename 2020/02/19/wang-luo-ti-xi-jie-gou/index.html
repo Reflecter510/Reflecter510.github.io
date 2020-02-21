@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="网络体系结构, LitnWu">
+    <meta name="keywords" content="网络体系结构:OSI-RM与TCP/IP, LitnWu">
     <meta name="description" content="什么是协议？协议是指通信双方必须遵守的、控制信息交换的规则的集合。协议是网络技术中为数据交换而设置的标准、规则和约定的集合。
-协议包含的三要素语法：数据和控制信息的格式、编码规则。也就是数据与控制信息的结构或格式，确定通信时采用的数据格式，">
+计算机与网络设备要相互通信，双方就必须基于相同的方法。比如， 如何探测到通信目标、由哪一边先发起通信、使用哪种语言">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>网络体系结构 | LitnWu</title>
+    <title>网络体系结构:OSI-RM与TCP/IP | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -412,12 +412,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">网络体系结构</h1>
+                    <h1 class="description center-align post-title">网络体系结构:OSI-RM与TCP/IP</h1>
                 </div>
             </div>
         </div>
@@ -534,8 +534,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                                <span class="chip bg-color">计算机网络</span>
+                            <a href="/tags/TCP-IP/">
+                                <span class="chip bg-color">TCP/IP</span>
                             </a>
                         
                     </div>
@@ -566,21 +566,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-19
+                    2020-02-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -592,6 +592,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="什么是协议？"><a href="#什么是协议？" class="headerlink" title="什么是协议？"></a>什么是协议？</h2><p>协议是指通信双方必须遵守的、控制信息交换的<strong>规则的集合</strong>。<br>协议是网络技术中为数据交换而设置的标准、规则和约定的集合。</p>
+<p>计算机与网络设备要相互通信，双方就必须基于相同的方法。比如， 如何探测到通信目标、由哪一边先发起通信、使用哪种语言进行通 信、怎样结束通信等规则都需要事先确定。不同的硬件、操作系统之 间的通信，所有的这一切都需要一种规则。而我们就把这种规则称为 协议（protocol）。</p>
 <h2 id="协议包含的三要素"><a href="#协议包含的三要素" class="headerlink" title="协议包含的三要素"></a>协议包含的三要素</h2><h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><p>数据和控制信息的格式、编码规则。也就是数据与控制信息的结构或格式，确定通信时采用的数据格式，编码及信号电平等，回答“怎么讲”。</p>
 <h3 id="语义："><a href="#语义：" class="headerlink" title="语义："></a>语义：</h3><p>协议控制信息的具体含义。也就是对构成协议的协议元素含义的解释“讲什么” 。</p>
 <h3 id="同步（定时）："><a href="#同步（定时）：" class="headerlink" title="同步（定时）："></a>同步（定时）：</h3><p>数据和控制信息的收发同步和排序。即规定了事件的执行顺序。</p>
@@ -621,13 +622,20 @@
 <p>位于：网卡和网线的接口</p>
 <p>传输基本单位：比特</p>
 <h3 id="TCP-IP体系结构"><a href="#TCP-IP体系结构" class="headerlink" title="TCP/IP体系结构"></a>TCP/IP体系结构</h3><p>TCP/IP模型中的核心协议是TCP、UDP和IP，且呈现漏斗状，IP协议处于漏斗的最窄处。<br><img src="//tvax1.sinaimg.cn/mw690/005JD0Ejgy1gc20m6hl67j31kb0t0adq.jpg" alt="TCP/IP"></p>
-<h4 id="应用层-1"><a href="#应用层-1" class="headerlink" title="应用层"></a>应用层</h4><p>应用层的协议相对较多，分别使用UDP和TCP协议进行承载，它们位于各自的上方。 </p>
-<p>协议有：SMTP、Telnet、FTP等，SNMP、RIP等</p>
-<h4 id="传输层-1"><a href="#传输层-1" class="headerlink" title="传输层"></a>传输层</h4><p>协议有：TCP、UDP。</p>
-<h4 id="互连网络层"><a href="#互连网络层" class="headerlink" title="互连网络层"></a>互连网络层</h4><p>网络层除核心协议IP外，还有ICMP、IGMP、ARP和RARP，分别位于IP协议的上下方。</p>
+<h4 id="应用层-1"><a href="#应用层-1" class="headerlink" title="应用层"></a>应用层</h4><p>应用层决定了向用户提供应用服务时通信的活动。</p>
+<p>TCP/IP 协议族内预存了各类通用的应用服务。比如，FTP（File Transfer Protocol，文件传输协议）和 DNS（Domain Name System，域 名系统）服务就是其中两类。</p>
+<p>应用层的协议相对较多，分别使用传输层中的UDP和TCP协议进行承载，它们位于各自的上方。 </p>
+<p>协议有：SMTP、Telnet、FTP等，SNMP、RIP等, HTTP 协议也处于该层。</p>
+<h4 id="传输层-1"><a href="#传输层-1" class="headerlink" title="传输层"></a>传输层</h4><p>传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据 传输。</p>
+<p>协议有：TCP、UDP。</p>
+<p>在传输层有两个性质不同的协议：TCP（Transmission Control Protocol，传输控制协议）和 UDP（User Data Protocol，用户数据报 协议）。</p>
+<h4 id="互连网络层"><a href="#互连网络层" class="headerlink" title="互连网络层"></a>互连网络层</h4><p>网络层用来处理在网络上流动的数据包。数据包是网络传输的最小数 据单位。该层规定了通过怎样的路径（所谓的传输路线）到达对方计算机，并把数据包传送给对方。</p>
+<p>与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所 起的作用就是在众多的选项内选择一条传输路线。</p>
+<p>网络层除核心协议IP外，还有ICMP、IGMP、ARP和RARP，分别位于IP协议的上下方。</p>
 <p>协议有：ICMP, IGMP  IP   ARP/RARP</p>
 <p>IP协议掩盖了物理网络的差异</p>
-<h4 id="网络接入层"><a href="#网络接入层" class="headerlink" title="网络接入层"></a>网络接入层</h4><p>各类物理网络，如FDDI, Ethernet等<br><img src="//tva2.sinaimg.cn/large/005JD0Ejgy1gc20wjvmfvj31ft0v177x.jpg" alt="TCP/IP"></p>
+<h4 id="网络接入层"><a href="#网络接入层" class="headerlink" title="网络接入层"></a>网络接入层</h4><p>用来处理连接网络的硬件部分。包括控制操作系统、硬件的设备驱 动、NIC（Network Interface Card，网络适配器，即网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介）。硬件上的范畴均在 链路层的作用范围之内。</p>
+<p>各类物理网络，如FDDI, Ethernet等<br><img src="//tva2.sinaimg.cn/large/005JD0Ejgy1gc20wjvmfvj31ft0v177x.jpg" alt="TCP/IP"></p>
 <h2 id="名词常识"><a href="#名词常识" class="headerlink" title="名词常识"></a>名词常识</h2><ul>
 <li><p>ITU：<br>International Telecommunication Union 国际电信联盟</p>
 </li>
@@ -717,8 +725,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                                    <span class="chip bg-color">计算机网络</span>
+                                <a href="/tags/TCP-IP/">
+                                    <span class="chip bg-color">TCP/IP</span>
                                 </a>
                             
                         </div>
