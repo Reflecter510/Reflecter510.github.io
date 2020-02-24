@@ -257,10 +257,10 @@ mark {
 }
 
 .bg-color {
-    /* background-image: linear-gradient(45deg,  rgba(29, 104, 148, 0.7) 0%, rgba(54, 181, 255, 0.7) 100%); */
-    background-image: linear-gradient(to right,  rgba(226, 74, 74, 0.7)0%, rgba(0, 162, 255, 0.7) 100%);
-    
-    opacity: 0.9;
+    background-image: linear-gradient(45deg,  rgba(29, 104, 148, 0.7) 0%, rgba(54, 181, 255, 0.7) 100%);
+    /* background-image: linear-gradient(to right,  rgba(226, 74, 74, 0.7)0%, rgba(0, 162, 255, 0.7) 100%); */
+   
+    opacity: 0.8;
 }
 
 .text-color {
@@ -278,7 +278,7 @@ mark {
     z-index: 300;
     /* background: linear-gradient(to right,  rgba(226, 74, 74, 0.7)0%, rgba(0, 162, 255, 0.7) 100%); */
     background-image: linear-gradient(45deg,  rgba(29, 104, 148, 0.7) 0%, rgba(54, 181, 255, 0.7) 100%);
-    
+
     opacity: 0.8;
 }
 
