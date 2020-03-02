@@ -4,11 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="B+树-问题集合, LitnWu">
-    <meta name="description" content="1. 什么是B+树？
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src">
+    <meta name="keywords" content="无重复字符的最长子串, LitnWu">
+    <meta name="description" content="题目（leetcode 3. 无重复字符的最长子串）给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+示例 1:
+    输入: &#34;abcabcbb&#34;
+    输出: 3 
+    解释: 因为无重复字符的最长子串是 &#34;ab">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>B+树-问题集合 | LitnWu</title>
+    <title>无重复字符的最长子串 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -414,12 +415,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">B+树-问题集合</h1>
+                    <h1 class="description center-align post-title">无重复字符的最长子串</h1>
                 </div>
             </div>
         </div>
@@ -536,12 +537,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%A0%91/">
-                                <span class="chip bg-color">树</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
+                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                <span class="chip bg-color">字符串</span>
                             </a>
                         
                     </div>
@@ -565,28 +566,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-10
+                    2020-03-03
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-16
+                    2020-03-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    58
+                    952
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -597,7 +598,56 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-什么是B-树？"><a href="#1-什么是B-树？" class="headerlink" title="1. 什么是B+树？"></a>1. 什么是B+树？</h2><script>
+                <h2 id="题目（leetcode-3-无重复字符的最长子串）"><a href="#题目（leetcode-3-无重复字符的最长子串）" class="headerlink" title="题目（leetcode 3. 无重复字符的最长子串）"></a>题目（<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters" target="_blank" rel="noopener">leetcode 3. 无重复字符的最长子串</a>）</h2><p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
+<p><strong>示例 1:</strong></p>
+<pre><code>    输入: "abcabcbb"
+    输出: 3 
+    解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。</code></pre><p><strong>示例 2:</strong></p>
+<pre><code>    输入: "bbbbb"
+    输出: 1
+    解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。</code></pre><p><strong>示例 3:</strong></p>
+<pre><code>    输入: "pwwkew"
+    输出: 3
+    解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+ 请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。</code></pre><h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p>  题意比较简单，所以一开始就面向示例编程…考虑第一个示例<code>"abcabcbb"</code>，可以看到有三个最长子串<code>abc</code>,<code>bca</code>,<code>abc</code>，那么要考虑的算法应能够所有的无重复最长子串找出来，只是找到第一个的时候就退出算法了。</p>
+<p>  先考虑空字符串和单个字符的情况，接着用滑动窗口。</p>
+<p>  我们用一个窗口，<code>st</code>表示窗口左边界，<code>ed</code>表示窗口右边界，先从左往右遍历，当字符不重复时<code>ed</code>不断向右生长：<code>a</code>,<code>ab</code>,<code>abc</code>,<code>abca</code>，好了到这里我们发现第1个字符和第4个字符都是相同的字符<code>a</code>，至今能得到最长子串是<code>abc</code>，所以更新一下<code>ans</code>，和它取个最大值。那么就需要重新调整这个窗口的左端，以便右端能够正常生长。此时整个窗口左边界就应该是第一个字符<code>a</code>的下一个字符，也就是<code>b</code>。但是考虑到一种情况是：<code>...abcabcbb</code>,那么就需要保存字符<code>a</code>的位置，然后才能调整窗口左边界，用一个<code>map</code>来保存字符到数字的映射，命名为<code>pos</code>。这个<code>map</code>用来判断是否有字符重复，即使用<code>conut</code>成员函数。</p>
+<p>  那么就能将窗口左边界重新调整为 <code>pos['a']+1</code>。当时有一点没想到，就是<code>st...abca</code>，那么我们需要把<code>a</code>之前的位置映射都清除。</p>
+<p>  在删除了第一个<code>a</code>后，我们就需要更新<code>a</code>的位置映射为第2个<code>a</code>。最后窗口右边界<code>ed</code>就自增，因为此时第二个字符<code>'a'</code>已经不重复了。</p>
+<p>  在映射里，上面说的第一个字符<code>a</code>就对应<code>st</code>，而第二个<code>a</code>对应<code>ed</code>，但是我们在实际编程的时候用<code>ed</code>比较多，因为<code>st</code>不一定是发生重复的字符，而<code>ed</code>一定是发生重复的字符，正是因为新加一个字符才使得字符串发生重复。</p>
+<p>  还需要注意的是在窗口右端不断生长需要判断是否越界了。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">lengthOfLongestSubstring</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>s <span class="token operator">==</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> pos<span class="token punctuation">;</span>
+        pos<span class="token punctuation">[</span>s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> st <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> ed <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>ed <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> st<span class="token operator">&lt;=</span>ed<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>pos<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>ed<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//当字符无重复时窗口不断向右生长</span>
+                pos<span class="token punctuation">[</span>s<span class="token punctuation">[</span>ed<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> ed<span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>ed <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//注意判断字符串边界</span>
+                    <span class="token keyword">return</span> <span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span>ed<span class="token operator">-</span>st<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                ed<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            ans <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span>ed<span class="token operator">-</span>st<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 将从左到右第一个发生重复的字符的前面那些字符的位置清除</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> st <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> pos<span class="token punctuation">[</span>s<span class="token punctuation">[</span>ed<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>pos<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            st <span class="token operator">=</span> pos<span class="token punctuation">[</span>s<span class="token punctuation">[</span>ed<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//调整窗口左边界为从左到右第一个发生重复的字符的下一个位置</span>
+            pos<span class="token punctuation">[</span>s<span class="token punctuation">[</span>ed<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> ed<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//更新发生重复字符的最新位置</span>
+            ed<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -640,7 +690,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/02/10/b-shu-wen-ti-ji-he/">https://litnwu.gitee.io/2020/02/10/b-shu-wen-ti-ji-he/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/03/wu-chong-fu-zi-fu-de-zui-chang-zi-chuan/">https://litnwu.gitee.io/2020/03/03/wu-chong-fu-zi-fu-de-zui-chang-zi-chuan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -678,12 +728,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%A0%91/">
-                                    <span class="chip bg-color">树</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
                                 </a>
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
+                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                    <span class="chip bg-color">字符串</span>
                                 </a>
                             
                         </div>
@@ -849,30 +899,33 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/10/map-wen-ti-ji-he/">
+                <a href="/2020/03/03/wu-chong-fu-zi-fu-de-zui-chang-zi-chuan/">
                     <div class="card-image">
                         
+                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="无重复字符的最长子串">
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Map-问题集合">
-                        
-                        <span class="card-title">Map-问题集合</span>
+                        <span class="card-title">无重复字符的最长子串</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 什么是Map？2. Map和unordered_map的底层实现分别是什么？2. Map和unordered_map的优点和缺点分别是什么？
-        document.querySelectorAll('.github-emo
+                            题目（leetcode 3. 无重复字符的最长子串）给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+示例 1:
+    输入: "abcabcbb"
+    输出: 3 
+    解释: 因为无重复字符的最长子串是 "ab
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -885,15 +938,16 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
-                    <a href="/tags/Map/">
-                        <span class="chip bg-color">Map</span>
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>
@@ -907,27 +961,27 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/10/ha-fu-man-bian-ma-wen-ti-ji-he/">
+                <a href="/2020/03/01/zui-chang-gong-gong-qian-zhui/">
                     <div class="card-image">
                         
+                        <img src="http://tvax1.sinaimg.cn/large/005JD0Ejgy1gc68b6mq98j30qs0hs7wh.jpg" class="responsive-img" alt="最长公共前缀">
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="哈夫曼编码-问题集合">
-                        
-                        <span class="card-title">哈夫曼编码-问题集合</span>
+                        <span class="card-title">最长公共前缀</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 什么是哈夫曼编码？哈夫曼编码是哈夫曼树的一种应用，广泛用于数据压缩（通常可以节省20%~90%的空间）。
-哈夫曼编码是变长编码 ，也是前缀码。
-变长编码:  每种字符长度不一定相同。
-前缀码:  没有任何码字是其他码字的前缀哈夫曼编码
+                            题目（leetcode 14. 最长公共前缀）编写一个函数来查找字符串数组中的最长公共前缀。
+如果不存在公共前缀，返回空字符串 “”。
+示例 1:
+    输入: ["flower","flow","flight"]
+    输出: "fl
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
                             </span>
                         <span class="publish-author">
                             
@@ -944,12 +998,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A0%91/">
-                        <span class="chip bg-color">树</span>
+                    <a href="/tags/%E5%88%86%E6%B2%BB/">
+                        <span class="chip bg-color">分治</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>
