@@ -580,7 +580,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    952
+                    953
                 </div>
                 
 
@@ -612,8 +612,8 @@
  请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。</code></pre><h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p>  题意比较简单，所以一开始就面向示例编程…考虑第一个示例<code>"abcabcbb"</code>，可以看到有三个最长子串<code>abc</code>,<code>bca</code>,<code>abc</code>，那么要考虑的算法应能够所有的无重复最长子串找出来，只是找到第一个的时候就退出算法了。</p>
 <p>  先考虑空字符串和单个字符的情况，接着用滑动窗口。</p>
 <p>  我们用一个窗口，<code>st</code>表示窗口左边界，<code>ed</code>表示窗口右边界，先从左往右遍历，当字符不重复时<code>ed</code>不断向右生长：<code>a</code>,<code>ab</code>,<code>abc</code>,<code>abca</code>，好了到这里我们发现第1个字符和第4个字符都是相同的字符<code>a</code>，至今能得到最长子串是<code>abc</code>，所以更新一下<code>ans</code>，和它取个最大值。那么就需要重新调整这个窗口的左端，以便右端能够正常生长。此时整个窗口左边界就应该是第一个字符<code>a</code>的下一个字符，也就是<code>b</code>。但是考虑到一种情况是：<code>...abcabcbb</code>,那么就需要保存字符<code>a</code>的位置，然后才能调整窗口左边界，用一个<code>map</code>来保存字符到数字的映射，命名为<code>pos</code>。这个<code>map</code>用来判断是否有字符重复，即使用<code>conut</code>成员函数。</p>
-<p>  那么就能将窗口左边界重新调整为 <code>pos['a']+1</code>。当时有一点没想到，就是<code>st...abca</code>，那么我们需要把<code>a</code>之前的位置映射都清除。</p>
-<p>  在删除了第一个<code>a</code>后，我们就需要更新<code>a</code>的位置映射为第2个<code>a</code>。最后窗口右边界<code>ed</code>就自增，因为此时第二个字符<code>'a'</code>已经不重复了。</p>
+<p>  那么就能将窗口左边界重新调整为 <code>pos['a']+1</code>。当时有一点没想到，就是<code>st...abca</code>，那么我们需要把<code>'a'</code>之前的位置映射都清除。</p>
+<p>  在删除了第一个<code>a</code>后，我们就需要更新<code>'a'</code>的位置映射为第2个<code>a</code>。最后窗口右边界<code>ed</code>就自增，因为此时第二个字符<code>a</code>已经不重复了。</p>
 <p>  在映射里，上面说的第一个字符<code>a</code>就对应<code>st</code>，而第二个<code>a</code>对应<code>ed</code>，但是我们在实际编程的时候用<code>ed</code>比较多，因为<code>st</code>不一定是发生重复的字符，而<code>ed</code>一定是发生重复的字符，正是因为新加一个字符才使得字符串发生重复。</p>
 <p>  还需要注意的是在窗口右端不断生长需要判断是否越界了。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
