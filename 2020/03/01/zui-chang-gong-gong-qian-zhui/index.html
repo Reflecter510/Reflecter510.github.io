@@ -584,14 +584,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    863
+                    949
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -646,6 +646,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="方法二-分治（时间复杂度也没减少）"><a href="#方法二-分治（时间复杂度也没减少）" class="headerlink" title="方法二 分治（时间复杂度也没减少）"></a>方法二 分治（时间复杂度也没减少）</h2><p>仔细想想最长公共前缀问题满足“分解-求解-组合”，我们先对字符串两两进行求最长公共前缀，然后合并，即对两两求出来的再次两两求公共前缀，直到合并成一个答案。这里两两字符串求公共前缀归属到合并的部分，如果分解到只有一个字符串就直接返回。</p>
+<p>需要注意的是，当分治到只有一条字符串的区间时是直接返回字符串，所以返回的结果并不一定能求出最长公共前缀，也有可能只是把问题规模缩小了，比如返回 flow flede，那么就不能直接取两者最小的字符串了.</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     string <span class="token function">common_prefix</span><span class="token punctuation">(</span>string a<span class="token punctuation">,</span>string b<span class="token punctuation">)</span>
