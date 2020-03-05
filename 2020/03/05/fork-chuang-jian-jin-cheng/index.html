@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="软件工程读书笔记1, LitnWu">
-    <meta name="description" content="第一章
-Today, software takes on a dual role. It is a product, and at the same time, the vehicle for delivering a product. 
+    <meta name="keywords" content="fork()创建进程, LitnWu">
+    <meta name="description" content="fork()创建进程fork()通过拷贝当前进程创建一个子进程。
+子进程与父进程的区别仅仅在于PID（每个进程唯一）、PPID（父进程的进程号，子进程将其设置为被拷贝进程的PID）和某些资源和统计量（例如，挂起的信号，它没有必要被继承）。
 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -15,7 +15,7 @@ Today, software takes on a dual role. It is a product, and at the same time, the
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>软件工程读书笔记1 | LitnWu</title>
+    <title>fork()创建进程 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -413,12 +413,12 @@ Today, software takes on a dual role. It is a product, and at the same time, the
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">软件工程读书笔记1</h1>
+                    <h1 class="description center-align post-title">fork()创建进程</h1>
                 </div>
             </div>
         </div>
@@ -535,8 +535,8 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
-                                <span class="chip bg-color">软件工程</span>
+                            <a href="/tags/%E8%BF%9B%E7%A8%8B/">
+                                <span class="chip bg-color">进程</span>
                             </a>
                         
                     </div>
@@ -547,8 +547,8 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-category">
-                                软件工程
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -560,28 +560,28 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-03
+                    2020-03-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-03
+                    2020-03-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    763
+                    784
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    2 分
                 </div>
                 
 
@@ -592,94 +592,20 @@ Today, software takes on a dual role. It is a product, and at the same time, the
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><ul>
-<li><p>Today, software takes on a dual role. It is a product, and at the same time, the vehicle for delivering a product. </p>
-</li>
-<li><p>软件既是产品，也是交付产品的载体。</p>
-</li>
-<li><p>Why does it take so long to get software ﬁnished? </p>
-</li>
-<li><p>为什么软件需要如此长的开发时间？</p>
-</li>
-<li><p>Why are development costs so high? </p>
-</li>
-<li><p>为什么开发成本居高不下？</p>
-</li>
-<li><p>Why can’t we ﬁnd all errors before we give the software to our customers? </p>
-</li>
-<li><p>为什么在将软件交付顾客使用之前，我们无法找到所有的错误？</p>
-</li>
-<li><p>Why do we spend so much time and effort maintaining existing programs? </p>
-</li>
-<li><p>为什么维护已有的程序要花费如此多的时间和人工？</p>
-</li>
-<li><p>Why do we continue to have difﬁculty in measuring progress as software is being developed and maintained? </p>
-</li>
-<li><p>为什么软件开发和维护的进度仍旧难以衡量？</p>
-</li>
-<li><p>Software is not susceptible to the environmental maladies that cause hardware to wear out.</p>
-</li>
-<li><p>软件不会被引起硬件磨损的环境问题所影响，即不会”wear out”.</p>
-</li>
-<li><p>But it does  deteriorate!</p>
-</li>
-<li><p>但软件退化确实存在！</p>
-</li>
-<li><p>the software is deteriorating due to change. </p>
-</li>
-<li><p>不断地变更是软件退化的根本原因</p>
-</li>
-<li><p>There are no software spare parts. Every software failure indicates an error in design or in the process through which design was translated into machine executable code. </p>
-</li>
-<li><p>软件不存在备用部件。每个软件的缺陷都暗示设计的缺陷或者在从设计转化到机器可执行代码过程中产生的错误。</p>
-</li>
-<li><p>Therefore, the software maintenance tasks that accommodate requests for change involve considerably more complexity than hardware maintenance. </p>
-</li>
-<li><p>因此，软件维护要应对变更请求，比硬件维护更为复杂。</p>
-</li>
-<li><p>The proliferation of such systems is causing headaches for large organizations who ﬁnd them costly to maintain and risky to evolve.</p>
-</li>
-<li><p>遗留软件系统维护代价高且系统演化风险高</p>
-</li>
-<li><p>Hence, legacy software is characterized by longevity and business criticality.</p>
-</li>
-<li><p>遗留软件具有生命周期长以及业务关键性的特点。</p>
-</li>
-<li><p>Unfortunately, there is sometimes one additional characteristic that is present in legacy software—-poor quality </p>
-</li>
-<li><p>遗留软件的另一个特点–质量差</p>
-</li>
-<li><p>However, as time passes, legacy systems often evolve for one or more of the following reasons:</p>
-</li>
-<li><p>遗留系统因下述原因而发生演化；</p>
-</li>
-<li><p>The software must be adapted to meet the needs of new computing environments or technology. </p>
-</li>
-<li><p>软件需要进行适应性调整，从而可以满足新的计算环境或技术的需求。</p>
-</li>
-<li><p>The software must be enhanced to implement new business requirements.</p>
-</li>
-<li><p>软件必须升级以实现新的商业需求</p>
-</li>
-<li><p>The software must be extended to make it interoperable with other more modern systems or databases. </p>
-</li>
-<li><p>软件必须扩展以使之具有更多新的系统和数据库的互操作能力</p>
-</li>
-<li><p>The software must be re-architected to make it viable within a evolving computing environment.</p>
-</li>
-<li><p>软件架构必须进行改建以使之适应不断演化的计算环境。</p>
-</li>
-</ul>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><ul>
-<li><p>Both quality and maintainability are an outgrowth of good design. </p>
-</li>
-<li><p>质量和可维护性都是良好设计的产物。</p>
-</li>
-<li><p>Understand the problem before you build a solution. </p>
-</li>
-<li><p>在建立解决方案前应理解问题。</p>
-</li>
-</ul>
+                <h2 id="fork-创建进程"><a href="#fork-创建进程" class="headerlink" title="fork()创建进程"></a>fork()创建进程</h2><p><code>fork()</code>通过拷贝当前进程创建一个子进程。</p>
+<p>子进程与父进程的区别仅仅在于PID（每个进程唯一）、PPID（父进程的进程号，子进程将其设置为被拷贝进程的PID）和某些资源和统计量（例如，挂起的信号，它没有必要被继承）。</p>
+<p><code>exec()</code>函数负责读取可执行文件并将其载入到地址空间开始运行。</p>
+<p>把这两个函数组合起来的效果跟其他系统使用单一函数的效果相似。</p>
+<h3 id="写时拷贝"><a href="#写时拷贝" class="headerlink" title="写时拷贝"></a>写时拷贝</h3><p>传统的fork()系统调用直接把所有的资源复制给新创建的进程。这种实现过于简单并且效率低下，因为它拷贝的数据也许并不共享，更糟的情况是，如果新进程打算立即执行一个新的映像，那么所有的拷贝都将前功尽弃。</p>
+<p>Linux的<code>fork()</code>使用写时拷贝（copy-on-write）页实现。写时拷贝是一种可以推迟甚至免除拷贝数据的技术。内核此时并不复制整个进程地址空间，而是让父进程和子进程共享同一个拷贝。</p>
+<p>只有在需要写入的时候，数据才会被复制，从而使各个进程拥有各自的拷贝。也就是说，资源的复制只有在需要写入的时候才执行，在此之前，只是以只读方式共享。这种技术使地址空间上的页的拷贝被推迟到实际发生写入的时候才进行，在页根本不会被写入的情况下（比如<code>fork()</code>后立即调用<code>exec()</code>），它们就无须复制了。</p>
+<p><code>fork()</code>的实际开销就是复制父进程的页表以及给子进程创建唯一的进程描述符。</p>
+<p>在一般情况下，进程创建后都会马上运行一个可执行的文件，这种优化可以避免拷贝大量根本就不会被使用的数据（地址空间里常常包含数十兆的数据）。由于Unix强调进程快速执行的能力，所以这个优化是很重要的。</p>
+<blockquote>
+<p>新创建的子进程会被首先唤醒并让其投入运行。内核有意选择子进程首先执行。因为一般子进程都会马上调用<code>exec()</code>函数，这样可以避免写时拷贝的额外开销，如果父进程首先执行的话，有可能会开始向地址空间写入。</p>
+</blockquote>
+<h2 id="vfork"><a href="#vfork" class="headerlink" title="vfork()"></a>vfork()</h2><p><code>vfork()</code>也是通过拷贝当前进程创建一个子进程。与<code>fork()</code>唯一不同是：不拷贝父进程的页表项。</p>
+<p>子进程作为父进程的一个单独的线程在它的地址空间里运行，父进程被阻塞，直到子进程退出或执行<code>exec()</code>。子进程不能向地址空间写入。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -723,7 +649,7 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/03/ruan-jian-gong-cheng-du-shu-bi-ji-1/">https://litnwu.gitee.io/2020/03/03/ruan-jian-gong-cheng-du-shu-bi-ji-1/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/05/fork-chuang-jian-jin-cheng/">https://litnwu.gitee.io/2020/03/05/fork-chuang-jian-jin-cheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -761,8 +687,8 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
-                                    <span class="chip bg-color">软件工程</span>
+                                <a href="/tags/%E8%BF%9B%E7%A8%8B/">
+                                    <span class="chip bg-color">进程</span>
                                 </a>
                             
                         </div>
@@ -928,9 +854,10 @@ Today, software takes on a dual role. It is a product, and at the same time, the
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/05/fork-chuang-jian-jin-cheng/">
                     <div class="card-image">
@@ -950,9 +877,9 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -965,6 +892,7 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -983,21 +911,21 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/03/zi-fu-chuan-de-pai-lie-bao-han/">
+                <a href="/2020/03/03/ruan-jian-gong-cheng-du-shu-bi-ji-1/">
                     <div class="card-image">
                         
-                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="字符串的排列包含">
                         
-                        <span class="card-title">字符串的排列包含</span>
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="软件工程读书笔记1">
+                        
+                        <span class="card-title">软件工程读书笔记1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            题目（leetcode 567. 字符串的排列）给定两个字符串 s1 和 s2，写一个函数来判断 s2 是否包含 s1 的排列。
-换句话说，第一个字符串的排列之一是第二个字符串的子串。
-示例1:
-    输入: s1 = "ab" s2 =
+                            第一章
+Today, software takes on a dual role. It is a product, and at the same time, the vehicle for delivering a product. 
+
                         
                     </div>
                     <div class="publish-info">
@@ -1008,8 +936,8 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/algorithm/" class="post-category">
-                                    algorithm
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                    软件工程
                                 </a>
                             
                             
@@ -1019,12 +947,8 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+                        <span class="chip bg-color">软件工程</span>
                     </a>
                     
                 </div>
