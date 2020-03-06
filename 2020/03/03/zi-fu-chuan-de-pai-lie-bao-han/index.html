@@ -536,12 +536,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/leetcode/">
-                                <span class="chip bg-color">leetcode</span>
-                            </a>
-                        
                             <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                                 <span class="chip bg-color">字符串</span>
+                            </a>
+                        
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
                     </div>
@@ -572,14 +572,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-03
+                    2020-03-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    819
+                    840
                 </div>
                 
 
@@ -611,7 +611,7 @@
 </ol>
 <h2 id="滑动窗口-map"><a href="#滑动窗口-map" class="headerlink" title="滑动窗口+map"></a>滑动窗口+map</h2><p>  求是否存在字符串s1的排列使得成为另一个字符串s2的子串，可以想到的暴力解法是先把字符串的所有排列求出来，然后挨个与s2进行比较，比较的过程是一个滑动窗口不断地对s2取子串，然后判断与那个排列是否相等。</p>
 <p>  排列的求法可以直接用<code>next_permutation()</code>，而取子串用<code>string.substr()</code>，时间复杂度估计是一个全排列乘上字符串s2的长度。看了题目提示，说字符串的每种排列都有相同统计规律，所以可以用散列表（太菜还是想不到咋做wwww…）。不管咋样先写出来试试。</p>
-<p>  数组越界：<code>s1.length()-s2.length()</code>如果小于零，实际上得到了一个取模数。所以还是用<code>int</code>变量先保存各自的长度再相减。</p>
+<p>  数组越界：<code>s1.length()-s2.length()</code>如果小于零，实际上得到了一个取模数，我看了一下<code>string.length()</code>的类型是<code>size_t</code>，这是一个无符号类型。所以还是用<code>int</code>变量先保存各自的长度再相减。</p>
 <p>  写出来测试时发现果然会超时，不然就会超内存，全排列实在太大了。</p>
 <p>  不过想到了题目提示的解法，用<code>map</code>来实现滑动窗口，我们可以维护一个大小为<code>s1</code>长度的窗口，然后用<code>map</code>记录这个窗口中<code>s2</code>的字符出现的次数，然后与<code>s1</code>的字符出现次数相比较，如果出现相等直接返回<code>true</code>。那么这里的问题是如何快速比较两个map是否相等。我们先把<code>s1</code>的<code>map</code>求出来，然后在滑动的时候，遇到一个字符就将<code>map</code>对应元素减一，最后检查一下<code>map</code>是否为空就知道存不存在对应的排列了。这里如果遇到一个<code>map</code>没有的字符可以直接退出当层循环进行下一检查。</p>
 <p>  我洒了，直接比较两个map是否相等就行了，但是如果有一个字符的次数将为0时就要用<code>earse</code>函数去除。滑动窗口的下标变化和暴力的不一样，没画草稿，被自己误导了。</p>
@@ -728,12 +728,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/leetcode/">
-                                    <span class="chip bg-color">leetcode</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                                     <span class="chip bg-color">字符串</span>
+                                </a>
+                            
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
                                 </a>
                             
                         </div>
@@ -991,12 +991,12 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
                     <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                         <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
