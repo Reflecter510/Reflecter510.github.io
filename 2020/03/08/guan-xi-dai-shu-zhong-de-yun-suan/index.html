@@ -574,7 +574,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    555
+                    594
                 </div>
                 
 
@@ -693,7 +693,26 @@
 <h3 id="除运算（division）"><a href="#除运算（division）" class="headerlink" title="除运算（division）"></a>除运算（division）</h3><p>Mysql没有直接的对应语句。需要根据题目的实际含义书写复杂的SQL，通常都会包含子查询。</p>
 <div align="center" width="65%">
 <img width="65%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmlf43of7j30t00jfk3t.jpg" alt="除运算">
-</div><script>
+</div>
+
+<ul>
+<li><strong>例 2.10 查询至少选修 l 号课程和 3 号课程的学生号码。</strong></li>
+</ul>
+<div align="center" width="50%">
+<img width="50%" src="//tva3.sinaimg.cn/large/005JD0Ejgy1gcmqtxdneij30gb0afdg7.jpg" alt="例2.10">
+</div>
+
+<div align="center" width="50%">
+<img width="50%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gcmr2idxzrj30v20e2qbc.jpg" alt="例2.10">
+</div>
+
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> Sno <span class="token keyword">from</span> 2_4SC 
+  <span class="token keyword">where</span> Cno<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token keyword">exists</span><span class="token punctuation">(</span>
+    <span class="token keyword">select</span> Sno <span class="token keyword">from</span> 2_4SC <span class="token keyword">where</span> Cno<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<div align="center" width="65%">
+<img width="65%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmqxkxn1vj30q70803yt.jpg" alt="例2.10">
+</div>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
