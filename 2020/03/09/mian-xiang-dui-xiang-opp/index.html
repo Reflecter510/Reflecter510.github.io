@@ -4,10 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关系代数中的运算, LitnWu">
-    <meta name="description" content="传统的集合运算并、交、差，和笛卡尔积。并交差需要两个表的结构一致。
-专门的关系运算
-创建数据库create table 2_4Student(Sno varchar(10),Sname varchar(10), Ssex varchar(1">
+    <meta name="keywords" content="面向对象(OPP), LitnWu">
+    <meta name="description" content="OPP核心思想三个核心思想是数据抽象、继承、和动态绑定。
+
+通过数据抽象，我们可以将类的接口和实现分离。
+
+通过继承，可以定义相似的类型并对相似关系进行建模。这样，我们可以更容易地定义与其他类相似但不完全相同的类。
+
+通过动态绑定，可以在一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>关系代数中的运算 | LitnWu</title>
+    <title>面向对象(OPP) | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -413,12 +417,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">关系代数中的运算</h1>
+                    <h1 class="description center-align post-title">面向对象(OPP)</h1>
                 </div>
             </div>
         </div>
@@ -535,8 +539,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/MySQL/">
-                                <span class="chip bg-color">MySQL</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
                             </a>
                         
                     </div>
@@ -547,8 +551,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
+                            <a href="/categories/C/" class="post-category">
+                                C++
                             </a>
                         
                     </div>
@@ -560,21 +564,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-08
+                    2020-03-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-08
+                    2020-03-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    594
+                    805
                 </div>
                 
 
@@ -592,126 +596,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="传统的集合运算"><a href="#传统的集合运算" class="headerlink" title="传统的集合运算"></a>传统的集合运算</h2><p>并、交、差，和笛卡尔积。<br>并交差需要两个表的结构一致。</p>
-<h2 id="专门的关系运算"><a href="#专门的关系运算" class="headerlink" title="专门的关系运算"></a>专门的关系运算</h2><ul>
-<li>创建数据库<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> 2_4Student<span class="token punctuation">(</span>Sno <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Sname <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Ssex <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Sage <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Sdept <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="OPP核心思想"><a href="#OPP核心思想" class="headerlink" title="OPP核心思想"></a>OPP核心思想</h2><p>三个核心思想是数据抽象、继承、和动态绑定。</p>
+<ul>
+<li><p>通过数据抽象，我们可以将类的接口和实现分离。</p>
 </li>
-<li>插入数据<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> 2_4Student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">"201215121"</span><span class="token punctuation">,</span><span class="token string">"LiYong"</span><span class="token punctuation">,</span><span class="token string">"male"</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">"CS"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">insert</span> <span class="token keyword">into</span> 2_4Student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">"201215122"</span><span class="token punctuation">,</span><span class="token string">"LiuYi"</span><span class="token punctuation">,</span><span class="token string">"female"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token string">"CS"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">insert</span> <span class="token keyword">into</span> 2_4Student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">"201215123"</span><span class="token punctuation">,</span><span class="token string">"WangMin"</span><span class="token punctuation">,</span><span class="token string">"female"</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token string">"MA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">insert</span> <span class="token keyword">into</span> 2_4Student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">"201215124"</span><span class="token punctuation">,</span><span class="token string">"ZhangLi"</span><span class="token punctuation">,</span><span class="token string">"male"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token string">"IS"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<li><p>通过继承，可以定义相似的类型并对相似关系进行建模。这样，我们可以更容易地定义与其他类相似但不完全相同的类。</p>
 </li>
-<li>查看表<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_4Student<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="60%">
-<img width="60%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gcmhezpnw2j30ni08lgm5.jpg" alt="创建表">
-</div>
-
+<li><p>通过动态绑定，可以在一定程度上忽略相似类型的区别，而以统一的方式使用它们的对象。在使用彼此相似的类编写程序时，我们可以在一定程度上忽略它们的区别。</p>
 </li>
 </ul>
-<h3 id="选择（selection）"><a href="#选择（selection）" class="headerlink" title="选择（selection）"></a>选择（selection）</h3><p>可以选取出多个行。</p>
-<ul>
-<li><strong>例2.4  查询信息系 (IS 系）全体学生：</strong></li>
-</ul>
-<p>\[σ_{ Sdept=“ IS ” }(Student)\]</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_4Student <span class="token keyword">where</span> Sdept<span class="token operator">=</span><span class="token string">"IS"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="60%">
-<img width="60%" src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gcmhpp8srij30oe06xaad.jpg" alt="例2.4">
-</div>
-
-<ul>
-<li><strong>例2.5 查询年龄小于 20 岁的学生：</strong></li>
-</ul>
-<p>\[σ_{ Sage&lt;20 }(Student)\]</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_4Student <span class="token keyword">where</span> Sage<span class="token operator">&lt;</span><span class="token number">20</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="60%">
-<img width="60%" src="//tvax3.sinaimg.cn/large/005JD0Ejgy1gcmhtv1u0zj30oe08c3z3.jpg" alt="例2.5">
-</div>
-
-<h3 id="投影（Projection）"><a href="#投影（Projection）" class="headerlink" title="投影（Projection）"></a>投影（Projection）</h3><p>可以选取出多个列。</p>
-<ul>
-<li><strong>例2.6 查询学生的姓名和所在系，即求 Student 关系上学生姓名和所在系两个属性<br>上的投影：</strong></li>
-</ul>
-<p>\[Π_{ Sname,Sdept }(Student)\]</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> Sname<span class="token punctuation">,</span>Sdept <span class="token keyword">from</span> 2_4Student<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="60%">
-<img width="60%" src="//tva3.sinaimg.cn/large/005JD0Ejgy1gcmi0z1gxtj30n509ht92.jpg" alt="例2.6">
-</div>
-
-<ul>
-<li><strong>例 2.7 查询学生关系 Student 中都有哪些系，即查询关系 Student 上所在系屈性上<br>的投影:</strong></li>
-</ul>
-<p>\[Π_{ Sdept }(Student)\]</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">distinct</span> Sdept <span class="token keyword">from</span> 2_4Student<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>Student 关系原来有 4 个元组，而投影结果取消了重复的 CS 元 组，因此只有三个元组。</p>
-<div align="center" width="60%">
-<img width="60%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gcmi860vlyj30nj08kaa9.jpg" alt="例2.7">
-</div>
-
-<h3 id="连接（join）"><a href="#连接（join）" class="headerlink" title="连接（join）"></a>连接（join）</h3><p>将两个表进行拼接。</p>
-<ul>
-<li><strong>例 2.S8 表R 和 表S:</strong><div align="center" width="40%">
-<img width="40%" src="//tvax2.sinaimg.cn/large/005JD0Ejgy1gcmjggk7zfj30ga0k8js1.jpg" alt="R和S">
-</div>
-
-</li>
-</ul>
-<p>等值连接：<br>当两个表某一属性相等时。会舍弃只出现在一个表中的项。</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R<span class="token punctuation">,</span>2_7S <span class="token keyword">where</span> 2_7R<span class="token punctuation">.</span>B<span class="token operator">=</span>2_7S<span class="token punctuation">.</span>B<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gcmjo1g00zj30pp09tt94.jpg" alt="等值连接">
-</div>
-
-<p>非等值连接：</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R<span class="token punctuation">,</span>2_7S <span class="token keyword">where</span> 2_7R<span class="token punctuation">.</span>C<span class="token operator">&lt;</span>2_7S<span class="token punctuation">.</span>E<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmk4nu7w6j30q60aq3z0.jpg" alt="自然连接">
-</div>
-
-<p>自然连接：<br>相同属性只显示一次。注意，自然连接中没有判断语句。</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R <span class="token keyword">natural</span> <span class="token keyword">join</span> 2_7S<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tva2.sinaimg.cn/large/005JD0Ejgy1gcmk22qhdyj30nb09paae.jpg" alt="自然连接">
-</div>
-
-<p>（全）外连接：<br>只出现在一个表中的项也会显示，未定义的值设为null。Mysql暂不支持这种语法：</p>
-<div align="center" width="45%">
-<img width="45%" src="//tvax2.sinaimg.cn/large/005JD0Ejgy1gcmkeg5v22j30ep0e2ju3.jpg" alt="外连接">
-</div>
-
-<p>左（自然）连接：<br>保留左表。</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R <span class="token keyword">natural</span> <span class="token keyword">left</span> <span class="token keyword">join</span> 2_7S<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmjx3ja3dj30om0aagm1.jpg" alt="左（自然）连接">
-</div>
-
-<p>右（自然）连接:<br>保留右表。</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R <span class="token keyword">natural</span> <span class="token keyword">right</span> <span class="token keyword">join</span> 2_7S<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tvax3.sinaimg.cn/large/005JD0Ejgy1gcmjyudfafj30qg0afwex.jpg" alt="右（自然）连接">
-</div>
-
-<h3 id="除运算（division）"><a href="#除运算（division）" class="headerlink" title="除运算（division）"></a>除运算（division）</h3><p>Mysql没有直接的对应语句。需要根据题目的实际含义书写复杂的SQL，通常都会包含子查询。</p>
-<div align="center" width="65%">
-<img width="65%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmlf43of7j30t00jfk3t.jpg" alt="除运算">
-</div>
-
-<ul>
-<li><strong>例 2.10 查询至少选修 l 号课程和 3 号课程的学生号码。</strong></li>
-</ul>
-<div align="center" width="50%">
-<img width="50%" src="//tva3.sinaimg.cn/large/005JD0Ejgy1gcmqtxdneij30gb0afdg7.jpg" alt="例2.10">
-</div>
-
-<div align="center" width="50%">
-<img width="50%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gcmr2idxzrj30v20e2qbc.jpg" alt="例2.10">
-</div>
-
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> Sno <span class="token keyword">from</span> 2_4SC 
-  <span class="token keyword">where</span> Cno<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token keyword">exists</span><span class="token punctuation">(</span>
-    <span class="token keyword">select</span> Sno <span class="token keyword">from</span> 2_4SC <span class="token keyword">where</span> Cno<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<div align="center" width="65%">
-<img width="65%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmqxkxn1vj30q70803yt.jpg" alt="例2.10">
-</div>
+<h3 id="数据抽象"><a href="#数据抽象" class="headerlink" title="数据抽象"></a>数据抽象</h3><p>数据抽象也是类的基本思想之一（另一个思想是封装）。数据抽象是一种依赖于接口和实现分离的编程（以及设计）技术。即仅向用户暴露接口而把具体实现隐藏起来的机制。</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>通过继承联系到一起的类构成一种层次关系。基类负责定义在层次关系中所有类共同拥有的成员，而每个派生类定义各自特有的成员。</p>
+<h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><p>函数的运行版本由实参决定，即在运行时选择函数的版本，所以动态绑定有时又被称为运行时绑定。</p>
+<p>在C++语言中，当我们使用基类的引用（或指针）调用一个虚函数时，将发生动态绑定。</p>
+<h2 id="多态性"><a href="#多态性" class="headerlink" title="多态性"></a>多态性</h2><p>我们把具有继承关系的多个类型称为多态类型，因为我们能使用这些类型的“多种形式”而无须在意它们的差异。引用或指针的静态类型与动态类型不同这一事实正是C++语言支持多态性的根本所在。</p>
+<p>当我们使用基类的引用或指针调用基类中定义的一个函数时，我们并不知道该函数真正作用的对象是什么类型，因为它可能是一个基类对象也可能是一个派生类对象。如果该函数是虚函数，则直到运行时才会决定到底执行哪个版本，判断的依据是引用或指针所绑定的对象的真实类型。</p>
+<p>另一方面，对非虚函数的调用在编译时进行绑定。</p>
+<p>类似的，通过对象进行的函数（虚函数或非虚函数）调用也在编译时进行绑定。因为对象的类型是确定不变的，我们无论如何都不能令对象的动态类型与静态类型不一致。因此，通过对象进行的函数调用将在编译时绑定到该对象所属类中的函数版本上。</p>
+<p>当且仅当通过指针或引用调用虚函数时，才会在运行时解析该调用，也只有在这种情况下对象的动态类型才有可能与静态类型不一致。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -755,7 +657,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/08/guan-xi-dai-shu-zhong-de-yun-suan/">https://litnwu.gitee.io/2020/03/08/guan-xi-dai-shu-zhong-de-yun-suan/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/09/mian-xiang-dui-xiang-opp/">https://litnwu.gitee.io/2020/03/09/mian-xiang-dui-xiang-opp/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -793,8 +695,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/MySQL/">
-                                    <span class="chip bg-color">MySQL</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
                                 </a>
                             
                         </div>
@@ -960,9 +862,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/09/mian-xiang-dui-xiang-opp/">
                     <div class="card-image">
@@ -986,9 +889,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1001,6 +904,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1019,33 +923,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/05/fork-chuang-jian-jin-cheng/">
+                <a href="/2020/03/08/guan-xi-dai-shu-zhong-de-yun-suan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="fork()创建进程">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="关系代数中的运算">
                         
-                        <span class="card-title">fork()创建进程</span>
+                        <span class="card-title">关系代数中的运算</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            fork()创建进程fork()通过拷贝当前进程创建一个子进程。
-子进程与父进程的区别仅仅在于PID（每个进程唯一）、PPID（父进程的进程号，子进程将其设置为被拷贝进程的PID）和某些资源和统计量（例如，挂起的信号，它没有必要被继承）。
-
+                            传统的集合运算并、交、差，和笛卡尔积。并交差需要两个表的结构一致。
+专门的关系运算
+创建数据库create table 2_4Student(Sno varchar(10),Sname varchar(10), Ssex varchar(1
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -1055,8 +959,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BF%9B%E7%A8%8B/">
-                        <span class="chip bg-color">进程</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -1231,13 +1135,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
