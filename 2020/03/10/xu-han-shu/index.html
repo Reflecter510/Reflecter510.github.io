@@ -4,14 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="面向对象(OPP), LitnWu">
-    <meta name="description" content="OPP核心思想三个核心思想是数据抽象、继承、和动态绑定。
-
-通过数据抽象，我们可以将类的接口和实现分离。
-
-通过继承，可以定义相似的类型并对相似关系进行建模。这样，我们可以更容易地定义与其他类相似但不完全相同的类。
-
-通过动态绑定，可以在一">
+    <meta name="keywords" content="虚函数, LitnWu">
+    <meta name="description" content="对于某些函数，基类希望它的派生类各自定义适合自身的版本（也就是对其进行覆盖），此时基类就将这些函数声明为虚函数。
+基类通过在其成员函数的声明语句之前加上关键字virtual使得该函数执行动态绑定（使用类的引用或指针调用虚成员函数）。任何构造">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>面向对象(OPP) | LitnWu</title>
+    <title>虚函数 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -417,12 +412,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">面向对象(OPP)</h1>
+                    <h1 class="description center-align post-title">虚函数</h1>
                 </div>
             </div>
         </div>
@@ -432,105 +427,10 @@
 
 
 
-<main class="post-container content">
+<main class="container content">
 
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        height: calc(100vh - 250px);
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
+    <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -564,7 +464,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-09
+                    2020-03-10
                 </div>
                 
 
@@ -578,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    805
+                    634
                 </div>
                 
 
@@ -596,24 +496,28 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="OPP核心思想"><a href="#OPP核心思想" class="headerlink" title="OPP核心思想"></a>OPP核心思想</h2><p>三个核心思想是数据抽象、继承、和动态绑定。</p>
+                <p>对于某些函数，基类希望它的派生类各自定义适合自身的版本（也就是对其进行覆盖），此时基类就将这些函数声明为虚函数。</p>
+<p>基类通过在其成员函数的声明语句之前加上关键字<code>virtual</code>使得该函数执行动态绑定（使用类的引用或指针调用虚成员函数）。任何构造函数之外的非静态函数都可以是虚函数。</p>
+<p>关键字<code>virtual</code>只能出现在类内部的声明语句之前而不能用于类外部的函数定义。如果基类把一个函数声明为虚函数，则该函数在派生类中隐式地也是虚函数。</p>
+<p>对于没有被声明为虚函数的成员函数，其解析过程发生在编译时，而非运行时。</p>
 <ul>
-<li><p>通过数据抽象，我们可以将类的接口和实现分离。</p>
+<li><p>当我们通过具有一个普通类型（非引用非指针）的表达式调用函数时，在编译时就会将调用的版本确定下来。</p>
 </li>
-<li><p>通过继承，可以定义相似的类型并对相似关系进行建模。这样，我们可以更容易地定义与其他类相似但不完全相同的类。</p>
+<li><p>相反的，当我们使用指针或引用调用虚函数时，编译器产生的代码直到运行时才能确定应该调用哪个版本。</p>
 </li>
-<li><p>通过动态绑定，可以在一定程度上忽略相似类型的区别，而以统一的方式使用它们的对象。在使用彼此相似的类编写程序时，我们可以在一定程度上忽略它们的区别。</p>
+<li><p>派生类中的虚函数可以不用<code>virtual</code>标识，默认成为虚函数。</p>
+</li>
+<li><p>一个派生类的函数如果覆盖了某个继承而来的虚函数，则它的形参类型必须与被它覆盖的基类函数完全一致。同样，返回类型也要匹配，但是有一个例外，就是返回类型是类本身的指针或引用时。</p>
+</li>
+<li><p><code>override</code>关键字用于说明派生类中的虚函数。放在函数定义的圆括号之后。不能用于普通函数。</p>
+</li>
+<li><p><code>final</code>关键字用于说明任何尝试进行覆盖此函数的操作都会引起错误。除了<code>override</code>，还有在派生类重新定义一个与基类同名的带<code>final</code>的普通函数。</p>
+</li>
+<li><p>虚函数也拥有默认实参，如果我们通过基类引用或指针调用函数，则使用基类中定义的默认实参，即使实际运行时的是派生类中的函数版本也是如此。</p>
+</li>
+<li><p>使用域运算符可以强制执行虚函数的某个版本。</p>
 </li>
 </ul>
-<h3 id="数据抽象"><a href="#数据抽象" class="headerlink" title="数据抽象"></a>数据抽象</h3><p>数据抽象也是类的基本思想之一（另一个思想是封装）。数据抽象是一种依赖于接口和实现分离的编程（以及设计）技术。即仅向用户暴露接口而把具体实现隐藏起来的机制。</p>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>通过继承联系到一起的类构成一种层次关系。基类负责定义在层次关系中所有类共同拥有的成员，而每个派生类定义各自特有的成员。</p>
-<h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><p>函数的运行版本由实参决定，即在运行时选择函数的版本，所以动态绑定有时又被称为运行时绑定。</p>
-<p>在C++语言中，当我们使用基类的引用（或指针）调用一个虚函数时，将发生动态绑定。</p>
-<h2 id="多态性"><a href="#多态性" class="headerlink" title="多态性"></a>多态性</h2><p>我们把具有继承关系的多个类型称为多态类型，因为我们能使用这些类型的“多种形式”而无须在意它们的差异。引用或指针的静态类型与动态类型不同这一事实正是C++语言支持多态性的根本所在。</p>
-<p>当我们使用基类的引用或指针调用基类中定义的一个函数时，我们并不知道该函数真正作用的对象是什么类型，因为它可能是一个基类对象也可能是一个派生类对象。如果该函数是虚函数，则直到运行时才会决定到底执行哪个版本，判断的依据是引用或指针所绑定的对象的真实类型。</p>
-<p>另一方面，对非虚函数的调用在编译时进行绑定。</p>
-<p>类似的，通过对象进行的函数（虚函数或非虚函数）调用也在编译时进行绑定。因为对象的类型是确定不变的，我们无论如何都不能令对象的动态类型与静态类型不一致。因此，通过对象进行的函数调用将在编译时绑定到该对象所属类中的函数版本上。</p>
-<p>当且仅当通过指针或引用调用虚函数时，才会在运行时解析该调用，也只有在这种情况下对象的动态类型才有可能与静态类型不一致。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -657,7 +561,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/09/mian-xiang-dui-xiang-opp/">https://litnwu.gitee.io/2020/03/09/mian-xiang-dui-xiang-opp/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/10/xu-han-shu/">https://litnwu.gitee.io/2020/03/10/xu-han-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -862,9 +766,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/10/xu-han-shu/">
                     <div class="card-image">
@@ -883,9 +788,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -898,6 +803,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -916,33 +822,37 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/08/guan-xi-dai-shu-zhong-de-yun-suan/">
+                <a href="/2020/03/09/mian-xiang-dui-xiang-opp/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="关系代数中的运算">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="面向对象(OPP)">
                         
-                        <span class="card-title">关系代数中的运算</span>
+                        <span class="card-title">面向对象(OPP)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            传统的集合运算并、交、差，和笛卡尔积。并交差需要两个表的结构一致。
-专门的关系运算
-创建数据库create table 2_4Student(Sno varchar(10),Sname varchar(10), Ssex varchar(1
+                            OPP核心思想三个核心思想是数据抽象、继承、和动态绑定。
+
+通过数据抽象，我们可以将类的接口和实现分离。
+
+通过继承，可以定义相似的类型并对相似关系进行建模。这样，我们可以更容易地定义与其他类相似但不完全相同的类。
+
+通过动态绑定，可以在一
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/C/" class="post-category">
+                                    C++
                                 </a>
                             
                             
@@ -952,8 +862,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
                 </div>
@@ -1029,100 +939,6 @@
 code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
 </style>
 
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
 
     
 
