@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>虚函数</title>
-      <link href="/2020/03/10/xu-han-shu/"/>
-      <url>/2020/03/10/xu-han-shu/</url>
+      <title>多态</title>
+      <link href="/2020/03/10/duo-tai/"/>
+      <url>/2020/03/10/duo-tai/</url>
       
-        <content type="html"><![CDATA[<p>对于某些函数，基类希望它的派生类各自定义适合自身的版本（也就是对其进行覆盖），此时基类就将这些函数声明为虚函数。</p><p>基类通过在其成员函数的声明语句之前加上关键字<code>virtual</code>使得该函数执行动态绑定（使用类的引用或指针调用虚成员函数）。任何构造函数之外的非静态函数都可以是虚函数。</p><p>关键字<code>virtual</code>只能出现在类内部的声明语句之前而不能用于类外部的函数定义。如果基类把一个函数声明为虚函数，则该函数在派生类中隐式地也是虚函数。</p><p>对于没有被声明为虚函数的成员函数，其解析过程发生在编译时，而非运行时。</p><ul><li><p>当我们通过具有一个普通类型（非引用非指针）的表达式调用函数时，在编译时就会将调用的版本确定下来。</p></li><li><p>相反的，当我们使用指针或引用调用虚函数时，编译器产生的代码直到运行时才能确定应该调用哪个版本。</p></li><li><p>派生类中的虚函数可以不用<code>virtual</code>标识，默认成为虚函数。</p></li><li><p>一个派生类的函数如果覆盖了某个继承而来的虚函数，则它的形参类型必须与被它覆盖的基类函数完全一致。同样，返回类型也要匹配，但是有一个例外，就是返回类型是类本身的指针或引用时。</p></li><li><p><code>override</code>关键字用于说明派生类中的虚函数。放在函数定义的圆括号之后。不能用于普通函数。</p></li><li><p><code>final</code>关键字用于说明任何尝试进行覆盖此函数的操作都会引起错误。除了<code>override</code>，还有在派生类重新定义一个与基类同名的带<code>final</code>的普通函数。</p></li><li><p>虚函数也拥有默认实参，如果我们通过基类引用或指针调用函数，则使用基类中定义的默认实参，即使实际运行时的是派生类中的函数版本也是如此。</p></li><li><p>使用域运算符可以强制执行虚函数的某个版本。</p></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<p>多态的实现主要分为<strong>静态多态</strong>和<strong>动态多态</strong>。</p><ul><li>静态多态主要是重载，在编译时就已经确定</li><li>动态多态是使用虚函数机制实现的，在运行期间动态绑定。</li></ul><h2 id="静态多态（重载）"><a href="#静态多态（重载）" class="headerlink" title="静态多态（重载）"></a>静态多态（重载）</h2><p>函数名相同，但是参数列表不同（形参个数、类型），返回类型可以不同，在同一作用域中。</p><h2 id="动态多态（虚函数）"><a href="#动态多态（虚函数）" class="headerlink" title="动态多态（虚函数）"></a>动态多态（虚函数）</h2><p>对于某些函数，基类希望它的派生类各自定义适合自身的版本（也就是对其进行覆盖），此时基类就将这些函数声明为虚函数。</p><p>基类通过在其成员函数的声明语句之前加上关键字<code>virtual</code>使得该函数执行动态绑定（使用类的引用或指针调用虚成员函数）。任何构造函数之外的非静态函数都可以是虚函数。</p><p>关键字<code>virtual</code>只能出现在类内部的声明语句之前而不能用于类外部的函数定义。如果基类把一个函数声明为虚函数，则该函数在派生类中隐式地也是虚函数，可以不写<code>virtual</code>。</p><p>对于没有被声明为虚函数的成员函数，其解析过程发生在编译时，而非运行时。</p><ul><li><p>当我们通过具有一个普通类型（非引用非指针）的表达式调用函数时，在编译时就会将调用的版本确定下来。</p></li><li><p>相反的，当我们使用指针或引用调用虚函数时，编译器产生的代码直到运行时才能确定应该调用哪个版本。</p></li><li><p>使用域运算符可以强制执行虚函数的某个版本。</p></li><li><p>一个派生类的函数如果覆盖了某个继承而来的虚函数，则它的形参类型必须与被它覆盖的基类函数完全一致。同样，返回类型也要匹配，但是有一个例外，就是<strong>返回类型</strong>是类本身的指针或引用时。</p></li><li><p><code>override</code>关键字用于说明派生类中的虚函数。放在函数定义的圆括号之后。不能用于普通函数。</p></li><li><p><code>final</code>关键字用于说明任何尝试进行覆盖此函数的操作都会引起错误。除了<code>override</code>，还有在派生类重新定义一个与基类同名的带<code>final</code>的普通函数。</p></li><li><p>虚函数也拥有<strong>默认实参</strong>，如果我们通过基类引用或指针调用函数，则使用基类中定义的默认实参，即使实际运行时的是派生类中的函数版本也是如此。</p></li></ul><h3 id="虚函数的实现"><a href="#虚函数的实现" class="headerlink" title="虚函数的实现"></a>虚函数的实现</h3><p>在有虚函数的类中，类的最开始部分是一个虚函数表的指针，这个指针指向一个虚函数表，表中存放了虚函数的地址，实际的虚函数在代码段（.text）中。当子类继承了父类的时候也会继承其虚函数表，当子类重写父类中的虚函数的时候，会将继承到的虚函数表中的地址替换为重新写的函数地址。</p><h3 id="虚函数和静态函数的区别"><a href="#虚函数和静态函数的区别" class="headerlink" title="虚函数和静态函数的区别"></a>虚函数和静态函数的区别</h3><ul><li>静态函数在编译的时候就已经确定了运行时机</li><li>虚函数在运行时动态绑定。虚函数因为用了虚函数表机制，调用的时候会增加一次内存的开销。</li></ul><h3 id="虚函数与析构函数"><a href="#虚函数与析构函数" class="headerlink" title="虚函数与析构函数"></a>虚函数与析构函数</h3><p>将可能会被继承的父类的析构函数设置为虚函数，可以保证当我们新建一个子类，然后使用基类指针指向该子类对象，释放基类指针时可以释放掉子类的空间，防止内存泄漏。</p><p>C++的默认析构函数不是虚函数，是因为虚函数需要额外的虚函数表和虚表指针，占用额外的内存。而对于不会被继承的类来说，其析构函数如果是虚函数，就会浪费内存。因此C++默认的析构函数不是虚函数，而是只有要当需要作为父类时，设置为虚函数。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
@@ -20,7 +20,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
+            <tag> 重载 </tag>
+            
+            <tag> 虚函数 </tag>
             
         </tags>
       
