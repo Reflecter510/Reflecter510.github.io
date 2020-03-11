@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库索引, LitnWu">
-    <meta name="description" content="什么是索引？数据库索引是为了增加查询速度而对表字段附加的一种标识，是对数据库表中一列或多列的值进行排序的一种结构。
-DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增">
+    <meta name="keywords" content="数据链路层, LitnWu">
+    <meta name="description" content="物理线路数据电路是一条点到点的，由传输信道及其两端的 DCE 构成的物理电路。
+数据链路在一条通信线路上传送数据时，除了一定有一条物理线路外，还必须有必要的通信协议来控制这些数据的传输。所以数据链路是在数据电路的基础上增加了传输控制功能构成">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>数据库索引 | LitnWu</title>
+    <title>数据链路层 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -412,12 +412,12 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库索引</h1>
+                    <h1 class="description center-align post-title">数据链路层</h1>
                 </div>
             </div>
         </div>
@@ -534,8 +534,8 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/MySQL/">
-                                <span class="chip bg-color">MySQL</span>
+                            <a href="/tags/OSI-RM/">
+                                <span class="chip bg-color">OSI-RM</span>
                             </a>
                         
                     </div>
@@ -546,8 +546,8 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                计算机网络
                             </a>
                         
                     </div>
@@ -573,14 +573,14 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    763
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 
@@ -591,44 +591,54 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="什么是索引？"><a href="#什么是索引？" class="headerlink" title="什么是索引？"></a>什么是索引？</h2><p>数据库索引是为了增加查询速度而对表字段附加的一种标识，是对数据库表中一列或多列的值进行排序的一种结构。</p>
-<p>DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增加索引，查询时就会先去索引列表中一次定位到特定值的行数，大大减少遍历匹配的行数，所以能明显增加查询的速度。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</li>
-<li>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</li>
-<li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。</li>
-<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</li>
-<li>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</li>
-</ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。</li>
-<li>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</li>
-<li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。</li>
-</ul>
-<h2 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h2><p>一般分为B+树索引和哈希索引。</p>
+                <p><strong>物理线路</strong><br>数据电路是一条点到点的，由传输信道及其两端的 DCE 构成的物理电路。</p>
+<p><strong>数据链路</strong><br>在一条通信线路上传送数据时，除了一定有一条物理线路外，还必须有必要的通信协议来控制这些数据的传输。所以数据链路是在数据电路的基础上增加了传输控制功能构成的。</p>
+<p>基本数据单元：帧</p>
+<p>主要信道<br><strong>点对点信道：</strong></p>
 <ul>
-<li><p>B+树索引：在B-tree上改进得到，其非叶子节点均为key值，叶子节点是key-data键值对。叶子节点前后相连且有序。</p>
-</li>
-<li><p>哈希索引：通过对key进行hash(crc/MD5/sha1/sha256…)而将记录存储在不同的bucket种，可以做到常数时间的查找，但要注意哈希冲突的避免（链表法、线性探测、二次探测、公共溢出区的方法）。其中MD5 128位，和sha1/256码都较长不太适合作为hash函数。默认无序。</p>
-</li>
-<li><p><strong>为什么有了B+树索引还要hash索引？</strong></p>
+<li>点对点协议：用户计算机和ISP通信时所使用的协议。</li>
+</ul>
+<p><strong>广播信道：</strong></p>
+<ul>
+<li>硬件地址（物理地址，mac地址）</li>
+<li>单播帧（unicast）（一对一）：收到的帧的mac地址与本站的硬件地址相同。</li>
+<li>广播帧（broadcast）（一对全体）：发送给本局域网上所有站点的帧。</li>
+<li>多播帧（multicast）（一对多）：发送给本局域网上一部分站点的帧。</li>
+</ul>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li>链路管理：</li>
+<li>寻址：</li>
+<li>帧同步（帧定界）：</li>
+<li>透明传输：不管数据部分什么字符，都能传输出去；可以通过字节填充方法解决（冲突字符前加转义字符）。</li>
+<li>流量控制：发送方发送数据的速率必须使接收方来得及接收。由于通信的随机性，会出现短时间内 大量数据到达某个节点的情况。当接收方来不及接收时，就必须及时控制发送方发送数据的 速率。这种功能称作流量控制(flow control)。</li>
+<li>差错控制：降低误码率，广泛使用循环冗余检测。在计算机通信中，一般都要求有极低的比特差错率，以保证通信的可靠性和可用性。为 此，广泛地采用了编码技术进行差错控制。在数据链路层所用到的差错控制的方式主要是的检错重发和前向纠错。</li>
+<li>数据和控制信息识别：</li>
+</ul>
+<h3 id="帧同步"><a href="#帧同步" class="headerlink" title="帧同步"></a>帧同步</h3><p>方法：数据信号的识别，特定字符或比特流的识别（分界符），外部信号状态的识别等。</p>
+<h3 id="流量控制（重要）"><a href="#流量控制（重要）" class="headerlink" title="流量控制（重要）"></a>流量控制（重要）</h3><p>目的是发送方的数据能让接收方来得及收。</p>
+<h4 id="停止-等待流量控制方式"><a href="#停止-等待流量控制方式" class="headerlink" title="停止-等待流量控制方式"></a>停止-等待流量控制方式</h4><p>每发一帧都要停下来等待确认。</p>
+<ul>
+<li>实用的停止-等待协议<div align="center" width="6" 0%="">
+<img width="60%" src="//tva2.sinaimg.cn/large/005JD0Ejgy1gcni1ghqwnj311j0s74l5.jpg" alt="实用的停止-等待">
+</div>
+
 </li>
 </ul>
-<ol>
-<li>B+树默认有序，hash默认无序，所以哈希索引无法用于排序；</li>
-<li>哈希索引O(1)在速度上毋庸置疑要快于B+树近似O(logn);</li>
-<li>哈希索引只能进行等值查询（因为他要计算hash(key)再去匹配）而B+树索引可以进行等值、部分前缀、范围查询；</li>
-<li>底层实现结构不同：B+树是非线性结构，hash桶是线性结构。</li>
-<li>对于某些场景如热点页/活跃查询页，需要借助哈希索引来实现快速查询。</li>
+<h4 id="滑动窗口控制方式"><a href="#滑动窗口控制方式" class="headerlink" title="滑动窗口控制方式"></a>滑动窗口控制方式</h4><ol>
+<li><p><strong>连续ARQ</strong><br>如果出现差错，则从出现差错的数据帧开始全部重发。</p>
+<blockquote>
+<p><strong>关键点</strong>：gobackend<br>接收窗口尺寸恒等于1<br>发送窗口尺寸大于1,$且&lt;=2^n-1$ （用 n 个比特进行编号）</p>
+</blockquote>
+</li>
+<li><p><strong>选择ARQ</strong><br>只重传出错的数据帧或计时器超时的数据帧。</p>
+<blockquote>
+<p>接收窗口尺寸大于1，且$&lt;= 2^n/2$<br>发送窗口尺寸也大于1，且$&lt;= 2^n/2$</p>
+</blockquote>
+</li>
 </ol>
-<h2 id="索引越多越快？"><a href="#索引越多越快？" class="headerlink" title="索引越多越快？"></a>索引越多越快？</h2><p>索引并非是虚无缥缈的，是实实在在的一种数据结构（B+树/hash桶）要占内存、维护它要系统开销，一般的插入删除都要进行结构的调整，这要消耗时间，所以索引太多反而拖慢查找时间。有时候，见数据量不多时，建立索引还不如全表查询。索引加快了检索的速度，但是插入删除修改都需要DBMS动态更新内部索引结构，要耗费开销。</p>
-<h2 id="添加索引原则"><a href="#添加索引原则" class="headerlink" title="添加索引原则"></a>添加索引原则</h2><ul>
-<li>在查询中很少使用或者参考的列不应该创建索引。这是因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求。</li>
-<li>只有很少数据值的列也不应该增加索引。这是因为，由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中数据行的很大比例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度。</li>
-<li>定义为text、image和bit数据类型的列不应该增加索引。这是因为，这些列的数据量要么相当大，要么取值很少。</li>
-<li>当修改性能远远大于检索性能时，不应该创建索引。这是因为，修改性能和检索性能是互相矛盾的。当增加索引时，会提高检索性能，但是会降低修改性能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改性能远远大于检索性能时，不应该创建索引。</li>
+<ul>
+<li>当$W_R=2^n/2$ 时， $W_T=2^n/2$</li>
 </ul>
-<h2 id="在MySQL中具体使用"><a href="#在MySQL中具体使用" class="headerlink" title="在MySQL中具体使用"></a>在MySQL中具体使用</h2><p>……</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -672,7 +682,7 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/11/shu-ju-ku-suo-yin/">https://litnwu.gitee.io/2020/03/11/shu-ju-ku-suo-yin/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/11/shu-ju-lian-lu-ceng/">https://litnwu.gitee.io/2020/03/11/shu-ju-lian-lu-ceng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -710,8 +720,8 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/MySQL/">
-                                    <span class="chip bg-color">MySQL</span>
+                                <a href="/tags/OSI-RM/">
+                                    <span class="chip bg-color">OSI-RM</span>
                                 </a>
                             
                         </div>
@@ -877,9 +887,10 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/11/shu-ju-lian-lu-ceng/">
                     <div class="card-image">
@@ -898,9 +909,9 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -913,6 +924,7 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -931,36 +943,32 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/10/duo-tai/">
+                <a href="/2020/03/11/shu-ju-ku-suo-yin/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="多态">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="数据库索引">
                         
-                        <span class="card-title">多态</span>
+                        <span class="card-title">数据库索引</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            多态的实现主要分为静态多态和动态多态。
-
-静态多态主要是重载，在编译时就已经确定
-动态多态是使用虚函数机制实现的，在运行期间动态绑定。
-
-静态多态（重载、模板）重载：函数名相同，但是参数列表不同（形参个数、类型），返回类型可以不同，在同一作
+                            什么是索引？数据库索引是为了增加查询速度而对表字段附加的一种标识，是对数据库表中一列或多列的值进行排序的一种结构。
+DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行全表扫描，遇到匹配条件的就加入搜索结果集合。如果我们对某一字段增
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -970,12 +978,8 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%87%8D%E8%BD%BD/">
-                        <span class="chip bg-color">重载</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%99%9A%E5%87%BD%E6%95%B0/">
-                        <span class="chip bg-color">虚函数</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -1150,6 +1154,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>

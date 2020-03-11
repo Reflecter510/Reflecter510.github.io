@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>数据链路层</title>
+      <link href="/2020/03/11/shu-ju-lian-lu-ceng/"/>
+      <url>/2020/03/11/shu-ju-lian-lu-ceng/</url>
+      
+        <content type="html"><![CDATA[<p><strong>物理线路</strong><br>数据电路是一条点到点的，由传输信道及其两端的 DCE 构成的物理电路。</p><p><strong>数据链路</strong><br>在一条通信线路上传送数据时，除了一定有一条物理线路外，还必须有必要的通信协议来控制这些数据的传输。所以数据链路是在数据电路的基础上增加了传输控制功能构成的。</p><p>基本数据单元：帧</p><p>主要信道<br><strong>点对点信道：</strong></p><ul><li>点对点协议：用户计算机和ISP通信时所使用的协议。</li></ul><p><strong>广播信道：</strong></p><ul><li>硬件地址（物理地址，mac地址）</li><li>单播帧（unicast）（一对一）：收到的帧的mac地址与本站的硬件地址相同。</li><li>广播帧（broadcast）（一对全体）：发送给本局域网上所有站点的帧。</li><li>多播帧（multicast）（一对多）：发送给本局域网上一部分站点的帧。</li></ul><h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul><li>链路管理：</li><li>寻址：</li><li>帧同步（帧定界）：</li><li>透明传输：不管数据部分什么字符，都能传输出去；可以通过字节填充方法解决（冲突字符前加转义字符）。</li><li>流量控制：发送方发送数据的速率必须使接收方来得及接收。由于通信的随机性，会出现短时间内 大量数据到达某个节点的情况。当接收方来不及接收时，就必须及时控制发送方发送数据的 速率。这种功能称作流量控制(flow control)。</li><li>差错控制：降低误码率，广泛使用循环冗余检测。在计算机通信中，一般都要求有极低的比特差错率，以保证通信的可靠性和可用性。为 此，广泛地采用了编码技术进行差错控制。在数据链路层所用到的差错控制的方式主要是的检错重发和前向纠错。</li><li>数据和控制信息识别：</li></ul><h3 id="帧同步"><a href="#帧同步" class="headerlink" title="帧同步"></a>帧同步</h3><p>方法：数据信号的识别，特定字符或比特流的识别（分界符），外部信号状态的识别等。</p><h3 id="流量控制（重要）"><a href="#流量控制（重要）" class="headerlink" title="流量控制（重要）"></a>流量控制（重要）</h3><p>目的是发送方的数据能让接收方来得及收。</p><h4 id="停止-等待流量控制方式"><a href="#停止-等待流量控制方式" class="headerlink" title="停止-等待流量控制方式"></a>停止-等待流量控制方式</h4><p>每发一帧都要停下来等待确认。</p><ul><li>实用的停止-等待协议<div align="center" width="6" 0%=""><img width="60%" src="//tva2.sinaimg.cn/large/005JD0Ejgy1gcni1ghqwnj311j0s74l5.jpg" alt="实用的停止-等待"></div></li></ul><h4 id="滑动窗口控制方式"><a href="#滑动窗口控制方式" class="headerlink" title="滑动窗口控制方式"></a>滑动窗口控制方式</h4><ol><li><p><strong>连续ARQ</strong><br>如果出现差错，则从出现差错的数据帧开始全部重发。</p><blockquote><p><strong>关键点</strong>：gobackend<br>接收窗口尺寸恒等于1<br>发送窗口尺寸大于1,$且&lt;=2^n-1$ （用 n 个比特进行编号）</p></blockquote></li><li><p><strong>选择ARQ</strong><br>只重传出错的数据帧或计时器超时的数据帧。</p><blockquote><p>接收窗口尺寸大于1，且$&lt;= 2^n/2$<br>发送窗口尺寸也大于1，且$&lt;= 2^n/2$</p></blockquote></li></ol><ul><li>当$W_R=2^n/2$ 时， $W_T=2^n/2$</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OSI-RM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据库索引</title>
       <link href="/2020/03/11/shu-ju-ku-suo-yin/"/>
       <url>/2020/03/11/shu-ju-ku-suo-yin/</url>
