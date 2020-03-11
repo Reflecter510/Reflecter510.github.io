@@ -8,8 +8,10 @@
     <meta name="description" content="题目（leetcode 14. 最长公共前缀）编写一个函数来查找字符串数组中的最长公共前缀。
 如果不存在公共前缀，返回空字符串 “”。
 示例 1:
-    输入: [&#34;flower&#34;,&#34;flow&#34;,&#34;flight&#34;]
-    输出: &#34;fl">
+
+输入: [“flower”,”flow”,”flight”]输出: “fl”
+
+示例 2:">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -577,7 +579,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-03
+                    2020-03-11
                 </div>
                 
 
@@ -605,12 +607,17 @@
                 <h2 id="题目（leetcode-14-最长公共前缀）"><a href="#题目（leetcode-14-最长公共前缀）" class="headerlink" title="题目（leetcode 14. 最长公共前缀）"></a>题目（<a href="https://leetcode-cn.com/problems/longest-common-prefix/" target="_blank" rel="noopener">leetcode 14. 最长公共前缀</a>）</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
 <p>如果不存在公共前缀，返回空字符串 “”。</p>
 <p><strong>示例 1:</strong></p>
-<pre><code>    输入: ["flower","flow","flight"]
-    输出: "fl"</code></pre><p><strong>示例 2:</strong></p>
-<pre><code>    输入: ["dog","racecar","car"]
-    输出: ""
-    解释: 输入不存在公共前缀。</code></pre><p><strong>说明:</strong></p>
+<blockquote>
+<p>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”</p>
+</blockquote>
+<p><strong>示例 2:</strong></p>
+<blockquote>
+<p>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。</p>
+</blockquote>
+<p><strong>说明:</strong></p>
+<blockquote>
 <p>所有输入只包含小写字母 <code>a-z</code> 。</p>
+</blockquote>
 <h2 id="方法一-水平扫描法（暴力）"><a href="#方法一-水平扫描法（暴力）" class="headerlink" title="方法一 水平扫描法（暴力）"></a>方法一 水平扫描法（暴力）</h2><p>纵向遍历vector，然后横向遍历字符串，依次比较各个字符。正常情况下需要知道最小的字符串长度，但是并不需要再单独用一个循环求出，修改一下判断条件即可。</p>
 <p>仔细想想，你要求所有字符串的最长公共前缀，那么至少要把所有字符串中的最长公共前缀部分都比较一遍才行，所以时间复杂度 O(n*minStrLen) </p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//水平扫描法</span>
@@ -958,9 +965,10 @@
                         
                             题目（leetcode 3. 无重复字符的最长子串）给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 示例 1:
-    输入: "abcabcbb"
-    输出: 3 
-    解释: 因为无重复字符的最长子串是 "ab
+
+输入: “abcabcbb”输出: 3解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。
+
+
                         
                     </div>
                     <div class="publish-info">
