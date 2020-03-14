@@ -4,14 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="TCP三次握手和四次挥手, LitnWu">
-    <meta name="description" content="TCP三次握手我们知道tcp建立连接要进行“三次握手”，即交换三个分组。大致流程如下：
+    <meta name="keywords" content="字符串相乘, LitnWu">
+    <meta name="description" content="题目（leetcode 43. 字符串相乘）给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
+示例 1:
 
-客户端向服务器发送一个SYN J
-服务器向客户端响应一个SYN K，并对SYN J进行确认ACK J+1
-客户端再向服务器发一个确认ACK K+1
-
-">
+输入: num1 = “2”, num2 = “3”">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>TCP三次握手和四次挥手 | LitnWu</title>
+    <title>字符串相乘 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -395,12 +392,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">TCP三次握手和四次挥手</h1>
+                    <h1 class="description center-align post-title">字符串相乘</h1>
                 </div>
             </div>
         </div>
@@ -410,10 +407,105 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -422,8 +514,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/TCP-IP/">
-                                <span class="chip bg-color">TCP/IP</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                <span class="chip bg-color">字符串</span>
                             </a>
                         
                     </div>
@@ -434,8 +530,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                计算机网络
+                            <a href="/categories/algorithm/" class="post-category">
+                                algorithm
                             </a>
                         
                     </div>
@@ -447,21 +543,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-12
+                    2020-03-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-13
+                    2020-03-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    568
+                    636
                 </div>
                 
 
@@ -479,34 +575,50 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><p>我们知道tcp建立连接要进行“三次握手”，即交换三个分组。大致流程如下：</p>
-<ul>
-<li>客户端向服务器发送一个SYN J</li>
-<li>服务器向客户端响应一个SYN K，并对SYN J进行确认ACK J+1</li>
-<li>客户端再向服务器发一个确认ACK K+1</li>
-</ul>
-<p>这就完了三次握手，但是这三次握手发生在socket的那几个函数中呢？请看下图：</p>
-<div align="center" width="60%">
-<img width="60%" src="//images.cnblogs.com/cnblogs_com/skynet/201012/201012122157476286.png" alt="socket中发送的TCP三次握手">
-</div>
-
-<p>从图中可以看出，当客户端调用connect时，触发了连接请求，向服务器发送了SYN J包，这时connect进入阻塞状态；服务器监听到连接请求，即收到SYN J包，调用accept函数接收请求并向客户端发送SYN K ，ACK J+1，这时accept进入阻塞状态；客户端收到服务器的SYN K ，ACK J+1之后，这时connect返回，并对SYN K进行确认；服务器收到ACK K+1时，accept返回，至此三次握手完毕，连接建立。</p>
+                <h2 id="题目（leetcode-43-字符串相乘）"><a href="#题目（leetcode-43-字符串相乘）" class="headerlink" title="题目（leetcode 43. 字符串相乘）"></a>题目（<a href="https://leetcode-cn.com/problems/multiply-strings/" target="_blank" rel="noopener">leetcode 43. 字符串相乘</a>）</h2><p>给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。</p>
+<p><strong>示例 1:</strong></p>
 <blockquote>
-<p>总结：客户端的connect在三次握手的第二个次返回，而服务器端的accept在三次握手的第三次返回。</p>
+<p>输入: num1 = “2”, num2 = “3”<br>输出: “6”</p>
 </blockquote>
-<h2 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h2><p>上面介绍了socket中TCP的三次握手建立过程，及其涉及的socket函数。现在我们介绍socket中的四次握手释放连接的过程，请看下图：</p>
-<div align="center" width="60%">
-<img width="60%" src="//images.cnblogs.com/cnblogs_com/skynet/201012/201012122157494693.png" alt="socket中发送的TCP四次握手">
-</div>
+<p><strong>示例 2:</strong></p>
+<blockquote>
+<p>输入: num1 = “123”, num2 = “456”<br>输出: “56088”</p>
+</blockquote>
+<p><strong>说明：</strong><br>    1. num1 和 num2 的长度小于110。<br>    2. num1 和 num2 只包含数字 0-9。<br>    3. num1 和 num2 均不以零开头，除非是数字 0 本身。<br>    4. <strong>不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理。</strong></p>
+<h2 id="优化的竖式模拟"><a href="#优化的竖式模拟" class="headerlink" title="优化的竖式模拟"></a>优化的竖式模拟</h2><p>很容易可以想到直接按照竖式计算的方式来编写一个程序，但是竖式相乘不仅要计算乘积还要计算累积和，所以直接竖式模拟还要写一个计算两个字符串相加的函数。</p>
+<p>通常，我们将乘数个位与完整的被乘数相乘，得到一个积，再将乘数十位与完整的被乘数相乘，以此类推…..最后将各个乘积相加。但是，其实将最后相加那一步分解到每次相乘的时候来执行，程序实现反而更简单。</p>
+<p>比如，被乘数个位 与 乘数个位 相乘，由九九八十一知乘积最多只有两位。因此，每次相乘后只需要处理两个进位。<strong>需要注意的是，n位被乘数与m位乘数相乘，结果最多m+n位，而且最高位肯定不会出现需要进位的现象</strong>，因此，只需要考虑第一位的进位。</p>
+<p>另外，就是下标怎么走的问题，由图可以很清楚地明白。其中 <code>i+j+1</code> 是第一位，<code>i+j</code>是第二位。</p>
+<p><img src="//tva4.sinaimg.cn/large/005JD0Ejgy1gctbj61ybkj31xg1ab44s.jpg" alt="竖式优化"></p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    string <span class="token function">multiply</span><span class="token punctuation">(</span>string num1<span class="token punctuation">,</span> string num2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> len1 <span class="token operator">=</span> num1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> len2 <span class="token operator">=</span> num2<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>num1 <span class="token operator">==</span> <span class="token string">"0"</span> <span class="token operator">||</span> num2 <span class="token operator">==</span> <span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">ans</span><span class="token punctuation">(</span>len1<span class="token operator">+</span>len2<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<p>图示过程如下：</p>
-<ul>
-<li>某个应用进程首先调用close主动关闭连接，这时TCP发送一个FIN M；</li>
-<li>另一端接收到FIN M之后，执行被动关闭，对这个FIN进行确认。它的接收也作为文件结束符传递给应用进程，因为FIN的接收意味着应用进程在相应的连接上再也接收不到额外数据；</li>
-<li>一段时间之后，接收到文件结束符的应用进程调用close关闭它的socket。这导致它的TCP也发送一个FIN N；</li>
-<li>接收到这个FIN的源发送端TCP对它进行确认。</li>
-</ul>
-<p>这样每个方向上都有一个FIN和ACK。</p>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> len2<span class="token number">-1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">int</span> y <span class="token operator">=</span> num2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>len1<span class="token number">-1</span><span class="token punctuation">;</span>j<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">int</span> x <span class="token operator">=</span> num1<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">int</span> sum <span class="token operator">=</span> ans<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> x<span class="token operator">*</span>y<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//将相乘的积和相加的和统一放在“个位”计算 </span>
+                ans<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> sum<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>
+                ans<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> sum<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//最后，最高位m+n肯定不大于10，不用考虑进位</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        string answer <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>len1<span class="token operator">+</span>len2<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            answer<span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> answer<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -550,7 +662,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/12/tcp-san-ci-wo-shou-he-si-ci-hui-shou/">https://litnwu.gitee.io/2020/03/12/tcp-san-ci-wo-shou-he-si-ci-hui-shou/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/14/zi-fu-chuan-xiang-cheng/">https://litnwu.gitee.io/2020/03/14/zi-fu-chuan-xiang-cheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -588,8 +700,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/TCP-IP/">
-                                    <span class="chip bg-color">TCP/IP</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                    <span class="chip bg-color">字符串</span>
                                 </a>
                             
                         </div>
@@ -755,9 +871,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/14/zi-fu-chuan-xiang-cheng/">
                     <div class="card-image">
@@ -777,9 +894,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -792,6 +909,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -814,25 +932,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/11/shu-ju-lian-lu-ceng/">
+                <a href="/2020/03/12/tcp-san-ci-wo-shou-he-si-ci-hui-shou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="数据链路层">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="TCP三次握手和四次挥手">
                         
-                        <span class="card-title">数据链路层</span>
+                        <span class="card-title">TCP三次握手和四次挥手</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            物理线路数据电路是一条点到点的，由传输信道及其两端的 DCE 构成的物理电路。
-数据链路在一条通信线路上传送数据时，除了一定有一条物理线路外，还必须有必要的通信协议来控制这些数据的传输。所以数据链路是在数据电路的基础上增加了传输控制功能构成
+                            TCP三次握手我们知道tcp建立连接要进行“三次握手”，即交换三个分组。大致流程如下：
+
+客户端向服务器发送一个SYN J
+服务器向客户端响应一个SYN K，并对SYN J进行确认ACK J+1
+客户端再向服务器发一个确认ACK K+1
+
+
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-12
                             </span>
                         <span class="publish-author">
                             
@@ -851,14 +974,6 @@
                     
                     <a href="/tags/TCP-IP/">
                         <span class="chip bg-color">TCP/IP</span>
-                    </a>
-                    
-                    <a href="/tags/OSI-RM/">
-                        <span class="chip bg-color">OSI-RM</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/">
-                        <span class="chip bg-color">流量控制</span>
                     </a>
                     
                 </div>
@@ -934,6 +1049,100 @@
 code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
 </style>
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 
