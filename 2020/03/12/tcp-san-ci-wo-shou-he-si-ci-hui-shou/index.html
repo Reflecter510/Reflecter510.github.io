@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-13
+                    2020-03-14
                 </div>
                 
 
@@ -487,7 +487,7 @@
 </ul>
 <p>这就完了三次握手，但是这三次握手发生在socket的那几个函数中呢？请看下图：</p>
 <div align="center" width="60%">
-<img width="60%" src="//images.cnblogs.com/cnblogs_com/skynet/201012/201012122157476286.png" alt="socket中发送的TCP三次握手">
+<img width="60%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gctbsm9xt8j30c406ddfy.jpg" alt="socket中发送的TCP三次握手">
 </div>
 
 <p>从图中可以看出，当客户端调用connect时，触发了连接请求，向服务器发送了SYN J包，这时connect进入阻塞状态；服务器监听到连接请求，即收到SYN J包，调用accept函数接收请求并向客户端发送SYN K ，ACK J+1，这时accept进入阻塞状态；客户端收到服务器的SYN K ，ACK J+1之后，这时connect返回，并对SYN K进行确认；服务器收到ACK K+1时，accept返回，至此三次握手完毕，连接建立。</p>
@@ -495,8 +495,8 @@
 <p>总结：客户端的connect在三次握手的第二个次返回，而服务器端的accept在三次握手的第三次返回。</p>
 </blockquote>
 <h2 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h2><p>上面介绍了socket中TCP的三次握手建立过程，及其涉及的socket函数。现在我们介绍socket中的四次握手释放连接的过程，请看下图：</p>
-<div align="center" width="60%">
-<img width="60%" src="//images.cnblogs.com/cnblogs_com/skynet/201012/201012122157494693.png" alt="socket中发送的TCP四次握手">
+<div align="center" width="55%">
+<img width="55%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gctbtt46saj30a606d74c.jpg" alt="socket中发送的TCP四次握手">
 </div>
 
 <p>图示过程如下：</p>
