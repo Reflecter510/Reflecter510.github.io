@@ -4,10 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="fork()创建进程, LitnWu">
-    <meta name="description" content="fork()创建进程fork()通过拷贝当前进程创建一个子进程。
-子进程与父进程的区别仅仅在于PID（每个进程唯一）、PPID（父进程的进程号，子进程将其设置为被拷贝进程的PID）和某些资源和统计量（例如，挂起的信号，它没有必要被继承）。
-">
+    <meta name="keywords" content="复原IP地址, LitnWu">
+    <meta name="description" content="题目（leetcode 93. 复原IP地址）给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
+示例:
+
+输入: “25525511135”输出: [“255.255.11.135”, “255.255.111.35”]">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>fork()创建进程 | LitnWu</title>
+    <title>复原IP地址 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -391,12 +392,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">fork()创建进程</h1>
+                    <h1 class="description center-align post-title">复原IP地址</h1>
                 </div>
             </div>
         </div>
@@ -513,8 +514,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%BF%9B%E7%A8%8B/">
-                                <span class="chip bg-color">进程</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                <span class="chip bg-color">字符串</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%9B%9E%E6%BA%AF/">
+                                <span class="chip bg-color">回溯</span>
                             </a>
                         
                     </div>
@@ -525,8 +534,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/algorithm/" class="post-category">
+                                algorithm
                             </a>
                         
                     </div>
@@ -538,28 +547,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-05
+                    2020-03-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-05
+                    2020-03-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    784
+                    796
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -570,20 +579,75 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="fork-创建进程"><a href="#fork-创建进程" class="headerlink" title="fork()创建进程"></a>fork()创建进程</h2><p><code>fork()</code>通过拷贝当前进程创建一个子进程。</p>
-<p>子进程与父进程的区别仅仅在于PID（每个进程唯一）、PPID（父进程的进程号，子进程将其设置为被拷贝进程的PID）和某些资源和统计量（例如，挂起的信号，它没有必要被继承）。</p>
-<p><code>exec()</code>函数负责读取可执行文件并将其载入到地址空间开始运行。</p>
-<p>把这两个函数组合起来的效果跟其他系统使用单一函数的效果相似。</p>
-<h3 id="写时拷贝"><a href="#写时拷贝" class="headerlink" title="写时拷贝"></a>写时拷贝</h3><p>传统的fork()系统调用直接把所有的资源复制给新创建的进程。这种实现过于简单并且效率低下，因为它拷贝的数据也许并不共享，更糟的情况是，如果新进程打算立即执行一个新的映像，那么所有的拷贝都将前功尽弃。</p>
-<p>Linux的<code>fork()</code>使用写时拷贝（copy-on-write）页实现。写时拷贝是一种可以推迟甚至免除拷贝数据的技术。内核此时并不复制整个进程地址空间，而是让父进程和子进程共享同一个拷贝。</p>
-<p>只有在需要写入的时候，数据才会被复制，从而使各个进程拥有各自的拷贝。也就是说，资源的复制只有在需要写入的时候才执行，在此之前，只是以只读方式共享。这种技术使地址空间上的页的拷贝被推迟到实际发生写入的时候才进行，在页根本不会被写入的情况下（比如<code>fork()</code>后立即调用<code>exec()</code>），它们就无须复制了。</p>
-<p><code>fork()</code>的实际开销就是复制父进程的页表以及给子进程创建唯一的进程描述符。</p>
-<p>在一般情况下，进程创建后都会马上运行一个可执行的文件，这种优化可以避免拷贝大量根本就不会被使用的数据（地址空间里常常包含数十兆的数据）。由于Unix强调进程快速执行的能力，所以这个优化是很重要的。</p>
+                <h2 id="题目（leetcode-93-复原IP地址）"><a href="#题目（leetcode-93-复原IP地址）" class="headerlink" title="题目（leetcode 93. 复原IP地址）"></a>题目（<a href="https://leetcode-cn.com/problems/restore-ip-addresses/" target="_blank" rel="noopener">leetcode 93. 复原IP地址</a>）</h2><p>给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。</p>
+<p><strong>示例:</strong></p>
 <blockquote>
-<p>新创建的子进程会被首先唤醒并让其投入运行。内核有意选择子进程首先执行。因为一般子进程都会马上调用<code>exec()</code>函数，这样可以避免写时拷贝的额外开销，如果父进程首先执行的话，有可能会开始向地址空间写入。</p>
+<p>输入: “25525511135”<br>输出: [“255.255.11.135”, “255.255.111.35”]</p>
 </blockquote>
-<h2 id="vfork"><a href="#vfork" class="headerlink" title="vfork()"></a>vfork()</h2><p><code>vfork()</code>也是通过拷贝当前进程创建一个子进程。与<code>fork()</code>唯一不同是：不拷贝父进程的页表项。</p>
-<p>子进程作为父进程的一个单独的线程在它的地址空间里运行，父进程被阻塞，直到子进程退出或执行<code>exec()</code>。子进程不能向地址空间写入。</p>
+<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><p>从第一个数字出发，要么往后加一个数字，要么加一个<code>'.'</code>开始下一部分。当然，加够3个数字后只能加<code>'.'</code>。如果在递归的过程中发现不符合IP地址格式，那么把这条枝剪掉，退回上一层重新寻找。</p>
+<p>嗯，思路很简单，但是需要注意的细节不少。<br><strong>问题：</strong></p>
+<ol>
+<li>IP地址：A.B.C.D  每一部分的字符串最大长度为3。</li>
+<li>A、B、C、D都必须小于256。</li>
+<li>这些ABCD都不能有前导0，比如 02.00.01.03。（卡样例”010010”）</li>
+<li>剪枝：不能有连续的<code>'.'</code>、首尾不能有<code>'.'</code>、<code>'.'</code>最多出现三次。（调试时才发现）</li>
+</ol>
+<p>一开始用了布尔变量limit来限制小于256的范围，写了一堆才发现不能从百位到十位再到个位这样来判断，因为并不是所有的IP地址都是 xxx.xxx.xxx.xxx的格式，太傻了。</p>
+<p>然后重写，每次将当前部分保存为数字，每次进入递归时判断是否小于等于255。然后就开始填坑之旅……<br><strong>解答：</strong></p>
+<blockquote>
+<ol>
+<li>用一个整型cnt来记录长度，大于等于3时只能加<code>'.'</code>，否则加数字加<code>'.'</code>都行</li>
+<li>整型one来记录当前部分的数值，每次进入递归函数时检查是否小于等于255。</li>
+<li>在加数字前检查是否有前导0：当前数字是第2位且前面一位是0。</li>
+<li>目前想到的是在加<code>'.'</code>前进行检查前一个字符是否位<code>'.'</code>，以及下标cur是否大于0。然后每次进入递归函数时检查递归深度deep是否大于3。</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>递归出口：cur检查完字符串s且<code>'.'</code>出现了三次</p>
+</li>
+<li><p>字符串now表示到目前为止形成的IP地址。</p>
+</li>
+<li><p><strong>加数字操作：</strong><br>now加上当前检查的字符，下标cur加1，数字长度cnt加1，当前数字one乘10后加上当前字符代表的数字，递归深度deep不变。</p>
+</li>
+<li><p><strong>加<code>'.'</code>操作：</strong><br>now加上<code>'.'</code>，下标cur不变，数字长度cnt和当前数字one清零，递归深度加1。</p>
+</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span>
+<span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token operator">&amp;</span>ans<span class="token punctuation">,</span> <span class="token keyword">const</span> string <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> string now<span class="token punctuation">,</span> <span class="token keyword">int</span> cur<span class="token punctuation">,</span> <span class="token keyword">int</span> cnt<span class="token punctuation">,</span> <span class="token keyword">int</span> one<span class="token punctuation">,</span> <span class="token keyword">int</span> deep<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">></span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> deep <span class="token operator">></span> <span class="token number">3</span> <span class="token operator">||</span> one <span class="token operator">></span> <span class="token number">255</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> deep <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 尾部不能有'.'</span>
+            ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>now<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 最多三位</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token string">'.'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 不能有2个连续'.'</span>
+                <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> now <span class="token operator">+</span> <span class="token string">'.'</span><span class="token punctuation">,</span> cur<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> deep <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>cnt <span class="token operator">==</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//不能有前导0</span>
+                <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> now <span class="token operator">+</span> s<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">,</span> cur <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> cnt <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> one <span class="token operator">=</span> one <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">+</span> s<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">,</span> deep<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token string">'.'</span> <span class="token operator">&amp;&amp;</span> cur<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 首部不能有'.'，且不能有2个连续'.'</span>
+                <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> now <span class="token operator">+</span> <span class="token string">'.'</span><span class="token punctuation">,</span> cur<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> deep <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">restoreIpAddresses</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        vector<span class="token operator">&lt;</span>string<span class="token operator">></span> ans<span class="token punctuation">;</span>
+        <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -627,7 +691,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/05/fork-chuang-jian-jin-cheng/">https://litnwu.gitee.io/2020/03/05/fork-chuang-jian-jin-cheng/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/16/fu-yuan-ip-di-zhi/">https://litnwu.gitee.io/2020/03/16/fu-yuan-ip-di-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -665,8 +729,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%BF%9B%E7%A8%8B/">
-                                    <span class="chip bg-color">进程</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                    <span class="chip bg-color">字符串</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9B%9E%E6%BA%AF/">
+                                    <span class="chip bg-color">回溯</span>
                                 </a>
                             
                         </div>
@@ -832,48 +904,58 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/08/guan-xi-dai-shu-zhong-de-yun-suan/">
+                <a href="/2020/03/16/fu-yuan-ip-di-zhi/">
                     <div class="card-image">
                         
+                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="复原IP地址">
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="关系代数中的运算">
-                        
-                        <span class="card-title">关系代数中的运算</span>
+                        <span class="card-title">复原IP地址</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            传统的集合运算并、交、差，和笛卡尔积。并交差需要两个表的结构一致。
-专门的关系运算
-创建数据库create table 2_4Student(Sno varchar(10),Sname varchar(10), Ssex varchar(1
+                            题目（leetcode 93. 复原IP地址）给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
+示例:
+
+输入: “25525511135”输出: [“255.255.11.135”, “255.255.111.35”]
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%9E%E6%BA%AF/">
+                        <span class="chip bg-color">回溯</span>
                     </a>
                     
                 </div>
@@ -887,32 +969,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/03/ruan-jian-gong-cheng-du-shu-bi-ji-1/">
+                <a href="/2020/03/14/zi-fu-chuan-xiang-cheng/">
                     <div class="card-image">
                         
+                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="字符串相乘">
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="软件工程读书笔记1">
-                        
-                        <span class="card-title">软件工程读书笔记1</span>
+                        <span class="card-title">字符串相乘</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一章 软件的本质（THE NATURE OF SOFTWARE）
-Today, software takes on a dual role. It is a product, and at the same time, the vehic
+                            题目（leetcode 43. 字符串相乘）给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
+示例 1:
+
+输入: num1 = “2”, num2 = “3”
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-category">
-                                    软件工程
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
@@ -922,8 +1005,12 @@ Today, software takes on a dual role. It is a product, and at the same time, the
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
-                        <span class="chip bg-color">软件工程</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
                     </a>
                     
                 </div>
