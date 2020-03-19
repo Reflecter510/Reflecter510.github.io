@@ -4,11 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="复原IP地址, LitnWu">
-    <meta name="description" content="题目（leetcode 93. 复原IP地址）给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
-示例:
+    <meta name="keywords" content="new和malloc的区别, LitnWu">
+    <meta name="description" content="1. 申请的内存所在位置不同new操作符是  从自由储存区(free store)上  为对象  动态分配  内存空间  ，而malloc函数  从堆上  动态分配  内存空间。
 
-输入: “25525511135”输出: [“255.255.11.135”, “255.255.111.35”]">
+自由存储区是C++基于new操作符的一个抽象概念。其定义 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>复原IP地址 | LitnWu</title>
+    <title>new和malloc的区别 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -392,12 +391,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">复原IP地址</h1>
+                    <h1 class="description center-align post-title">new和malloc的区别</h1>
                 </div>
             </div>
         </div>
@@ -514,16 +513,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/leetcode/">
-                                <span class="chip bg-color">leetcode</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%9B%9E%E6%BA%AF/">
-                                <span class="chip bg-color">回溯</span>
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98/">
+                                <span class="chip bg-color">动态内存</span>
                             </a>
                         
                     </div>
@@ -534,8 +525,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/algorithm/" class="post-category">
-                                algorithm
+                            <a href="/categories/C/" class="post-category">
+                                C++
                             </a>
                         
                     </div>
@@ -547,28 +538,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-16
+                    2020-03-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-16
+                    2020-03-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    796
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -579,75 +570,107 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目（leetcode-93-复原IP地址）"><a href="#题目（leetcode-93-复原IP地址）" class="headerlink" title="题目（leetcode 93. 复原IP地址）"></a>题目（<a href="https://leetcode-cn.com/problems/restore-ip-addresses/" target="_blank" rel="noopener">leetcode 93. 复原IP地址</a>）</h2><p>给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。</p>
-<p><strong>示例:</strong></p>
+                <h2 id="1-申请的内存所在位置不同"><a href="#1-申请的内存所在位置不同" class="headerlink" title="1. 申请的内存所在位置不同"></a>1. 申请的内存所在位置不同</h2><p>new操作符是  从<strong>自由储存区</strong>(free store)上  为对象  动态分配  内存空间  ，而malloc函数  从<strong>堆</strong>上  动态分配  内存空间。</p>
 <blockquote>
-<p>输入: “25525511135”<br>输出: [“255.255.11.135”, “255.255.111.35”]</p>
+<p>自由存储区是C++基于new操作符的一个抽象概念。其定义  是  凡是通过new操作符进行内存申请，该内存即为自由存储区。</p>
+<p>堆  是操作系统的  术语  ，是操作系统所维护的一块特殊内存，用于程序的内存动态分配。在C语言中，使用malloc从堆上分配内存，然后使用free释放已经分配的内存。</p>
 </blockquote>
-<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><p>从第一个数字出发，要么往后加一个数字，要么加一个<code>'.'</code>开始下一部分。当然，加够3个数字后只能加<code>'.'</code>。如果在递归的过程中发现不符合IP地址格式，那么把这条枝剪掉，退回上一层重新寻找。</p>
-<p>嗯，思路很简单，但是需要注意的细节不少。<br><strong>问题：</strong></p>
-<ol>
-<li>IP地址：A.B.C.D  每一部分的字符串最大长度为3。</li>
-<li>A、B、C、D都必须小于256。</li>
-<li>这些ABCD都不能有前导0，比如 02.00.01.03。（卡样例”010010”）</li>
-<li>剪枝：不能有连续的<code>'.'</code>、首尾不能有<code>'.'</code>、<code>'.'</code>最多出现三次。（调试时才发现）</li>
-</ol>
-<p>一开始用了布尔变量limit来限制小于256的范围，写了一堆才发现不能从百位到十位再到个位这样来判断，因为并不是所有的IP地址都是 xxx.xxx.xxx.xxx的格式，太傻了。</p>
-<p>然后重写，每次将当前部分保存为数字，每次进入递归时判断是否小于等于255。然后就开始填坑之旅……<br><strong>解答：</strong></p>
+<p><strong>那么，自由存储区  能否与  堆  等价？</strong><br>自由存储区不仅可以是堆，还可以是静态存储区。</p>
+<p>特殊地，经过重载的new运算符可以不为对象分配内存：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">new</span> <span class="token punctuation">(</span>place_address<span class="token punctuation">)</span>  type<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>place_address</code>为一个指针，代表一块内存地地址。当使用上面这种仅以一个地址调用new操作符时，new操作符不分配任何内存，只是简单地返回指针实参，然后在<code>place_address</code>指定地地址进行对象地初始化工作。</p>
+<h2 id="2-返回类型的安全性不同"><a href="#2-返回类型的安全性不同" class="headerlink" title="2. 返回类型的安全性不同"></a>2. 返回类型的安全性不同</h2><ul>
+<li>new操作符内存分配成功时，返回的是<strong>对象类型的指针</strong>，类型严格与对象严格匹配，无需进行类型转换，故new是符合类型安全性的操作符。</li>
+<li>malloc内存分配成功时则是返回<strong>void*</strong>，需要进行强制类型转换成我们需要的类型。</li>
+</ul>
 <blockquote>
-<ol>
-<li>用一个整型cnt来记录长度，大于等于3时只能加<code>'.'</code>，否则加数字加<code>'.'</code>都行</li>
-<li>整型one来记录当前部分的数值，每次进入递归函数时检查是否小于等于255。</li>
-<li>在加数字前检查是否有前导0：当前数字是第2位且前面一位是0。</li>
-<li>目前想到的是在加<code>'.'</code>前进行检查前一个字符是否位<code>'.'</code>，以及下标cur是否大于0。然后每次进入递归函数时检查递归深度deep是否大于3。</li>
-</ol>
+<p>类型安全很大程度上等价于内存安全，类型安全的代码不会试图分配自己没被授权的内存区域。</p>
 </blockquote>
-<ul>
-<li><p>递归出口：cur检查完字符串s且<code>'.'</code>出现了三次</p>
-</li>
-<li><p>字符串now表示到目前为止形成的IP地址。</p>
-</li>
-<li><p><strong>加数字操作：</strong><br>now加上当前检查的字符，下标cur加1，数字长度cnt加1，当前数字one乘10后加上当前字符代表的数字，递归深度deep不变。</p>
-</li>
-<li><p><strong>加<code>'.'</code>操作：</strong><br>now加上<code>'.'</code>，下标cur不变，数字长度cnt和当前数字one清零，递归深度加1。</p>
+<h2 id="3-内存分配失败时的返回值"><a href="#3-内存分配失败时的返回值" class="headerlink" title="3. 内存分配失败时的返回值"></a>3. 内存分配失败时的返回值</h2><ul>
+<li>new内存分配失败时，会抛出bad_alloc<strong>异常</strong>，它不会返回NULL;  </li>
+<li>malloc分配内存失败时，则<strong>返回NULL</strong>。因此，在C语言中习惯在分配内存之后判断是否分配成功。<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token constant">NULL</span> <span class="token operator">==</span> a<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+```　
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span>
+<h2 id="4-是否需要指定内存块大小"><a href="#4-是否需要指定内存块大小" class="headerlink" title="4. 是否需要指定内存块大小"></a>4. 是否需要指定内存块大小</h2><ul>
+<li>new操作符申请内存分配时无须指定内存块的大小，编译器会根据类型信息<strong>自动计算</strong></li>
+<li>malloc<strong>需要显示地指出内存的尺寸</strong>，如上的  sizeof(int)</li>
+</ul>
+<h2 id="5-是否调用构造函数-析构函数"><a href="#5-是否调用构造函数-析构函数" class="headerlink" title="5. 是否调用构造函数/析构函数"></a>5. 是否调用构造函数/析构函数</h2><ul>
+<li>new操作符来分配对象会经历3个步骤：</li>
+</ul>
+<ol>
+<li>调用<code>operator new</code>函数（对于数组是<code>operator new[]</code>）分配一块足够大的、原始的、未命名的内存空间以便存储特定类型的对象</li>
+<li>编译器运行相应的<strong>构造函数</strong>以构造对象，并为其传入初值</li>
+<li>对象构造完成后，返回一个指向该对象的指针</li>
+</ol>
+<ul>
+<li>delete操作符释放对象内存经历2个步骤：</li>
+</ul>
+<ol>
+<li>调用对象的<strong>析构函数</strong></li>
+<li>编译器调用<code>operator delete</code> (或 <code>operator delete[]</code>)函数来释放内存空间。</li>
+</ol>
+<h2 id="6-对数组的处理"><a href="#6-对数组的处理" class="headerlink" title="6. 对数组的处理"></a>6. 对数组的处理</h2><ul>
+<li>C++提供了 <code>new[]</code>和<code>delete[]</code>专门来处理数组类型。</li>
+<li>至于malloc，它并不知道你在这块内存上要放数组还是啥东西，反正它就给你一块原始的内存，再给你一个内存的地址就完事了。所以在动态分配一个数组的内存，还需要<strong>手动指定数组的大小</strong>。</li>
+</ul>
+<h2 id="7-new与malloc是否可以相互调用"><a href="#7-new与malloc是否可以相互调用" class="headerlink" title="7. new与malloc是否可以相互调用"></a>7. new与malloc是否可以相互调用</h2><ul>
+<li><code>operator new</code> 或 <code>operator delete</code> 的实现可以基于malloc</li>
+<li>而malloc的实现不可以去调用new。</li>
+</ul>
+<p>下面是编写<code>operator new</code>和<code>operator delete</code>的一种简单方式：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span><span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t size<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token operator">&amp;</span>ans<span class="token punctuation">,</span> <span class="token keyword">const</span> string <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> string now<span class="token punctuation">,</span> <span class="token keyword">int</span> cur<span class="token punctuation">,</span> <span class="token keyword">int</span> cnt<span class="token punctuation">,</span> <span class="token keyword">int</span> one<span class="token punctuation">,</span> <span class="token keyword">int</span> deep<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">></span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> deep <span class="token operator">></span> <span class="token number">3</span> <span class="token operator">||</span> one <span class="token operator">></span> <span class="token number">255</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> deep <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 尾部不能有'.'</span>
-            ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>now<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+    <span class="token keyword">void</span><span class="token operator">*</span> mem<span class="token operator">=</span><span class="token function">malloc</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span> <span class="token operator">!=</span> mem<span class="token punctuation">)</span>
+        reutrn mem<span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">throw</span> <span class="token function">bad_alloc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 最多三位</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token string">'.'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 不能有2个连续'.'</span>
-                <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> now <span class="token operator">+</span> <span class="token string">'.'</span><span class="token punctuation">,</span> cur<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> deep <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">else</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>cnt <span class="token operator">==</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//不能有前导0</span>
-                <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> now <span class="token operator">+</span> s<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">,</span> cur <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> cnt <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> one <span class="token operator">=</span> one <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">+</span> s<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">,</span> deep<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">if</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token string">'.'</span> <span class="token operator">&amp;&amp;</span> cur<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 首部不能有'.'，且不能有2个连续'.'</span>
-                <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> now <span class="token operator">+</span> <span class="token string">'.'</span><span class="token punctuation">,</span> cur<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> deep <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">restoreIpAddresses</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        vector<span class="token operator">&lt;</span>string<span class="token operator">></span> ans<span class="token punctuation">;</span>
-        <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">void</span><span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span> mem<span class="token punctuation">)</span><span class="token keyword">noexcept</span>
+<span class="token punctuation">{</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>mem<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="8-是否可以被重载"><a href="#8-是否可以被重载" class="headerlink" title="8. 是否可以被重载"></a>8. 是否可以被重载</h2><ul>
+<li><code>operator new</code> / <code>operator delete</code>可以被重载。<br>new 和 delete共有8个重载版本：<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//这些版本可能抛出异常</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span> <span class="token punctuation">)</span><span class="token keyword">noexcept</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token number">0</span>）<span class="token keyword">noexcept</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//这些版本承诺不抛出异常</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t <span class="token punctuation">,</span>nothrow_t<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">noexcept</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t<span class="token punctuation">,</span> nothrow_t<span class="token operator">&amp;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">,</span>nothrow_t<span class="token operator">&amp;</span> <span class="token punctuation">)</span><span class="token keyword">noexcept</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token number">0</span><span class="token punctuation">,</span>nothrow_t<span class="token operator">&amp;</span> ）<span class="token keyword">noexcept</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>malloc / free 不允许重载</li>
+</ul>
+<h2 id="9-能否直观地重新分配内存"><a href="#9-能否直观地重新分配内存" class="headerlink" title="9. 能否直观地重新分配内存"></a>9. 能否直观地重新分配内存</h2><ul>
+<li>malloc分配内存之后，如果在使用过程中发现内存不足，可以使用realloc函数进行内存重新分配，以实现内存的扩充。<br>realloc函数先判断当前指针所指的内存是否有足够的连续空间。如果有，原地扩大可分配的内存地址。如果没有，先按照新指定的大小分配空间，将原有数据从头到尾拷贝到新分配的内存区域，最后释放原来的内存区域。</li>
+<li>new 没有这样直观的配套函数来扩充内存。</li>
+</ul>
+<h2 id="10-客户处理内存分配不足"><a href="#10-客户处理内存分配不足" class="headerlink" title="10. 客户处理内存分配不足"></a>10. 客户处理内存分配不足</h2><ul>
+<li>对于malloc，客户不能去编程决定不足以分配时要干什么事，只能看着malloc返回NULL。</li>
+<li>对于new，内存分配失败，抛出异常之前，它会调用一个用户指定的错误处理函数，这就是new_handler。<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> std
+<span class="token punctuation">{</span>
+   <span class="token keyword">typedef</span> <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>new_handler<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+　　new_handler是一个指针类型，指向了一个没有参数没有返回值的函数，即为错误处理函数。为了指向错误处理函数，客户需要调用<code>set_new_handler</code>函数，它是声明于标准库里的函数。<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> std
+<span class="token punctuation">{</span>
+   new_handler <span class="token function">set_new_handler</span><span class="token punctuation">(</span>new_handler p <span class="token punctuation">)</span> <span class="token keyword">throw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="总结到一个表格"><a href="#总结到一个表格" class="headerlink" title="总结到一个表格"></a>总结到一个表格</h2><p>共有10个区别，如表格中所示：</p>
+<div align="center" width="75%">
+<img width="75%" src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gczgg9joirj30nt0n5whs.jpg" alt="new和malloc区别">
+</div>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -691,7 +714,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/16/fu-yuan-ip-di-zhi/">https://litnwu.gitee.io/2020/03/16/fu-yuan-ip-di-zhi/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/19/new-he-malloc-de-qu-bie/">https://litnwu.gitee.io/2020/03/19/new-he-malloc-de-qu-bie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -729,16 +752,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/leetcode/">
-                                    <span class="chip bg-color">leetcode</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%9B%9E%E6%BA%AF/">
-                                    <span class="chip bg-color">回溯</span>
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98/">
+                                    <span class="chip bg-color">动态内存</span>
                                 </a>
                             
                         </div>
@@ -904,9 +919,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/19/new-he-malloc-de-qu-bie/">
                     <div class="card-image">
@@ -926,9 +942,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -941,6 +957,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -959,26 +976,26 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/14/zi-fu-chuan-xiang-cheng/">
+                <a href="/2020/03/16/fu-yuan-ip-di-zhi/">
                     <div class="card-image">
                         
-                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="字符串相乘">
+                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="复原IP地址">
                         
-                        <span class="card-title">字符串相乘</span>
+                        <span class="card-title">复原IP地址</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            题目（leetcode 43. 字符串相乘）给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
-示例 1:
+                            题目（leetcode 93. 复原IP地址）给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
+示例:
 
-输入: num1 = “2”, num2 = “3”
+输入: “25525511135”输出: [“255.255.11.135”, “255.255.111.35”]
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-16
                             </span>
                         <span class="publish-author">
                             
@@ -1001,6 +1018,10 @@
                     
                     <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                         <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%9E%E6%BA%AF/">
+                        <span class="chip bg-color">回溯</span>
                     </a>
                     
                 </div>
