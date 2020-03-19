@@ -466,11 +466,11 @@
                 </a>
                 
                 
-                <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="操作系统: 1">
+                <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="操作系统: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #E8F8F5;">操作系统
-                        <span class="tag-length">1</span>
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -562,9 +562,12 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 申请的内存所在位置不同new操作符是  从自由储存区(free store)上  为对象  动态分配  内存空间  ，而malloc函数  从堆上  动态分配  内存空间。
+                                new和malloc都可以申请一段动态内存空间：
 
-自由存储区是C++基于new操作符的一个抽象概念。其定义 
+new的使用// 调用 get_size 确定分配多少个 int
+int *pia = new int[get_size()];   //pia 指向第一个 int
+
+malloc的使用/
                             
                         </div>
                         <div class="publish-info">

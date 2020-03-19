@@ -4,13 +4,21 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="new和malloc的区别, LitnWu">
-    <meta name="description" content="new和malloc都可以申请一段动态内存空间：
+    <meta name="keywords" content="堆、栈和静态存储区, LitnWu">
+    <meta name="description" content="C/C++程序经过编译连接后形成的二进制映像文件，这文件包含：
 
-new的使用// 调用 get_size 确定分配多少个 int
-int *pia = new int[get_size()];   //pia 指向第一个 int
+栈
+堆
+数据段（只读数据段，已经初始化读写数据段，未初始化数据段即BBS）
+代码段
 
-malloc的使用/">
+
+
+
+
+
+静态存储区数据段和代码段
+静态变量、常量、全局变量就是存放在静态存储区，他们在">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +26,7 @@ malloc的使用/">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>new和malloc的区别 | LitnWu</title>
+    <title>堆、栈和静态存储区 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -394,12 +402,12 @@ malloc的使用/">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">new和malloc的区别</h1>
+                    <h1 class="description center-align post-title">堆、栈和静态存储区</h1>
                 </div>
             </div>
         </div>
@@ -528,8 +536,8 @@ malloc的使用/">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/C/" class="post-category">
-                                C++
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                操作系统
                             </a>
                         
                     </div>
@@ -548,21 +556,21 @@ malloc的使用/">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-19
+                    2020-03-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 
@@ -573,117 +581,61 @@ malloc的使用/">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>new和malloc都可以申请一段动态内存空间：</p>
+                <p>C/C++程序经过编译连接后形成的二进制映像文件，这文件包含：</p>
 <ul>
-<li>new的使用<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// 调用 get_size 确定分配多少个 int</span>
-<span class="token keyword">int</span> <span class="token operator">*</span>pia <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token function">get_size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//pia 指向第一个 int</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>malloc的使用<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// 同上，调用 get_size 确定分配多少个 int</span>
-<span class="token keyword">int</span> <span class="token operator">*</span>pia <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token function">get_size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
+<li>栈</li>
+<li>堆</li>
+<li>数据段（只读数据段，已经初始化读写数据段，未初始化数据段即BBS）</li>
+<li>代码段</li>
 </ul>
-<p>但二者存在区别：</p>
-<h2 id="1-申请的内存所在位置不同"><a href="#1-申请的内存所在位置不同" class="headerlink" title="1. 申请的内存所在位置不同"></a>1. 申请的内存所在位置不同</h2><p>new操作符是  从<strong>自由储存区</strong>(free store)上  为对象  动态分配  内存空间  ，而malloc函数  从<strong>堆</strong>上  动态分配  内存空间。</p>
-<blockquote>
-<p>自由存储区是C++基于new操作符的一个抽象概念。其定义  是  凡是通过new操作符进行内存申请，该内存即为自由存储区。</p>
-<p>堆  是操作系统的  术语  ，是操作系统所维护的一块特殊内存，用于程序的内存动态分配。在C语言中，使用malloc从堆上分配内存，然后使用free释放已经分配的内存。</p>
-</blockquote>
-<p><strong>那么，自由存储区  能否与  堆  等价？</strong><br>自由存储区不仅可以是堆，还可以是静态存储区。</p>
-<p>特殊地，经过重载的new运算符可以不为对象分配内存：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">new</span> <span class="token punctuation">(</span>place_address<span class="token punctuation">)</span>  type<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>place_address</code>为一个指针，代表一块内存地地址。当使用上面这种仅以一个地址调用new操作符时，new操作符不分配任何内存，只是简单地返回指针实参，然后在<code>place_address</code>指定地地址进行对象地初始化工作。</p>
-<h2 id="2-返回类型的安全性不同"><a href="#2-返回类型的安全性不同" class="headerlink" title="2. 返回类型的安全性不同"></a>2. 返回类型的安全性不同</h2><ul>
-<li>new操作符内存分配成功时，返回的是<strong>对象类型的指针</strong>，类型严格与对象严格匹配，无需进行类型转换，故new是符合类型安全性的操作符。</li>
-<li>malloc内存分配成功时则是返回<strong>void*</strong>，需要进行强制类型转换成我们需要的类型。</li>
-</ul>
-<blockquote>
-<p>类型安全很大程度上等价于内存安全，类型安全的代码不会试图分配自己没被授权的内存区域。</p>
-</blockquote>
-<h2 id="3-内存分配失败时的返回值"><a href="#3-内存分配失败时的返回值" class="headerlink" title="3. 内存分配失败时的返回值"></a>3. 内存分配失败时的返回值</h2><ul>
-<li>new内存分配失败时，会抛出bad_alloc<strong>异常</strong>，它不会返回NULL;  </li>
-<li>malloc分配内存失败时，则<strong>返回NULL</strong>。因此，在C语言中习惯在分配内存之后判断是否分配成功。<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token constant">NULL</span> <span class="token operator">==</span> a<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span>
-```　
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-<h2 id="4-是否需要指定内存块大小"><a href="#4-是否需要指定内存块大小" class="headerlink" title="4. 是否需要指定内存块大小"></a>4. 是否需要指定内存块大小</h2><ul>
-<li>new操作符申请内存分配时无须指定内存块的大小，编译器会根据类型信息<strong>自动计算</strong></li>
-<li>malloc<strong>需要显示地指出内存的尺寸</strong>，如上的  sizeof(int)</li>
-</ul>
-<h2 id="5-是否调用构造函数-析构函数"><a href="#5-是否调用构造函数-析构函数" class="headerlink" title="5. 是否调用构造函数/析构函数"></a>5. 是否调用构造函数/析构函数</h2><ul>
-<li>new操作符来分配对象会经历3个步骤：</li>
-</ul>
-<ol>
-<li>调用<code>operator new</code>函数（对于数组是<code>operator new[]</code>）分配一块足够大的、原始的、未命名的内存空间以便存储特定类型的对象</li>
-<li>编译器运行相应的<strong>构造函数</strong>以构造对象，并为其传入初值</li>
-<li>对象构造完成后，返回一个指向该对象的指针</li>
-</ol>
-<ul>
-<li>delete操作符释放对象内存经历2个步骤：</li>
-</ul>
-<ol>
-<li>调用对象的<strong>析构函数</strong></li>
-<li>编译器调用<code>operator delete</code> (或 <code>operator delete[]</code>)函数来释放内存空间。</li>
-</ol>
-<h2 id="6-对数组的处理"><a href="#6-对数组的处理" class="headerlink" title="6. 对数组的处理"></a>6. 对数组的处理</h2><ul>
-<li>C++提供了 <code>new[]</code>和<code>delete[]</code>专门来处理数组类型。</li>
-<li>至于malloc，它并不知道你在这块内存上要放数组还是啥东西，反正它就给你一块原始的内存，再给你一个内存的地址就完事了。所以在动态分配一个数组的内存，还需要<strong>手动指定数组的大小</strong>。</li>
-</ul>
-<h2 id="7-new与malloc是否可以相互调用"><a href="#7-new与malloc是否可以相互调用" class="headerlink" title="7. new与malloc是否可以相互调用"></a>7. new与malloc是否可以相互调用</h2><ul>
-<li><code>operator new</code> 或 <code>operator delete</code> 的实现可以基于malloc</li>
-<li>而malloc的实现不可以去调用new。</li>
-</ul>
-<p>下面是编写<code>operator new</code>和<code>operator delete</code>的一种简单方式：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span><span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t size<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">void</span><span class="token operator">*</span> mem<span class="token operator">=</span><span class="token function">malloc</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span> <span class="token operator">!=</span> mem<span class="token punctuation">)</span>
-        reutrn mem<span class="token punctuation">;</span>
-    <span class="token keyword">else</span> <span class="token keyword">throw</span> <span class="token function">bad_alloc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">void</span><span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span> mem<span class="token punctuation">)</span><span class="token keyword">noexcept</span>
-<span class="token punctuation">{</span>
-    <span class="token function">free</span><span class="token punctuation">(</span>mem<span class="token punctuation">)</span><span class="token punctuation">;</span>  
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="8-是否可以被重载"><a href="#8-是否可以被重载" class="headerlink" title="8. 是否可以被重载"></a>8. 是否可以被重载</h2><ul>
-<li><code>operator new</code> / <code>operator delete</code>可以被重载。<br>new 和 delete共有8个重载版本：<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//这些版本可能抛出异常</span>
-<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span> <span class="token punctuation">)</span><span class="token keyword">noexcept</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token number">0</span>）<span class="token keyword">noexcept</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//这些版本承诺不抛出异常</span>
-<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t <span class="token punctuation">,</span>nothrow_t<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">noexcept</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t<span class="token punctuation">,</span> nothrow_t<span class="token operator">&amp;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">,</span>nothrow_t<span class="token operator">&amp;</span> <span class="token punctuation">)</span><span class="token keyword">noexcept</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token number">0</span><span class="token punctuation">,</span>nothrow_t<span class="token operator">&amp;</span> ）<span class="token keyword">noexcept</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>malloc / free 不允许重载</li>
-</ul>
-<h2 id="9-能否直观地重新分配内存"><a href="#9-能否直观地重新分配内存" class="headerlink" title="9. 能否直观地重新分配内存"></a>9. 能否直观地重新分配内存</h2><ul>
-<li>malloc分配内存之后，如果在使用过程中发现内存不足，可以使用realloc函数进行内存重新分配，以实现内存的扩充。<br>realloc函数先判断当前指针所指的内存是否有足够的连续空间。如果有，原地扩大可分配的内存地址。如果没有，先按照新指定的大小分配空间，将原有数据从头到尾拷贝到新分配的内存区域，最后释放原来的内存区域。</li>
-<li>new 没有这样直观的配套函数来扩充内存。</li>
-</ul>
-<h2 id="10-客户处理内存分配不足"><a href="#10-客户处理内存分配不足" class="headerlink" title="10. 客户处理内存分配不足"></a>10. 客户处理内存分配不足</h2><ul>
-<li>对于malloc，客户不能去编程决定不足以分配时要干什么事，只能看着malloc返回NULL。</li>
-<li>对于new，内存分配失败，抛出异常之前，它会调用一个用户指定的错误处理函数，这就是new_handler。<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> std
-<span class="token punctuation">{</span>
-   <span class="token keyword">typedef</span> <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>new_handler<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-　　new_handler是一个指针类型，指向了一个没有参数没有返回值的函数，即为错误处理函数。为了指向错误处理函数，客户需要调用<code>set_new_handler</code>函数，它是声明于标准库里的函数。<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> std
-<span class="token punctuation">{</span>
-   new_handler <span class="token function">set_new_handler</span><span class="token punctuation">(</span>new_handler p <span class="token punctuation">)</span> <span class="token keyword">throw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-<h2 id="总结到一个表格"><a href="#总结到一个表格" class="headerlink" title="总结到一个表格"></a>总结到一个表格</h2><p>共有10个区别，如表格中所示：</p>
-<div align="center" width="75%">
-<img width="75%" src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gczgg9joirj30nt0n5whs.jpg" alt="new和malloc区别">
+<div align="center" width="35%">
+<img width="35%" src="//tva3.sinaimg.cn/large/005JD0Ejgy1gcznfj3owhj30jn0mk182.jpg" alt="内存">
 </div>
+
+
+<h2 id="静态存储区"><a href="#静态存储区" class="headerlink" title="静态存储区"></a>静态存储区</h2><p>数据段和代码段</p>
+<p><strong>静态变量、常量、全局变量</strong>就是存放在静态存储区，他们在程序编译完成后就已经分配好了，生命周期持续至程序结束。</p>
+<h2 id="动态存储区"><a href="#动态存储区" class="headerlink" title="动态存储区"></a>动态存储区</h2><p>栈和堆</p>
+<p>在程序运行期间根据需要进行动态的分配存储空间的方式。存放<strong>函数形参变量（在调用函数时给形参分配存储空间），局部动态变量(auto register)，函数调用现场保护和返回地址等</strong>。</p>
+<h2 id="1-栈区-stack"><a href="#1-栈区-stack" class="headerlink" title="1.栈区(stack):"></a>1.栈区(stack):</h2><p>由<strong>编译器自动分配释放</strong>，存放<strong>函数的参数值，局部变量</strong>等值。其操作方式类似于数据结构中的栈。</p>
+<h2 id="2-堆区-heap"><a href="#2-堆区-heap" class="headerlink" title="2.堆区(heap):"></a>2.堆区(heap):</h2><p>堆允许程序在运行时动态地申请某个大小的内存。存放<strong>动态变量</strong>。</p>
+<p>即堆是通过 new 算符和 malloc 函数分配得到的空间。</p>
+<p>一般由<strong>程序员分配释放</strong>，若程序员不释放，则可能会引起内存泄漏。</p>
+<p>分配方式类似于链表。</p>
+<blockquote>
+<p>堆和栈在内存中分配位置，跟硬件架构和操作系统都有关系。<br>x86中栈都是由高地址向低地址分配，堆是由低地址向高地址分配，不过在 Windows 和 Linux 中堆和栈的位置相反，另外存放静态数据、代码的区域位置也有一些不同。<br>栈是属于线程的，每一个线程会有一个自己的栈。</p>
+</blockquote>
+<h2 id="3-代码段-text-："><a href="#3-代码段-text-：" class="headerlink" title="3.代码段(.text)："></a>3.代码段(.text)：</h2><p>存放函数体的二进制代码。</p>
+<p>所有的语句编译后会生成CPU指令存储在代码区.</p>
+<h2 id="4-数据段："><a href="#4-数据段：" class="headerlink" title="4.数据段："></a>4.数据段：</h2><ul>
+<li><p><strong>只读数据段：</strong><br>只读数据段是程序使用的一些不会被更改的数据，使用这些数据的方式类似查表式的操作，由于这些变量不需要更改，因此只需要放置在只读存储器中即可。一般是<strong>const修饰的变量以及程序中使用的文字常量</strong>一般会存放在只读数据段中。</p>
+</li>
+<li><p><strong>已初始化的读写数据段：</strong><br>已初始化数据是在程序中声明，并且具有初值的变量，这些变量需要占用存储器的空间，在程序执行时它们需要位于可读写的内存区域内，并且有初值，以供程序运行时读写。在程序中一般为<strong>已经初始化的全局变量，已经初始化的静态局部变量(static修饰的已经初始化的变量)</strong></p>
+</li>
+<li><p><strong>未初始化段（.BSS）：</strong><br>BSS段通常是指用来存放程序中<strong>未初始化的全局变量和静态变量</strong>的一块内存区域。<br>特点是可读写的，在程序执行之前BSS段会自动清0。</p>
+</li>
+</ul>
+<p>未初始化数据是在程序中声明，但是没有初始化的变量，这些变量在程序运行之前不需要占用存储器的空间。与读写数据段类似，它也属于静态数据区。但是该段中数据没有经过初始化。未初始化数据段只有在运行的初始化阶段才会产生，因此它的大小不会影响目标文件的大小。在程序中一般是没有初始化的全局变量和没有初始化的静态局部变量。</p>
+<blockquote>
+<p>附加说明：<br>常量存储区（特殊的常量存储区，属于静态存储区）<br>　　1) 常量占用内存,只读状态,决不可修改<br>　　2) 常量字符串就是放在这里的，程序结束后由系统释放</p>
+</blockquote>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//已初始化的读写数据段</span>
+<span class="token keyword">char</span> <span class="token operator">*</span>p1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//未初始化段 .bss</span>
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+<span class="token keyword">int</span> b<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// 栈</span>
+<span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 栈</span>
+<span class="token keyword">char</span> <span class="token operator">*</span>p2<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// 栈</span>
+<span class="token keyword">char</span> <span class="token operator">*</span>p3 <span class="token operator">=</span> <span class="token string">"123456"</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 123456\0在常量区，p3在栈上。</span>
+
+<span class="token keyword">static</span> <span class="token keyword">int</span> c <span class="token operator">=</span><span class="token number">0</span>；        <span class="token comment" spellcheck="true">//全局（静态）初始化区</span>
+
+<span class="token comment" spellcheck="true">//分配得来的10和20字节的区域就在堆区。</span>
+p1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+p2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">strcpy</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//123456\0放在常量区，编译器可能会将它与p3所指向的"123456"优化成一个地方。</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -727,7 +679,7 @@ malloc的使用/">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/19/new-he-malloc-de-qu-bie/">https://litnwu.gitee.io/2020/03/19/new-he-malloc-de-qu-bie/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/">https://litnwu.gitee.io/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -932,9 +884,73 @@ malloc的使用/">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="堆、栈和静态存储区">
+                        
+                        <span class="card-title">堆、栈和静态存储区</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            C/C++程序经过编译连接后形成的二进制映像文件，这文件包含：
+
+栈
+堆
+数据段（只读数据段，已经初始化读写数据段，未初始化数据段即BBS）
+代码段
+
+
+
+
+
+
+静态存储区数据段和代码段
+静态变量、常量、全局变量就是存放在静态存储区，他们在
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98/">
+                        <span class="chip bg-color">动态内存</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/03/19/cnn-juan-ji-shen-jing-wang-luo/">
                     <div class="card-image">
@@ -953,9 +969,9 @@ malloc的使用/">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -973,65 +989,6 @@ malloc的使用/">
                     
                     <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
                         <span class="chip bg-color">卷积神经网络</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/16/fu-yuan-ip-di-zhi/">
-                    <div class="card-image">
-                        
-                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="复原IP地址">
-                        
-                        <span class="card-title">复原IP地址</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            题目（leetcode 93. 复原IP地址）给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
-示例:
-
-输入: “25525511135”输出: [“255.255.11.135”, “255.255.111.35”]
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/algorithm/" class="post-category">
-                                    algorithm
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9B%9E%E6%BA%AF/">
-                        <span class="chip bg-color">回溯</span>
                     </a>
                     
                 </div>

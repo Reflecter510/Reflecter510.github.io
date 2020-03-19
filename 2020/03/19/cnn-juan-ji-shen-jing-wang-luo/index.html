@@ -940,49 +940,59 @@ model<span class="token punctuation">.</span>fit_generator<span class="token pun
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/19/cnn-juan-ji-shen-jing-wang-luo/">
+                <a href="/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="CNN卷积神经网络">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="堆、栈和静态存储区">
                         
-                        <span class="card-title">CNN卷积神经网络</span>
+                        <span class="card-title">堆、栈和静态存储区</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            卷积神经网络与传统多层神经网络传统意义上的多层神经网络是只有输入层、隐藏层、输出层。其中隐藏层的层数根据需要而定，没有明确的理论推导来说明到底多少层合适
-卷积神经网络CNN，在原来多层神经网络的基础上，加入了更加有效的特征学习部分，具体操作
+                            C/C++程序经过编译连接后形成的二进制映像文件，这文件包含：
+
+栈
+堆
+数据段（只读数据段，已经初始化读写数据段，未初始化数据段即BBS）
+代码段
+
+
+
+
+
+
+静态存储区数据段和代码段
+静态变量、常量、全局变量就是存放在静态存储区，他们在
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    深度学习
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">卷积神经网络</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98/">
+                        <span class="chip bg-color">动态内存</span>
                     </a>
                     
                 </div>
@@ -1008,9 +1018,12 @@ model<span class="token punctuation">.</span>fit_generator<span class="token pun
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 申请的内存所在位置不同new操作符是  从自由储存区(free store)上  为对象  动态分配  内存空间  ，而malloc函数  从堆上  动态分配  内存空间。
+                            new和malloc都可以申请一段动态内存空间：
 
-自由存储区是C++基于new操作符的一个抽象概念。其定义 
+new的使用// 调用 get_size 确定分配多少个 int
+int *pia = new int[get_size()];   //pia 指向第一个 int
+
+malloc的使用/
                         
                     </div>
                     <div class="publish-info">
