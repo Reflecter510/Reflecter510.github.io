@@ -548,14 +548,14 @@ malloc的使用/">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-19
+                    2020-03-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
@@ -588,7 +588,12 @@ malloc的使用/">
 <p>自由存储区是C++基于new操作符的一个抽象概念。其定义  是  凡是通过new操作符进行内存申请，该内存即为自由存储区。</p>
 <p>堆  是操作系统的  术语  ，是操作系统所维护的一块特殊内存，用于程序的内存动态分配。在C语言中，使用malloc从堆上分配内存，然后使用free释放已经分配的内存。</p>
 </blockquote>
-<p><strong>那么，自由存储区  能否与  堆  等价？</strong><br>自由存储区不仅可以是堆，还可以是静态存储区。</p>
+<p><strong>那么，自由存储区  能否与  堆  等价？</strong> </p>
+<ol>
+<li>自由存储是C++中通过new与delete动态分配和释放对象的抽象概念，而堆（heap）是C语言和操作系统的术语，是操作系统维护的一块动态分配内存。</li>
+<li>new所申请的内存区域在C++中称为自由存储区。藉由堆实现的自由存储，可以说new所申请的内存区域在堆上。</li>
+<li>堆与自由存储区还是有区别的，它们并非等价。</li>
+</ol>
 <p>特殊地，经过重载的new运算符可以不为对象分配内存：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">new</span> <span class="token punctuation">(</span>place_address<span class="token punctuation">)</span>  type<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><code>place_address</code>为一个指针，代表一块内存地地址。当使用上面这种仅以一个地址调用new操作符时，new操作符不分配任何内存，只是简单地返回指针实参，然后在<code>place_address</code>指定地地址进行对象地初始化工作。</p>
