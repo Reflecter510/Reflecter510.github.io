@@ -4,20 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="堆、栈和静态存储区, LitnWu">
-    <meta name="description" content="C/C++程序经过编译连接后形成的二进制映像文件，这文件包含：
+    <meta name="keywords" content="Alibaba在线笔试3.20, LitnWu">
+    <meta name="description" content="题目一 扑克牌今天小强从一副扑克牌里拿出一叠，其中包括A,2,3,…,10，各四张，其中A代表1。他从这一叠中抽出一些牌给小明，并告诉小明每次可以按照下列方式打出一些牌：
 
-栈
-堆
-数据段（只读数据段，已经初始化读写数据段，未初始化数据段即BBS）
-代码段
-
-
-
-
-
-
-“在C++中，内存区分为5个区，分别是堆、栈、自由存储区、全局/静态存储区、常">
+单牌：一张牌，例如3.
+对子：数字相同的两张牌，例如77
+顺子：数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>堆、栈和静态存储区 | LitnWu</title>
+    <title>Alibaba在线笔试3.20 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -401,12 +393,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">堆、栈和静态存储区</h1>
+                    <h1 class="description center-align post-title">Alibaba在线笔试3.20</h1>
                 </div>
             </div>
         </div>
@@ -523,8 +515,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98/">
-                                <span class="chip bg-color">动态内存</span>
+                            <a href="/tags/DP/">
+                                <span class="chip bg-color">DP</span>
+                            </a>
+                        
+                            <a href="/tags/DFS/">
+                                <span class="chip bg-color">DFS</span>
                             </a>
                         
                     </div>
@@ -535,8 +531,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                操作系统
+                            <a href="/categories/algorithm/" class="post-category">
+                                algorithm
                             </a>
                         
                     </div>
@@ -548,7 +544,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-19
+                    2020-03-20
                 </div>
                 
 
@@ -562,14 +558,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    729
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    3 分
                 </div>
                 
 
@@ -580,74 +576,122 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>C/C++程序经过编译连接后形成的二进制映像文件，这文件包含：</p>
+                <h2 id="题目一-扑克牌"><a href="#题目一-扑克牌" class="headerlink" title="题目一 扑克牌"></a>题目一 扑克牌</h2><p>今天小强从一副扑克牌里拿出一叠，其中包括A,2,3,…,10，各四张，其中A代表1。他从这一叠中抽出一些牌给小明，并告诉小明每次可以按照下列方式打出一些牌：</p>
 <ul>
-<li>栈</li>
-<li>堆</li>
-<li>数据段（只读数据段，已经初始化读写数据段，未初始化数据段即BBS）</li>
-<li>代码段</li>
+<li>单牌：一张牌，例如3.</li>
+<li>对子：数字相同的两张牌，例如77</li>
+<li>顺子：数字连续的五张牌，例如A2345.</li>
 </ul>
-<div align="center" width="35%">
-<img width="35%" src="//tva3.sinaimg.cn/large/005JD0Ejgy1gcznfj3owhj30jn0mk182.jpg" alt="内存">
-</div>
+<p>现在小强想知道最少打出多少次牌可以打光手里的牌。</p>
+<p><strong>输入描述</strong></p>
+<blockquote>
+<p>一行十个空格分隔的整数$A_1$,$A_2$,$A_3$,…,$A_{10}$，分别代表为A,2,3,…,10的个数。<br>$0&lt;=A_1,A_2,…，A_{10}&lt;=4$<br>保证手里至少有一张牌</p>
+</blockquote>
+<p><strong>输出描述</strong></p>
+<blockquote>
+<p>仅一行表示答案。</p>
+</blockquote>
+<p><strong>示例1</strong><br><strong>输入</strong></p>
+<blockquote>
+<p>1 1 1 2 2 2 2 2 1 1</p>
+</blockquote>
+<p><strong>输出</strong></p>
+<blockquote>
+<p>3</p>
+</blockquote>
+<p><strong>说明</strong></p>
+<blockquote>
+<p>打出了三个顺子，分别为：A2345,45678,678910。</p>
+</blockquote>
+<h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>写了一个贪心DFS来搜，没有 OJ 可以测，先记录一下。</p>
+<p>如果能打5张牌就打，其次2张，最后1张。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<blockquote>
-<p>“在C++中，内存区分为5个区，分别是堆、栈、自由存储区、全局/静态存储区、常量存储区”</p>
-</blockquote>
-<h2 id="静态存储区"><a href="#静态存储区" class="headerlink" title="静态存储区"></a>静态存储区</h2><p>数据段和代码段</p>
-<p><strong>静态变量、常量、全局变量</strong>就是存放在静态存储区，他们在程序编译完成后就已经分配好了，生命周期持续至程序结束。</p>
-<h2 id="动态存储区"><a href="#动态存储区" class="headerlink" title="动态存储区"></a>动态存储区</h2><p>栈和堆</p>
-<p>在程序运行期间根据需要进行动态的分配存储空间的方式。存放<strong>函数形参变量（在调用函数时给形参分配存储空间），局部动态变量(auto register)，函数调用现场保护和返回地址等</strong>。</p>
-<p><strong>自由存储区（free store）</strong><br>是C++两个动态内存区域之一，使用new和delete来予以分配和释放。在自由存储区（free store）中，对象的生存周期可以比存放它的内存区的生存周期短；这也就是说，我们可以获得一片内存区而不用马上对其进行初始化；同时，在对象被销毁之后，也不用马上收回其占用的内存区。在对象被销毁而其占用的内存区还未被收回的这段时间内，我们可以通过void*型的指针访问这片区域，但是其原始对象的非静态成员以及成员函数（即使我们知道了它们的地址）都不能被访问或者操纵。</p>
-<blockquote>
-<p>自由存储是C++中通过new与delete动态分配和释放对象的抽象概念。</p>
-</blockquote>
-<h2 id="1-栈区-stack"><a href="#1-栈区-stack" class="headerlink" title="1.栈区(stack):"></a>1.栈区(stack):</h2><p>由<strong>编译器自动分配释放</strong>，存放<strong>函数的参数值，局部变量</strong>等值。其操作方式类似于数据结构中的栈。</p>
-<h2 id="2-堆区-heap"><a href="#2-堆区-heap" class="headerlink" title="2.堆区(heap):"></a>2.堆区(heap):</h2><p>堆允许程序在运行时动态地申请某个大小的内存。存放<strong>动态变量</strong>。</p>
-<p>即堆是通过 new 算符和 malloc 函数分配得到的空间。</p>
-<p>一般由<strong>程序员分配释放</strong>，若程序员不释放，则可能会引起内存泄漏。</p>
-<p>分配方式类似于链表。</p>
-<p>要注意，虽然在特定的编译器里缺省的全局运算符new和delete也许会按照malloc和free的方式来被实现，</p>
-<p>但是堆（heap）与自由存储区（free   store）是不同的: 在某一个区域内被分配的内存不能在另一个区域内被安全的回收。</p>
-<p>堆（heap）中被分配的内存一般用于对类对象进行placement-new的构造和explicit的析构。堆中对象的生存周期与自由存储区（free   store）中的类似。</p>
-<blockquote>
-<p>堆是操作系统维护的一块内存</p>
-</blockquote>
-<blockquote>
-<p>堆和栈在内存中分配位置，跟硬件架构和操作系统都有关系。<br>x86中栈都是由高地址向低地址分配，堆是由低地址向高地址分配，不过在 Windows 和 Linux 中堆和栈的位置相反，另外存放静态数据、代码的区域位置也有一些不同。<br>栈是属于线程的，每一个线程会有一个自己的栈。</p>
-</blockquote>
-<h2 id="3-代码段-text-："><a href="#3-代码段-text-：" class="headerlink" title="3.代码段(.text)："></a>3.代码段(.text)：</h2><p>存放函数体的二进制代码。</p>
-<p>所有的语句编译后会生成CPU指令存储在代码区.</p>
-<h2 id="4-数据段："><a href="#4-数据段：" class="headerlink" title="4.数据段："></a>4.数据段：</h2><ul>
-<li><p><strong>只读数据段：</strong><br>只读数据段是程序使用的一些不会被更改的数据，使用这些数据的方式类似查表式的操作，由于这些变量不需要更改，因此只需要放置在只读存储器中即可。一般是<strong>const修饰的变量以及程序中使用的文字常量</strong>一般会存放在只读数据段中。</p>
-</li>
-<li><p><strong>已初始化的读写数据段：</strong><br>已初始化数据是在程序中声明，并且具有初值的变量，这些变量需要占用存储器的空间，在程序执行时它们需要位于可读写的内存区域内，并且有初值，以供程序运行时读写。在程序中一般为<strong>已经初始化的全局变量，已经初始化的静态局部变量(static修饰的已经初始化的变量)</strong></p>
-</li>
-<li><p><strong>未初始化段（.BSS）：</strong><br>BSS段通常是指用来存放程序中<strong>未初始化的全局变量和静态变量</strong>的一块内存区域。<br>特点是可读写的，在程序执行之前BSS段会自动清0。</p>
-</li>
-</ul>
-<p>未初始化数据是在程序中声明，但是没有初始化的变量，这些变量在程序运行之前不需要占用存储器的空间。与读写数据段类似，它也属于静态数据区。但是该段中数据没有经过初始化。未初始化数据段只有在运行的初始化阶段才会产生，因此它的大小不会影响目标文件的大小。在程序中一般是没有初始化的全局变量和没有初始化的静态局部变量。</p>
-<blockquote>
-<p>附加说明：<br>常量存储区（特殊的常量存储区，属于静态存储区）<br>　　1) 常量占用内存,只读状态,决不可修改<br>　　2) 常量字符串就是放在这里的，程序结束后由系统释放</p>
-</blockquote>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//已初始化的读写数据段</span>
-<span class="token keyword">char</span> <span class="token operator">*</span>p1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//未初始化段 .bss</span>
-<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">cnt</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> ans <span class="token operator">=</span> INT_MAX<span class="token punctuation">;</span>
+
+<span class="token keyword">bool</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">int</span> cur<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-<span class="token keyword">int</span> b<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// 栈</span>
-<span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 栈</span>
-<span class="token keyword">char</span> <span class="token operator">*</span>p2<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// 栈</span>
-<span class="token keyword">char</span> <span class="token operator">*</span>p3 <span class="token operator">=</span> <span class="token string">"123456"</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 123456\0在常量区，p3在栈上。</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> cur<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> cur <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">==</span> cnt<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword">static</span> <span class="token keyword">int</span> c <span class="token operator">=</span><span class="token number">0</span>；        <span class="token comment" spellcheck="true">//全局（静态）初始化区</span>
+<span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> sum<span class="token punctuation">,</span> <span class="token keyword">int</span> cur<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        cur<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 0张牌的不计</span>
 
-<span class="token comment" spellcheck="true">//分配得来的10和20字节的区域就在堆区。</span>
-p1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-p2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">>=</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 递归出口，所有牌都打完</span>
+    <span class="token punctuation">{</span>
+        ans <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 取最小</span>
+        <span class="token keyword">return</span> <span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<span class="token function">strcpy</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//123456\0放在常量区，编译器可能会将它与p3所指向的"123456"优化成一个地方。</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<script>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token operator">&amp;&amp;</span> <span class="token function">check</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 连续打5张</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> temp <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> temp<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> temp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            cnt<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                cur<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span>sum <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//打两张一样的</span>
+    <span class="token punctuation">{</span>
+        cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            cur<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span>sum <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//打一张</span>
+    <span class="token punctuation">{</span>
+        cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            cur<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span>sum <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        cin <span class="token operator">>></span> cnt<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> ans <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="题目二-最长旋律"><a href="#题目二-最长旋律" class="headerlink" title="题目二 最长旋律"></a>题目二 最长旋律</h2><p>小强喜欢弹钢琴，一段旋律中的每个音符都可以用一个小写英文字母来表示。当组成一段旋律的字符ASCII码是非递减的，旋律被称为高昂的，例如aaa,bcd。</p>
+<p>现在小强已经学会了n段高昂的旋律，他想利用它们拼接出一个尽可能长的高昂旋律，问最长长度是多少？</p>
+<p><strong>输入描述</strong></p>
+<blockquote>
+<p>第一行一个正整数n，含义如题目所述。<br>接下来n行每行一个字符串，保证每个字符串的字符的ASCII码是非递减的。<br>$1&lt;=n&lt;=10^6$<br>保证所有字符串的长度之和不超过$10^6$且仅由小写字母构成。</p>
+</blockquote>
+<p><strong>输出描述</strong></p>
+<blockquote>
+<p>仅一行一个整数代表答案</p>
+</blockquote>
+<p><strong>示例1</strong><br><strong>输入</strong></p>
+<blockquote>
+<p>4<br>aaa<br>bcd<br>zzz<br>bcdef</p>
+</blockquote>
+<p><strong>输出</strong></p>
+<blockquote>
+<p>11</p>
+</blockquote>
+<p><strong>说明</strong></p>
+<blockquote>
+<p>将1,4,3段字符串拼接到一起，长度为11。</p>
+</blockquote>
+<h2 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -690,7 +734,7 @@ p2 <span class="token operator">=</span> <span class="token punctuation">(</span
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/">https://litnwu.gitee.io/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/</a>
+                    <a href="https://litnwu.gitee.io/2020/03/20/alibaba-zai-xian-bi-shi-3-20/">https://litnwu.gitee.io/2020/03/20/alibaba-zai-xian-bi-shi-3-20/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -728,8 +772,12 @@ p2 <span class="token operator">=</span> <span class="token punctuation">(</span
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98/">
-                                    <span class="chip bg-color">动态内存</span>
+                                <a href="/tags/DP/">
+                                    <span class="chip bg-color">DP</span>
+                                </a>
+                            
+                                <a href="/tags/DFS/">
+                                    <span class="chip bg-color">DFS</span>
                                 </a>
                             
                         </div>
@@ -895,9 +943,10 @@ p2 <span class="token operator">=</span> <span class="token punctuation">(</span
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/20/alibaba-zai-xian-bi-shi-3-20/">
                     <div class="card-image">
@@ -919,9 +968,9 @@ p2 <span class="token operator">=</span> <span class="token punctuation">(</span
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -934,6 +983,7 @@ p2 <span class="token operator">=</span> <span class="token punctuation">(</span
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -956,20 +1006,31 @@ p2 <span class="token operator">=</span> <span class="token punctuation">(</span
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/19/cnn-juan-ji-shen-jing-wang-luo/">
+                <a href="/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="CNN卷积神经网络">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="堆、栈和静态存储区">
                         
-                        <span class="card-title">CNN卷积神经网络</span>
+                        <span class="card-title">堆、栈和静态存储区</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            卷积神经网络与传统多层神经网络传统意义上的多层神经网络是只有输入层、隐藏层、输出层。其中隐藏层的层数根据需要而定，没有明确的理论推导来说明到底多少层合适
-卷积神经网络CNN，在原来多层神经网络的基础上，加入了更加有效的特征学习部分，具体操作
+                            C/C++程序经过编译连接后形成的二进制映像文件，这文件包含：
+
+栈
+堆
+数据段（只读数据段，已经初始化读写数据段，未初始化数据段即BBS）
+代码段
+
+
+
+
+
+
+“在C++中，内存区分为5个区，分别是堆、栈、自由存储区、全局/静态存储区、常
                         
                     </div>
                     <div class="publish-info">
@@ -980,8 +1041,8 @@ p2 <span class="token operator">=</span> <span class="token punctuation">(</span
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    深度学习
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -991,8 +1052,8 @@ p2 <span class="token operator">=</span> <span class="token punctuation">(</span
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">卷积神经网络</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98/">
+                        <span class="chip bg-color">动态内存</span>
                     </a>
                     
                 </div>
@@ -1167,6 +1228,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
