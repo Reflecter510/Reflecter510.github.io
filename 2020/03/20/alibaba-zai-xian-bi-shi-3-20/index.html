@@ -558,7 +558,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    729
+                    714
                 </div>
                 
 
@@ -638,23 +638,17 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> temp<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> temp <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
             cnt<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                cur<span class="token operator">++</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
         <span class="token function">dfs</span><span class="token punctuation">(</span>sum <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//打两张一样的</span>
     <span class="token punctuation">{</span>
         cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            cur<span class="token operator">++</span><span class="token punctuation">;</span>
         <span class="token function">dfs</span><span class="token punctuation">(</span>sum <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//打一张</span>
     <span class="token punctuation">{</span>
         cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            cur<span class="token operator">++</span><span class="token punctuation">;</span>
         <span class="token function">dfs</span><span class="token punctuation">(</span>sum <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -668,7 +662,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
     <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     cout <span class="token operator">&lt;&lt;</span> ans <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="题目二-最长旋律"><a href="#题目二-最长旋律" class="headerlink" title="题目二 最长旋律"></a>题目二 最长旋律</h2><p>小强喜欢弹钢琴，一段旋律中的每个音符都可以用一个小写英文字母来表示。当组成一段旋律的字符ASCII码是非递减的，旋律被称为高昂的，例如aaa,bcd。</p>
 <p>现在小强已经学会了n段高昂的旋律，他想利用它们拼接出一个尽可能长的高昂旋律，问最长长度是多少？</p>
 <p><strong>输入描述</strong></p>
