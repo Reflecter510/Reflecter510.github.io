@@ -515,8 +515,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">
-                                <span class="chip bg-color">智能指针</span>
+                            <a href="/tags/C-11/">
+                                <span class="chip bg-color">C++11</span>
                             </a>
                         
                     </div>
@@ -554,14 +554,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    10 分
                 </div>
                 
 
@@ -621,7 +621,59 @@ r <span class="token operator">=</span> q<span class="token punctuation">;</span
 <h3 id="shared-ptr自动销毁所管理的对象"><a href="#shared-ptr自动销毁所管理的对象" class="headerlink" title="shared_ptr自动销毁所管理的对象"></a>shared_ptr自动销毁所管理的对象</h3><p>当指向一个对象的最后一个shared_ptr被销毁时，shared_ptr类会自动销毁此对象，它是通过另一个特殊的成员函数——<strong>析构函数</strong>完成销毁工作的。</p>
 <p>类似于构造函数，每个类都有一个析构函数。析构函数控制对象销毁时做什么操作。析构函数一般用来释放对象所分配的资源。</p>
 <p>shared_ptr的析构函数会递减它所指向的对象的引用计数。如果引用计数变为0，shared_ptr的析构函数就会销毁对象，并释放它所占用的内存。</p>
-<h2 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h2><h2 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h2><script>
+<h3 id="shared-ptr-还会自动释放相关联的内存"><a href="#shared-ptr-还会自动释放相关联的内存" class="headerlink" title="shared_ptr 还会自动释放相关联的内存"></a>shared_ptr 还会自动释放相关联的内存</h3><p>当动态对象不再被使用时，shared_ptr类还会自动释放动态对象，这一特性使得动态内存的使用变得非常容易。</p>
+<p>如果你将shared_ptr存放于一个容器中，而后不再需要全部元素，而只使用其中一部分，要记得用erase删除不再需要的那些元素。</p>
+<h3 id="使用了动态生存期的资源的类："><a href="#使用了动态生存期的资源的类：" class="headerlink" title="使用了动态生存期的资源的类："></a>使用了动态生存期的资源的类：</h3><p>程序使用动态内存的原因：<br>（1）程序不知道自己需要使用多少对象<br>（2）程序不知道所需对象的准确类型<br>（3）程序需要在多个对象间共享数据</p>
+<h2 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h2><p>某个时刻只能有一个unique_ptr指向一个给定对象.</p>
+<p>由于一个unique_ptr拥有它指向的对象，因此unique_ptr不支持普通的拷贝或赋值操作。</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>类似 shared_ptr，初始化 un工que_ptr 必须采用直接初始化形式：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">unique_ptr<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">></span> p1<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 可以指向一个 double 的 unique_ptr</span>
+unique_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// p2 指向一个值为 42 的 int</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="支持的操作"><a href="#支持的操作" class="headerlink" title="支持的操作"></a>支持的操作</h3><p><img src="//tva4.sinaimg.cn/large/005JD0Ejgy1gd2l5yytuwj315e0hywr8.jpg" alt="支持的操作"></p>
+<h3 id="不支持拷贝和赋值，但能转移"><a href="#不支持拷贝和赋值，但能转移" class="headerlink" title="不支持拷贝和赋值，但能转移"></a>不支持拷贝和赋值，但能转移</h3><p>虽然我们不能拷贝或者赋值unique_ptr，但是可以通过调用release或reset将指针所有权从一个（非const）unique_ptr转移给另一个unique:</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//将所有权从p1（指向string Stegosaurus）转移给p2</span>
+unique_ptr<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">p2</span><span class="token punctuation">(</span>p1<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//release将p1置为空，但不会释放内存</span>
+unique_ptr<span class="token operator">&lt;</span>string<span class="token operator">></span><span class="token function">p3</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">string</span><span class="token punctuation">(</span><span class="token string">"Trex"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//将所有权从p3转移到p2</span>
+p2<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span>p3<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//reset释放了p2原来指向的内存</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>reset 成员接受一个可选的指针参数，令 unique_ptr 重新指向给定的指针。如果unique_ptr 不为空，它原来指向的对象被释放.</li>
+<li>调用 release 会切断 unique_ptr 和它原来管理的对象间的联系。 release 返回 的指针通常被用来初始化另一个智能指针或给另一个智能指针赋值。</li>
+</ul>
+<h3 id="传递-unique-ptr-参数和返回-unique-ptr"><a href="#传递-unique-ptr-参数和返回-unique-ptr" class="headerlink" title="传递 unique_ptr 参数和返回 unique_ptr"></a>传递 unique_ptr 参数和返回 unique_ptr</h3><p>不能拷贝unique_ptr有一个例外：我们可以拷贝或赋值一个将要被销毁的unique_ptr.最常见的例子是从函数返回一个unique_ptr:</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">unique_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">clone</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//正确：从int*创建一个unique_ptr&lt;int></span>
+    <span class="token keyword">return</span> unique_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>还可以返回一个局部对象的拷贝：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">unique_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">clone</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    unique_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">ret</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> ret<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对于两段代码，编译器都知道耍返回的对象将要被销毁。在此情况下，编译器执行一种特殊的“拷贝”。</p>
+<h3 id="向-unique-ptr-传递删除器"><a href="#向-unique-ptr-传递删除器" class="headerlink" title="向 unique_ptr 传递删除器"></a>向 unique_ptr 传递删除器</h3><p>类似 shared_ptr, unique_ptr 默认情况下用 delete 释放它指向的对象。与<br>shared_ptr 一样，我们可以重载一个 unique_ptr 中默认的删除器。但是， unique_ptr 管理删除器的方式与 shared_ptr 不同。</p>
+<p>重载一个 unique_ptr 中的删除器会影响到 unique_ptr 类型以及如何构造（或reset）该类型的对象。</p>
+<p>与重载关联容器的比较操作类似，我们必须在尖括号中 unique ptr 指向类型之后提供删除搭类型。在创建或 reset 一个 这种 unique ptr 类型的对象时，必须提供一个指定类型的可调用对象（删除器）：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// p 指向一个类型为 objT 的对象， 并使用一个类型为 delT 的对象释放 objT 对象 </span>
+<span class="token comment" spellcheck="true">// 它会调用一个名为 fcn 的 delT 类型对象 </span>
+unique_ptr<span class="token operator">&lt;</span>objT <span class="token punctuation">,</span> delT<span class="token operator">></span> <span class="token function">p</span> <span class="token punctuation">(</span><span class="token keyword">new</span> objT <span class="token punctuation">,</span> fcn<span class="token punctuation">)</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>向后兼容：<br>auto_ptr 标准库的较早版本包含了 一个名为 auto_ptr 的类，它具有 unique_ptr 的部分特性，但不是全部。特别是，我们不能在容器中保存 auto_ptr，也不能从函数中返回auto_ptr。<br>虽然 auto_ptr 仍是标准库的一部分，但编写程序时应该使用 unique_ptr。</p>
+</blockquote>
+<h2 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h2><p>weak_ptr 是一种不控制所指向对象生存期的智能指针，它指向一个由 shared_ptr 管理的对象，将一个 weak_ptr 绑定到一个 shared_ptr 不会改变 shared_ptr 的引用计数。</p>
+<p>一旦最后一个指向对象的 shared_ptr 被销毁，对象就会被释放，即使有 weak_ptr 指向对象，对象还是会被释放。因此，weak_ptr 的名字抓住了这种智能指针“弱”共享对象的特点。</p>
+<h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>当我们创建一个 weak_ptr 时，要用一个 shared_ptr 来初始化它：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> p <span class="token operator">=</span> make_shared<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+weak_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">wp</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// wp 弱共享 p; p 的引用计数未改变</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="支持的操作-1"><a href="#支持的操作-1" class="headerlink" title="支持的操作"></a>支持的操作</h3><p><img src="//tva2.sinaimg.cn/large/005JD0Ejgy1gd2m82j2juj315c0ikqfo.jpg" alt="支持的操作"></p>
+<p>由于对象可能不存在，我们不能使用 weak_ptr 直接访问对象，而必须调用 lock。此函数检查 weak_ptr 指向的对象是否仍存在。如果存在，lock 返回一个指向共享对象的 shared_ptr。</p>
+<p>与任何其他 shared_ptr 类似，只要此 shared_ptr 存在，它所指向的底层对象也就会一直存在。例如：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">if</span><span class="token punctuation">(</span>shared_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> np <span class="token operator">=</span> wp<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 如果 np 不为空则条件成立</span>
+  <span class="token comment" spellcheck="true">// 在 if 中，np 与 p 共享对象。</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -702,8 +754,8 @@ r <span class="token operator">=</span> q<span class="token punctuation">;</span
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">
-                                    <span class="chip bg-color">智能指针</span>
+                                <a href="/tags/C-11/">
+                                    <span class="chip bg-color">C++11</span>
                                 </a>
                             
                         </div>
@@ -913,8 +965,8 @@ r <span class="token operator">=</span> q<span class="token punctuation">;</span
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">
-                        <span class="chip bg-color">智能指针</span>
+                    <a href="/tags/C-11/">
+                        <span class="chip bg-color">C++11</span>
                     </a>
                     
                 </div>
