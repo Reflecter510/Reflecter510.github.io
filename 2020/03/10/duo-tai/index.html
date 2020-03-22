@@ -5,12 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="多态, LitnWu">
-    <meta name="description" content="多态的实现主要分为静态多态和动态多态。
-
-静态多态主要是重载，在编译时就已经确定
-动态多态是使用虚函数机制实现的，在运行期间动态绑定。
-
-静态多态（重载、模板）重载：函数名相同，但是参数列表不同（形参个数、类型），返回类型可以不同，在同一作">
+    <meta name="description" content="什么是多态？多态，就是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行时确定。
+即一个引用变量到底会指向哪个类的实例对象，调用哪个类的实现方法，在程序运行期间才确定。
+比如举一个静态多态的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -552,21 +549,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-11
+                    2020-03-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -577,13 +574,17 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>多态的实现主要分为<strong>静态多态</strong>和<strong>动态多态</strong>。</p>
+                <h2 id="什么是多态？"><a href="#什么是多态？" class="headerlink" title="什么是多态？"></a>什么是多态？</h2><p>多态，就是指<strong>程序中定义的引用变量所指向的具体类型</strong>和<strong>通过该引用变量发出的方法调用</strong>在编程时并不确定，而是在程序运行时确定。</p>
+<p>即一个引用变量到底会指向哪个类的实例对象，调用哪个类的实现方法，在程序运行期间才确定。</p>
+<p>比如举一个静态多态的例子，就是我想写一个计算圆面积的函数，但是半径 R 的类型是不确定的，那么我可以通过函数模板将半径 R 的类型设为 T ，然后在程序运行时，调用对应半径的类型的函数版本，半径的类型可以是整型、浮点型、都变了型等等。静态多态是在编译时就能确定函数调用哪个运行版本。</p>
+<h2 id="多态的好处"><a href="#多态的好处" class="headerlink" title="多态的好处"></a>多态的好处</h2><p>提高代码的可复用性。</p>
+<h2 id="多态的实现"><a href="#多态的实现" class="headerlink" title="多态的实现"></a>多态的实现</h2><p>多态的实现主要分为<strong>静态多态</strong>和<strong>动态多态</strong>。</p>
 <ul>
 <li>静态多态主要是重载，在编译时就已经确定</li>
 <li>动态多态是使用虚函数机制实现的，在运行期间动态绑定。</li>
 </ul>
-<h2 id="静态多态（重载、模板）"><a href="#静态多态（重载、模板）" class="headerlink" title="静态多态（重载、模板）"></a>静态多态（重载、模板）</h2><p>重载：函数名相同，但是参数列表不同（形参个数、类型），返回类型可以不同，在同一作用域中。<br>模板：使用模板实现参数多态性</p>
-<h2 id="动态多态（虚函数）"><a href="#动态多态（虚函数）" class="headerlink" title="动态多态（虚函数）"></a>动态多态（虚函数）</h2><p><strong>为什么要有虚函数？</strong><br>对于某些函数，基类希望它的派生类各自定义适合自身的版本（也就是对其进行覆盖），此时基类就将这些函数声明为虚函数。</p>
+<h3 id="静态多态（重载、模板）"><a href="#静态多态（重载、模板）" class="headerlink" title="静态多态（重载、模板）"></a>静态多态（重载、模板）</h3><p>重载：函数名相同，但是参数列表不同（形参个数、类型），返回类型可以不同，在同一作用域中。<br>模板：使用模板实现参数多态性</p>
+<h3 id="动态多态（虚函数）"><a href="#动态多态（虚函数）" class="headerlink" title="动态多态（虚函数）"></a>动态多态（虚函数）</h3><p><strong>为什么要有虚函数？</strong><br>对于某些函数，基类希望它的派生类各自定义适合自身的版本（也就是对其进行覆盖），此时基类就将这些函数声明为虚函数。</p>
 <p><strong>如何声明虚函数?</strong><br>基类通过在其成员函数的声明语句之前加上关键字<code>virtual</code>使得该函数执行动态绑定（使用类的引用或指针调用虚成员函数）。任何构造函数之外的非静态函数都可以是虚函数。</p>
 <p>关键字<code>virtual</code>只能出现在类内部的声明语句之前而不能用于类外部的函数定义。如果基类把一个函数声明为虚函数，则该函数在派生类中隐式地也是虚函数，可以不写<code>virtual</code>。</p>
 <p>对于没有被声明为虚函数的成员函数，其解析过程发生在编译时，而非运行时。</p>
