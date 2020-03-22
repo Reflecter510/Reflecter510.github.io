@@ -591,11 +591,9 @@
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> ival <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>ival<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// p 存放变量 ival 的地址，或者说 p 是指向变量 ival 的指针。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="利用指针访问对象"><a href="#利用指针访问对象" class="headerlink" title="利用指针访问对象"></a>利用指针访问对象</h3><p>如果一个指针指向了一个对象，则允许使用<strong>解引用符 *</strong>来获得该对象：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>ival<span class="token punctuation">;</span>
-cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp">cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 输出 p 指向的对象的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>对指针解引用会得到所指的对象，因此，如果给解引用的结果赋值，实际上也就是给指针所指的对象赋值：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// p 指向的对象的值 置为 0</span>
 cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="可以有空指针"><a href="#可以有空指针" class="headerlink" title="可以有空指针"></a>可以有空指针</h3><p>空指针不指向任何对象，在试图使用一个指针之前代码可以首先检查指针是否为空。</p>
 <p>生成空指针的方法：</p>
@@ -611,14 +609,13 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*
 </ol>
 <h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><p>给指针赋值就是给指针一个新的地址，从而指向一个新的对象：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token operator">*</span>pi <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">*</span>pi2 <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">*</span>pi3<span class="token punctuation">;</span>
 
 pi3 <span class="token operator">=</span> pi2<span class="token punctuation">;</span>
 
 <span class="token operator">*</span>pi2 <span class="token operator">=</span> <span class="token number">510</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// i 变量的值改变   </span>
-pi2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// pi2指针的值改变</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+pi2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// pi2指针的值改变</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="void-指针"><a href="#void-指针" class="headerlink" title="void* 指针"></a>void* 指针</h3><p>void* 指针是一种特殊的指针类型，可用于存放任意对象的地址。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">double</span> obj <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>pd <span class="token operator">=</span> <span class="token operator">&amp;</span>obj<span class="token punctuation">;</span>
 <span class="token keyword">void</span> <span class="token operator">*</span>pv <span class="token operator">=</span> <span class="token operator">&amp;</span>obj<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// obj 可以是任意类型的对象</span>
