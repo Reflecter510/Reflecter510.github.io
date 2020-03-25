@@ -600,10 +600,7 @@
 <blockquote>
 <p>即$dp[i][j]$表示选择第 $i$ 行第 $j$ 列作为当前问题（规模为$j$）的解是能得到的最小值；</p>
 </blockquote>
-<p>于是有<strong>状态转移方程</strong>：</p>
-<blockquote>
-<p>$dp[i][j] = min(dp[k][j-1]+abs(nums[i][j]-nums[k][j-1])); k\in{0,1,2}$</p>
-</blockquote>
+<p>于是有<strong>状态转移方程</strong>：<br>$dp[i][j] = min(dp[k][j-1]+abs(nums[i][j]-nums[k][j-1])); k\in{0,1,2}$</p>
 <ul>
 <li>$j=1..n-1$    </li>
 <li>$i,k=0..2$</li>
