@@ -547,7 +547,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-22
+                    2020-03-26
                 </div>
                 
 
@@ -626,7 +626,7 @@ r <span class="token operator">=</span> q<span class="token punctuation">;</span
 <h3 id="使用了动态生存期的资源的类："><a href="#使用了动态生存期的资源的类：" class="headerlink" title="使用了动态生存期的资源的类："></a>使用了动态生存期的资源的类：</h3><p>程序使用动态内存的原因：<br>（1）程序不知道自己需要使用多少对象<br>（2）程序不知道所需对象的准确类型<br>（3）程序需要在多个对象间共享数据</p>
 <h2 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h2><p>某个时刻只能有一个unique_ptr指向一个给定对象.</p>
 <p>由于一个unique_ptr拥有它指向的对象，因此unique_ptr不支持普通的拷贝或赋值操作。</p>
-<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>类似 shared_ptr，初始化 un工que_ptr 必须采用直接初始化形式：</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>类似 shared_ptr，初始化 unique_ptr 必须采用直接初始化形式：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">unique_ptr<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">></span> p1<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 可以指向一个 double 的 unique_ptr</span>
 unique_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// p2 指向一个值为 42 的 int</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="支持的操作"><a href="#支持的操作" class="headerlink" title="支持的操作"></a>支持的操作</h3><p><img src="//tva4.sinaimg.cn/large/005JD0Ejgy1gd2l5yytuwj315e0hywr8.jpg" alt="支持的操作"></p>
