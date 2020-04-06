@@ -4,11 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="复原IP地址, LitnWu">
-    <meta name="description" content="题目（leetcode 93. 复原IP地址）给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
-示例:
-
-输入: “25525511135”输出: [“255.255.11.135”, “255.255.111.35”]">
+    <meta name="keywords" content="搜索旋转排序数组, LitnWu">
+    <meta name="description" content="题目（33. 搜索旋转排序数组）假设按照升序排序的数组在预先未知的某个点上进行了旋转。
+( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。
+搜索一个给定的目标值，如果数组中存在这个目标值，则返回它">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>复原IP地址 | LitnWu</title>
+    <title>搜索旋转排序数组 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -392,12 +391,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">复原IP地址</h1>
+                    <h1 class="description center-align post-title">搜索旋转排序数组</h1>
                 </div>
             </div>
         </div>
@@ -518,12 +517,8 @@
                                 <span class="chip bg-color">leetcode</span>
                             </a>
                         
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%9B%9E%E6%BA%AF/">
-                                <span class="chip bg-color">回溯</span>
+                            <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                                <span class="chip bg-color">二分查找</span>
                             </a>
                         
                     </div>
@@ -547,7 +542,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-16
+                    2020-04-06
                 </div>
                 
 
@@ -561,7 +556,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    783
+                    842
                 </div>
                 
 
@@ -579,67 +574,63 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目（leetcode-93-复原IP地址）"><a href="#题目（leetcode-93-复原IP地址）" class="headerlink" title="题目（leetcode 93. 复原IP地址）"></a>题目（<a href="https://leetcode-cn.com/problems/restore-ip-addresses/" target="_blank" rel="noopener">leetcode 93. 复原IP地址</a>）</h2><p>给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。</p>
-<p><strong>示例:</strong></p>
+                <h2 id="题目（33-搜索旋转排序数组）"><a href="#题目（33-搜索旋转排序数组）" class="headerlink" title="题目（33. 搜索旋转排序数组）"></a>题目（<a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. 搜索旋转排序数组</a>）</h2><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
+<p>( 例如，数组 <code>[0,1,2,4,5,6,7]</code> 可能变为 <code>[4,5,6,7,0,1,2]</code> )。</p>
+<p>搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 <code>-1</code> 。</p>
+<p>你可以假设数组中不存在重复的元素。</p>
+<p>你的算法时间复杂度必须是 O(log n) 级别。</p>
+<p><strong>示例 1:</strong></p>
 <blockquote>
-<p>输入: “25525511135”<br>输出: [“255.255.11.135”, “255.255.111.35”]</p>
+<p>输入: nums = [4,5,6,7,0,1,2], target = 0<br>输出: 4</p>
 </blockquote>
-<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><p>从第一个数字出发，要么往后加一个数字，要么加一个<code>'.'</code>开始下一部分。当然，加够3个数字后只能加<code>'.'</code>。如果在递归的过程中发现不符合IP地址格式，那么把这条枝剪掉，退回上一层重新寻找。</p>
-<p>嗯，思路很简单，但是需要注意的细节不少。<br><strong>问题：</strong></p>
-<ol>
-<li>IP地址：A.B.C.D  每一部分的字符串最大长度为3。</li>
-<li>A、B、C、D都必须小于256。</li>
-<li>这些ABCD都不能有前导0，比如 02.00.01.03。（卡样例”010010”）</li>
-<li>剪枝：不能有连续的<code>'.'</code>、首尾不能有<code>'.'</code>、<code>'.'</code>最多出现三次。（调试时才发现）</li>
-</ol>
-<p>一开始用了布尔变量limit来限制小于256的范围，写了一堆才发现不能从百位到十位再到个位这样来判断，因为并不是所有的IP地址都是 xxx.xxx.xxx.xxx的格式，太傻了。</p>
-<p>然后重写，每次将当前部分保存为数字，每次进入递归时判断是否小于等于255。然后就开始填坑之旅……<br><strong>解答：</strong></p>
+<p><strong>示例 2:</strong></p>
 <blockquote>
-<ol>
-<li>用一个整型cnt来记录长度，大于等于3时只能加<code>'.'</code>，否则加数字加<code>'.'</code>都行</li>
-<li>整型one来记录当前部分的数值，每次进入递归函数时检查是否小于等于255。</li>
-<li>在加数字前检查是否有前导0：当前数字是第2位且前面一位是0。</li>
-<li>目前想到的是在加<code>'.'</code>前进行检查前一个字符是否位<code>'.'</code>，以及下标cur是否大于0。然后每次进入递归函数时检查递归深度deep是否大于3。</li>
-</ol>
+<p>输入: nums = [4,5,6,7,0,1,2], target = 3<br>输出: -1</p>
 </blockquote>
-<ul>
-<li><p>递归出口：cur检查完字符串s且<code>'.'</code>出现了三次</p>
-</li>
-<li><p>字符串now表示到目前为止形成的IP地址。</p>
-</li>
-<li><p><strong>加数字操作：</strong><br>now加上当前检查的字符，下标cur加1，数字长度cnt加1，当前数字one乘10后加上当前字符代表的数字，递归深度deep不变。</p>
-</li>
-<li><p><strong>加<code>'.'</code>操作：</strong><br>now加上<code>'.'</code>，下标cur不变，数字长度cnt和当前数字one清零，递归深度加1。</p>
-</li>
-</ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span>
-<span class="token punctuation">{</span>
+<h2 id="二分查找修改版"><a href="#二分查找修改版" class="headerlink" title="二分查找修改版"></a>二分查找修改版</h2><p>看到必须<code>log n</code>的时间复杂度很容易就想到二分查找，但是二分查找必须在有序的数组中才能使用，所以最直接能想到的就是找到旋转的那个点<code>mid</code>，因为要查找的<code>target</code>，要么在左边的有序区间里，要么在右边的有序区间里。而检查<code>target</code>在哪个区间只要和数组的首和尾进行比较即可。之后便是在有序区间里使用二分查找。</p>
+<p>但是，旋转点如何在<code>log n</code>的时间复杂度内找到？现在数组的情况有点像快排里的划分操作后的情况，即将数组分成了两个区间且两个区间的元素有整体的大小关系，而现在要找的主元。但是划分操作是<code>O(n)</code>的，所以并不能得到什么启示，甚至觉得在常规方法下没有更好的时间复杂度。</p>
+<p>再想想?</p>
+<p>回到最开始，既然不能在数据上动手脚，那就看看二分查找能不能直接在这个不是有序却有点秩序的数组上运行。最关键在于刚开始说的，<strong>数组的首和尾</strong>。</p>
+<p>在二分查找中，我们会取<code>(left+right)/2</code>作为中点<code>mid</code>，如果拿中点值和数组的首尾进行比较，就会发现，无论二分查找递归到哪一层，只要拿中点值和数组首尾比较，就能确定中点左边的区间是有序的，还是中点右边的区间是有序的。</p>
+<p>而在二分查找时，比较<code>target</code>之后，我们只会往一个方向递归，即左边或右边。那么如果<code>target</code>恰好落在上面发现的有序区间里，就直接往那一边递归，否则往另一边递归。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token operator">&amp;</span>ans<span class="token punctuation">,</span> <span class="token keyword">const</span> string <span class="token operator">&amp;</span>s<span class="token punctuation">,</span> string now<span class="token punctuation">,</span> <span class="token keyword">int</span> cur<span class="token punctuation">,</span> <span class="token keyword">int</span> cnt<span class="token punctuation">,</span> <span class="token keyword">int</span> one<span class="token punctuation">,</span> <span class="token keyword">int</span> deep<span class="token punctuation">)</span>
+    <span class="token keyword">int</span> <span class="token function">my_search</span><span class="token punctuation">(</span><span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">,</span> <span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">&amp;</span>nums<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>target<span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">></span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> deep <span class="token operator">></span> <span class="token number">3</span> <span class="token operator">||</span> one <span class="token operator">></span> <span class="token number">255</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> deep <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 尾部不能有'.'</span>
-            ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>now<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>right <span class="token operator">&lt;</span> left<span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>left<span class="token operator">+</span>right<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 如果找到</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> mid<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>left <span class="token operator">==</span> right<span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">if</span><span class="token punctuation">(</span>cur<span class="token operator">></span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token string">'.'</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 首部不能有'.'，且不能有2个连续'.'</span>
-            <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> now <span class="token operator">+</span> <span class="token string">'.'</span><span class="token punctuation">,</span> cur<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> deep <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">if</span><span class="token punctuation">(</span>cnt<span class="token operator">&lt;</span><span class="token number">3</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>cnt <span class="token operator">==</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> now<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//未有连续三个数字 且 不能有前导0</span>
-            <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> now <span class="token operator">+</span> s<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">,</span> cur <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> cnt <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> one <span class="token operator">=</span> one <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">+</span> s<span class="token punctuation">[</span>cur<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">,</span> deep<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 如果左半边有序</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">>=</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>target<span class="token operator">&lt;</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> target<span class="token operator">>=</span>nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//如果在有序区间里</span>
+                <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span>mid<span class="token number">-1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// 如果右半边有序</span>
+        <span class="token keyword">else</span><span class="token punctuation">{</span> 
+            <span class="token keyword">if</span><span class="token punctuation">(</span>target<span class="token operator">></span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> target <span class="token operator">&lt;=</span> nums<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//如果在有序区间里</span>
+                <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span>mid<span class="token number">-1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>                
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 
-    vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">restoreIpAddresses</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        vector<span class="token operator">&lt;</span>string<span class="token operator">></span> ans<span class="token punctuation">;</span>
-        <span class="token function">solve</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token function">search</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -683,7 +674,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/16/fu-yuan-ip-di-zhi/">https://litnwu.gitee.io/2020/03/16/fu-yuan-ip-di-zhi/</a>
+                    <a href="https://litnwu.gitee.io/2020/04/06/sou-suo-xuan-zhuan-pai-xu-shu-zu/">https://litnwu.gitee.io/2020/04/06/sou-suo-xuan-zhuan-pai-xu-shu-zu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -725,12 +716,8 @@
                                     <span class="chip bg-color">leetcode</span>
                                 </a>
                             
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%9B%9E%E6%BA%AF/">
-                                    <span class="chip bg-color">回溯</span>
+                                <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                                    <span class="chip bg-color">二分查找</span>
                                 </a>
                             
                         </div>
@@ -896,84 +883,31 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/19/new-he-malloc-de-qu-bie/">
+                <a href="/2020/04/06/sou-suo-xuan-zhuan-pai-xu-shu-zu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="new和malloc的区别">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="搜索旋转排序数组">
                         
-                        <span class="card-title">new和malloc的区别</span>
+                        <span class="card-title">搜索旋转排序数组</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            new和malloc都可以申请一段动态内存空间：
-
-new的使用// 调用 get_size 确定分配多少个 int
-int *pia = new int[get_size()];   //pia 指向第一个 int
-
-malloc的使用/
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/C/" class="post-category">
-                                    C++
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98/">
-                        <span class="chip bg-color">动态内存</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/14/zi-fu-chuan-xiang-cheng/">
-                    <div class="card-image">
-                        
-                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="字符串相乘">
-                        
-                        <span class="card-title">字符串相乘</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            题目（leetcode 43. 字符串相乘）给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
-示例 1:
-
-输入: num1 = “2”, num2 = “3”
+                            题目（33. 搜索旋转排序数组）假设按照升序排序的数组在预先未知的某个点上进行了旋转。
+( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。
+搜索一个给定的目标值，如果数组中存在这个目标值，则返回它
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
                             </span>
                         <span class="publish-author">
                             
@@ -987,6 +921,7 @@ malloc的使用/
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -994,8 +929,63 @@ malloc的使用/
                         <span class="chip bg-color">leetcode</span>
                     </a>
                     
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                        <span class="chip bg-color">二分查找</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/05/mysql-ajax-jian-yi-deng-lu-yan-zheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="MySQL+ajax简易登录验证">
+                        
+                        <span class="card-title">MySQL+ajax简易登录验证</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            目标实现从网页提交用户名和密码，后端与MySQL中的账户信息匹配，返回结果。
+目录结构
+  
+
+
+MySQL操作create database WyWeb;
+create table user (name varchar(10), pass
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SpringBoot/">
+                        <span class="chip bg-color">SpringBoot</span>
                     </a>
                     
                 </div>
