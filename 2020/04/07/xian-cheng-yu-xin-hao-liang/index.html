@@ -524,6 +524,14 @@
                                 <span class="chip bg-color">线程</span>
                             </a>
                         
+                            <a href="/tags/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85/">
+                                <span class="chip bg-color">生产者消费者</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85/">
+                                <span class="chip bg-color">读者写者</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -674,7 +682,7 @@ sem_t mutex<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>解决方法是使用二元信号量PV操作以实现临界区互斥访问，即将临界区的访问“串行化”。</p>
 <h2 id="利用信号量来调度共享资源"><a href="#利用信号量来调度共享资源" class="headerlink" title="利用信号量来调度共享资源"></a>利用信号量来调度共享资源</h2><p>除了提供互斥之外，信号量的另一个重要作用是调度对共享资源的访问，即实现同步（互斥其实是作为同步的特例）。在这种情景中，一个线程用信号量操作通知另一个线程，程序状态中的某个条件已经为真了。</p>
-<h3 id="生产者消费者问题"><a href="#生产者消费者问题" class="headerlink" title="生产者消费者问题"></a>生产者消费者问题</h3><p>生产者线程和消费者线程共享一个有 n 个槽的有限缓冲区。</p>
+<h2 id="生产者消费者问题"><a href="#生产者消费者问题" class="headerlink" title="生产者消费者问题"></a>生产者消费者问题</h2><p>生产者线程和消费者线程共享一个有 n 个槽的有限缓冲区。</p>
 <ul>
 <li>生产者线程反复地生成新的项目（item），并把它们插入到缓冲区中。</li>
 <li>消费者线程不断地从缓冲区取出这些项目，然后消费（使用）它们。</li>
@@ -685,7 +693,7 @@ sem_t mutex<span class="token punctuation">;</span>
 
 <p>因为插入和取出项目都涉及更新共享变量，所以我们必须保证对缓冲区的访问是互斥的。但是只保证互斥访问是不够的，我们还需要调度对缓冲区的访问。</p>
 <p>如果缓冲区是满的 （没有空的槽位），那么生产者必须等待直到有一个槽位变为可用。与之相似，如果缓冲区 是空的（没有可取用的项目），那么消费者必须等待直到有一个项目变为可用。</p>
-<h4 id="sbuf-h"><a href="#sbuf-h" class="headerlink" title="sbuf.h"></a>sbuf.h</h4><p>SBUF 操作类型为 sbuf_t 的有限缓冲区。</p>
+<h3 id="sbuf-h"><a href="#sbuf-h" class="headerlink" title="sbuf.h"></a>sbuf.h</h3><p>SBUF 操作类型为 sbuf_t 的有限缓冲区。</p>
 <ul>
 <li>项目存放在一个动态分配的 n 项整数数组（buf）中。front 和 rear 索引值记录该数组中的第一项和最后一项。</li>
 <li>三个信号量同步对缓冲区的访问。mutex 信号量提供互斥的缓冲区访问。slots 和 items 信号量分别记录空槽位和可用项目的数量。</li>
@@ -711,7 +719,7 @@ sem_t mutex<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">sbuf_remove</span><span class="token punctuation">(</span>sbuf_t <span class="token operator">*</span>sp<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token macro property">#<span class="token directive keyword">endif</span> </span><span class="token comment" spellcheck="true">/* __SBUF_H__ */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="sbuf-c"><a href="#sbuf-c" class="headerlink" title="sbuf.c"></a>sbuf.c</h4><ul>
+<h3 id="sbuf-c"><a href="#sbuf-c" class="headerlink" title="sbuf.c"></a>sbuf.c</h3><ul>
 <li><p>sbuf_init 函数为缓冲区分配堆内存，设置front 和 rear 表示一个空的缓冲区，并为三个信号量赋初始值。这个函数在调用其他三个函数中的任何一个之前调用一次。</p>
 </li>
 <li><p>sbuf_deinit 函数是当应用程序使用完缓冲区时，释放缓冲区存储的。</p>
@@ -766,7 +774,7 @@ sem_t mutex<span class="token punctuation">;</span>
     <span class="token function">V</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>sp<span class="token operator">-</span><span class="token operator">></span>slots<span class="token punctuation">)</span><span class="token punctuation">;</span>                          <span class="token comment" spellcheck="true">/* Announce available slot */</span>
     <span class="token keyword">return</span> item<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"sbuf.c"</span></span>
+<h3 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"sbuf.c"</span></span>
 
 sbuf_t buf<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 缓冲区的结构体实例</span>
 
@@ -820,7 +828,7 @@ sbuf_t buf<span class="token punctuation">;</span>   <span class="token comment"
 <img src="//tva2.sinaimg.cn/large/005JD0Ejgy1gdlmjkk0m9j30bs086wes.jpg" alt="生产者消费者" width="40%">
 
 
-<h3 id="读者写者问题"><a href="#读者写者问题" class="headerlink" title="读者写者问题"></a>读者写者问题</h3><ul>
+<h2 id="读者写者问题"><a href="#读者写者问题" class="headerlink" title="读者写者问题"></a>读者写者问题</h2><ul>
 <li>一组并发的线程要访问一个共享对象。</li>
 <li>修改对象的线程叫做写者。只读对象的线程叫做读者。</li>
 <li>写者必须拥有对对象的独占的访问，而读者可以和无限多个其他的读者共享对象。</li>
@@ -831,7 +839,7 @@ sbuf_t buf<span class="token punctuation">;</span>   <span class="token comment"
 <li>第二类读者－写者问题，写者优先，要求一旦一个写者准备好可以写，它就会尽可能快地完成它的写操作。同第一类问题不同，在一个写者后到达的读者必须等待，即使这个写者也是在等待。</li>
 </ol>
 <p>对这两种读者一写者问题的正确解答可能导致饥饿（starvation），饥饿就是一个线程无限期地阻塞，无法进展。例如，如果有读者不断地到达，写者就可能无限期地等待。</p>
-<h4 id="第一类读者写者"><a href="#第一类读者写者" class="headerlink" title="第一类读者写者"></a>第一类读者写者</h4><ul>
+<h3 id="第一类读者写者"><a href="#第一类读者写者" class="headerlink" title="第一类读者写者"></a>第一类读者写者</h3><ul>
 <li><p>信号量 mutex 保护对共享变量 count 的访问，count 统计当前在临界区中的读者数量。<br>每当一个写者进入临界区时，它对互斥锁 w 加锁，每当它离开临界区时，对 w 解锁。 这就保证了任意时刻临界区中最多只有一个写者。</p>
 </li>
 <li><p>另一方面，只有第一个进入临界区的读者对 w 加锁，而只有最后一个离开临界区的读者对 w 解锁。<br>当一个读者进入和离开临界区时，如果还有其他读者在临界区中，那么这个读者会忽略互斥锁 w。这就意味着只要还有一个读者占用互斥锁 w，无限多数量的读者可以没有障碍地进入临界区。</p>
@@ -985,6 +993,14 @@ sem_t mutex<span class="token punctuation">,</span> W<span class="token punctuat
                             
                                 <a href="/tags/%E7%BA%BF%E7%A8%8B/">
                                     <span class="chip bg-color">线程</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85/">
+                                    <span class="chip bg-color">生产者消费者</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85/">
+                                    <span class="chip bg-color">读者写者</span>
                                 </a>
                             
                         </div>
@@ -1201,6 +1217,14 @@ sem_t mutex<span class="token punctuation">,</span> W<span class="token punctuat
                     
                     <a href="/tags/%E7%BA%BF%E7%A8%8B/">
                         <span class="chip bg-color">线程</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85/">
+                        <span class="chip bg-color">生产者消费者</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85/">
+                        <span class="chip bg-color">读者写者</span>
                     </a>
                     
                 </div>
