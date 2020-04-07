@@ -687,9 +687,7 @@ sem_t mutex<span class="token punctuation">;</span>
 <li>生产者线程反复地生成新的项目（item），并把它们插入到缓冲区中。</li>
 <li>消费者线程不断地从缓冲区取出这些项目，然后消费（使用）它们。</li>
 </ul>
-<div align="center" width="45%">
-  <img src="//tva3.sinaimg.cn/large/005JD0Ejgy1gdljdnkbp5j30nw05jacy.jpg" alt="生产者消费者问题" width="45%">
-</div>
+<img src="//tva3.sinaimg.cn/large/005JD0Ejgy1gdljdnkbp5j30nw05jacy.jpg" alt="生产者消费者问题" width="45%">
 
 <p>因为插入和取出项目都涉及更新共享变量，所以我们必须保证对缓冲区的访问是互斥的。但是只保证互斥访问是不够的，我们还需要调度对缓冲区的访问。</p>
 <p>如果缓冲区是满的 （没有空的槽位），那么生产者必须等待直到有一个槽位变为可用。与之相似，如果缓冲区 是空的（没有可取用的项目），那么消费者必须等待直到有一个项目变为可用。</p>
