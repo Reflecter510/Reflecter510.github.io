@@ -513,7 +513,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    508
+                    510
                 </div>
                 
 
@@ -557,7 +557,7 @@
 <h2 id="除法定位"><a href="#除法定位" class="headerlink" title="除法定位"></a>除法定位</h2><p>对于<code>n=6,k=373</code>的情况，可以知道，开头为<code>1</code>的全排列共有<code>5!</code>个，开头为<code>2</code>的全排列也有<code>5!</code>个……以此类推，知 n 个数字作为开头，每一个都有<code>(n-1)!</code>种可能的排列。</p>
 <p>初始化排列<code>num[]={1,2,3,4,5,6}</code>，由于数组下标从 0 开始所以<code>k</code>先减一，得372。</p>
 <ul>
-<li><p>对于第 k 个排列，确定第一位的数字是什么只需要求得下标<code>k / (n-1)!</code>。也就是<code>num[372/(5!)]=num[4]=4</code>，第一位数字是4，同时把在<code>num</code>中的 4 删去。</p>
+<li><p>对于第 k 个排列，确定第一位的数字是什么只需要求得下标<code>k / (n-1)!</code>。也就是<code>num[372/(5!)]=num[3]=4</code>，第一位数字是4，同时把在<code>num</code>中的 4 删去。</p>
 </li>
 <li><p>在这之后，问题的规模就缩小，变成<code>n=5, k=372%(5!)=12, num={1,2,3,5,6}</code>，重复上一步。</p>
 </li>
@@ -574,7 +574,7 @@
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> String <span class="token function">getPermutation</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         k <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> num <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        List<span class="token operator">&lt;</span>Integer<span class="token operator">&gt;</span> num <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token keyword">int</span> permu <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
         <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
