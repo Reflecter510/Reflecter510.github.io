@@ -4,10 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关系代数中的运算, LitnWu">
-    <meta name="description" content="传统的集合运算并、交、差，和笛卡尔积。并交差需要两个表的结构一致。
-专门的关系运算
-创建数据库create table 2_4Student(Sno varchar(10),Sname varchar(10), Ssex varchar(1">
+    <meta name="keywords" content="数据库习题, LitnWu">
+    <meta name="description" content="第三章习题零件供应问题建表创建供应商表S
+create tables S(
+  SNO char(2) primary key,
+  SNAME varchar(10),
+  STATUS char(2),
+  CITY varchar(1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>关系代数中的运算 | LitnWu</title>
+    <title>数据库习题 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -347,12 +350,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">关系代数中的运算</h1>
+                    <h1 class="description center-align post-title">数据库习题</h1>
                 </div>
             </div>
         </div>
@@ -494,7 +497,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-08
+                    2020-04-30
                 </div>
                 
 
@@ -508,14 +511,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    594
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -526,128 +529,130 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="传统的集合运算"><a href="#传统的集合运算" class="headerlink" title="传统的集合运算"></a>传统的集合运算</h2><p>并、交、差，和笛卡尔积。<br>并交差需要两个表的结构一致。</p>
-<h2 id="专门的关系运算"><a href="#专门的关系运算" class="headerlink" title="专门的关系运算"></a>专门的关系运算</h2><ul>
-<li>创建数据库<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> 2_4Student<span class="token punctuation">(</span>Sno <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Sname <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Ssex <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Sage <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Sdept <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="第三章习题"><a href="#第三章习题" class="headerlink" title="第三章习题"></a>第三章习题</h2><h3 id="零件供应问题"><a href="#零件供应问题" class="headerlink" title="零件供应问题"></a>零件供应问题</h3><h4 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h4><p>创建供应商表S</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">tables</span> S<span class="token punctuation">(</span>
+  SNO char<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
+  SNAME <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">STATUS</span> char<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  CITY <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>创建零件表P</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> P<span class="token punctuation">(</span>
+  PNO char<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
+  PNAME <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  COLOR char<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  WEIGHT <span class="token keyword">int</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>创建工程项目表J</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> J<span class="token punctuation">(</span>
+  JNO char<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>
+  JNAME <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  CITY <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>创建供应情况表SPJ</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> SPJ<span class="token punctuation">(</span>
+  SNO char<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  PNO char<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  JNO char<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  QTY <span class="token keyword">int</span><span class="token punctuation">,</span>
+  <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">(</span>SNO<span class="token punctuation">,</span>PNO<span class="token punctuation">,</span>JNO<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">foreign</span> <span class="token keyword">key</span> <span class="token punctuation">(</span>SNO<span class="token punctuation">)</span> <span class="token keyword">references</span> S<span class="token punctuation">(</span>SNO<span class="token punctuation">)</span> <span class="token keyword">on</span> <span class="token keyword">update</span> <span class="token keyword">cascade</span><span class="token punctuation">,</span>
+  <span class="token keyword">foreign</span> <span class="token keyword">key</span> <span class="token punctuation">(</span>PNO<span class="token punctuation">)</span> <span class="token keyword">references</span> P<span class="token punctuation">(</span>PNO<span class="token punctuation">)</span> <span class="token keyword">on</span> <span class="token keyword">delete</span> <span class="token keyword">no</span> <span class="token keyword">action</span><span class="token punctuation">,</span>
+  <span class="token keyword">foreign</span> <span class="token keyword">key</span> <span class="token punctuation">(</span>JNO<span class="token punctuation">)</span> <span class="token keyword">references</span> J<span class="token punctuation">(</span>JNO<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><ol>
+<li><p>求供应工程J1零件的供应商号码SNO；</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> SNO <span class="token keyword">from</span> SPJ <span class="token keyword">where</span> JNO<span class="token operator">=</span><span class="token string">"J1"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li>插入数据<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> 2_4Student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">"201215121"</span><span class="token punctuation">,</span><span class="token string">"LiYong"</span><span class="token punctuation">,</span><span class="token string">"male"</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">"CS"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">insert</span> <span class="token keyword">into</span> 2_4Student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">"201215122"</span><span class="token punctuation">,</span><span class="token string">"LiuYi"</span><span class="token punctuation">,</span><span class="token string">"female"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token string">"CS"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">insert</span> <span class="token keyword">into</span> 2_4Student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">"201215123"</span><span class="token punctuation">,</span><span class="token string">"WangMin"</span><span class="token punctuation">,</span><span class="token string">"female"</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token string">"MA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">insert</span> <span class="token keyword">into</span> 2_4Student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">"201215124"</span><span class="token punctuation">,</span><span class="token string">"ZhangLi"</span><span class="token punctuation">,</span><span class="token string">"male"</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token string">"IS"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<li><p>求供应工程J1零件P1的供应商号码SNO；</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> SNO <span class="token keyword">from</span> SPJ <span class="token keyword">where</span> JNO<span class="token operator">=</span><span class="token string">"j1"</span> <span class="token operator">and</span> PNO<span class="token operator">=</span><span class="token string">"P1"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li>查看表<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_4Student<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="60%">
-<img width="60%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gcmhezpnw2j30ni08lgm5.jpg" alt="创建表">
-</div>
-
+<li><p>求供应工程J1零件为红色的供应商号码SNO；</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> SNO <span class="token keyword">from</span> SPJ<span class="token punctuation">,</span>P <span class="token keyword">where</span> SPJ<span class="token punctuation">.</span>PNO<span class="token operator">=</span>P<span class="token punctuation">.</span>PNO <span class="token operator">and</span> COLOR<span class="token operator">=</span><span class="token string">"红"</span> <span class="token operator">and</span> JNO<span class="token operator">=</span><span class="token string">"J1"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>或者</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> SNO <span class="token keyword">from</span> SPJ <span class="token keyword">where</span> JNO<span class="token operator">=</span><span class="token string">"J1"</span> <span class="token operator">and</span> PNO <span class="token operator">in</span><span class="token punctuation">(</span>
+<span class="token keyword">select</span> PNO <span class="token keyword">from</span> P <span class="token keyword">where</span> COLOR<span class="token operator">=</span><span class="token string">"红"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
-</ul>
-<h3 id="选择（selection）"><a href="#选择（selection）" class="headerlink" title="选择（selection）"></a>选择（selection）</h3><p>可以选取出多个行。</p>
-<ul>
-<li><strong>例2.4  查询信息系 (IS 系）全体学生：</strong></li>
-</ul>
-<p>\[σ_{ Sdept=“ IS ” }(Student)\]</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_4Student <span class="token keyword">where</span> Sdept<span class="token operator">=</span><span class="token string">"IS"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="60%">
-<img width="60%" src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gcmhpp8srij30oe06xaad.jpg" alt="例2.4">
-</div>
-
-<ul>
-<li><strong>例2.5 查询年龄小于 20 岁的学生：</strong></li>
-</ul>
-<p>\[σ_{ Sage&lt;20 }(Student)\]</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_4Student <span class="token keyword">where</span> Sage<span class="token operator">&lt;</span><span class="token number">20</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="60%">
-<img width="60%" src="//tvax3.sinaimg.cn/large/005JD0Ejgy1gcmhtv1u0zj30oe08c3z3.jpg" alt="例2.5">
-</div>
-
-<h3 id="投影（Projection）"><a href="#投影（Projection）" class="headerlink" title="投影（Projection）"></a>投影（Projection）</h3><p>可以选取出多个列。</p>
-<ul>
-<li><strong>例2.6 查询学生的姓名和所在系，即求 Student 关系上学生姓名和所在系两个属性<br>上的投影：</strong></li>
-</ul>
-<p>\[Π_{ Sname,Sdept }(Student)\]</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> Sname<span class="token punctuation">,</span>Sdept <span class="token keyword">from</span> 2_4Student<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="60%">
-<img width="60%" src="//tva3.sinaimg.cn/large/005JD0Ejgy1gcmi0z1gxtj30n509ht92.jpg" alt="例2.6">
-</div>
-
-<ul>
-<li><strong>例 2.7 查询学生关系 Student 中都有哪些系，即查询关系 Student 上所在系屈性上<br>的投影:</strong></li>
-</ul>
-<p>\[Π_{ Sdept }(Student)\]</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">distinct</span> Sdept <span class="token keyword">from</span> 2_4Student<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>Student 关系原来有 4 个元组，而投影结果取消了重复的 CS 元 组，因此只有三个元组。</p>
-<div align="center" width="60%">
-<img width="60%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gcmi860vlyj30nj08kaa9.jpg" alt="例2.7">
-</div>
-
-<h3 id="连接（join）"><a href="#连接（join）" class="headerlink" title="连接（join）"></a>连接（join）</h3><p>将两个表进行拼接。</p>
-<ul>
-<li><strong>例 2.S8 表R 和 表S:</strong><div align="center" width="40%">
-<img width="40%" src="//tvax2.sinaimg.cn/large/005JD0Ejgy1gcmjggk7zfj30ga0k8js1.jpg" alt="R和S">
-</div>
-
+<li><p>求没有使用天津供应商生产的红色零件的工程号JNO；</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">distinct</span> JNO <span class="token keyword">from</span> SPJ <span class="token keyword">where</span> JNO <span class="token operator">not</span> <span class="token operator">in</span><span class="token punctuation">(</span>
+<span class="token keyword">select</span> JNO <span class="token keyword">from</span> S<span class="token punctuation">,</span>P<span class="token punctuation">,</span>SPJ <span class="token keyword">where</span> S<span class="token punctuation">.</span>SNO<span class="token operator">=</span>SPJ<span class="token punctuation">.</span>SNO <span class="token operator">and</span> P<span class="token punctuation">.</span>PNO<span class="token operator">=</span>SPJ<span class="token punctuation">.</span>PNO <span class="token operator">and</span> CITY<span class="token operator">=</span><span class="token string">"天津"</span> <span class="token operator">and</span> COLOR<span class="token operator">=</span><span class="token string">"红"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
-</ul>
-<p>等值连接：<br>当两个表某一属性相等时。会舍弃只出现在一个表中的项。</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R<span class="token punctuation">,</span>2_7S <span class="token keyword">where</span> 2_7R<span class="token punctuation">.</span>B<span class="token operator">=</span>2_7S<span class="token punctuation">.</span>B<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gcmjo1g00zj30pp09tt94.jpg" alt="等值连接">
-</div>
-
-<p>非等值连接：</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R<span class="token punctuation">,</span>2_7S <span class="token keyword">where</span> 2_7R<span class="token punctuation">.</span>C<span class="token operator">&lt;</span>2_7S<span class="token punctuation">.</span>E<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmk4nu7w6j30q60aq3z0.jpg" alt="自然连接">
-</div>
-
-<p>自然连接：<br>相同属性只显示一次。注意，自然连接中没有判断语句。</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R <span class="token keyword">natural</span> <span class="token keyword">join</span> 2_7S<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tva2.sinaimg.cn/large/005JD0Ejgy1gcmk22qhdyj30nb09paae.jpg" alt="自然连接">
-</div>
-
-<p>（全）外连接：<br>只出现在一个表中的项也会显示，未定义的值设为null。Mysql暂不支持这种语法：</p>
-<div align="center" width="45%">
-<img width="45%" src="//tvax2.sinaimg.cn/large/005JD0Ejgy1gcmkeg5v22j30ep0e2ju3.jpg" alt="外连接">
-</div>
-
-<p>左（自然）连接：<br>保留左表。</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R <span class="token keyword">natural</span> <span class="token keyword">left</span> <span class="token keyword">join</span> 2_7S<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmjx3ja3dj30om0aagm1.jpg" alt="左（自然）连接">
-</div>
-
-<p>右（自然）连接:<br>保留右表。</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> 2_7R <span class="token keyword">natural</span> <span class="token keyword">right</span> <span class="token keyword">join</span> 2_7S<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<div align="center" width="55%">
-<img width="55%" src="//tvax3.sinaimg.cn/large/005JD0Ejgy1gcmjyudfafj30qg0afwex.jpg" alt="右（自然）连接">
-</div>
-
-<h3 id="除运算（division）"><a href="#除运算（division）" class="headerlink" title="除运算（division）"></a>除运算（division）</h3><p>Mysql没有直接的对应语句。需要根据题目的实际含义书写复杂的SQL，通常都会包含子查询。</p>
-<div align="center" width="65%">
-<img width="65%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmlf43of7j30t00jfk3t.jpg" alt="除运算">
-</div>
-
+<li><p>求至少用了供应商S1所供应的全部零件的工程号JNO。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">/*未测试*/</span>
+<span class="token keyword">select</span> <span class="token keyword">distinct</span> JNO <span class="token keyword">from</span> SPJ <span class="token keyword">as</span> <span class="token number">a</span> <span class="token keyword">where</span> <span class="token operator">not</span> <span class="token keyword">exists</span><span class="token punctuation">(</span>
+<span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token keyword">distinct</span> PNO <span class="token keyword">from</span> SPJ <span class="token keyword">where</span> PNO <span class="token operator">in</span> 
+ <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token keyword">distinct</span> PNO <span class="token keyword">from</span> SPJ <span class="token keyword">where</span> SNO<span class="token operator">=</span><span class="token string">"S1"</span><span class="token punctuation">)</span> 
+ <span class="token operator">and</span> JNO<span class="token operator">=</span> <span class="token number">a</span><span class="token punctuation">.</span>JNO 
+<span class="token keyword">union</span> <span class="token keyword">all</span> 
+<span class="token keyword">select</span> <span class="token keyword">distinct</span> PNO <span class="token keyword">from</span> SPJ <span class="token keyword">where</span> SNO<span class="token operator">=</span><span class="token string">"S1"</span><span class="token punctuation">)</span>
+<span class="token keyword">group</span> <span class="token keyword">by</span> PNO
+<span class="token keyword">having</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token number">2</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>找出使用上海产的零件的工程名称</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> JNAME <span class="token keyword">from</span> J<span class="token punctuation">,</span>S<span class="token punctuation">,</span>SPJ <span class="token keyword">where</span> S<span class="token punctuation">.</span>SNO<span class="token operator">=</span>SPJ<span class="token punctuation">.</span>SNO <span class="token operator">and</span> J<span class="token punctuation">.</span>JNO<span class="token operator">=</span>SPJ<span class="token punctuation">.</span>JNO <span class="token operator">and</span> S<span class="token punctuation">.</span>CITY<span class="token operator">=</span><span class="token string">"上海"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>找出没有使用天津产的零件的工程号码；</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> JNO <span class="token keyword">from</span> J <span class="token keyword">where</span> JNO <span class="token operator">not</span> <span class="token operator">in</span>
+<span class="token punctuation">(</span><span class="token keyword">select</span> JNO <span class="token keyword">from</span> S<span class="token punctuation">,</span>SPJ <span class="token keyword">where</span> S<span class="token punctuation">.</span>SNO<span class="token operator">=</span>SPJ<span class="token punctuation">.</span>SNO <span class="token operator">and</span> S<span class="token punctuation">.</span>CITY<span class="token operator">=</span><span class="token string">"天津"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>把全部红色零件的颜色改成蓝色</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">update</span> P <span class="token keyword">set</span> COLOR<span class="token operator">=</span><span class="token string">"蓝"</span> <span class="token keyword">where</span> COLOR<span class="token operator">=</span><span class="token string">"红"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>将供应商S5供给工程J4的零件P6改成由供应商S3供应，请做必要的修改；</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">update</span> SPJ <span class="token keyword">set</span> SNO<span class="token operator">=</span><span class="token string">"S3"</span> <span class="token keyword">where</span> SNO<span class="token operator">=</span><span class="token string">"S5"</span> <span class="token operator">and</span> JNO<span class="token operator">=</span><span class="token string">"J4"</span> <span class="token operator">and</span> PNO<span class="token operator">=</span><span class="token string">"P6"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>从供应商关系中删除S2的记录，并从供应情况关系中删除相应的记录；</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">delete</span> <span class="token keyword">from</span> SPJ <span class="token keyword">where</span> SNO<span class="token operator">=</span><span class="token string">"S2"</span><span class="token punctuation">;</span>
+<span class="token keyword">delete</span> <span class="token keyword">from</span> S <span class="token keyword">where</span> SNO<span class="token operator">=</span><span class="token string">"S2"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>将（S2, J6, P4, 200）插入SPJ表中。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> SPJ <span class="token punctuation">(</span>SNO<span class="token punctuation">,</span> JNO<span class="token punctuation">,</span> PNO<span class="token punctuation">,</span> QTY<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span>S2<span class="token punctuation">,</span> J6<span class="token punctuation">,</span> P4<span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>请为“三建”工程项目建立一个供应情况的视图，包括供应商代码（SNO）、零件代码（PNO）、供应数量（QTY）。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">view</span> SANJIAN_SPJ <span class="token punctuation">(</span>SNO<span class="token punctuation">,</span> PNO<span class="token punctuation">,</span> QTY<span class="token punctuation">)</span> 
+<span class="token keyword">as</span>
+<span class="token keyword">select</span> SNO<span class="token punctuation">,</span>PNO<span class="token punctuation">,</span>QTY <span class="token keyword">from</span> SPJ<span class="token punctuation">,</span>J <span class="token keyword">where</span> J<span class="token punctuation">.</span>JNO<span class="token operator">=</span>SPJ<span class="token punctuation">.</span>JNO <span class="token operator">and</span> JNAME<span class="token operator">=</span><span class="token string">"三建"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>针对该视图完成下列查询：（1）找出“三建”工程项目使用的各种零件代码及其数量；</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> PNO<span class="token punctuation">,</span> <span class="token function">sum</span><span class="token punctuation">(</span>QTY<span class="token punctuation">)</span> <span class="token keyword">as</span> QTY <span class="token keyword">from</span> SANJIAN_SPJ <span class="token keyword">group</span> <span class="token keyword">by</span> PNO<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>(2)找出供应商S1的供应情况。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> SANJIAN_SPJ <span class="token keyword">where</span> SNO<span class="token operator">=</span><span class="token string">"S1"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>按供应商代码统计每位供应商供应某种零件的供应总量，要求：</p>
+</li>
+</ol>
 <ul>
-<li><strong>例 2.10 查询至少选修 l 号课程和 3 号课程的学生号码。</strong></li>
+<li>1）仅显示供应总量&gt;=500的信息</li>
+<li>2）显示SNO、PNO和供应总量</li>
+<li>3）显示时，查询结果按供应总量降序排列，供应总量相同按SNO升序、 PNO降序排列</li>
 </ul>
-<div align="center" width="50%">
-<img width="50%" src="//tva3.sinaimg.cn/large/005JD0Ejgy1gcmqtxdneij30gb0afdg7.jpg" alt="例2.10">
-</div>
-
-<div align="center" width="50%">
-<img width="50%" src="//tva4.sinaimg.cn/large/005JD0Ejgy1gcmr2idxzrj30v20e2qbc.jpg" alt="例2.10">
-</div>
-
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> Sno <span class="token keyword">from</span> 2_4SC 
-  <span class="token keyword">where</span> Cno<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token keyword">exists</span><span class="token punctuation">(</span>
-    <span class="token keyword">select</span> Sno <span class="token keyword">from</span> 2_4SC <span class="token keyword">where</span> Cno<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<div align="center" width="65%">
-<img width="65%" src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gcmqxkxn1vj30q70803yt.jpg" alt="例2.10">
-</div>
-
-<script>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> SNO<span class="token punctuation">,</span>PNO<span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>QTY<span class="token punctuation">)</span> <span class="token keyword">from</span> SPJ <span class="token keyword">group</span> <span class="token keyword">by</span> SNO<span class="token punctuation">,</span>PNO <span class="token keyword">having</span> <span class="token function">sum</span><span class="token punctuation">(</span>QTY<span class="token punctuation">)</span><span class="token operator">>=</span><span class="token number">500</span> <span class="token keyword">order</span> <span class="token keyword">by</span> <span class="token number">3</span> <span class="token keyword">desc</span><span class="token punctuation">,</span> SNO<span class="token punctuation">,</span> PNO <span class="token keyword">desc</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="第四章习题"><a href="#第四章习题" class="headerlink" title="第四章习题"></a>第四章习题</h2><h3 id="学生表权限问题"><a href="#学生表权限问题" class="headerlink" title="学生表权限问题"></a>学生表权限问题</h3><ol>
+<li><p>授予用户U1对两个表（学生表和班级表）的所有权限，并可给其他用户授权。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">grant</span> <span class="token keyword">all</span> <span class="token keyword">privileges</span> <span class="token keyword">on</span> <span class="token keyword">table</span> 学生<span class="token punctuation">,</span>班级 <span class="token keyword">to</span> U1 <span class="token keyword">with</span> <span class="token keyword">grant</span> <span class="token keyword">option</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>授予用户U2对学生表具有查询权限，对家庭住址具有更新权限。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">grant</span> <span class="token keyword">select</span><span class="token punctuation">,</span> <span class="token keyword">update</span><span class="token punctuation">(</span>家庭住址<span class="token punctuation">)</span> <span class="token keyword">on</span> <span class="token keyword">table</span> 学生 <span class="token keyword">to</span> U2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>将对班级表的查询权限授予所有用户。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">grant</span> <span class="token keyword">select</span> <span class="token keyword">on</span> <span class="token keyword">table</span> 班级 <span class="token keyword">to</span> <span class="token keyword">public</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>将对学生表的查询、更新权限授予角色R1。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">grant</span> <span class="token keyword">select</span><span class="token punctuation">,</span> <span class="token keyword">update</span> <span class="token keyword">on</span> <span class="token keyword">table</span> 学生 <span class="token keyword">to</span> R1<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>将角色R1授予用户U1，U1可继续授权给其他用户。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">grant</span> R1 <span class="token keyword">to</span> U1 <span class="token keyword">with</span> admin <span class="token keyword">option</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h3 id="职工权限问题"><a href="#职工权限问题" class="headerlink" title="职工权限问题"></a>职工权限问题</h3><ol>
+<li>用户王明对两个表有SELECT权限。<pre class="line-numbers language-sql"><code class="language-sql"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<pre><code></code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -690,7 +695,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/08/guan-xi-dai-shu-zhong-de-yun-suan/">https://litnwu.gitee.io/2020/03/08/guan-xi-dai-shu-zhong-de-yun-suan/</a>
+                    <a href="https://litnwu.gitee.io/2020/04/30/shu-ju-ku-xi-ti/">https://litnwu.gitee.io/2020/04/30/shu-ju-ku-xi-ti/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -895,52 +900,53 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/09/mian-xiang-dui-xiang-opp/">
+                <a href="/2020/04/30/shu-ju-ku-xi-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="面向对象(OPP)">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="数据库习题">
                         
-                        <span class="card-title">面向对象(OPP)</span>
+                        <span class="card-title">数据库习题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            OPP核心思想三个核心思想是数据抽象、继承、和动态绑定。
-
-通过数据抽象，我们可以将类的接口和实现分离。
-
-通过继承，可以定义相似的类型并对相似关系进行建模。这样，我们可以更容易地定义与其他类相似但不完全相同的类。
-
-通过动态绑定，可以在一
+                            第三章习题零件供应问题建表创建供应商表S
+create tables S(
+  SNO char(2) primary key,
+  SNAME varchar(10),
+  STATUS char(2),
+  CITY varchar(1
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -954,33 +960,38 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/05/fork-chuang-jian-jin-cheng/">
+                <a href="/2020/04/27/di-k-ge-pai-lie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="fork()创建进程">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="第k个排列">
                         
-                        <span class="card-title">fork()创建进程</span>
+                        <span class="card-title">第k个排列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            fork()创建进程fork()通过拷贝当前进程创建一个子进程。
-子进程与父进程的区别仅仅在于PID（每个进程唯一）、PPID（父进程的进程号，子进程将其设置为被拷贝进程的PID）和某些资源和统计量（例如，挂起的信号，它没有必要被继承）。
+                            题目（leetcode 60. 第k个排列）给出集合 [1,2,3,…,n]，其所有元素共有 n! 种排列。
+按大小顺序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：
 
+“123”
+“132”
+“213”
+“231”
+“
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
@@ -990,8 +1001,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BF%9B%E7%A8%8B/">
-                        <span class="chip bg-color">进程</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
@@ -1166,13 +1177,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
