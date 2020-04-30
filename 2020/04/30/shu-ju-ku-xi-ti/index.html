@@ -511,7 +511,7 @@ create tables S(
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2k
                 </div>
                 
 
@@ -595,6 +595,9 @@ create tables S(
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> JNAME <span class="token keyword">from</span> J<span class="token punctuation">,</span>S<span class="token punctuation">,</span>SPJ <span class="token keyword">where</span> S<span class="token punctuation">.</span>SNO<span class="token operator">=</span>SPJ<span class="token punctuation">.</span>SNO <span class="token operator">and</span> J<span class="token punctuation">.</span>JNO<span class="token operator">=</span>SPJ<span class="token punctuation">.</span>JNO <span class="token operator">and</span> S<span class="token punctuation">.</span>CITY<span class="token operator">=</span><span class="token string">"上海"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>找出没有使用天津产的零件的工程号码；</p>
+<blockquote>
+<p>先连接S表和SPJ表查询出所有天津产的零件的工程号码，再在其中查询不在结果集中的JNO。</p>
+</blockquote>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> JNO <span class="token keyword">from</span> J <span class="token keyword">where</span> JNO <span class="token operator">not</span> <span class="token operator">in</span>
 <span class="token punctuation">(</span><span class="token keyword">select</span> JNO <span class="token keyword">from</span> S<span class="token punctuation">,</span>SPJ <span class="token keyword">where</span> S<span class="token punctuation">.</span>SNO<span class="token operator">=</span>SPJ<span class="token punctuation">.</span>SNO <span class="token operator">and</span> S<span class="token punctuation">.</span>CITY<span class="token operator">=</span><span class="token string">"天津"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
@@ -700,6 +703,9 @@ create tables S(
   <span class="token keyword">foreign</span> <span class="token keyword">key</span> <span class="token punctuation">(</span>部门号<span class="token punctuation">)</span> <span class="token keyword">references</span> 部门<span class="token punctuation">(</span>部门号<span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>某单位想举行一个小型的联谊会，关系Male记录注册的男宾信息，关系Female记录注册的女宾信息。建立一个断言，将来宾的人数限制在50人以内。</p>
+<blockquote>
+<p>分别查询Male表和Female表然后将其联合，求出数目</p>
+</blockquote>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> assertion 人数限制 
     <span class="token keyword">check</span> <span class="token punctuation">(</span><span class="token number">50</span><span class="token operator">>=</span><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
                 <span class="token keyword">from</span>
@@ -713,12 +719,18 @@ create tables S(
 </ul>
 <ol>
 <li><p>检索选修了全部课程的学生姓名</p>
+<blockquote>
+<p>STUDENT和SC连接，然后按学号和姓名进行分组，取出分组中的表项数目与COURSE表中的表项数一致的姓名</p>
+</blockquote>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> SNAME <span class="token keyword">from</span> STUDENT<span class="token punctuation">,</span>SC <span class="token keyword">where</span> STUDENT<span class="token punctuation">.</span>SNO<span class="token operator">=</span>SC<span class="token punctuation">.</span>SNO
    <span class="token keyword">group</span> <span class="token keyword">by</span> STUDENT<span class="token punctuation">.</span>SNO<span class="token punctuation">,</span> SNAME <span class="token keyword">having</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token punctuation">(</span>
        <span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>CNO<span class="token punctuation">)</span> <span class="token keyword">from</span> COURSE 
    <span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>查询在课程 CS-110 中成绩为第 4 名的学生的姓名</p>
+<blockquote>
+<p>先对SC表查询出SNO=CS-110的前4名的数据，然后与STUDENT连接，取出第4名那一条数据的姓名</p>
+</blockquote>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">top</span> <span class="token number">1</span> SNAME <span class="token keyword">from</span> 
    <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token keyword">top</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token keyword">from</span> SC <span class="token keyword">where</span> SNO<span class="token operator">=</span><span class="token string">"CS-110"</span> <span class="token keyword">order</span> <span class="token keyword">by</span> GRADE <span class="token keyword">desc</span><span class="token punctuation">)</span> <span class="token keyword">as</span> RS
    <span class="token punctuation">,</span>STUDENT
@@ -726,6 +738,9 @@ create tables S(
    <span class="token keyword">order</span> <span class="token keyword">by</span> GRADE<span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>查询成绩处于相应课程的平均成绩和最高成绩之间的学号和课程号</p>
+<blockquote>
+<p>先对SC表为每一门课程求出平均成绩和最高成绩，然后与SC表连接，最后投影出符合条件的号和课程号</p>
+</blockquote>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> SNO<span class="token punctuation">,</span>SC<span class="token punctuation">.</span>CNO <span class="token keyword">from</span> 
    SC<span class="token punctuation">,</span> 
    <span class="token punctuation">(</span><span class="token keyword">select</span> CNO<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>GRADE<span class="token punctuation">)</span> <span class="token keyword">as</span> 平均成绩<span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>GRADE<span class="token punctuation">)</span> <span class="token keyword">as</span> 最高成绩 <span class="token keyword">from</span> SC<span class="token punctuation">)</span><span class="token keyword">as</span> RS 
