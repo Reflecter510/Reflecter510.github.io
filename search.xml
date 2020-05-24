@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>编译器如何区别不同的重载函数</title>
+      <link href="/2020/05/24/bian-yi-qi-ru-he-qu-bie-bu-tong-de-chong-zai-han-shu/"/>
+      <url>/2020/05/24/bian-yi-qi-ru-he-qu-bie-bu-tong-de-chong-zai-han-shu/</url>
+      
+        <content type="html"><![CDATA[<p><code>C++</code>和<code>java</code>都能使用重载函数，它们在源代码中的有着相同的名字，但是有不同的参数列表。</p><p>那么链接器是如何区别这些不同的重载函数之间的差异呢？</p><h2 id="重整"><a href="#重整" class="headerlink" title="重整"></a>重整</h2><p><code>C++</code>和<code>java</code>使用兼容的重整策略。这种编码过程叫做重整（mangling），与此相反的过程是恢复（demangling）。</p><p><strong>编译器</strong>将每个唯一的函数和参数列表组合编码成一个对链接器来说唯一的名字。</p><p>一个被重整的类名字是由名字中字符的整数数量，后面跟原始名字组成。</p><blockquote><p>比如，类<code>Foo</code>被编码成<code>3Foo</code>。<br>函数被编码为原始函数名，后面加上<code>__</code>，加上被重整的类名，再加上每个参数的单字母编码。<br>比如，<code>Foo::bar(int,long)</code>，被编码成<code>bar__3Fooil</code>。</p></blockquote><p>重整全局变量和模板名字的策略是类似的。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 重载 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据库实验1</title>
       <link href="/2020/05/17/shu-ju-ku-shi-yan-1/"/>
       <url>/2020/05/17/shu-ju-ku-shi-yan-1/</url>
