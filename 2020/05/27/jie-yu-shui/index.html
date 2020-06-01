@@ -535,21 +535,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-05-31
+                    2020-06-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
 
@@ -570,6 +570,7 @@
 <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>其实就是暴力法的优化。在暴力法的遍历中，每遇到一个元素，都要重新分别往左和往右找最大的元素，然后两者取其小，与当前元素的高度相减，结果加到 ans 中。</p>
 <p>在这里，会有重复计算的情况，也就是具有重叠子问题的性质。考虑下面这个数组：1,6,3,4,5。对于 4 和 5 来说，它们的左边最大元素，显然是 6 ，但是 4 和 5 都要往前遍历到 1 才知道左边最大是 6 。而我们可以使用一个数组，从前往后遍历，不断更新已经遍历到的元素的最大值，姑且称为前缀最大值吧。这个处理完需要遍历一遍数组，即可得到每一个元素的左边最大值是什么。</p>
 <p>同理，右边最大值只需要逆序遍历即可。因此，预处理完共需要遍历两边数组。最后从头开始遍历数组计算结果，操作与暴力法类似，取出当前元素的左边最大值和右边最大值中的较小者，然后与当前元素的高度相减，结果加到 ans 中。</p>
+<p>时间复杂度O(n)。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">int</span> <span class="token function">trap</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -594,7 +595,47 @@
         <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h2><h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><h2 id="暴力双指针"><a href="#暴力双指针" class="headerlink" title="暴力双指针"></a>暴力双指针</h2><p>自己想到的简陋解法。假如把数组里的那些高度看成一根根柱子，要是能装水，至少得有两根柱子把水围起来，那么长度小于 2 的数组可以直接特判返回 0 。</p>
+<h2 id="单调递减栈"><a href="#单调递减栈" class="headerlink" title="单调递减栈"></a>单调递减栈</h2><p>将下标值维护成一个单调递减栈来逐层计算雨水量，如图所示。当遇到比栈顶元素大的元素的时候，其实就是已经形成了一个坑可以装雨水了，那么就需要往前考察共三个元素：当前元素 <code>i</code> 、栈顶元素 <code>top</code> 和栈顶下面一个元素 <code>st.top()</code>。这里默认弹出了一个栈顶元素，所以栈顶下面一个元素是 <code>st.top()</code>。</p>
+<p><img src="//tva3.sinaimg.cn/large/005JD0Ejgy1gfctogcm49j30bg04hwet.jpg" alt="上图展示了第二层第一个红色箭头雨水的求解过程：共经历了两次内循环，第一次st.top指向绿色数字1的位置，此时计算出的界定高度为0，因此ans+=0；第二次内循环st.top指向绿色数字2，计算出的界定高度=min(2,3)-1=1，ans+=1*2"></p>
+<p>最重要的是计算界定高度 <code>bound_height</code>，即确定雨水有几层。</p>
+<p>它的值应是当前元素高度 <code>height[i]</code> 和栈顶下面一个元素高度<code>height[st.top()]</code>之间的最小值，减去栈顶元素高度<code>height[top]</code>。</p>
+<ul>
+<li>界定高度：<code>bound_height = min(height[i], height[st.top()]) - height[top];</code></li>
+</ul>
+<p>那么雨水量 = 几层雨水<code>bound_height</code> * 当前元素与栈顶元素下面一个元素的距离 <code>distance</code>。</p>
+<ul>
+<li>雨水量：<code>ans += distance * bound_height;</code></li>
+</ul>
+<p>其中<code>distance</code>直接用下标相减：<code>i - st.top() - 1;</code></p>
+<p>时间复杂度O(n)，只需要遍历数组一次。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">trap</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> <span class="token keyword">int</span> len <span class="token operator">=</span> height<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>len <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        stack<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> st<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>st<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> height<span class="token punctuation">[</span>st<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> top <span class="token operator">=</span> st<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                st<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>st<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> distance <span class="token operator">=</span> i <span class="token operator">-</span> st<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> bound_height <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> height<span class="token punctuation">[</span>st<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> height<span class="token punctuation">[</span>top<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                ans <span class="token operator">+</span><span class="token operator">=</span> distance <span class="token operator">*</span> bound_height<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            st<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><h2 id="暴力双指针"><a href="#暴力双指针" class="headerlink" title="暴力双指针"></a>暴力双指针</h2><p>自己想到的简陋解法。假如把数组里的那些高度看成一根根柱子，要是能装水，至少得有两根柱子把水围起来，那么长度小于 2 的数组可以直接特判返回 0 。</p>
 <p>接下来使用左右两个指针<code>lf</code>和<code>rt</code>，分别代表左边和右边的柱子。左指针从 0 开始，右指针从 1 开始。</p>
 <p>每当确定左边的柱子之后，就开始寻找右边的柱子。</p>
 <ul>
