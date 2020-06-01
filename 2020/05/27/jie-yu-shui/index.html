@@ -596,7 +596,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="单调递减栈"><a href="#单调递减栈" class="headerlink" title="单调递减栈"></a>单调递减栈</h2><p>将下标值维护成一个单调递减栈来逐层计算雨水量，如图所示。当遇到比栈顶元素大的元素的时候，其实就是已经形成了一个坑可以装雨水了，那么就需要往前考察共三个元素：当前元素 <code>i</code> 、栈顶元素 <code>top</code> 和栈顶下面一个元素 <code>st.top()</code>。这里默认弹出了一个栈顶元素，所以栈顶下面一个元素是 <code>st.top()</code>。</p>
-<p><img src="//tva3.sinaimg.cn/large/005JD0Ejgy1gfctogcm49j30bg04hwet.jpg" alt="上图展示了第二层第一个红色箭头雨水的求解过程：共经历了两次内循环，第一次st.top指向绿色数字1的位置，此时计算出的界定高度为0，因此ans+=0；第二次内循环st.top指向绿色数字2，计算出的界定高度=min(2,3)-1=1，ans+=1*2"></p>
+<p><img src="//tva3.sinaimg.cn/large/005JD0Ejgy1gfctogcm49j30bg04hwet.jpg" alt="上图展示了第二层第一个红色箭头雨水的求解过程：共经历了两次内循环，第一次st.top指向绿色数字1的位置，此时计算出的界定高度为0，因此ans+=0；第二次内循环st.top指向绿色数字2，计算出的界定高度=min(2,3)-1=1，ans+=1*3"></p>
 <p>最重要的是计算界定高度 <code>bound_height</code>，即确定雨水有几层。</p>
 <p>它的值应是当前元素高度 <code>height[i]</code> 和栈顶下面一个元素高度<code>height[st.top()]</code>之间的最小值，减去栈顶元素高度<code>height[top]</code>。</p>
 <ul>
