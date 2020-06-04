@@ -640,13 +640,9 @@ malloc的使用/
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                TCP三次握手我们知道tcp建立连接要进行“三次握手”，即交换三个分组。大致流程如下：
-
-客户端向服务器发送一个SYN J
-服务器向客户端响应一个SYN K，并对SYN J进行确认ACK J+1
-客户端再向服务器发一个确认ACK K+1
-
-
+                                TCP三次握手我们知道tcp建立连接要进行“三次握手”，即交换三个分组。
+首先，服务器必须准备好接受外来的连接。这通常是通过调用socket、bind和listen这3个函数来完成，我们称之为被动打开(passive open)。
+三次握手
                             
                         </div>
                         <div class="publish-info">

@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="字符串相乘, LitnWu">
-    <meta name="description" content="题目（leetcode 43. 字符串相乘）给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。
-示例 1:
-
-输入: num1 = “2”, num2 = “3”">
+    <meta name="keywords" content="diary, LitnWu">
+    <meta name="description" content="diary | LitnWu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>字符串相乘 | LitnWu</title>
+    <title>diary | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -370,12 +367,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('a')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">字符串相乘</h1>
+                    <h1 class="description center-align post-title">diary</h1>
                 </div>
             </div>
         </div>
@@ -490,29 +487,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/leetcode/">
-                                <span class="chip bg-color">leetcode</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/algorithm/" class="post-category">
-                                algorithm
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -521,28 +501,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-14
+                    2020-06-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-14
+                    2020-06-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    636
+                    132
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -553,50 +533,17 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目（leetcode-43-字符串相乘）"><a href="#题目（leetcode-43-字符串相乘）" class="headerlink" title="题目（leetcode 43. 字符串相乘）"></a>题目（<a href="https://leetcode-cn.com/problems/multiply-strings/" target="_blank" rel="noopener">leetcode 43. 字符串相乘</a>）</h2><p>给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。</p>
-<p><strong>示例 1:</strong></p>
-<blockquote>
-<p>输入: num1 = “2”, num2 = “3”<br>输出: “6”</p>
-</blockquote>
-<p><strong>示例 2:</strong></p>
-<blockquote>
-<p>输入: num1 = “123”, num2 = “456”<br>输出: “56088”</p>
-</blockquote>
-<p><strong>说明：</strong><br>    1. num1 和 num2 的长度小于110。<br>    2. num1 和 num2 只包含数字 0-9。<br>    3. num1 和 num2 均不以零开头，除非是数字 0 本身。<br>    4. <strong>不能使用任何标准库的大数类型（比如 BigInteger）或直接将输入转换为整数来处理。</strong></p>
-<h2 id="优化的竖式模拟"><a href="#优化的竖式模拟" class="headerlink" title="优化的竖式模拟"></a>优化的竖式模拟</h2><p>很容易可以想到直接按照竖式计算的方式来编写一个程序，但是竖式相乘不仅要计算乘积还要计算累积和，所以直接竖式模拟还要写一个计算两个字符串相加的函数。</p>
-<p>通常，我们将乘数个位与完整的被乘数相乘，得到一个积，再将乘数十位与完整的被乘数相乘，以此类推…..最后将各个乘积相加。但是，其实将最后相加那一步分解到每次相乘的时候来执行，程序实现反而更简单。</p>
-<p>比如，被乘数个位 与 乘数个位 相乘，由九九八十一知乘积最多只有两位。因此，每次相乘后只需要处理两个进位。<strong>需要注意的是，n位被乘数与m位乘数相乘，结果最多m+n位，而且最高位肯定不会出现需要进位的现象</strong>，因此，只需要考虑第一位的进位。</p>
-<p>另外，就是下标怎么走的问题，由图可以很清楚地明白。其中 <code>i+j+1</code> 是第一位，<code>i+j</code>是第二位。</p>
-<p><img src="//tva4.sinaimg.cn/large/005JD0Ejgy1gctbj61ybkj31xg1ab44s.jpg" alt="竖式优化"></p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    string <span class="token function">multiply</span><span class="token punctuation">(</span>string num1<span class="token punctuation">,</span> string num2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> len1 <span class="token operator">=</span> num1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> len2 <span class="token operator">=</span> num2<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>num1 <span class="token operator">==</span> <span class="token string">"0"</span> <span class="token operator">||</span> num2 <span class="token operator">==</span> <span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">ans</span><span class="token punctuation">(</span>len1<span class="token operator">+</span>len2<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> len2<span class="token number">-1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">int</span> y <span class="token operator">=</span> num2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>len1<span class="token number">-1</span><span class="token punctuation">;</span>j<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                <span class="token keyword">int</span> x <span class="token operator">=</span> num1<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">;</span>
-
-                <span class="token keyword">int</span> sum <span class="token operator">=</span> ans<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> x<span class="token operator">*</span>y<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//将相乘的积和相加的和统一放在“个位”计算 </span>
-                ans<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> sum<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>
-                ans<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> sum<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//最后，最高位m+n肯定不大于10，不用考虑进位</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        string answer <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>len1<span class="token operator">+</span>len2<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-                <span class="token keyword">continue</span><span class="token punctuation">;</span>
-            answer<span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> answer<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="2020-06-04"><a href="#2020-06-04" class="headerlink" title="2020-06-04"></a>2020-06-04</h2><ul>
+<li>Unix网络编程，SCTP、看到2.9节端口号。</li>
+</ul>
+<h2 id="2020-06-03"><a href="#2020-06-03" class="headerlink" title="2020-06-03"></a>2020-06-03</h2><p>没学到什么。</p>
+<h2 id="2020-06-02"><a href="#2020-06-02" class="headerlink" title="2020-06-02"></a>2020-06-02</h2><ul>
+<li>开始读Unix网络编程第二章，包括TCP三次握手和四次挥手。</li>
+</ul>
+<h2 id="2020-06-01"><a href="#2020-06-01" class="headerlink" title="2020-06-01"></a>2020-06-01</h2><ul>
+<li>写了接雨水的单调递减栈的解法。</li>
+<li>开始读Unix网络编程的第一章。</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -640,7 +587,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/03/14/zi-fu-chuan-xiang-cheng/">https://litnwu.gitee.io/2020/03/14/zi-fu-chuan-xiang-cheng/</a>
+                    <a href="https://litnwu.gitee.io/diary/index.html">https://litnwu.gitee.io/diary/index.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -677,15 +624,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/leetcode/">
-                                    <span class="chip bg-color">leetcode</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -849,59 +788,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/16/fu-yuan-ip-di-zhi/">
+                <a href="/diary/index.html">
                     <div class="card-image">
                         
-                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="复原IP地址">
+                        <img src="a" class="responsive-img" alt="diary">
                         
-                        <span class="card-title">复原IP地址</span>
+                        <span class="card-title">diary</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            题目（leetcode 93. 复原IP地址）给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
-示例:
+                            2020-06-04
+Unix网络编程，SCTP、看到2.9节端口号。
 
-输入: “25525511135”输出: [“255.255.11.135”, “255.255.111.35”]
+2020-06-03没学到什么。
+2020-06-02
+开始读Unix网络编程第二章，包括TCP三次握手和四次挥手。
+
+2020-06-01
+写了接雨水的单调递减栈的
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-01
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/algorithm/" class="post-category">
-                                    algorithm
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            LitnWu
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9B%9E%E6%BA%AF/">
-                        <span class="chip bg-color">回溯</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -909,50 +835,44 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/12/tcp-san-ci-wo-shou-he-si-ci-hui-shou/">
+                <a href="/diary/index.html">
                     <div class="card-image">
                         
+                        <img src="a" class="responsive-img" alt="diary">
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="TCP三次握手和四次挥手">
-                        
-                        <span class="card-title">TCP三次握手和四次挥手</span>
+                        <span class="card-title">diary</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            TCP三次握手我们知道tcp建立连接要进行“三次握手”，即交换三个分组。
-首先，服务器必须准备好接受外来的连接。这通常是通过调用socket、bind和listen这3个函数来完成，我们称之为被动打开(passive open)。
-三次握手
+                            2020-06-04
+Unix网络编程，SCTP、看到2.9节端口号。
+
+2020-06-03没学到什么。
+2020-06-02
+开始读Unix网络编程第二章，包括TCP三次握手和四次挥手。
+
+2020-06-01
+写了接雨水的单调递减栈的
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    计算机网络
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            LitnWu
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/TCP-IP/">
-                        <span class="chip bg-color">TCP/IP</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
