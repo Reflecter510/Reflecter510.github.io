@@ -428,14 +428,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-05-24
+                    2020-06-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    287
+                    325
                 </div>
                 
 
@@ -462,6 +462,7 @@
 <p>比如，类<code>Foo</code>被编码成<code>3Foo</code>。<br>函数被编码为原始函数名，后面加上<code>__</code>，加上被重整的类名，再加上每个参数的单字母编码。<br>比如，<code>Foo::bar(int,long)</code>，被编码成<code>bar__3Fooil</code>。</p>
 </blockquote>
 <p>重整全局变量和模板名字的策略是类似的。</p>
+<p>可以使用<code>extern "C"</code>告诉编译器，下面的代码按照 C 方式进行编译，即不需要对函数进行名字重整。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
