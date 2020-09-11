@@ -611,15 +611,11 @@ unique_ptr类可以移动但不能拷贝
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<blockquote>
-<p>在移动操作之后，源对象必须保持有效的、可析构的状态，但是用户不能对其值进行任何假设</p>
-</blockquote>
-<blockquote>
-<p>只有当一个类没有定义任何自己版本的拷贝控制成员，且它的所有数据成员都能移动构造或移动赋值时，编译器才会为它合成移动构造函数或移动赋值函数。</p>
-</blockquote>
-<blockquote>
-<p>定义了一个移动构造函数或移动赋值运算符的类必须也定义自己的拷贝操作。否则，这些成员默认被定义为删除的。</p>
-</blockquote>
+<ul>
+<li>在移动操作之后，源对象必须保持有效的、可析构的状态，但是用户不能对其值进行任何假设</li>
+<li>只有当一个类没有定义任何自己版本的拷贝控制成员，且它的所有数据成员都能移动构造或移动赋值时，编译器才会为它合成移动构造函数或移动赋值函数。</li>
+<li>定义了一个移动构造函数或移动赋值运算符的类必须也定义自己的拷贝操作。否则，这些成员默认被定义为删除的。</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
