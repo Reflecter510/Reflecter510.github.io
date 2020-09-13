@@ -9,7 +9,9 @@
 
 unique_ptr类可以移动但不能拷贝
 
-右值引用为了支持移动操作，新标准引入了一种新的引用">
+指针也可以实现内存的移动，为什么不用指针？
+
+C语">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -529,21 +531,21 @@ unique_ptr类可以移动但不能拷贝
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-11
+                    2020-09-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    8 分
                 </div>
                 
 
@@ -558,9 +560,15 @@ unique_ptr类可以移动但不能拷贝
 <blockquote>
 <p>unique_ptr类可以移动但不能拷贝</p>
 </blockquote>
+<p><strong>指针也可以实现内存的移动，为什么不用指针？</strong></p>
+<blockquote>
+<p>C语言中多用指针而不是拷贝，像Java这种自带垃圾回收的语言使用了引用计数，而C++实现了STL库，但是STL里的比如容器里的赋值、函数返回等，拷贝的成本很高。大量使用的STL作为了C++语言的一部分，因此解决这个拷贝成本是十分必要的，使用移动语义，实现的时候偷梁换柱，把资源交换避免了资源的再次创建和销毁。</p>
+</blockquote>
+<p>实际上移动语义更多的是给库作者使用的，对于绝大多数普通开发者了解即可，会用即可。在实际的开发过程中，通常可以搭配智能指针来实现内存管理的自动化。</p>
 <h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><p>为了支持移动操作，新标准引入了一种新的引用类型————右值引用，必须绑定到右值的引用。</p>
 <ul>
-<li>一个左值表达式的求值结果是一个对象或者一个函数，然而以常量对象为代表的某些左值实际上不能作为赋值语句的左侧运算对象。此外，虽然某些表达式的求值结果是对象，但它们是右值而非左值。</li>
+<li>一个左值表达式的求值结果是一个对象或者一个函数，然而以常量对象为代表的某些左值实际上不能作为赋值语句的左侧运算对象。</li>
+<li>此外，虽然某些表达式的求值结果是对象，但它们是右值而非左值。</li>
 <li>当对象被用作左值的时候，用的是对象的身份（在内存中的位置）</li>
 <li>当对象被用作右值的时候，实际使用的是它的内容（值）</li>
 </ul>
@@ -574,7 +582,7 @@ unique_ptr类可以移动但不能拷贝
 </ul>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">&amp;</span>r <span class="token operator">=</span> i<span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr <span class="token operator">=</span> i<span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//错误，不能将一个右值引用绑定到一个左值上</span>
+<span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr <span class="token operator">=</span> i<span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//错误，不能将一个右值引用绑定到一个左值上，需要使用std::move()</span>
 <span class="token keyword">int</span> <span class="token operator">&amp;</span>r2 <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">42</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//错误，i*42是一个右值</span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>r3 <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//正确：可以将一个const引用绑定到一个右值上</span>
 <span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr2 <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">42</span><span class="token punctuation">;</span>     <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -588,17 +596,41 @@ unique_ptr类可以移动但不能拷贝
 <h2 id="变量是左值"><a href="#变量是左值" class="headerlink" title="变量是左值"></a>变量是左值</h2><p>变量表达式都是左值。</p>
 <p>我们不能将一个右值引用绑定到一个右值引用类型的变量上。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr1 <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr2 <span class="token operator">=</span> rr1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//错误：表达式rr1是左值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="标准库move函数"><a href="#标准库move函数" class="headerlink" title="标准库move函数"></a>标准库move函数</h2><p>我们可以通过调用一个名为move的新标准库函数来获得绑定到左值上的右值引用</p>
+<span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr2 <span class="token operator">=</span> rr1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//错误：表达式rr1是左值，需要使用std::move()</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="标准库move函数"><a href="#标准库move函数" class="headerlink" title="标准库move函数"></a>标准库move函数</h2><ul>
+<li>输入：左值</li>
+<li>输出：右值</li>
+</ul>
+<p>我们可以通过调用一个名为move的新标准库函数来获得绑定到左值上的右值引用</p>
+<p>值得注意的是： 使用move意味着，把一个左值转换为右值，原先的值不应该继续再使用（承诺即将废弃）</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr3 <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>rr1<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//ok</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="移动构造函数和移动赋值运算符"><a href="#移动构造函数和移动赋值运算符" class="headerlink" title="移动构造函数和移动赋值运算符"></a>移动构造函数和移动赋值运算符</h2><p>移动构造函数如下，与拷贝构造函数不同，它不分配任何新内存，而是接管给定的StrVec中的内存。在接管内存之后，它将给定对象中的指针都置为nullptr。</p>
+<h4 id="使用std-move-实现一个高效的swap函数"><a href="#使用std-move-实现一个高效的swap函数" class="headerlink" title="使用std::move 实现一个高效的swap函数"></a>使用std::move 实现一个高效的swap函数</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">></span>
+<span class="token keyword">void</span> <span class="token function">mySwap</span><span class="token punctuation">(</span>T <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> T <span class="token operator">&amp;</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    T <span class="token function">tmp</span><span class="token punctuation">(</span>std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//a转换为右值，调用移动构造函数</span>
+    a <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//b转换为右值，调用移动赋值函数</span>
+    b <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//tmp转换为右值，调用移动赋值函数</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//输入: a=3, b=7</span>
+<span class="token comment" spellcheck="true">//输出: a=7, b=3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>需要注意的是，必须将右值给左值，才能完成一次内存的移动，如果上面这个函数的第一句这样写：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">T <span class="token operator">&amp;&amp;</span>tmp <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//tmp实际上还是一个指向a的引用</span>
+<span class="token comment" spellcheck="true">//输入: a=3, b=7</span>
+<span class="token comment" spellcheck="true">//输出: a=7, b=7</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>那么就会出现交换后a和b的值都是原来b的值，因为此时tmp实际上还是一个指向a的引用，在将tmp重新赋值给b的时候其实就是将交换后a的值赋值给b（交换后a的值本来就是原先b的值）。</p>
+<h2 id="移动构造函数和移动赋值运算符"><a href="#移动构造函数和移动赋值运算符" class="headerlink" title="移动构造函数和移动赋值运算符"></a>移动构造函数和移动赋值运算符</h2><p><strong>移动构造函数</strong>使用右值来构造一个新的对象。</p>
+<p>与拷贝构造函数不同，它不分配任何新内存，而是接管给定的StrVec中的内存。在接管内存之后，它将给定对象中的指针都置为nullptr。</p>
 <p>这样就完成了从给定对象的移动操作，此对象将继续存在。最终，移后源对象会被销毁，意味着将在其上运行析构函数。 </p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">StrVec<span class="token operator">::</span><span class="token function">StrVec</span><span class="token punctuation">(</span>StrVec <span class="token operator">&amp;&amp;</span>s<span class="token punctuation">)</span> <span class="token keyword">noexcept</span>  <span class="token comment" spellcheck="true">//移动操作不应抛出任何异常</span>
               <span class="token operator">:</span> <span class="token function">elements</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>elements<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">first_free</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>first_free<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">cap</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>cap<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//接管资源</span>
 <span class="token punctuation">{</span>
   s<span class="token punctuation">.</span>elements <span class="token operator">=</span> s<span class="token punctuation">.</span>first_free <span class="token operator">=</span> s<span class="token punctuation">.</span>cap <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//这样，对其运行析构函数是安全的</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>移动赋值运算符</p>
+<p><strong>移动赋值运算符</strong></p>
+<ul>
+<li>输入：右值，即<code>=</code>号右边</li>
+<li>输出：左值，即将右值赋值给等号左边的左值</li>
+</ul>
 <pre class="line-numbers language-cpp"><code class="language-cpp">StrVec<span class="token operator">&amp;</span> StrVec<span class="token operator">::</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span>StrVec <span class="token operator">&amp;&amp;</span>rhs<span class="token punctuation">)</span> <span class="token keyword">noexcept</span>
 <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">//如果右侧和左侧运算对象指向同一对象，我们不需要做任何事情</span>
@@ -616,6 +648,58 @@ unique_ptr类可以移动但不能拷贝
 <li>只有当一个类没有定义任何自己版本的拷贝控制成员，且它的所有数据成员都能移动构造或移动赋值时，编译器才会为它合成移动构造函数或移动赋值函数。</li>
 <li>定义了一个移动构造函数或移动赋值运算符的类必须也定义自己的拷贝操作。否则，这些成员默认被定义为删除的。</li>
 </ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>为了能看到临时对象的拷贝，先关闭编译器关于函数返回值时临时对象的拷贝。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#编译命令后加上-fno-elide-constructors选项</span>
+g++ main.cpp -o main.exe -fno-elide-constructors -std<span class="token operator">=</span>c++11<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">HasPtrMem</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>num<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> n_cstr<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> n_dstr<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> n_cptr<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> n_mvtr<span class="token punctuation">;</span>
+
+    <span class="token function">HasPtrMem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">num</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout<span class="token operator">&lt;&lt;</span><span class="token string">"构造函数:"</span><span class="token operator">&lt;&lt;</span><span class="token operator">++</span>n_cstr<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">HasPtrMem</span><span class="token punctuation">(</span><span class="token keyword">const</span> HasPtrMem <span class="token operator">&amp;</span>h<span class="token punctuation">)</span><span class="token operator">:</span><span class="token function">num</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>h<span class="token punctuation">.</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout<span class="token operator">&lt;&lt;</span><span class="token string">"拷贝构造函数:"</span><span class="token operator">&lt;&lt;</span><span class="token operator">++</span>n_cptr<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">~</span><span class="token function">HasPtrMem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout<span class="token operator">&lt;&lt;</span><span class="token string">"析构函数:"</span><span class="token operator">&lt;&lt;</span><span class="token operator">++</span>n_dstr<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">HasPtrMem</span><span class="token punctuation">(</span>HasPtrMem <span class="token operator">&amp;&amp;</span>h<span class="token punctuation">)</span><span class="token keyword">noexcept</span> <span class="token operator">:</span><span class="token function">num</span><span class="token punctuation">(</span>h<span class="token punctuation">.</span>num<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        h<span class="token punctuation">.</span>num<span class="token operator">=</span><span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+        cout<span class="token operator">&lt;&lt;</span><span class="token string">"移动构造函数:"</span><span class="token operator">&lt;&lt;</span><span class="token operator">++</span>n_mvtr<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> HasPtrMem<span class="token operator">::</span>n_cstr<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> HasPtrMem<span class="token operator">::</span>n_dstr<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> HasPtrMem<span class="token operator">::</span>n_cptr<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> HasPtrMem<span class="token operator">::</span>n_mvtr<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+
+HasPtrMem <span class="token function">GetTemp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token function">HasPtrMem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    HasPtrMem a<span class="token operator">=</span><span class="token function">GetTemp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//函数里会调用HasPtrMem的构造函数</span>
+    HasPtrMem <span class="token function">b</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//a 是左值，因此只能拷贝构造</span>
+    HasPtrMem <span class="token function">c</span><span class="token punctuation">(</span><span class="token function">move</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//左值转为右值：std::move()</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果</p>
+<pre class="line-numbers language-bash"><code class="language-bash">构造函数:1      <span class="token comment" spellcheck="true">#GetTemp(){return HasPtrMem();}</span>
+移动构造函数:1  <span class="token comment" spellcheck="true">#GetTemp()函数的临时变量生成</span>
+析构函数:1      <span class="token comment" spellcheck="true">#析构，与第一个构造函数配对</span>
+移动构造函数:2  <span class="token comment" spellcheck="true">#main()里的对象a的生成</span>
+析构函数:2      <span class="token comment" spellcheck="true">#GetTemp()函数的临时对象的析构</span>
+拷贝构造函数:1  <span class="token comment" spellcheck="true">#对象b的生成, a 是左值，因此只能拷贝构造</span>
+移动构造函数:3  <span class="token comment" spellcheck="true">#对象c的生成, 移动构造</span>
+析构函数:3      <span class="token comment" spellcheck="true">#对象c析构</span>
+析构函数:4      <span class="token comment" spellcheck="true">#对象b析构</span>
+析构函数:5      <span class="token comment" spellcheck="true">#对象a析构</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -868,34 +952,30 @@ unique_ptr类可以移动但不能拷贝
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/09/09/yi-dong-yu-yi/">
+                <a href="/2020/09/13/c-bian-yi-kong-lei-shi-de-xing-wei/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="移动语义">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="C++编译空类时的行为">
                         
-                        <span class="card-title">移动语义</span>
+                        <span class="card-title">C++编译空类时的行为</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            对象移动新标准的一个主要特性是可以移动而非拷贝对象的能力。很多情况下都会发生对象拷贝，但之后就立即被销毁了，因此移动而非拷贝可以大幅提升性能。
-
-unique_ptr类可以移动但不能拷贝
-
-右值引用为了支持移动操作，新标准引入了一种新的引用
+                            空类在定义时会自动生成的成员函数当空类Empty定义一个对象e1时，其sizeof(e1)的值为 1 个字节，这个字节其实是一个占位符，为了空类能够被实例化。
+如果在空类里定义一个虚函数，则其值为 4 个字节（在32位系统下），因为多了一个
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -908,16 +988,11 @@ unique_ptr类可以移动但不能拷贝
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C-11/">
-                        <span class="chip bg-color">C++11</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8/">
-                        <span class="chip bg-color">右值引用</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
                 </div>

@@ -4,11 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java内存区域, LitnWu">
-    <meta name="description" content="程序计数器程序计数器是一块较小的内存空间，它可以看作是当前线程所执行的字节码的行号指示器。字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。
-每条线程都需要有一个独立的程序计数器，为每个线程私有。
-
-如果线程正在">
+    <meta name="keywords" content="C++编译空类时的行为, LitnWu">
+    <meta name="description" content="空类在定义时会自动生成的成员函数当空类Empty定义一个对象e1时，其sizeof(e1)的值为 1 个字节，这个字节其实是一个占位符，为了空类能够被实例化。
+如果在空类里定义一个虚函数，则其值为 4 个字节（在32位系统下），因为多了一个">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java内存区域 | LitnWu</title>
+    <title>C++编译空类时的行为 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -370,12 +368,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java内存区域</h1>
+                    <h1 class="description center-align post-title">C++编译空类时的行为</h1>
                 </div>
             </div>
         </div>
@@ -492,8 +490,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
-                                <span class="chip bg-color">Java虚拟机</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
                             </a>
                         
                     </div>
@@ -504,8 +502,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java/" class="post-category">
-                                Java
+                            <a href="/categories/C/" class="post-category">
+                                C++
                             </a>
                         
                     </div>
@@ -517,28 +515,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-07
+                    2020-09-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-08
+                    2020-09-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    993
+                    301
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -549,32 +547,27 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><p>程序计数器是一块较小的内存空间，它可以看作是<strong>当前线程所执行的字节码的行号指示器</strong>。字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。</p>
-<p>每条线程都需要有一个独立的程序计数器，为每个<strong>线程私有</strong>。</p>
-<ul>
-<li>如果线程正在执行的是一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址。</li>
-<li>如果线程正在执行的是Native方法，这个计数器的值为空。</li>
-</ul>
-<h2 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h2><p>其生命周期与线程相同，同时也是<strong>线程私有</strong>的。</p>
-<p>虚拟机栈描述的是<strong>Java方法执行的内存模型</strong>：每个方法在执行的同时都会创建一个栈帧，用于存储局部变量表、操作数栈、动态链接、方法出口等信息。</p>
-<blockquote>
-<p>栈帧是方法运行时的基础数据结构<br>通常说的“栈”是指虚拟机栈，或者说是虚拟机栈中的局部变量表部分。</p>
-</blockquote>
-<p>局部变量表存放了编译期可知的各种基本类型、对象引用和returnAddress类型。</p>
-<ul>
-<li>对象引用：可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置。</li>
-<li>returnAddress类型：指向了一条字节码指令的地址。</li>
-</ul>
-<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>与虚拟机栈的作用类似，其区别是：虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而本地方法栈则为虚拟机使用到的Native方法服务。</p>
-<h2 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h2><p>Java堆是被所有<strong>线程共享</strong>的一块内存区域，在虚拟机启动时创建。此内存区域唯一的目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。</p>
-<p>Java堆是垃圾收集器管理的主要区域，可以处于物理上不连续的内存空间中，只要逻辑上连续即可。</p>
-<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>各个<strong>线程共享</strong>的内存区域，用于储存已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</p>
-<h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><p>运行时常量池是方法区的一部分。</p>
-<p>Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是Class文件常量池，用于存放 编译期生成的各种字面量和符号引用，这部分内容将在类加载后进入方法区的运行时常量池中存放。</p>
-<p>运行常量池相对于Class文件常量池的另外一个重要特征是具备动态性，运行期间也可能将新的常量放入池中，这种特性被开发人员利用得比较多的便是String类的intern()方法。</p>
-<h2 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h2><p>直接内存并不是虚拟机运行时数据区的一部分，也不是Java虚拟机规范中定义的内存区域。但是这部分内存也被频繁使用，而且也可能导致OutOfMemoryError异常出现。</p>
-<p>堆外内存，不受Java堆大小限制。</p>
-<p>基于通道(Channel)与缓冲区(Buffer)的 I/O 方式，它可以使用 Native 函数库直接分配堆外内存，然后通过一个存储在 Java 堆中的 DirectByteBuffer 对象作为这块内存的引用进行操作。这样能在一些场景中显著提高性能，因为避免了在 Java 堆和 Native 堆中来回复制数据。</p>
+                <h2 id="空类在定义时会自动生成的成员函数"><a href="#空类在定义时会自动生成的成员函数" class="headerlink" title="空类在定义时会自动生成的成员函数"></a>空类在定义时会自动生成的成员函数</h2><p>当空类Empty定义一个对象e1时，其<code>sizeof(e1)</code>的值为 1 个字节，这个字节其实是一个占位符，为了空类能够被实例化。</p>
+<p>如果在空类里定义一个虚函数，则其值为 4 个字节（在32位系统下），因为多了一个指针（vptr）指向虚函数表，并且取消了一个字节的占位符。</p>
+<p>编译时会自动生成的成员函数如注释中所示：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Empty_One</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">Empty_Two</span> <span class="token punctuation">{</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Empty_One<span class="token operator">*</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Empty_One</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//无参构造函数  </span>
+    <span class="token keyword">delete</span> e<span class="token punctuation">;</span>                      <span class="token comment" spellcheck="true">//析构函数  </span>
+    Empty_One e1<span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">//无参构造函数  </span>
+    Empty_One <span class="token function">e2</span><span class="token punctuation">(</span>e1<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//拷贝构造函数  </span>
+    e2 <span class="token operator">=</span> e1<span class="token punctuation">;</span>                       <span class="token comment" spellcheck="true">//赋值运算符  </span>
+    Empty_One<span class="token operator">*</span> pe1 <span class="token operator">=</span> <span class="token operator">&amp;</span>e1<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//取址运算符(非const)  </span>
+    <span class="token keyword">const</span> Empty_One<span class="token operator">*</span> pe2 <span class="token operator">=</span> <span class="token operator">&amp;</span>e2<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//取址运算符(const) </span>
+    Empty_One <span class="token operator">&amp;&amp;</span>rr1 <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>e1<span class="token punctuation">)</span><span class="token punctuation">;</span>       
+    Empty_One e3 <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>e1<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//移动赋值函数</span>
+    Empty_One <span class="token function">rr2</span><span class="token punctuation">(</span>rr1<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment" spellcheck="true">//移动构造函数</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>Empty_One<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 1</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>Empty_Two<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 4</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -618,7 +611,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/09/07/java-nei-cun-qu-yu/">https://litnwu.gitee.io/2020/09/07/java-nei-cun-qu-yu/</a>
+                    <a href="https://litnwu.gitee.io/2020/09/13/c-bian-yi-kong-lei-shi-de-xing-wei/">https://litnwu.gitee.io/2020/09/13/c-bian-yi-kong-lei-shi-de-xing-wei/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -656,8 +649,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
-                                    <span class="chip bg-color">Java虚拟机</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
                                 </a>
                             
                         </div>
@@ -823,9 +816,61 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/09/13/c-bian-yi-kong-lei-shi-de-xing-wei/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="C++编译空类时的行为">
+                        
+                        <span class="card-title">C++编译空类时的行为</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            空类在定义时会自动生成的成员函数当空类Empty定义一个对象e1时，其sizeof(e1)的值为 1 个字节，这个字节其实是一个占位符，为了空类能够被实例化。
+如果在空类里定义一个虚函数，则其值为 4 个字节（在32位系统下），因为多了一个
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/09/09/yi-dong-yu-yi/">
                     <div class="card-image">
@@ -849,9 +894,9 @@ C语
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -873,62 +918,6 @@ C语
                     
                     <a href="/tags/%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8/">
                         <span class="chip bg-color">右值引用</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/08/14/android-zhi-shi-dian-zheng-li/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Android知识点整理">
-                        
-                        <span class="card-title">Android知识点整理</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            四大组件ActivityActivity是一种可以包含用户界面的组件，主要用于和用户进行交互。
-Service
-启动状态
-startService(intent);
-
-
-绑定状态
-bindService(intent, connection
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Android/" class="post-category">
-                                    Android
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6/">
-                        <span class="chip bg-color">四大组件</span>
                     </a>
                     
                 </div>
