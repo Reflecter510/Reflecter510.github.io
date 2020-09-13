@@ -608,21 +608,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-13
+                    2020-09-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -716,6 +716,61 @@ pv <span class="token operator">=</span> pd<span class="token punctuation">;</sp
 <li>指针和引用使用<code>++</code>运算符的意义不一样；</li>
 <li>如果返回动态内存分配的对象或者内存，必须使用指针，引用可能引起内存泄露。</li>
 </ol>
+<h4 id="C-不可以返回局部变量的引用或指针"><a href="#C-不可以返回局部变量的引用或指针" class="headerlink" title="C++不可以返回局部变量的引用或指针"></a>C++不可以返回局部变量的引用或指针</h4><p>不能返回局部变量的引用或地址给引用或指针。事实上还是看该地址的位置是否在该函数的栈区，若是在栈区，函数调用结束，该地址就被释放了。尽管会出现栈地址上的值没被销毁的问题，可能是该栈区还没被其他的函数堆栈掉。</p>
+<ol>
+<li><strong>错误</strong>：尝试返回 a 的地址给引用变量，a是存在栈里的，函数结束调用栈被销毁。</li>
+</ol>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">&amp;</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>      <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li><strong>错误</strong>：尝试返回 a 的地址给指针，a是存在栈里的，函数结束调用栈被销毁。</li>
+</ol>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li><strong>正确</strong>：函数在返回的时候，返回处产生一个临时对象，用于存放局部变量a的值的一份拷贝（变量a的右值的拷贝）</li>
+</ol>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li><strong>正确</strong>：因为返回的不是该函数的栈地址，而是静态存储区的地址。函数返回处产生一个对返回对象的“左值”s的拷贝，也就是在“左值”拷贝中存储了指向字符串常量1sfsdg的地址</li>
+</ol>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token string">"1sfsdg"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> s<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//返回的是1sfsdg的地址，1sfsdg存储在字符常量区，也就在静态存储区。</span>
+    <span class="token comment" spellcheck="true">//而指针变量s的地址&amp;s是在栈上，会随着函数的调用完被销毁。</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="5">
+<li><strong>错误</strong>：静态数组，在预处理阶段就在该函数的栈上分配了空间，尝试返回一个栈地址</li>
+</ol>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span>  <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>；<span class="token comment" spellcheck="true">//静态数组</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="6">
+<li><strong>正确</strong>：动态数组数组的空间在堆上，而指针变量a的地址&amp;a在栈上，占4个字节，存储着堆上动态数组的首地址。</li>
+</ol>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span>  <span class="token operator">*</span><span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//变量a的左值是一个局部变量指针，存储于函数栈上，</span>
+    <span class="token comment" spellcheck="true">//右值 是“堆”的地址（“堆”的值是数组里面存的 值），</span>
+    <span class="token comment" spellcheck="true">//函数返回处产生一个对返回变量的“左值”a的拷贝，</span>
+    <span class="token comment" spellcheck="true">//也就是在“左值”的拷贝中存储了指向“堆”的地址。</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

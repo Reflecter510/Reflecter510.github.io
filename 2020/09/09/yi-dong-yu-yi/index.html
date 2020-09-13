@@ -611,7 +611,7 @@ C语">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-13
+                    2020-09-14
                 </div>
                 
 
@@ -673,8 +673,8 @@ C语">
 <li>该对象没有其他用户</li>
 </ul>
 <p>这两个特性意味着：使用右值引用的代码可以自由接管所引用的对象的资源</p>
-<h2 id="变量是左值"><a href="#变量是左值" class="headerlink" title="变量是左值"></a>变量是左值</h2><p>变量表达式都是左值。</p>
-<p>我们不能将一个右值引用绑定到一个右值引用类型的变量上。</p>
+<h2 id="变量是左值"><a href="#变量是左值" class="headerlink" title="变量是左值"></a>变量是左值</h2><p>通常，变量的意义在于，它给一块内存存储区提供名字，方便程序对这块内存进行读写。变量包含两个值：左值和右值。左值是内存存储区的名字，右值是存放存储区中的值。</p>
+<p>变量表达式都是左值,有左值/右值属性。我们不能将一个右值引用绑定到一个右值引用类型的变量上。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr1 <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr2 <span class="token operator">=</span> rr1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//错误：表达式rr1是左值，需要使用std::move()</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="标准库move函数"><a href="#标准库move函数" class="headerlink" title="标准库move函数"></a>标准库move函数</h2><ul>
