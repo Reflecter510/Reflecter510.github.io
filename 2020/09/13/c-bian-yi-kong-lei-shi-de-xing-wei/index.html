@@ -96,6 +96,13 @@
       </li>
       
       <li>
+        <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">
+          
+          <span>二分查找</span>
+        </a>
+      </li>
+      
+      <li>
         <a href="/tags/%E6%A8%A1%E6%8B%9F">
           
           <span>模拟</span>
@@ -297,6 +304,14 @@
                   <a href="/tags/%E5%88%86%E6%B2%BB " style="margin-left:75px";>
 				  
 		          <span>分治</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE " style="margin-left:75px";>
+				  
+		          <span>二分查找</span>
                   </a>
                 </li>
               
@@ -602,7 +617,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-13
+                    2020-09-14
                 </div>
                 
 
@@ -627,8 +642,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="空类在定义时会自动生成的成员函数"><a href="#空类在定义时会自动生成的成员函数" class="headerlink" title="空类在定义时会自动生成的成员函数"></a>空类在定义时会自动生成的成员函数</h2><p>当空类Empty定义一个对象e1时，其<code>sizeof(e1)</code>的值为 1 个字节，这个字节其实是一个占位符，为了空类能够被实例化。</p>
-<p>如果在空类里定义一个虚函数，则其值为 4 个字节（在32位系统下），因为多了一个指针（vptr）指向虚函数表，并且取消了一个字节的占位符。</p>
+                <h2 id="空类在定义时会自动生成的成员函数"><a href="#空类在定义时会自动生成的成员函数" class="headerlink" title="空类在定义时会自动生成的成员函数"></a>空类在定义时会自动生成的成员函数</h2><p>当空类<code>Empty</code>定义一个对象<code>e1</code>时，其<code>sizeof(e1)</code>的值为 1 个字节，这个字节其实是一个占位符，为了空类能够被实例化。</p>
+<p>如果在空类里定义一个虚函数，则其值为 4 个字节（在32位系统下），因为多了一个指针（<code>vptr</code>）指向虚函数表，并且取消了一个字节的占位符。</p>
 <p>编译时会自动生成的成员函数如注释中所示：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Empty_One</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token keyword">class</span> <span class="token class-name">Empty_Two</span> <span class="token punctuation">{</span> <span class="token keyword">virtual</span> <span class="token keyword">void</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -912,9 +927,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            问题描述有n个重量和价值分别为$w_i、v_i$的物品。从这些物品中挑选出总重量不超过W的物品，求所有挑选方案中价值总和的最大值。
+                            问题描述有n个重量和价值分别为 $w_i、v_i$ 的物品。从这些物品中挑选出总重量不超过W的物品，求所有挑选方案中价值总和的最大值。
 
-限制条件$1 \le n \le 100$$1 \le w_i、v_i \le 100$$1 \le W 
+限制条件$1 \le n \le 100$$1 \le w_i、v_i \le 100$$1 \le 
                         
                     </div>
                     <div class="publish-info">

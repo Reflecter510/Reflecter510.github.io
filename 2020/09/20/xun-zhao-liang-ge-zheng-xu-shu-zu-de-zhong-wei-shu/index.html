@@ -4,9 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="软件工程--《人月神话》, LitnWu">
-    <meta name="description" content="软件工程布置的作业，读完写读后感，感觉能学到一些观点，当然有些也已经略显过时，毕竟1975出版的书，真是历经岁月。
-不得不说的是，作为一本计算机类的书，历经45年后，再读，发现里面的大多数观点也不显过时，实属不易。我觉得，这本书十分适合软件">
+    <meta name="keywords" content="寻找两个正序数组的中位数, LitnWu">
+    <meta name="description" content="问题描述给定两个大小为 m 和 n 的正序（从小到大）数组&amp;nbsp;nums1 和&amp;nbsp;nums2。
+
+请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为&amp;nbsp;O(log(m + n))。
+
+你可以假设&amp;nbsp;nu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>软件工程--《人月神话》 | LitnWu</title>
+    <title>寻找两个正序数组的中位数 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -463,12 +466,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">软件工程--《人月神话》</h1>
+                    <h1 class="description center-align post-title">寻找两个正序数组的中位数</h1>
                 </div>
             </div>
         </div>
@@ -585,8 +588,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
-                                <span class="chip bg-color">软件工程</span>
+                            <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                                <span class="chip bg-color">二分查找</span>
                             </a>
                         
                     </div>
@@ -597,8 +600,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-category">
-                                软件工程
+                            <a href="/categories/algorithm/" class="post-category">
+                                algorithm
                             </a>
                         
                     </div>
@@ -610,28 +613,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-20
+                    2020-09-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-20
+                    2020-09-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    4 分
                 </div>
                 
 
@@ -642,22 +645,100 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>软件工程布置的作业，读完写读后感，感觉能学到一些观点，当然有些也已经略显过时，毕竟1975出版的书，真是历经岁月。</p>
-<p>不得不说的是，作为一本计算机类的书，历经45年后，再读，发现里面的大多数观点也不显过时，实属不易。我觉得，这本书十分适合软件项目管理者学习，当然里面也有些建议是面向个人开发者的。在此前，我接触的计算机书籍都是关于个人编程开发，没有软件团队这方面的。这本书正好填补了我的缺口，算是作为软件工程的启蒙书吧。</p>
-<h2 id="书中主要内容"><a href="#书中主要内容" class="headerlink" title="书中主要内容"></a>书中主要内容</h2><p>作者是FrederickP.Brooks.Jr.。他是一位计算机科学教授，也是“IBM 360系统之父”。在阅读本书的过程中，我也发现，Brooks博士多次以IBM360项目的开发过程为例，以管理者的角度向我们讲述其中的道理。以切身经历作为讲解，更能接近问题的本质，也易于读者理解。不过我更想说的是，Brooks博士的行文更像是一个知识渊博的研究类学者，偏向于物理的那种。比如在说明软件工程的复杂性时，Brooks博士类比了分子的无序性，又比如在未雨绸缪那一章写道：系统软件开发是减少混乱度（减少熵）的过程，所以它本身是处于亚稳态的。软件维护是提高混乱度（增加熵）的过程，即使是最熟练的软件维护工作，也只是放缓了系统退化 到非稳态的进程。Brooks博士将开发一个软件项目比做是物理中的减少熵的过程，而维护软件是增加熵，我觉得十分生动而又恰当。</p>
-<p>通读全书，本书由三部分组成，其中第一部分是原版的《人月神话》，而第二部分则是对上一版本的主要观点的总结、补充和纠错，最后一个部分则是结束语。其中，人月神话作为第二章，作者探讨了大量软件项目缺乏合理的时间进度的原因—-项目管理者认为人力与时间可以互换。也就是当管理者意识项目进度偏离正常轨迹时，通常的做法是加大人力投入。但是这种做法并不是普遍适用的，特殊情况下将无异于火上浇油，从而导致灾难性的循环。</p>
-<p>这种情况就是当前任务的执行先后有限制，必须先完成这个任务才能开始做那一个任务，这就好比数据结构中AOV网。在此时，新加入人员需要与原开发人员进行沟通。作者将这种沟通的负担分为两部分，分别是培训和相互之间的交流。所以过度加入人力可能会得到适得其反的效果。</p>
-<h2 id="令人印象深刻的章节"><a href="#令人印象深刻的章节" class="headerlink" title="令人印象深刻的章节"></a>令人印象深刻的章节</h2><p>Brooks博士有一个十分重要的观点，就是概念的一致性。第 4、5、6 章所讨论的获取概念完整性的途径，就是直接面对这些问题。在一个软件项目中，Brooks博士推崇在概念完整性上实施“独裁专制”，尽管好的创意往往是开发者在实现功能的过程中发现的。但是就像同一个老师教出来的学生，每人的编程风格都各不相同，如果任由开发者挥洒创意，必然会导致软件系统的概念不完整。在我看来，现在能够体现概念一致性的软件系统的概念一致性的例子是苹果公司开发的Mac系统和IOS系统。从界面风格来看，尽管一个是电脑系统一个是手机系统，但是两者作为苹果公司的产品，具有高度的统一性。与此同时，对比Windows系统，Mac系统中的系统软件和用户软件界面十分统一，看起来很舒服，因为Mac系统自诞生以来就强制用户软件界面窗口的设计与系统相统一。而Windows系统，不同时期的界面具有不同时期的风格，就比如从Win10系统运行一个Win XP系统时期开发的软件，其界面与Win10十分不协调。当然目前Win10也在竭力“打补丁”，进行界面统一化，比如推出Microsoft Store，里面的应用都是UWP应用。</p>
-<p>整体与部分章节：好的自顶向下设计从几个方面避免了 bug。首先，清晰的结构和表达方式更容易对需求 和模块功能进行精确的描述。其次，模块分割和模块独立性避免了系统级的 bug。另外，细 节的隐藏使结构上的缺陷更加容易识别。第四，设计在每个精化步骤的层次上是可以测试的， 所以测试可以尽早开始，并且每个步骤的重点可以放在合适的级别上。</p>
-<p>在祸起萧墙那一章：棒球队队长知道，进取这种心理素质，是很多优秀队员和团队不可缺少的。它表现为“要求跑得更快”，“要求移动得更加迅速”，“更加努力尝试”。进取提供了缓冲和储备，使开发队伍能够处理常规的异常事件，可以预计和 防止小的灾祸。</p>
-<p>又比如，Brooks博士在削足适履这一章节中，讲述了一些关于成本的教训。其中一个是关于成员之间的沟通的：在每个模块分配功能之前，已编制了空间的预算。其结果是，任何在规模上碰到问题的程序员，会检查自己的代码，看是否能将其中一部分扔给其他人。因此，控制程序所管理的缓冲区成为了用户空间的一部分。更严重的是，所有的控制模块都有相同的问题，彻底影响了系统的稳定和安全性。</p>
-<p>虽然我还没有进入职场，但我觉得这种情况在实际中是很容易发生的：为了满足目标，程序员过于关注自己负责的开发工作，很难从中跳出来去考虑局部与整体的关系，更糟糕的是，成员之间缺乏有效的沟通，不能及时地发现问题，从而导致更糟糕地结果。这就需要系统结构师时刻保持警惕，以确保连贯的系统完整性。与此同时，也要注意培养开发人员从系统整体出发、面向用户的态度。</p>
-<p>此外，从这个教训中还能得到的启示是，对于每一个模块的功能，都需要有确切的定义，而不是只指明大小是多少。</p>
-<p>削足适履这一章中还提到另一个观点：数据的表现形式是编程的根本。对于这个我深有体会，不过和作者描述的不太一样。作者使用了数据形式的重新表达来阐述这个观点，举的例子是一个年轻人开发控制台解释器，但是他发现用户交互慢且空间昂贵，于是编写了一个解释器的解释器，这个编译器使用密集又专业的代码来表达自身从而节省了外部储存。</p>
-<p>而在我的算法学习过程中，遇到过一个叫最长回文子串的问题。这是一个动态规划的问题，从直观上可以很容易想到其中的分治思想：比如一个子串<code>"aba"</code>，它是一个回文串，而在其左右再加上相同的字符”c”，得到的子串仍然是回文串<code>"cabac"</code>。但是，如何将这种思想转换成实在的代码呢？实际上最大的问题是如何将子串这种数据表现成代码？也就是数据的表现形式。仔细思考一下就会发现，要定位一个子串，一种办法是保存起始下标和末尾下标；另一种方法是保存起始下标，以及子串的长度。显然，无论怎样，都是需要至少二维的信息才能确定一个子串，因此可以用二维数组<code>dp[i][j]</code>，表示<code>i...j</code>的子串是否为回文串。这样，递推方程就能很容易得到了。不过，本人觉得自己在编程语言和数据结构的理解还不够深入，对于如何寻找最佳的数据表现方式还需要不断的学习。</p>
-<h2 id="书中与时代落后的部分"><a href="#书中与时代落后的部分" class="headerlink" title="书中与时代落后的部分"></a>书中与时代落后的部分</h2><p>作者对于原版中的与当代不适合的部分，也都一一指出了，不再赘述。</p>
-<p>比如在干将莫邪那一章，作者写道：系统编程需要什么样的高级语言呢？现在可供合理选择的语言是 PL/I6。看看现在的高级语言，额额，就知道这句话肯定过时了。</p>
-<script>
+                <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><div class="notranslate"><p>给定两个大小为 m 和 n 的正序（从小到大）数组&nbsp;<code>nums1</code> 和&nbsp;<code>nums2</code>。</p>
+
+<p>请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为&nbsp;O(log(m + n))。</p>
+
+<p>你可以假设&nbsp;<code>nums1</code>&nbsp;和&nbsp;<code>nums2</code>&nbsp;不会同时为空。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1:</strong></p>
+
+<blockquote>
+<p>nums1 = [1, 3]<br>nums2 = [2]</p>
+<p>则中位数是 2.0</p>
+</blockquote>
+<p><strong>示例 2:</strong></p>
+
+<blockquote>
+<p>nums1 = [1, 2]<br>nums2 = [3, 4]</p>
+<p>则中位数是 （2 + 3）/2 = 2.5</p>
+</blockquote>
+</div>
+
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><blockquote>
+<p>最直观的思路是将这个两个有序数组进行合并，类似于归并排序里的合并操作。另一个思路是使用双指针，每次将较小的那个指针往后移动一位，直到第<code>(len1+len2)/2</code>个元素（当然需要按数组总长度的奇偶数来谈论），这样只需要<code>O(1)</code>的空间复杂度。但是这两种思路都是<code>O(m+n)</code>的时间复杂度，不足以满足题目要求。</p>
+</blockquote>
+<p>二分查找在第二种思路上更进一步，我们不需要一个一个地往后移指针。因为我们知道两个数组的长度，所以求中位数的问题可以转换为求在合并后的有序数组中的第 k 个元素的问题（不过并不需要真的合并）。</p>
+<p><strong>二分思路</strong></p>
+<ul>
+<li>对第 k 个元素进行二分，每次找这两个有序数组中第 k/2 个元素进行比较。</li>
+<li>较小元素的那个数组前 k/2 个元素肯定不是我们要求的第 k 个元素，因此可以抛弃这 k/2 个元素。</li>
+<li>抛弃元素后数组又是一个规模更小的有序数组，返回第一步继续求解，直到问题的规模可以直接求解，也就是下面说的特殊情况。</li>
+</ul>
+<p>但是有可能出现数组长度小于 k/2，此时应取数组长度作为抛弃长度，因此改进一下：</p>
+<ul>
+<li>使用<code>index1</code>和<code>index2</code>来表示分别表示数组的起始下标，下标小于<code>index</code>的元素均视为被抛弃的。</li>
+<li><code>newIndex</code> 为 <code>index+k/2-1</code> 与 <code>len-1</code> 的最小值</li>
+</ul>
+<ol>
+<li>当<code>A[newIndex1] &lt;= B[newIndex2]</code>时，<code>index1 = newIndex1+1</code>，<code>k -= newIndex1-index1+1</code></li>
+<li>否则相反</li>
+<li>重复 1 和 2 直到遇到特殊情况。</li>
+</ol>
+<p>特殊情况（直接求解）：</p>
+<ul>
+<li>k=1，说明取第一个元素，那么在两个数组首部取最小值即可。</li>
+<li>index == len，说明数组为空，在另一个数组取第 k 个元素即可。</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">double</span> <span class="token function">findMedianSortedArrays</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums1<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> len1 <span class="token operator">=</span> nums1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> len2 <span class="token operator">=</span> nums2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token punctuation">(</span>len1 <span class="token operator">+</span> len2<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>len1<span class="token operator">+</span>len2<span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">0.0</span> <span class="token operator">+</span> <span class="token function">getKthElement</span><span class="token punctuation">(</span>nums1<span class="token punctuation">,</span> nums2<span class="token punctuation">,</span> k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">getKthElement</span><span class="token punctuation">(</span>nums1<span class="token punctuation">,</span> nums2<span class="token punctuation">,</span> k<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">getKthElement</span><span class="token punctuation">(</span>nums1<span class="token punctuation">,</span> nums2<span class="token punctuation">,</span> k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2.0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> <span class="token function">getKthElement</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">&amp;</span>num1<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">&amp;</span>num2<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> len1 <span class="token operator">=</span> num1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> len2 <span class="token operator">=</span> num2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> index1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> index2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//特殊情况</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>index1 <span class="token operator">==</span> len1<span class="token punctuation">)</span><span class="token punctuation">{</span>   <span class="token comment" spellcheck="true">//num1数组为空，那么直接在num2数组求即可</span>
+                <span class="token keyword">return</span> num2<span class="token punctuation">[</span>index2<span class="token operator">+</span>k<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>index2 <span class="token operator">==</span> len2<span class="token punctuation">)</span><span class="token punctuation">{</span>   <span class="token comment" spellcheck="true">//num2数组为空，那么直接在num1数组求即可</span>
+                <span class="token keyword">return</span> num1<span class="token punctuation">[</span>index1<span class="token operator">+</span>k<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>           <span class="token comment" spellcheck="true">//k=1时，直接返回两个数组第一个元素的较小者即可</span>
+                <span class="token keyword">return</span> <span class="token function">min</span><span class="token punctuation">(</span>num1<span class="token punctuation">[</span>index1<span class="token punctuation">]</span><span class="token punctuation">,</span> num2<span class="token punctuation">[</span>index2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//正常情况，需要注意有时候数组长度小于 k/2，此时应取数组长度作为抛弃长度</span>
+            <span class="token keyword">int</span> newIndex1 <span class="token operator">=</span> index1 <span class="token operator">+</span> <span class="token function">min</span><span class="token punctuation">(</span>k<span class="token operator">/</span><span class="token number">2</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> len1<span class="token number">-1</span><span class="token operator">-</span>index1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> newIndex2 <span class="token operator">=</span> index2 <span class="token operator">+</span> <span class="token function">min</span><span class="token punctuation">(</span>k<span class="token operator">/</span><span class="token number">2</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> len2<span class="token number">-1</span><span class="token operator">-</span>index2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>num1<span class="token punctuation">[</span>newIndex1<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> num2<span class="token punctuation">[</span>newIndex2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                k <span class="token operator">-</span><span class="token operator">=</span> newIndex1<span class="token operator">-</span>index1<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                index1  <span class="token operator">=</span> newIndex1<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                k <span class="token operator">-</span><span class="token operator">=</span> newIndex2<span class="token operator">-</span>index2<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                index2  <span class="token operator">=</span> newIndex2<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：O(log(m+n))，其中 m 和 n 分别是数组 nums1 和 nums2 的长度。初始时有 k=(m+n)/2 或 k=(m+n)/2+1，每一轮循环可以将查找范围减少一半，因此时间复杂度是 O(log(m+n))。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+<h2 id="划分数组（更低复杂度的解法）"><a href="#划分数组（更低复杂度的解法）" class="headerlink" title="划分数组（更低复杂度的解法）"></a>划分数组（更低复杂度的解法）</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -700,7 +781,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/02/20/ruan-jian-gong-cheng-ren-yue-shen-hua/">https://litnwu.gitee.io/2020/02/20/ruan-jian-gong-cheng-ren-yue-shen-hua/</a>
+                    <a href="https://litnwu.gitee.io/2020/09/20/xun-zhao-liang-ge-zheng-xu-shu-zu-de-zhong-wei-shu/">https://litnwu.gitee.io/2020/09/20/xun-zhao-liang-ge-zheng-xu-shu-zu-de-zhong-wei-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -738,8 +819,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
-                                    <span class="chip bg-color">软件工程</span>
+                                <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                                    <span class="chip bg-color">二分查找</span>
                                 </a>
                             
                         </div>
@@ -905,49 +986,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/21/http-xie-yi-ru-men/">
+                <a href="/2020/09/20/xun-zhao-liang-ge-zheng-xu-shu-zu-de-zhong-wei-shu/">
                     <div class="card-image">
                         
-                        <img src="http://tva2.sinaimg.cn/large/005JD0Ejgy1gc42cdq6yej30yd0luwpf.jpg" class="responsive-img" alt="HTTP协议学习">
                         
-                        <span class="card-title">HTTP协议学习</span>
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="寻找两个正序数组的中位数">
+                        
+                        <span class="card-title">寻找两个正序数组的中位数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            与HTTP关系密切的协议负责传输的 IP 协议按层次分，IP（Internet Protocol）网际协议位于网络层。Internet Protocol 这个名称可能听起来有点夸张，但事实正是如此，因为几乎 所有使用网络的系统都会用到 IP
+                            问题描述给定两个大小为 m 和 n 的正序（从小到大）数组&nbsp;nums1 和&nbsp;nums2。
+
+请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为&nbsp;O(log(m + n))。
+
+你可以假设&nbsp;nu
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    计算机网络
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/TCP-IP/">
-                        <span class="chip bg-color">TCP/IP</span>
-                    </a>
-                    
-                    <a href="/tags/HTTP/">
-                        <span class="chip bg-color">HTTP</span>
+                    <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                        <span class="chip bg-color">二分查找</span>
                     </a>
                     
                 </div>
@@ -961,32 +1045,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/19/wang-luo-ti-xi-jie-gou/">
+                <a href="/2020/09/13/01-bei-bao-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="网络体系结构:OSI-RM与TCP/IP">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="01背包问题">
                         
-                        <span class="card-title">网络体系结构:OSI-RM与TCP/IP</span>
+                        <span class="card-title">01背包问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是协议？协议是指通信双方必须遵守的、控制信息交换的规则的集合。协议是网络技术中为数据交换而设置的标准、规则和约定的集合。
-计算机与网络设备要相互通信，双方就必须基于相同的方法。比如， 如何探测到通信目标、由哪一边先发起通信、使用哪种语言
+                            问题描述有n个重量和价值分别为 $w_i、v_i$ 的物品。从这些物品中挑选出总重量不超过W的物品，求所有挑选方案中价值总和的最大值。
+
+限制条件$1 \le n \le 100$$1 \le w_i、v_i \le 100$$1 \le 
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    计算机网络
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
                                 </a>
                             
                             
@@ -996,8 +1081,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/TCP-IP/">
-                        <span class="chip bg-color">TCP/IP</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
                 </div>

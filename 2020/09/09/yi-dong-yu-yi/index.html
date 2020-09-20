@@ -101,6 +101,13 @@ C语">
       </li>
       
       <li>
+        <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">
+          
+          <span>二分查找</span>
+        </a>
+      </li>
+      
+      <li>
         <a href="/tags/%E6%A8%A1%E6%8B%9F">
           
           <span>模拟</span>
@@ -302,6 +309,14 @@ C语">
                   <a href="/tags/%E5%88%86%E6%B2%BB " style="margin-left:75px";>
 				  
 		          <span>分治</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE " style="margin-left:75px";>
+				  
+		          <span>二分查找</span>
                   </a>
                 </li>
               
@@ -681,8 +696,8 @@ C语">
 <li>输入：左值</li>
 <li>输出：右值</li>
 </ul>
-<p>我们可以通过调用一个名为move的新标准库函数来获得绑定到左值上的右值引用</p>
-<p>值得注意的是： 使用move意味着，把一个左值转换为右值，原先的值不应该继续再使用（承诺即将废弃）</p>
+<p>我们可以通过调用一个名为<code>move</code>的新标准库函数来获得绑定到左值上的右值引用</p>
+<p>值得注意的是： 使用<code>move</code>意味着，把一个左值转换为右值，原先的值不应该继续再使用（承诺即将废弃）</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">&amp;&amp;</span>rr3 <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>rr1<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//ok</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="使用std-move-实现一个高效的swap函数"><a href="#使用std-move-实现一个高效的swap函数" class="headerlink" title="使用std::move 实现一个高效的swap函数"></a>使用std::move 实现一个高效的swap函数</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">></span>
 <span class="token keyword">void</span> <span class="token function">mySwap</span><span class="token punctuation">(</span>T <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> T <span class="token operator">&amp;</span>b<span class="token punctuation">)</span>
@@ -697,9 +712,9 @@ C语">
 <pre class="line-numbers language-cpp"><code class="language-cpp">T <span class="token operator">&amp;&amp;</span>tmp <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//tmp实际上还是一个指向a的引用</span>
 <span class="token comment" spellcheck="true">//输入: a=3, b=7</span>
 <span class="token comment" spellcheck="true">//输出: a=7, b=7</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>那么就会出现交换后a和b的值都是原来b的值，因为此时tmp实际上还是一个指向a的引用，在将tmp重新赋值给b的时候其实就是将交换后a的值赋值给b（交换后a的值本来就是原先b的值）。</p>
+<p>那么就会出现交换后<code>a</code>和<code>b</code>的值都是原来<code>b</code>的值，因为此时<code>tmp</code>实际上还是一个指向<code>a</code>的引用，在将<code>tmp</code>重新赋值给<code>b</code>的时候其实就是将交换后<code>a</code>的值赋值给<code>b</code>（交换后<code>a</code>的值本来就是原先<code>b</code>的值）。</p>
 <h2 id="移动构造函数和移动赋值运算符"><a href="#移动构造函数和移动赋值运算符" class="headerlink" title="移动构造函数和移动赋值运算符"></a>移动构造函数和移动赋值运算符</h2><p><strong>移动构造函数</strong>使用右值来构造一个新的对象。</p>
-<p>与拷贝构造函数不同，它不分配任何新内存，而是接管给定的StrVec中的内存。在接管内存之后，它将给定对象中的指针都置为nullptr。</p>
+<p>与拷贝构造函数不同，它不分配任何新内存，而是接管给定的<code>StrVec</code>中的内存。在接管内存之后，它将给定对象中的指针都置为<code>nullptr</code>。</p>
 <p>这样就完成了从给定对象的移动操作，此对象将继续存在。最终，移后源对象会被销毁，意味着将在其上运行析构函数。 </p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">StrVec<span class="token operator">::</span><span class="token function">StrVec</span><span class="token punctuation">(</span>StrVec <span class="token operator">&amp;&amp;</span>s<span class="token punctuation">)</span> <span class="token keyword">noexcept</span>  <span class="token comment" spellcheck="true">//移动操作不应抛出任何异常</span>
               <span class="token operator">:</span> <span class="token function">elements</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>elements<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">first_free</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>first_free<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">cap</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>cap<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//接管资源</span>
