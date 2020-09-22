@@ -627,7 +627,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.3k
                 </div>
                 
 
@@ -675,16 +675,16 @@
 <p>但是这两种思路都是<code>O(m+n)</code>的时间复杂度，不足以满足题目要求。</p>
 <p><strong>进一步优化，二分思路</strong><br>二分查找在第二种思路上更进一步，我们不需要一个一个地往后移指针。因为我们知道两个数组的长度，所以求中位数的问题可以转换为求在合并后的有序数组中的第 k 个元素的问题（不过并不需要真的合并）。</p>
 <ul>
-<li>对第 k 个元素进行二分，每次找这两个有序数组中第 k/2 个元素进行比较。</li>
-<li>较小元素的那个数组前 k/2 个元素肯定不是我们要求的第 k 个元素，因此可以抛弃这 k/2 个元素。</li>
-<li>抛弃元素后数组又是一个规模更小的有序数组，返回第一步继续求解，直到问题的规模可以直接求解，也就是下面说的特殊情况。</li>
+<li>对第 k 个元素进行二分，每次找这两个有序数组中<strong>第 k/2 个元素</strong>进行比较。</li>
+<li>较小元素的那个数组前 k/2 个元素肯定不是我们要求的第 k 个元素，因此可以<strong>抛弃这 k/2 个元素</strong>。</li>
+<li>抛弃元素后数组又是一个规模更小的有序数组，并且要寻找的第 k 个元素也更靠前了。返回第一步继续求解，直到问题的规模可以直接求解，也就是下面说的特殊情况。</li>
 </ul>
 <p>但是有可能出现数组长度小于 k/2，此时应取数组长度作为抛弃长度，因此改进一下：</p>
 <ul>
 <li>使用<code>index1</code>和<code>index2</code>来表示分别表示数组的起始下标，下标小于<code>index</code>的元素均视为被抛弃的。</li>
-<li><code>newIndex</code> 为 <code>index+k/2-1</code> 与 <code>len-1</code> 的最小值</li>
 </ul>
 <ol>
+<li><code>newIndex</code> 为 <code>index+k/2-1</code> 与 <code>len-1</code> 的最小值</li>
 <li>当<code>A[newIndex1] &lt;= B[newIndex2]</code>时，<code>index1 = newIndex1+1</code>，<code>k -= newIndex1-index1+1</code></li>
 <li>否则相反</li>
 <li>重复 1 和 2 直到遇到特殊情况。</li>
@@ -740,7 +740,13 @@
 <li>时间复杂度：O(log(m+n))，其中 m 和 n 分别是数组 nums1 和 nums2 的长度。初始时有 k=(m+n)/2 或 k=(m+n)/2+1，每一轮循环可以将查找范围减少一半，因此时间复杂度是 O(log(m+n))。</li>
 <li>空间复杂度：O(1)。</li>
 </ul>
-<h2 id="划分数组（更低复杂度的解法）"><a href="#划分数组（更低复杂度的解法）" class="headerlink" title="划分数组（更低复杂度的解法）"></a>划分数组（更低复杂度的解法）</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<h2 id="划分数组（更低复杂度的解法）"><a href="#划分数组（更低复杂度的解法）" class="headerlink" title="划分数组（更低复杂度的解法）"></a>划分数组（更低复杂度的解法）</h2><p><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/xun-zhao-liang-ge-you-xu-shu-zu-de-zhong-wei-s-114/" target="_blank" rel="noopener">官方题解</a>讲得十分细致。</p>
+<p>需要注意二分时 i 的取值，以及数组越界这种特殊情况的讨论。</p>
+<ul>
+<li><code>left = 0</code>，<code>right = len1</code>，<code>i = (left+right)/2</code>;</li>
+<li>对于 i=0、i=m、j=0、j=n 这样的临界条件，我们只需要规定<code>A[−1]=B[−1]=−∞</code>，<code>A[m]=B[n]=∞</code> 即可。这也是比较直观的：当一个数组不出现在前一部分时，对应的值为负无穷，就不会对前一部分的<strong>最大值</strong>产生影响；当一个数组不出现在后一部分时，对应的值为正无穷，就不会对后一部分的<strong>最小值</strong>产生影响。</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">double</span> <span class="token function">findMedianSortedArrays</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums1<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> len1 <span class="token operator">=</span> nums1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> len2 <span class="token operator">=</span> nums2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
