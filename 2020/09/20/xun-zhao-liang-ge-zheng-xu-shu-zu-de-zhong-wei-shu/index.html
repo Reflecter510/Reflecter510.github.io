@@ -620,21 +620,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-20
+                    2020-09-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -667,11 +667,13 @@
 </blockquote>
 </div>
 
-<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><blockquote>
-<p>最直观的思路是将这个两个有序数组进行合并，类似于归并排序里的合并操作。另一个思路是使用双指针，每次将较小的那个指针往后移动一位，直到第<code>(len1+len2)/2</code>个元素（当然需要按数组总长度的奇偶数来谈论），这样只需要<code>O(1)</code>的空间复杂度。但是这两种思路都是<code>O(m+n)</code>的时间复杂度，不足以满足题目要求。</p>
-</blockquote>
-<p>二分查找在第二种思路上更进一步，我们不需要一个一个地往后移指针。因为我们知道两个数组的长度，所以求中位数的问题可以转换为求在合并后的有序数组中的第 k 个元素的问题（不过并不需要真的合并）。</p>
-<p><strong>二分思路</strong></p>
+<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p><strong>暴力解法</strong></p>
+<ul>
+<li>最直观的思路是将这个两个有序数组进行合并，类似于归并排序里的合并操作。</li>
+<li>另一个思路是使用双指针，每次将较小的那个指针往后移动一位，直到第<code>(len1+len2)/2</code>个元素（当然需要按数组总长度的奇偶数来谈论），这样只需要<code>O(1)</code>的空间复杂度。</li>
+</ul>
+<p>但是这两种思路都是<code>O(m+n)</code>的时间复杂度，不足以满足题目要求。</p>
+<p><strong>进一步优化，二分思路</strong><br>二分查找在第二种思路上更进一步，我们不需要一个一个地往后移指针。因为我们知道两个数组的长度，所以求中位数的问题可以转换为求在合并后的有序数组中的第 k 个元素的问题（不过并不需要真的合并）。</p>
 <ul>
 <li>对第 k 个元素进行二分，每次找这两个有序数组中第 k/2 个元素进行比较。</li>
 <li>较小元素的那个数组前 k/2 个元素肯定不是我们要求的第 k 个元素，因此可以抛弃这 k/2 个元素。</li>
@@ -738,7 +740,46 @@
 <li>时间复杂度：O(log(m+n))，其中 m 和 n 分别是数组 nums1 和 nums2 的长度。初始时有 k=(m+n)/2 或 k=(m+n)/2+1，每一轮循环可以将查找范围减少一半，因此时间复杂度是 O(log(m+n))。</li>
 <li>空间复杂度：O(1)。</li>
 </ul>
-<h2 id="划分数组（更低复杂度的解法）"><a href="#划分数组（更低复杂度的解法）" class="headerlink" title="划分数组（更低复杂度的解法）"></a>划分数组（更低复杂度的解法）</h2><script>
+<h2 id="划分数组（更低复杂度的解法）"><a href="#划分数组（更低复杂度的解法）" class="headerlink" title="划分数组（更低复杂度的解法）"></a>划分数组（更低复杂度的解法）</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">double</span> <span class="token function">findMedianSortedArrays</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums1<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> len1 <span class="token operator">=</span> nums1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> len2 <span class="token operator">=</span> nums2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>len1 <span class="token operator">></span> len2<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token function">findMedianSortedArrays</span><span class="token punctuation">(</span>nums2<span class="token punctuation">,</span> nums1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> mid1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> mid2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> right <span class="token operator">=</span> len1<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//二分找最大的 i 使得 A[i-1] &lt; B[j]</span>
+        <span class="token comment" spellcheck="true">// i+j = m-i+n-j +1?</span>
+        <span class="token comment" spellcheck="true">// j = (m+n+1)/2-i;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token punctuation">(</span>left<span class="token operator">+</span>right<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token punctuation">(</span>len1<span class="token operator">+</span>len2<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token operator">-</span>i<span class="token punctuation">;</span>
+
+            <span class="token keyword">int</span> vi_pre <span class="token operator">=</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token operator">?</span> INT_MIN <span class="token operator">:</span> nums1<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> vi <span class="token operator">=</span> i <span class="token operator">==</span> len1<span class="token operator">?</span> INT_MAX <span class="token operator">:</span> nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> vj_pre <span class="token operator">=</span> j <span class="token operator">==</span> <span class="token number">0</span><span class="token operator">?</span> INT_MIN <span class="token operator">:</span> nums2<span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> vj <span class="token operator">=</span> j <span class="token operator">==</span> len2<span class="token operator">?</span> INT_MAX <span class="token operator">:</span> nums2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span><span class="token punctuation">(</span>vi_pre <span class="token operator">&lt;=</span> vj<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                mid1 <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>vi_pre<span class="token punctuation">,</span> vj_pre<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mid2 <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>vi<span class="token punctuation">,</span> vj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                left <span class="token operator">=</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                right <span class="token operator">=</span> i<span class="token number">-1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>len1<span class="token operator">+</span>len2<span class="token punctuation">)</span> <span class="token operator">%</span><span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> mid1<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span>mid1<span class="token operator">+</span>mid2<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2.0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
