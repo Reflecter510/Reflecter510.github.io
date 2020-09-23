@@ -629,7 +629,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    433
+                    440
                 </div>
                 
 
@@ -670,7 +670,7 @@
 <p><strong>注意:</strong>&nbsp;合并必须从两个树的根节点开始。</p>
 </div>
 
-<h2 id="原地合并和新树合并"><a href="#原地合并和新树合并" class="headerlink" title="原地合并和新树合并"></a>原地合并和新树合并</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
+<h2 id="新树合并"><a href="#新树合并" class="headerlink" title="新树合并"></a>新树合并</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
@@ -680,6 +680,41 @@
  * };
  */</span>
 <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token comment" spellcheck="true">//构建新树的方式</span>
+    TreeNode<span class="token operator">*</span> <span class="token function">dfs</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> <span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> t2 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 依次复制结点</span>
+            <span class="token comment" spellcheck="true">// TreeNode *node = new TreeNode(t2->val);</span>
+            <span class="token comment" spellcheck="true">// node->left = dfs(nullptr, t2->left);</span>
+            <span class="token comment" spellcheck="true">// node->right = dfs(nullptr, t2->right);</span>
+            <span class="token comment" spellcheck="true">// return node;</span>
+            <span class="token keyword">return</span> t2<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t2 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// TreeNode *node = new TreeNode(t1->val);</span>
+            <span class="token comment" spellcheck="true">// node->left = dfs(nullptr, t1->left);</span>
+            <span class="token comment" spellcheck="true">// node->right = dfs(nullptr, t1->right);</span>
+            <span class="token comment" spellcheck="true">// return node;</span>
+            <span class="token keyword">return</span> t1<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> 
+
+        TreeNode <span class="token operator">*</span>root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TreeNode</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>val <span class="token operator">+</span> t2<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        root<span class="token operator">-</span><span class="token operator">></span>left <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">,</span> t2<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        root<span class="token operator">-</span><span class="token operator">></span>right <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">,</span> t2<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> root<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    TreeNode<span class="token operator">*</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token punctuation">,</span>t2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="原地合并"><a href="#原地合并" class="headerlink" title="原地合并"></a>原地合并</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token comment" spellcheck="true">//原地合并到 t1 的方式</span>
     <span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -703,52 +738,17 @@
         <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
             <span class="token function">merge</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">,</span> t2<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">//构建新树的方式</span>
-    TreeNode<span class="token operator">*</span> <span class="token function">dfs</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> <span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> t2 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">if</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">// 依次复制结点</span>
-            <span class="token comment" spellcheck="true">// TreeNode *node = new TreeNode(t2->val);</span>
-            <span class="token comment" spellcheck="true">// node->left = dfs(nullptr, t2->left);</span>
-            <span class="token comment" spellcheck="true">// node->right = dfs(nullptr, t2->right);</span>
-            <span class="token comment" spellcheck="true">// return node;</span>
-
-            <span class="token keyword">return</span> t2<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">if</span><span class="token punctuation">(</span>t2 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">// TreeNode *node = new TreeNode(t1->val);</span>
-            <span class="token comment" spellcheck="true">// node->left = dfs(nullptr, t1->left);</span>
-            <span class="token comment" spellcheck="true">// node->right = dfs(nullptr, t1->right);</span>
-            <span class="token comment" spellcheck="true">// return node;</span>
-
-            <span class="token keyword">return</span> t1<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> 
-
-        TreeNode <span class="token operator">*</span>root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TreeNode</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>val <span class="token operator">+</span> t2<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        
-        root<span class="token operator">-</span><span class="token operator">></span>left <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">,</span> t2<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        root<span class="token operator">-</span><span class="token operator">></span>right <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">,</span> t2<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">return</span> root<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     TreeNode<span class="token operator">*</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// TreeNode *head;</span>
-        <span class="token comment" spellcheck="true">// if(t1 == nullptr){</span>
-        <span class="token comment" spellcheck="true">//     swap(t1, t2);</span>
-        <span class="token comment" spellcheck="true">// }</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>t1<span class="token punctuation">,</span> t2<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token comment" spellcheck="true">// head = t1;</span>
-        <span class="token comment" spellcheck="true">// merge(t1, t2);</span>
-        <span class="token comment" spellcheck="true">// return head;</span>
-
-        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token punctuation">,</span>t2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TreeNode <span class="token operator">*</span>head <span class="token operator">=</span> t1<span class="token punctuation">;</span>
+        <span class="token function">merge</span><span class="token punctuation">(</span>t1<span class="token punctuation">,</span> t2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> head<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
