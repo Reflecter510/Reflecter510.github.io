@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="合并二叉树, LitnWu">
     <meta name="description" content="题目（LeetCode 617.）给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
-
-你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为&amp;n">
+你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NU">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -622,21 +621,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-23
+                    2020-09-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    440
+                    790
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -647,12 +646,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目（LeetCode-617-）"><a href="#题目（LeetCode-617-）" class="headerlink" title="题目（LeetCode 617.）"></a>题目（<a href="https://leetcode-cn.com/problems/merge-two-binary-trees/" target="_blank" rel="noopener">LeetCode 617.</a>）</h2><div class="notranslate"><p>给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。</p>
-
-<p>你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则<strong>不为&nbsp;</strong>NULL 的节点将直接作为新二叉树的节点。</p>
-
-<p><strong>示例&nbsp;1:</strong></p>
-
+                <h2 id="题目（LeetCode-617-）"><a href="#题目（LeetCode-617-）" class="headerlink" title="题目（LeetCode 617.）"></a>题目（<a href="https://leetcode-cn.com/problems/merge-two-binary-trees/" target="_blank" rel="noopener">LeetCode 617.</a>）</h2><p>给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。</p>
+<p>你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 <strong>NULL</strong> 的节点将直接作为新二叉树的节点。</p>
+<p><strong>示例 1:</strong></p>
 <pre class="line-numbers language-bash"><code class="language-bash">输入:
     Tree 1                     Tree 2                  
           1                         2                             
@@ -667,10 +663,11 @@
        4   5
       / \   \ 
      5   4   7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>注意:</strong>&nbsp;合并必须从两个树的根节点开始。</p>
-</div>
-
-<h2 id="新树合并"><a href="#新树合并" class="headerlink" title="新树合并"></a>新树合并</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
+<p><strong>注意:</strong> 合并必须从两个树的根节点开始。</p>
+<h2 id="新树合并"><a href="#新树合并" class="headerlink" title="新树合并"></a>新树合并</h2><p>很明显，这两个二叉树的结点位置是一一对应的，所以合并时从两棵树的根节点出发同步遍历。这里需要用到的递归来构建合并后的新树，比如当前遍历到某个结点，假设树 1 和树 2 的当前结点都不为空，那么就需要 new 一个结点，然后将递归调用求解左孩子的结果复制给结点的左孩子，递归调用求解右孩子的结果复制给结点的右孩子，这样就能一步一步地建树。</p>
+<p>其次，如果树 1 和树 2 的当前结点都为空，那么直接返回空指针就好。而如果只有一棵树的结点为空，那么直接返回另一棵树的结点即可。</p>
+<p>不过，这样构建出来的树，有些结点是指向原来两棵树的部分结点的，如果原来的树被修改，那么就会受到影响，但这不并是题目所要求的，如果要避免这这种情况的话，就需要当只要一棵树的结点为空时，不直接返回另一棵树的结点，而是也像两棵树结点都不为空那样 new 一个新结点。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
@@ -714,7 +711,8 @@
         <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token punctuation">,</span>t2<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="原地合并"><a href="#原地合并" class="headerlink" title="原地合并"></a>原地合并</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<h2 id="原地合并"><a href="#原地合并" class="headerlink" title="原地合并"></a>原地合并</h2><p>如果要优化空间复杂度的话，那么就原地合并，将树 2 合并到树 1 中并返回。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token comment" spellcheck="true">//原地合并到 t1 的方式</span>
     <span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -1293,8 +1291,7 @@
                     <div class="summary block-with-text">
                         
                             题目（LeetCode 617.）给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
-
-你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为&n
+你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NU
                         
                     </div>
                     <div class="publish-info">
