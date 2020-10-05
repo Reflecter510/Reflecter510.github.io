@@ -585,12 +585,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%A0%91/">
-                                <span class="chip bg-color">树</span>
-                            </a>
-                        
                             <a href="/tags/leetcode/">
                                 <span class="chip bg-color">leetcode</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A0%91/">
+                                <span class="chip bg-color">树</span>
                             </a>
                         
                     </div>
@@ -621,7 +621,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-28
+                    2020-09-30
                 </div>
                 
 
@@ -664,7 +664,7 @@
       / \   \ 
      5   4   7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>注意:</strong> 合并必须从两个树的根节点开始。</p>
-<h2 id="新树合并"><a href="#新树合并" class="headerlink" title="新树合并"></a>新树合并</h2><p>很明显，这两个二叉树的结点位置是一一对应的，所以合并时从两棵树的根节点出发同步遍历。这里需要用到的递归来构建合并后的新树，比如当前遍历到某个结点，假设树 1 和树 2 的当前结点都不为空，那么就需要 new 一个结点，然后将递归调用求解左孩子的结果复制给结点的左孩子，递归调用求解右孩子的结果复制给结点的右孩子，这样就能一步一步地建树。</p>
+<h2 id="新树合并"><a href="#新树合并" class="headerlink" title="新树合并"></a>新树合并</h2><p>很明显，这两个二叉树的结点位置是一一对应的，所以合并时从两棵树的根节点出发同步遍历。这里需要用到的递归来构建合并后的新树，比如当前遍历到某个结点，假设树 1 和树 2 的当前结点都不为空，那么就需要 new 一个结点，然后将递归调用求解左孩子的结果复制给结点的左孩子，递归调用求解右孩子的结果赋值给结点的右孩子，这样就能一步一步地建树。</p>
 <p>其次，如果树 1 和树 2 的当前结点都为空，那么直接返回空指针就好。而如果只有一棵树的结点为空，那么直接返回另一棵树的结点即可。</p>
 <p>不过，这样构建出来的树，有些结点是指向原来两棵树的部分结点的，如果原来的树被修改，那么就会受到影响，但这不并是题目所要求的，如果要避免这这种情况的话，就需要当只要一棵树的结点为空时，不直接返回另一棵树的结点，而是也像两棵树结点都不为空那样 new 一个新结点。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
@@ -828,12 +828,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%A0%91/">
-                                    <span class="chip bg-color">树</span>
-                                </a>
-                            
                                 <a href="/tags/leetcode/">
                                     <span class="chip bg-color">leetcode</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A0%91/">
+                                    <span class="chip bg-color">树</span>
                                 </a>
                             
                         </div>
@@ -1314,12 +1314,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A0%91/">
-                        <span class="chip bg-color">树</span>
-                    </a>
-                    
                     <a href="/tags/leetcode/">
                         <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%91/">
+                        <span class="chip bg-color">树</span>
                     </a>
                     
                 </div>
@@ -1345,11 +1345,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            题目（LeetCode 4.）给定两个大小为 m 和 n 的正序（从小到大）数组&nbsp;nums1 和&nbsp;nums2。
-
-请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为&nbsp;O(log(m + n))。
-
-你可
+                            题目（LeetCode 4.）给定两个大小为 m 和 n 的正序（从小到大）数组nums1 和nums2。
+请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
+你可以假设nums1和nums2不会同时为
                         
                     </div>
                     <div class="publish-info">
@@ -1447,10 +1445,6 @@
 
 
 <!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
 
 
     </div>

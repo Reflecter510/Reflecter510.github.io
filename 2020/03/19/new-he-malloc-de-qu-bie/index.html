@@ -621,21 +621,21 @@ malloc的使用/">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-21
+                    2020-10-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    8 分
                 </div>
                 
 
@@ -670,7 +670,7 @@ malloc的使用/">
 <p><a href="/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/">关于堆、栈、静态存储区更详细的介绍</a></p>
 <p><strong>placement new（定位 new）</strong><br>特殊地，经过重载的new运算符可以不为对象分配内存：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">new</span> <span class="token punctuation">(</span>place_address<span class="token punctuation">)</span>  type<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>place_address</code>为一个指针，代表一块内存地地址。当使用上面这种仅以一个地址调用new操作符时，new操作符不分配任何内存，只是简单地返回指针实参，然后在<code>place_address</code>指定地地址进行对象地初始化工作。</p>
+<p><code>place_address</code>为一个指针，代表一块内存地地址。当使用上面这种仅以一个地址调用new操作符时，new操作符不分配任何内存，只是简单地返回指针实参，然后在<code>place_address</code>指定地地址进行对象的初始化工作。</p>
 <p>在使用new关键字建立一个新的对象的时候，在编译器的第二步就是调用对象的构造函数生成类对象。这一步使用的就是placement new来实现的，即在取得了一块可以容纳指定类型对象的内存之后，在这块内存上构造一个对象。</p>
 <blockquote>
 <p>如果要使用placement new， 需要包含头文件<new>或者&lt;new.h&gt;</new></p>
@@ -760,8 +760,8 @@ type <span class="token operator">*</span>d <span class="token operator">=</span
 <li>malloc分配内存之后，如果在使用过程中发现内存不足，可以使用realloc函数进行内存重新分配，以实现内存的扩充。<br>realloc函数先判断当前指针所指的内存是否有足够的连续空间。如果有，原地扩大可分配的内存地址。如果没有，先按照新指定的大小分配空间，将原有数据从头到尾拷贝到新分配的内存区域，最后释放原来的内存区域。</li>
 <li>new 没有这样直观的配套函数来扩充内存。</li>
 </ul>
-<h2 id="10-客户处理内存分配不足"><a href="#10-客户处理内存分配不足" class="headerlink" title="10. 客户处理内存分配不足"></a>10. 客户处理内存分配不足</h2><ul>
-<li>对于malloc，客户不能去编程决定不足以分配时要干什么事，只能看着malloc返回NULL。</li>
+<h2 id="10-用户处理内存分配不足"><a href="#10-用户处理内存分配不足" class="headerlink" title="10. 用户处理内存分配不足"></a>10. 用户处理内存分配不足</h2><ul>
+<li>对于malloc，用户不能去编程决定不足以分配时要干什么事，只能看着malloc返回NULL。</li>
 <li>对于new，内存分配失败，抛出异常之前，它会调用一个用户指定的错误处理函数，这就是new_handler。<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> std
 <span class="token punctuation">{</span>
    <span class="token keyword">typedef</span> <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>new_handler<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -776,6 +776,22 @@ type <span class="token operator">*</span>d <span class="token operator">=</span
 <div align="center" width="75%">
 <img width="75%" src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gczgg9joirj30nt0n5whs.jpg" alt="new和malloc区别">
 </div>
+
+<p>malloc 诞生于 C 语言，new 诞生于 C++ 语言，那么两者的区别中肯定有一些是基于 C 语言和 C++ 语言的区别的。</p>
+<ul>
+<li><p>C++语言是面向对象的，一个类型的实例就是一个对象，new 在分配内存时会调用构造函数构造出一个对象然后返回该对象的指针，正因为如此，返回的指针是那个对象类型的指针。</p>
+</li>
+<li><p>C 语言面向过程，malloc 则不管你要分配的内存空间里存放的是什么类型，反正它就给你分配一块原始的内存空间，因此你需要指定整个内存块的大小，不仅包括分配多少个该类型的空间，还要指定类型占多大，也就是使用 sizeof() 函数来确定，并且返回的指针是 void类型的，需要强制转换成需要的类型，因此也不会专门处理数组类型，而 new 则提供了 new[] 来处理数组类型。</p>
+</li>
+<li><p>C++ 语言引入了异常机制，故如果 new 分配内存时如果失败会抛出bad_alloc异常，并且在抛出异常之前可以执行用户设置的 handler 来执行错误处理函数。而 malloc 在分配内存失败时只会返回一个空指针 NULL。</p>
+</li>
+<li><p>C++ 语言支持重载，因此 new 函数也可以重载为可能抛出异常和承诺不会抛出异常的函数。此外，new 的实现可以基于 malloc。</p>
+</li>
+<li><p>C++ 还有一个名为自由存储区的抽象概念，new 所申请的内存区域在C++中称为自由存储区。如果由堆实现自由存储区，那么可以说 new 所申请的内存区域在堆上。</p>
+</li>
+<li><p>最后，在内存不足时，malloc有配套的 realloc 函数进行内存重新分配，而 new 则没有。</p>
+</li>
+</ul>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1468,10 +1484,6 @@ type <span class="token operator">*</span>d <span class="token operator">=</span
 
 
 <!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
 
 
     </div>
