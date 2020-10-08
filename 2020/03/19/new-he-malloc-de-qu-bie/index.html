@@ -621,14 +621,14 @@ malloc的使用/">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-05
+                    2020-10-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.3k
                 </div>
                 
 
@@ -783,7 +783,7 @@ type <span class="token operator">*</span>d <span class="token operator">=</span
 </li>
 <li><p>C 语言面向过程，malloc 则不管你要分配的内存空间里存放的是什么类型，反正它就给你分配一块原始的内存空间，因此你需要指定整个内存块的大小，不仅包括分配多少个该类型的空间，还要指定类型占多大，也就是使用 sizeof() 函数来确定，并且返回的指针是 void类型的，需要强制转换成需要的类型，因此也不会专门处理数组类型，而 new 则提供了 new[] 来处理数组类型。</p>
 </li>
-<li><p>C++ 语言引入了异常机制，故如果 new 分配内存时如果失败会抛出bad_alloc异常，并且在抛出异常之前可以执行用户设置的 handler 来执行错误处理函数。而 malloc 在分配内存失败时只会返回一个空指针 NULL。</p>
+<li><p>C++ 语言引入了异常机制，是 C 语言的 setjmp 和 longjmp 函数的更加结构化的版本。故如果 new 分配内存时如果失败会抛出bad_alloc异常，并且在抛出异常之前可以执行用户设置的 handler 来执行错误处理函数。而 malloc 在分配内存失败时只会返回一个空指针 NULL。</p>
 </li>
 <li><p>C++ 语言支持重载，因此 new 函数也可以重载为可能抛出异常和承诺不会抛出异常的函数。此外，new 的实现可以基于 malloc。</p>
 </li>
