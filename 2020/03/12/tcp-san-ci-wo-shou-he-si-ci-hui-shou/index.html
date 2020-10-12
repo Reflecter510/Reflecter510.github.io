@@ -1203,14 +1203,6 @@
                         <span class="chip bg-color">TCP/IP</span>
                     </a>
                     
-                    <a href="/tags/OSI-RM/">
-                        <span class="chip bg-color">OSI-RM</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/">
-                        <span class="chip bg-color">流量控制</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1229,7 +1221,7 @@
 
         var selection = window.getSelection();
         // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
+        if (('' + selection).length < Number.parseInt('500')) {
             return;
         }
 
@@ -1279,6 +1271,10 @@
 
 
 <!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
 
 
     

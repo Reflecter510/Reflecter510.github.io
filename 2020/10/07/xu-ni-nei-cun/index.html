@@ -621,14 +621,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-08
+                    2020-10-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    2.7k
                 </div>
                 
 
@@ -705,7 +705,8 @@
 <h2 id="虚拟内存作为内存保护的工具"><a href="#虚拟内存作为内存保护的工具" class="headerlink" title="虚拟内存作为内存保护的工具"></a>虚拟内存作为内存保护的工具</h2><p>任何现代计算机系统必须提供手段来控制对内存系统的访问。</p>
 <p>不应该允许一个用户进程修改它的只读代码段，而且也不应该允许它读或者修改任何内核中的代码和数据结构，不允许它读或者修改其他进程的私有内存，并且不允许修改任何与其他进程共享的虚拟页面，除非所有的共享者都显示地允许它这么做（通过调用明确的进程间通信系统调用）。</p>
 <p>因为每次CPU生成一个地址时，地址翻译硬件便会读一个页表条目。因此在条目上添加许可位即可实现更好的访问控制。</p>
-<script>
+<p>如果一条指令违反了这些许可条件，那么CPU就触发一个一般保护故障，将控制传递给一个内核中的异常处理程序。Linux Shell一般将这种异常报告为“段错误”。</p>
+<h2 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h2><h2 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h2><h2 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1227,50 +1228,50 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/10/07/xu-ni-nei-cun/">
+                <a href="/2020/10/09/android-litepal-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/owmap/19.jpg" class="responsive-img" alt="虚拟内存">
+                        <img src="/medias/featureimages/owmap/6.jpg" class="responsive-img" alt="Android LitePal使用">
                         
-                        <span class="card-title">虚拟内存</span>
+                        <span class="card-title">Android LitePal使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            什么是虚拟内存？虚拟内存是对主存的一个抽象概念，是硬件异常、硬件地址翻译、主存、磁盘文件、和内核软件的完美交互，为每个进程提供一个大的、一致的、私有的地址空间。
-虚拟内存的三个重要能力
-将主存看成一个存储在磁盘上的地址空间的高速缓存，在主存
+                            配置app/build.gradle文件加入LitePal的依赖：
+dependencies {
+    implementation 'org.litepal.android:core:1.3.2
+}
+配置litepal.xml文件在ap
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%86%85%E5%AD%98/">
-                        <span class="chip bg-color">内存</span>
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
                     </a>
                     
                 </div>
@@ -1345,7 +1346,7 @@
 
         var selection = window.getSelection();
         // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
+        if (('' + selection).length < Number.parseInt('500')) {
             return;
         }
 
@@ -1395,6 +1396,10 @@
 
 
 <!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
 
 
     </div>
