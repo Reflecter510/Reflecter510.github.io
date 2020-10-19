@@ -635,7 +635,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    832
+                    834
                 </div>
                 
 
@@ -727,7 +727,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><p>这道题可以贪心…</p>
-<p>排序后寻找这样一个最大区间，负数的前缀和小于正数的后缀和。那么对这个区间求喜爱时间就能获得最大值。</p>
+<p>排序后寻找这样一个最大区间，负数的前缀和小于等于正数的后缀和。那么对这个区间求喜爱时间就能获得最大值。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">int</span> <span class="token function">maxSatisfaction</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> satisfaction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
