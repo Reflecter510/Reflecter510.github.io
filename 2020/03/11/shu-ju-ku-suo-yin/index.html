@@ -620,7 +620,7 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-12
+                    2020-10-18
                 </div>
                 
 
@@ -663,7 +663,7 @@ DB在执行一条Sql语句的时候，默认的方式是根据搜索条件进行
 <ul>
 <li><p>B+树索引：在B-tree上改进得到，其非叶子节点均为key值，叶子节点是key-data键值对。叶子节点前后相连且有序。</p>
 </li>
-<li><p>哈希索引：通过对key进行hash(crc/MD5/sha1/sha256…)而将记录存储在不同的bucket种，可以做到常数时间的查找，但要注意哈希冲突的避免（链表法、线性探测、二次探测、公共溢出区的方法）。其中MD5 128位，和sha1/256码都较长不太适合作为hash函数。默认无序。</p>
+<li><p>哈希索引：通过对key进行hash(crc/MD5/sha1/sha256…)而将记录存储在不同的bucket中，可以做到常数时间的查找，但要注意哈希冲突的避免（链表法、线性探测、二次探测、公共溢出区的方法）。其中MD5 128位，和sha1/256码都较长不太适合作为hash函数。默认无序。</p>
 </li>
 <li><p><strong>为什么有了B+树索引还要hash索引？</strong></p>
 </li>
