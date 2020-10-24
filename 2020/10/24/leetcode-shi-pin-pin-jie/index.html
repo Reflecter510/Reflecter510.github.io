@@ -4,9 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="做菜顺序, LitnWu">
-    <meta name="description" content="题目（LeetCode 1402. 做菜顺序）一个厨师收集了他 n 道菜的满意程度 satisfaction ，这个厨师做出每道菜的时间都是 1 单位时间。
-一道菜的 「喜爱时间」系数定义为烹饪这道菜以及之前每道菜所花费的时间乘以这道菜的满">
+    <meta name="keywords" content="leetcode-视频拼接, LitnWu">
+    <meta name="description" content="今天是10.24，刚好leetcode的每日打卡题就是题库里的第1024道题，嘿嘿。
+题目（LeetCode 1024.）你将会获得一系列视频片段，这些片段来自于一项持续时长为 T 秒的体育赛事。这些片段可能有所重叠，也可能长度不一。
+视频">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>做菜顺序 | LitnWu</title>
+    <title>leetcode-视频拼接 | LitnWu</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -463,12 +464,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/owmap/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/owmap/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">做菜顺序</h1>
+                    <h1 class="description center-align post-title">leetcode-视频拼接</h1>
                 </div>
             </div>
         </div>
@@ -596,10 +597,6 @@
                                 <span class="chip bg-color">动态规划</span>
                             </a>
                         
-                            <a href="/tags/%E8%B4%AA%E5%BF%83/">
-                                <span class="chip bg-color">贪心</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -621,28 +618,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-19
+                    2020-10-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-19
+                    2020-10-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    834
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -653,113 +650,119 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目（LeetCode-1402-做菜顺序）"><a href="#题目（LeetCode-1402-做菜顺序）" class="headerlink" title="题目（LeetCode 1402. 做菜顺序）"></a>题目（<a href="https://leetcode-cn.com/problems/reducing-dishes/" target="_blank" rel="noopener">LeetCode 1402. 做菜顺序</a>）</h2><p>一个厨师收集了他 n 道菜的满意程度 satisfaction ，这个厨师做出每道菜的时间都是 1 单位时间。</p>
-<p>一道菜的 「喜爱时间」系数定义为烹饪这道菜以及之前每道菜所花费的时间乘以这道菜的满意程度，也就是 time[i]*satisfaction[i] 。</p>
-<p>请你返回做完所有菜 「喜爱时间」总和的最大值为多少。</p>
-<p>你可以按 <strong>任意</strong> 顺序安排做菜的顺序，你也可以选择放弃做某些菜来获得更大的总和。</p>
+                <p>今天是10.24，刚好leetcode的每日打卡题就是题库里的第1024道题，嘿嘿。</p>
+<h2 id="题目（LeetCode-1024-）"><a href="#题目（LeetCode-1024-）" class="headerlink" title="题目（LeetCode 1024.）"></a>题目（<a href="https://leetcode-cn.com/problems/video-stitching/" target="_blank" rel="noopener">LeetCode 1024.</a>）</h2><p>你将会获得一系列视频片段，这些片段来自于一项持续时长为 T 秒的体育赛事。这些片段可能有所重叠，也可能长度不一。</p>
+<p>视频片段 clips[i] 都用区间进行表示：开始于 clips[i][0] 并于 clips[i][1] 结束。我们甚至可以对这些片段自由地再剪辑，例如片段 [0, 7] 可以剪切成 [0, 1] + [1, 3] + [3, 7] 三部分。</p>
+<p>我们需要将这些片段进行再剪辑，并将剪辑后的内容拼接成覆盖整个运动过程的片段（[0, T]）。返回所需片段的最小数目，如果无法完成该任务，则返回 -1 。</p>
 <p><strong>示例 1：</strong></p>
 <blockquote>
-<p>输入：satisfaction = [-1,-8,0,5,-9]<br>输出：14<br>解释：去掉第二道和最后一道菜，最大的喜爱时间系数和为 (-1*1 + 0*2 + 5*3 = 14) 。每道菜都需要花费 1 单位时间完成。</p>
+<p>输入：clips = [[0,2],[4,6],[8,10],[1,9],[1,5],[5,9]], T = 10<br>输出：3<br>解释：<br>我们选中 [0,2], [8,10], [1,9] 这三个片段。<br>然后，按下面的方案重制比赛片段：<br>将 [1,9] 再剪辑为 [1,2] + [2,8] + [8,9] 。<br>现在我们手上有 [0,2] + [2,8] + [8,10]，而这些涵盖了整场比赛 [0, 10]。</p>
 </blockquote>
 <p><strong>示例 2：</strong></p>
 <blockquote>
-<p>输入：satisfaction = [4,3,2]<br>输出：20<br>解释：按照原来顺序相反的时间做菜 (2*1 + 3*2 + 4*3 = 20)</p>
+<p><strong>输入：</strong>clips = [[0,1],[1,2]], T = 5<br><strong>输出：</strong>-1<br><strong>解释：</strong><br>我们无法只用 [0,1] 和 [1,2] 覆盖 [0,5] 的整个过程。</p>
 </blockquote>
 <p><strong>示例 3：</strong></p>
 <blockquote>
-<p>输入：satisfaction = [-1,-4,-5]<br>输出：0<br>解释：大家都不喜欢这些菜，所以不做任何菜可以获得最大的喜爱时间系数。</p>
+<p><strong>输入：</strong>clips = [[0,1],[6,8],[0,2],[5,6],[0,4],[0,3],[6,7],[1,3],[4,7],[1,4],[2,5],[2,6],[3,4],[4,5],[5,7],[6,9]], T = 9<br><strong>输出：</strong>3<br><strong>解释：</strong><br>我们选取片段 [0,4], [4,7] 和 [6,9] 。</p>
 </blockquote>
 <p><strong>示例 4：</strong></p>
 <blockquote>
-<p>输入：satisfaction = [-2,5,-1,0,3,-3]<br>输出：35</p>
+<p><strong>输入：</strong>clips = [[0,4],[2,8]], T = 5<br><strong>输出：</strong>2<br><strong>解释：</strong><br>注意，你可能录制超过比赛结束时间的视频。</p>
 </blockquote>
 <p><strong>提示：</strong></p>
 <ul>
-<li>n == satisfaction.length</li>
-<li>1 &lt;= n &lt;= 500</li>
-<li>-10^3 &lt;= satisfaction[i] &lt;= 10^3</li>
+<li>1 &lt;= clips.length &lt;= 100</li>
+<li>0 &lt;= clips[i][0] &lt;= clips[i][1] &lt;= 100</li>
+<li>0 &lt;= T &lt;= 100</li>
 </ul>
-<h2 id="记忆化搜索"><a href="#记忆化搜索" class="headerlink" title="记忆化搜索"></a>记忆化搜索</h2><p>先对satisfaction数组按从小到大排序，之后就可以按照 01 背包问题进行求解。</p>
-<p>按题意进行记忆化搜索就可以了，也可以进一步地把dp方程推导出来然后迭代求解。</p>
-<p>对于排序后的satisfaction数组的每一个下标 i，我们都可以选择做或者不做这道菜。</p>
-<ul>
-<li>如果不做，那么所花费的总时间time以及喜爱时间都不会增加；</li>
-<li>如果做，那么time需要加一，并且喜爱时间需要加上 time 乘以下标i指向的满意度。</li>
-</ul>
-<p>然后递归的时候取两者最大值，</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<h2 id="朴素搜索"><a href="#朴素搜索" class="headerlink" title="朴素搜索"></a>朴素搜索</h2><p>刚开始看的时候往贪心的方向想，然后看了看题目标签——动态规划。嗯确实可以，对于clips数组中的每一个元素，可以选或者不选，那么选了就个数加 1 ，不选就个数不变，保证每次选的元素都能和已经选的元素拼接出连续的区间，然后就是选了和不选的情况取最小值。</p>
+<p>在这里，我将clip数组排序，按照区间左部从小到大，那么在每次选择的时候，如果该元素的区间左部大于当前的起点，那么这个子问题就是无解的，返回一个无穷大。因为排序，后续的元素的区间左部肯定大于等于该元素的区间左部，那么就没办法拼接出完整的视频。</p>
+<p>下面是没有加记忆化的朴素搜索，在跑了几十个用例后超时了，其实在这基础上加一个dp数组记忆化就能过了。</p>
+<p>结果我又去想了一个错误的贪心：按区间左部从小到大排序，区间右部从大到小排序，然后每次取区间左部最小右部最大的片段来拼接视频。可以举出反例：[0,4], [0,3], [0,2], [2,6], [4,7], T=7。第一步选择[0,4]，区间[0,2]和[0,3]都被包含在[0,4]中，所以不选择；第二步对于区间[2,6]，<code>0&lt;2&lt;4 并且 4&lt;6</code>，故也选择，第三步选择[4,7]，但实际上[2,6]是多余的。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
+* 超时，需要记忆化dp
+*/</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> satisfaction<span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//map&lt;pair&lt;int,int>, int> dp;  用map最后一个用例会超时</span>
-    <span class="token keyword">int</span> dp<span class="token punctuation">[</span><span class="token number">600</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">600</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token keyword">int</span> MAX <span class="token operator">=</span> <span class="token number">0x6f6f6f6f</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> clips<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> T<span class="token punctuation">;</span>
 
-    <span class="token keyword">int</span> <span class="token function">rep</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> time<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">int</span> n <span class="token operator">=</span> satisfaction<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">>=</span> n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> <span class="token function">rep</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">>=</span> T<span class="token punctuation">)</span>
             <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>k <span class="token operator">>=</span> clips<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> MAX<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
-        <span class="token keyword">if</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>time<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">return</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>time<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">return</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>time<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> time<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span>time<span class="token operator">*</span>satisfaction<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>clips<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> i<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token function">min</span><span class="token punctuation">(</span><span class="token function">rep</span><span class="token punctuation">(</span><span class="token function">max</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>clips<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> 
+            <span class="token keyword">return</span> MAX<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">int</span> <span class="token function">maxSatisfaction</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> satisfaction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>satisfaction <span class="token operator">=</span> satisfaction<span class="token punctuation">;</span>
-        <span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>satisfaction<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>satisfaction<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token function">rep</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token function">videoStitching</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> clips<span class="token punctuation">,</span> <span class="token keyword">int</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>clips <span class="token operator">=</span> clips<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>T <span class="token operator">=</span> T<span class="token punctuation">;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>clips<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>clips<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>cmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token function">rep</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ans <span class="token operator">==</span> MAX <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">:</span> ans<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h2><p>由上述记忆化搜索得来。</p>
+
+    <span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">&lt;=</span>b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="备忘录搜索"><a href="#备忘录搜索" class="headerlink" title="备忘录搜索"></a>备忘录搜索</h2><p>加上dp数组记忆化就能通过了，毕竟视频长度最大才100，<code>dp[i]</code>的定义为拼接出从 i 开始的后续完整视频所需要的最少视频片段。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> <span class="token function">maxSatisfaction</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> satisfaction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token keyword">int</span> MAX <span class="token operator">=</span> <span class="token number">0x6f6f6f6f</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> clips<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> T<span class="token punctuation">;</span>
 
-        <span class="token function">sort</span><span class="token punctuation">(</span>satisfaction<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>satisfaction<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> dp<span class="token punctuation">[</span><span class="token number">101</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>satisfaction<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span>
-            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> time <span class="token operator">=</span> satisfaction<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>time <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">;</span>time<span class="token operator">--</span><span class="token punctuation">)</span>
-                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>time<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>time<span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>time<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span>time<span class="token operator">*</span>satisfaction<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">return</span> dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><p>这道题可以贪心…</p>
-<p>排序后寻找这样一个最大区间，负数的前缀和小于等于正数的后缀和。那么对这个区间求喜爱时间就能获得最大值。</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> <span class="token function">maxSatisfaction</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> satisfaction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token function">sort</span><span class="token punctuation">(</span>satisfaction<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> satisfaction<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>satisfaction<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//计算从 j 开始拼成完整视频所需要的片段</span>
+    <span class="token keyword">int</span> <span class="token function">rep</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>j <span class="token operator">>=</span> T<span class="token punctuation">)</span>
             <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>k <span class="token operator">>=</span> clips<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> MAX<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
-        <span class="token keyword">int</span> n <span class="token operator">=</span> satisfaction<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> back <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> front <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>n<span class="token number">-1</span><span class="token punctuation">;</span>i<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>satisfaction<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span>
-                back<span class="token operator">+</span><span class="token operator">=</span>satisfaction<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>satisfaction<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token number">0</span><span class="token punctuation">)</span>
-                front<span class="token operator">+</span><span class="token operator">=</span>satisfaction<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> cnt <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> n <span class="token operator">&amp;&amp;</span> <span class="token operator">-</span>front <span class="token operator">>=</span> back<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            front <span class="token operator">-</span><span class="token operator">=</span> satisfaction<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            i<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span>i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-            ans <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>cnt<span class="token operator">++</span><span class="token punctuation">)</span><span class="token operator">*</span>satisfaction<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>clips<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> j<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span><span class="token function">rep</span><span class="token punctuation">(</span>clips<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>clips<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">,</span> k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">rep</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">,</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> 
+            <span class="token keyword">return</span> MAX<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<script>
+
+    <span class="token keyword">int</span> <span class="token function">videoStitching</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> clips<span class="token punctuation">,</span> <span class="token keyword">int</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token function">memset</span><span class="token punctuation">(</span>dp<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>clips <span class="token operator">=</span> clips<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>T <span class="token operator">=</span> T<span class="token punctuation">;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>clips<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>clips<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>cmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token function">rep</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ans <span class="token operator">>=</span> MAX <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">:</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">>=</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -802,7 +805,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://litnwu.gitee.io/2020/10/19/zuo-cai-shun-xu/">https://litnwu.gitee.io/2020/10/19/zuo-cai-shun-xu/</a>
+                    <a href="https://litnwu.gitee.io/2020/10/24/leetcode-shi-pin-pin-jie/">https://litnwu.gitee.io/2020/10/24/leetcode-shi-pin-pin-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -846,10 +849,6 @@
                             
                                 <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
                                     <span class="chip bg-color">动态规划</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%B4%AA%E5%BF%83/">
-                                    <span class="chip bg-color">贪心</span>
                                 </a>
                             
                         </div>
@@ -1289,9 +1288,66 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/10/24/leetcode-shi-pin-pin-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/owmap/11.jpg" class="responsive-img" alt="leetcode-视频拼接">
+                        
+                        <span class="card-title">leetcode-视频拼接</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            今天是10.24，刚好leetcode的每日打卡题就是题库里的第1024道题，嘿嘿。
+题目（LeetCode 1024.）你将会获得一系列视频片段，这些片段来自于一项持续时长为 T 秒的体育赛事。这些片段可能有所重叠，也可能长度不一。
+视频
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/10/23/han-shu-zhi-zhen/">
                     <div class="card-image">
@@ -1311,9 +1367,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1325,61 +1381,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/10/18/n-huang-hou/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/owmap/8.jpg" class="responsive-img" alt="N皇后">
-                        
-                        <span class="card-title">N皇后</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            题目（LeetCode 51.）n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
-给定一个整数 n，返回所有不同的 n 皇后问题的解决方案。
-每一种解法包含一个明确的 n 皇后问题的棋子放置方
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/algorithm/" class="post-category">
-                                    algorithm
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9B%9E%E6%BA%AF/">
-                        <span class="chip bg-color">回溯</span>
-                    </a>
-                    
                 </div>
                 
             </div>
