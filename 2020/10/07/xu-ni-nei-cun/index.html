@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="虚拟内存, LitnWu">
     <meta name="description" content="什么是虚拟内存？虚拟内存是对主存的一个抽象概念，是硬件异常、硬件地址翻译、主存、磁盘文件、和内核软件的完美交互，为每个进程提供一个大的、一致的、私有的地址空间。
-虚拟内存的三个重要能力
-将主存看成一个存储在磁盘上的地址空间的高速缓存，在主存">
+物理和虚拟寻址
+物理寻址：计算机系统的主存被组织成一个由M个连续的字节大小的单">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -621,21 +621,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-10
+                    2020-11-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 
@@ -647,11 +647,6 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="什么是虚拟内存？"><a href="#什么是虚拟内存？" class="headerlink" title="什么是虚拟内存？"></a>什么是虚拟内存？</h2><p>虚拟内存是对主存的一个抽象概念，是硬件异常、硬件地址翻译、主存、磁盘文件、和内核软件的完美交互，为每个进程提供一个大的、一致的、私有的地址空间。</p>
-<h2 id="虚拟内存的三个重要能力"><a href="#虚拟内存的三个重要能力" class="headerlink" title="虚拟内存的三个重要能力"></a>虚拟内存的三个重要能力</h2><ol>
-<li>将主存看成一个存储在磁盘上的地址空间的高速缓存，在主存上只保存活动区域，并根据需要在磁盘和主存之间来回传送数据，通过这种方式高效使用主存。</li>
-<li>为每一个进程提供了一致的地址空间，简化内存管理。</li>
-<li>保护每个进程的地址空间不被其他进程破坏。</li>
-</ol>
 <h2 id="物理和虚拟寻址"><a href="#物理和虚拟寻址" class="headerlink" title="物理和虚拟寻址"></a>物理和虚拟寻址</h2><ul>
 <li><strong>物理寻址</strong>：计算机系统的主存被组织成一个由M个连续的字节大小的单元组成的数组。每字节都有一个唯一的物理地址。CPU访问内存的最自然的方式就是使用物理地址。</li>
 </ul>
@@ -666,6 +661,19 @@
 <li>物理地址空间：对应于系统物理内存的M个字节</li>
 </ul>
 <p>地址空间清楚地区分了数据对象（字节）和它们的属性（地址）。虚拟内存的<strong>基本思想</strong>是允许每个数据对象有多个独立的地址，其中每个地址都选自一个不同的地址空间。</p>
+<h2 id="Linux虚拟内存区域"><a href="#Linux虚拟内存区域" class="headerlink" title="Linux虚拟内存区域"></a>Linux虚拟内存区域</h2><p>Linux 将虚拟内存组织成一些区域（也叫做段）的集合。 一个区域（area）就是已经存在 着的（已分配的）虚拟内存的连续片（chunk），这些页是以某种方式相关联的。</p>
+<img src="https://tvax1.sinaimg.cn/large/005JD0Ejgy1gkhof3s2cqj30ih0mcaq4.jpg" alt="一个Linux进程的虚拟内存" width="50%" data-width="665" data-height="804">
+
+<h2 id="进程虚拟内存区域"><a href="#进程虚拟内存区域" class="headerlink" title="进程虚拟内存区域"></a><a href="/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/">进程虚拟内存区域</a></h2><h2 id="内核虚拟内存"><a href="#内核虚拟内存" class="headerlink" title="内核虚拟内存"></a>内核虚拟内存</h2><p>这部分虚拟内存位于用户栈之上。</p>
+<p>内核虚拟内存包括内核中的代码和数据结构。内核虚拟内存的某些区域被映射到所有进程共享的物理页面。</p>
+<p>例如，每个进程共享内核的代码和全局数据结构。</p>
+<p>有趣的是，Linux也将一组连续的虚拟页面映射到相应的一组连续的物理页面。这就为内核提供了一种便利的方法来访问物理内存中任何特定的位置，例如，当它需要访问页表，或在一些设备上执行内存映射的IO操作，而这些设备被映射到特定的物理内存位置时。</p>
+<p>内核虚拟内存的其他区域包含每个进程都不同的数据。比如说，页表、内核在进程的上下文中执行代码时使用的栈，以及记录虚拟地址空间当前组织的各种数据结构。</p>
+<h2 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h2><h2 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h2><h2 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h2><h2 id="虚拟内存的三个重要能力"><a href="#虚拟内存的三个重要能力" class="headerlink" title="虚拟内存的三个重要能力"></a>虚拟内存的三个重要能力</h2><ol>
+<li>将主存看成一个存储在磁盘上的地址空间的高速缓存，在主存上只保存活动区域，并根据需要在磁盘和主存之间来回传送数据，通过这种方式高效使用主存。</li>
+<li>为每一个进程提供了一致的地址空间，简化内存管理。</li>
+<li>保护每个进程的地址空间不被其他进程破坏。</li>
+</ol>
 <h2 id="虚拟内存作为缓存的工具"><a href="#虚拟内存作为缓存的工具" class="headerlink" title="虚拟内存作为缓存的工具"></a>虚拟内存作为缓存的工具</h2><p>虚拟内存被组织为一个由存放在磁盘上的N个连续的字节大小的单元组成的数组。每字节都有一个唯一的虚拟地址，作为到数组的索引。磁盘上数组的内容被缓存到主存中。</p>
 <p>和存储器层次结构其他缓存一样，磁盘（较低层）上的数据被分割成块，这些块作为磁盘和主存（较高层）之间的传输单元。而虚拟内存被分割成称为虚拟页的大小固定的块。类似地，物理内存被分割为物理页，大小与虚拟页一样，被称为页帧。</p>
 <ul>
@@ -706,7 +714,7 @@
 <p>不应该允许一个用户进程修改它的只读代码段，而且也不应该允许它读或者修改任何内核中的代码和数据结构，不允许它读或者修改其他进程的私有内存，并且不允许修改任何与其他进程共享的虚拟页面，除非所有的共享者都显示地允许它这么做（通过调用明确的进程间通信系统调用）。</p>
 <p>因为每次CPU生成一个地址时，地址翻译硬件便会读一个页表条目。因此在条目上添加许可位即可实现更好的访问控制。</p>
 <p>如果一条指令违反了这些许可条件，那么CPU就触发一个一般保护故障，将控制传递给一个内核中的异常处理程序。Linux Shell一般将这种异常报告为“段错误”。</p>
-<h2 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h2><h2 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h2><h2 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h2><script>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
