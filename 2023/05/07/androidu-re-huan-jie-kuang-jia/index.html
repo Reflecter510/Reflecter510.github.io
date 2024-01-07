@@ -786,7 +786,7 @@
         mHalWrapper<span class="token punctuation">.</span><span class="token function">setCallback</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token operator">:</span><span class="token operator">:</span>onTemperatureChangedCallback<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="2-热服务处理流程"><a href="#2-热服务处理流程" class="headerlink" title="#2 热服务处理流程"></a>#2 热服务处理流程</h4><p><img src="/image-20230625002822286.png" alt="image-20230625002822286"></p>
+<h4 id="2-热服务处理流程"><a href="#2-热服务处理流程" class="headerlink" title="#2 热服务处理流程"></a>#2 热服务处理流程</h4><p><img src="/2023/05/07/androidu-re-huan-jie-kuang-jia/image-20230625002822286.png" alt="image-20230625002822286"></p>
 <p>在服务初始化的时候，我们向HAL注册了一个回调方法，该回调传递一个Temperature变量。</p>
 <pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/* HwBinder callback **/</span>
     <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">onTemperatureChangedCallback</span><span class="token punctuation">(</span>Temperature temperature<span class="token punctuation">)</span> <span class="token punctuation">{</span>
