@@ -1,0 +1,1839 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="软件工程读书笔记1, LitnWu">
+    <meta name="description" content="第一章 软件的本质（THE NATURE OF SOFTWARE）
+Today, software takes on a dual role. It is a product, and at the same time, the vehic">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>软件工程读书笔记1 | LitnWu</title>
+    <link rel="icon" type="image/png" href="/medias/logo1.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 7.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo1.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">LitnWu</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/algorithm" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-code" style="zoom: 0.6;"></i>
+      
+      <span>算法</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/algorithm">
+          
+          <span>全部</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/leetcode">
+          
+          <span>力扣刷题</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">
+          
+          <span>动态规划</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E5%9B%9E%E6%BA%AF">
+          
+          <span>回溯</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E5%88%86%E6%B2%BB">
+          
+          <span>分治</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">
+          
+          <span>二分查找</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E6%A8%A1%E6%8B%9F">
+          
+          <span>模拟</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/C" class="waves-effect waves-light">
+      
+      <i class="fas fa-rocket" style="zoom: 0.6;"></i>
+      
+      <span>C++</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/Linux" class="waves-effect waves-light">
+      
+      <i class="fas fa-terminal" style="zoom: 0.6;"></i>
+      
+      <span>Linux</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/数据库" class="waves-effect waves-light">
+      
+      <i class="fa fa-database" style="zoom: 0.6;"></i>
+      
+      <span>数据库</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/操作系统" class="waves-effect waves-light">
+      
+      <i class="fa fa-microchip" style="zoom: 0.6;"></i>
+      
+      <span>操作系统</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags/TCP-IP" class="waves-effect waves-light">
+      
+      <i class="fa fa-link" style="zoom: 0.6;"></i>
+      
+      <span>TCP/IP</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>更多</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/Spring">
+          
+          <i class="fas fa-leaf" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Spring</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo1.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">LitnWu</div>
+        <div class="logo-desc">
+            
+            长夜将至，我将自此开始守望
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-code"></i>
+			
+			算法
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>   
+				
+                  <a href="/categories/algorithm " style="margin-left:75px";>
+				  
+		          <span>全部</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/leetcode " style="margin-left:75px";>
+				  
+		          <span>力扣刷题</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92 " style="margin-left:75px";>
+				  
+		          <span>动态规划</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E5%9B%9E%E6%BA%AF " style="margin-left:75px";>
+				  
+		          <span>回溯</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E5%88%86%E6%B2%BB " style="margin-left:75px";>
+				  
+		          <span>分治</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE " style="margin-left:75px";>
+				  
+		          <span>二分查找</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E6%A8%A1%E6%8B%9F " style="margin-left:75px";>
+				  
+		          <span>模拟</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/C" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-rocket"></i>
+			
+			C++
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/Linux" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-terminal"></i>
+			
+			Linux
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/数据库" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-database"></i>
+			
+			数据库
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/操作系统" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-microchip"></i>
+			
+			操作系统
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags/TCP-IP" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-link"></i>
+			
+			TCP/IP
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			更多
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>   
+				
+                  <a href="/categories/Spring " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-leaf" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Spring</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/categories " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/archives " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+    <!-- <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/owmap/2.jpg')"> -->
+    <div class="bg-cover pd-header post-cover" style="background-image: linear-gradient(to right, rgba(226, 74, 74, 0.7)0%, rgba(0, 162, 255, 0.7) 100%);
+    ;">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="brand">
+                        <h1 class="description center-align post-title">
+                            软件工程读书笔记1
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+    
+    #articleContent :focus {
+        outline: none;
+    }
+    
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+    
+    .toc-widget {
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: 15px 15px;
+        width: 345px;
+        padding-left: 20px;
+    }
+    
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        padding-top: 10px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+    
+    #toc-content ol {
+        padding-left: 10px;
+    }
+    
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+    
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+    
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+    
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+    
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+    
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+    
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+    
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+                                <span class="chip bg-color">软件工程</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                软件工程
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-03-03
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-03-14
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="第一章-软件的本质（THE-NATURE-OF-SOFTWARE）"><a href="#第一章-软件的本质（THE-NATURE-OF-SOFTWARE）" class="headerlink" title="第一章 软件的本质（THE NATURE OF SOFTWARE）"></a>第一章 软件的本质（THE NATURE OF SOFTWARE）</h2><ul>
+<li><p>Today, software takes on a dual role. It is a product, and at the same time, the vehicle for delivering a product.<br>软件既是产品，也是交付产品的载体。</p>
+</li>
+<li><p>Why does it take so long to get software ﬁnished?<br>为什么软件需要如此长的开发时间？</p>
+</li>
+<li><p>Why are development costs so high?<br>为什么开发成本居高不下？</p>
+</li>
+<li><p>Why can’t we ﬁnd all errors before we give the software to our customers?<br>为什么在将软件交付顾客使用之前，我们无法找到所有的错误？</p>
+</li>
+<li><p>Why do we spend so much time and effort maintaining existing programs?<br>为什么维护已有的程序要花费如此多的时间和人工？</p>
+</li>
+<li><p>Why do we continue to have difﬁculty in measuring progress as software is being developed and maintained?<br>为什么软件开发和维护的进度仍旧难以衡量？</p>
+</li>
+<li><p>Software is not susceptible to the environmental maladies that cause hardware to wear out.<br>软件不会被引起硬件磨损的环境问题所影响，即不会”wear out”.</p>
+</li>
+<li><p>But it does  deteriorate!<br>但软件退化确实存在！</p>
+</li>
+<li><p>the software is deteriorating due to change.<br>不断地变更是软件退化的根本原因</p>
+</li>
+<li><p>There are no software spare parts. Every software failure indicates an error in design or in the process through which design was translated into machine executable code.<br>软件不存在备用部件。每个软件的缺陷都暗示设计的缺陷或者在从设计转化到机器可执行代码过程中产生的错误。</p>
+</li>
+<li><p>Therefore, the software maintenance tasks that accommodate requests for change involve considerably more complexity than hardware maintenance.<br>因此，软件维护要应对变更请求，比硬件维护更为复杂。</p>
+</li>
+<li><p>The proliferation of such systems is causing headaches for large organizations who ﬁnd them costly to maintain and risky to evolve.<br>遗留软件系统维护代价高且系统演化风险高</p>
+</li>
+<li><p>Hence, legacy software is characterized by longevity and business criticality.<br>遗留软件具有生命周期长以及业务关键性的特点。</p>
+</li>
+<li><p>Unfortunately, there is sometimes one additional characteristic that is present in legacy software—-poor quality<br>遗留软件的另一个特点–质量差</p>
+</li>
+<li><p>However, as time passes, legacy systems often evolve for one or more of the following reasons:<br>遗留系统因下述原因而发生演化；</p>
+</li>
+<li><p>The software must be adapted to meet the needs of new computing environments or technology.<br>软件需要进行适应性调整，从而可以满足新的计算环境或技术的需求。</p>
+</li>
+<li><p>The software must be enhanced to implement new business requirements.<br>软件必须升级以实现新的商业需求</p>
+</li>
+<li><p>The software must be extended to make it interoperable with other more modern systems or databases.<br>软件必须扩展以使之具有更多新的系统和数据库的互操作能力</p>
+</li>
+<li><p>The software must be re-architected to make it viable within a evolving computing environment.<br>软件架构必须进行改建以使之适应不断演化的计算环境。</p>
+</li>
+</ul>
+<h2 id="第二章-软件工程（SOFTWARE-ENGINEERING）"><a href="#第二章-软件工程（SOFTWARE-ENGINEERING）" class="headerlink" title="第二章  软件工程（SOFTWARE ENGINEERING）"></a>第二章  软件工程（SOFTWARE ENGINEERING）</h2><ul>
+<li><p>Understand the problem before you build a solution.<br>在建立解决方案前应理解问题。</p>
+</li>
+<li><p>It follows that a concerted effort should be made to understand the problem before a software solution is developed.<br>因此，在确定软件方案之前，需要共同努力来理解问题</p>
+</li>
+<li><p>Both quality and maintainability are an outgrowth of good design.<br>质量和可维护性都是良好设计的产物。</p>
+</li>
+<li><p>It follows that design becomes a pivotal activity.<br>设计已经成为关键活动</p>
+</li>
+<li><p>It follows that software should exhibit high quality.<br>软件应该具有高质量</p>
+</li>
+<li><p>It follows that software should be maintainable.<br>软件应该具有可维护性</p>
+</li>
+<li><p>[Software engineering is] the establishment and use of sound engineering principles in order to obtain economically software that is reliable and works efficiently on real machines.<br>软件工程是建立和使用合理的工程原理，以便以经济的方式获得可靠的软件，并在实际机器上有效地工作。</p>
+</li>
+<li><p>Software Engineering: (1) The application of a systematic, disciplined, quantiﬁ able approach to the development, operation, and maintenance of software; that is, the application of engineering to software. (2) The study of approaches as in (1).<br>软件工程是：（1）将系统化的、规范的、可量化的方法应用于软件的开发、运行和维护，即将工程化的方法应用于软件；（2）对（1）中所述方法的研究。</p>
+</li>
+<li><p>We need discipline, but we also need adaptability and agility.<br>我们需要规范，也需要可适应性和灵活性。</p>
+</li>
+<li><p>Software engineering encompasses a process, methods for managing and engineering software, and tools.<br>软件工程包括过程、管理和构建软件的方法和工具</p>
+</li>
+<li><p>The bedrock that supports software engineering is a quality focus.<br>支持软件工程的根基在于质量关注点</p>
+</li>
+<li><p>The foundation for software engineering is the process  layer.<br>软件工程的基础是过程层</p>
+</li>
+<li><p>Software engineering  methods  provide the technical how-to’s for building software.<br>软件工程方法为构建软件提供技术上的解决方法（如何做）</p>
+</li>
+<li><p>Software engineering  tools  provide automated or semi-automated support for the process and the methods.<br>软件工程工具为过程和方法提供自动化或半自动化的支持。</p>
+</li>
+<li><p>A  process  is a collection of activities, actions, and tasks that are performed when some work product is to be created.<br>软件过程是工作产品构建时所执行的一系列活动、动作、任务的集合。</p>
+</li>
+<li><p>A  process framework  establishes the foundation for a complete software engineering process by identifying a small number of  framework activities  that are applicable to all software projects, regardless of their size or complexity. In addition, the process framework encompasses a set of  umbrella activities  that are applicable across the entire software process.<br>过程框架定义了若干个框架活动，为实现完整的软件工程过程建立了基础。这些活动可广泛应用于所有软件开发项目，无论项目的规模和复杂性如何。此外，一个过程框架还包含一些适用于整个软件过程的普适性活动。</p>
+</li>
+<li><p>framework activities: Communication，Planning，Modeling，Construction，Deployment<br>框架活动：沟通、策划、建模、构建、部署</p>
+</li>
+<li><p>umbrella activities: Software project tracking and control, Risk management, Software quality assurance, Technical reviews, Measurement, Software configuration management, Reusability management, Work product preparation and production<br>普适性活动：软件项目跟踪和控制，风险管理，软件质量保证，技术评审，测量，软件配置管理，可复用管理，工作产品的准备和生产。</p>
+</li>
+<li><p>Umbrella activities occur throughout the software process and focus primarily on project management, tracking, and control.<br>普适性活动贯穿整个软件过程，主要关注项目管理、跟踪和控制</p>
+</li>
+<li><p>Software process adaptation is essential for project success.<br>对软件的适应性调整是项目成功的关键。</p>
+</li>
+</ul>
+<p><strong>Adapting a Process Model 过程的适应性调整</strong></p>
+<ul>
+<li>a process adopted for one project might be signiﬁ cantly different than a process adopted for another project.<br>不同项目所采取的项目过程可能有很大的不同。</li>
+</ul>
+<ol>
+<li>the overall flow of activities, actions, and tasks and the interdependencies among them<br>活动、动作和任务的总体流程和相互依赖关系。</li>
+<li>the degree to which actions and tasks are defined within each framework activity<br>在每一个框架活动中，动作和任务细化的程度。</li>
+<li>the degree to which work products are identified and required<br>工作产品的定义和要求的程度。</li>
+<li>the manner which quality assurance activities are applied<br>质量保证活动应用的方式。</li>
+<li>the manner in which project tracking and control activities are applied<br>项目跟踪和控制活动应用的方式。</li>
+<li>the overall degree of detail and rigor with which the process is described<br>过程描述的详细程度和严谨程度。</li>
+<li>the degree to which the customer and other stakeholders are involved with the project<br>客户和利益相关者对项目的参与程度。</li>
+<li>the level of autonomy given to the software team<br>软件团队所获得的自主权。</li>
+<li>the degree to which team organization and roles are prescribed<br>队伍组织和角色的明确程度。</li>
+</ol>
+<p><strong>The Essence of Practice 软件工程实践</strong><br>1.	Understand the problem (communication and analysis).<br>理解问题（沟通和分析）<br>2.	Plan a solution (modeling and software design).<br>策划解决方案（建模和软件设计）<br>3.	Carry out the plan (code generation).<br>实施计划（代码生成）<br>4.	Examine the result for accuracy (testing and quality assurance).<br>检查结果的准确性（测试和质量保证）</p>
+<p><strong>理解问题 Understand the problem</strong></p>
+<ul>
+<li>Who has a stake in the solution to the problem? That is, who are the stakeholders?<br>谁将从问题的解决中获益？也就是说，谁是利益相关者？</li>
+<li>What are the unknowns? What data, functions, and features are required to properly solve the problem?<br>有哪些是未知的？那些数据、功能和特性是解决问题所必需的。</li>
+<li>Can the problem be compartmentalized? Is it possible to represent smaller problems that may be easier to understand?<br>问题可以被划分吗？是否可以描述为更小、更容易理解的问题。</li>
+<li>Can the problem be represented graphically? Can an analysis model be created?<br>问题可以图形化描述吗？可以建立分析模型吗？</li>
+</ul>
+<p><strong>策划解决方案 Plan a solution</strong></p>
+<ul>
+<li><p>Have you seen similar problems before? Are there patterns that are recognizable in a potential solution? Is there existing software that implements the data, functions, and features that are required? </p>
+</li>
+<li><p>Has a similar problem been solved? If so, are elements of the solution reusable?</p>
+</li>
+<li><p>Can subproblems be defined? If so, are solutions readily apparent for the subproblems?</p>
+</li>
+<li><p>Can you represent a solution in a manner that leads to effective implementation? Can a design model be created?</p>
+</li>
+</ul>
+<p><strong>实施计划 Carry out the plan</strong></p>
+<ul>
+<li><p>Does the solution conform to the plan? Is source code traceable to the design model?</p>
+</li>
+<li><p>Is each component part of the solution provably correct? Has the design and code been reviewed, or better, have correctness proofs been applied to algorithm?</p>
+</li>
+</ul>
+<p><strong>检查结果 Examine the result for accuracy</strong></p>
+<ul>
+<li><p>Is it possible to test each component part of the solution? Has a reasonable testing strategy been implemented?</p>
+</li>
+<li><p>Does the solution produce results that conform to the data, functions, and features that are required? Has the software been validated against all stakeholder requirements?</p>
+</li>
+</ul>
+<p><strong>General Principles 通用原则</strong></p>
+<ol>
+<li>The Reason It All Exists<br>存在价值。</li>
+<li>KISS (Keep It Simple, Stupid!)<br>保持简洁</li>
+<li>Maintain the Vision<br>保持愿景</li>
+<li>What You Produce, Others Will Consume<br>关注使用者</li>
+<li>Be Open to the Future<br>面向未来</li>
+<li>Plan Ahead for Reuse<br>提前计划复用</li>
+<li>Think!<br>认真思考</li>
+</ol>
+<h2 id="第三章-软件过程（THE-SOFTWARE-PROCESS）"><a href="#第三章-软件过程（THE-SOFTWARE-PROCESS）" class="headerlink" title="第三章 软件过程（THE SOFTWARE PROCESS）"></a>第三章 软件过程（THE SOFTWARE PROCESS）</h2><ul>
+<li><p>The hierarchy of technical work within the software process is activities, encompassing actions, populated by tasks.<br>在软件过程中，技术工作的层次包括活动，活动由动作构成，动作又由任务构成。</p>
+</li>
+<li><p>Different projects demand different task sets. The software team chooses the task set based on problem and project characteristics.<br>不同的项目需要不同的任务集。软件团队根据问题和项目的特点选择任务集</p>
+</li>
+<li><p>each a collection of software engineering work tasks, related work products, quality assurance points, and project milestones.<br>每一个任务集都由软件工程工作任务、相关工作产品、质量保证点和项目里程碑构成。</p>
+</li>
+<li><p>A process pattern describes a process-related problem that is encountered during software engineering work, identiﬁes the environment in which the problem has been encountered, and suggests one or more proven solutions to the problem.<br>过程模式描述了软件工程工作中遇到的过程相关的问题，明确了问题环境并给出了针对该问题的一种或几种可证明的解决方案。</p>
+</li>
+</ul>
+<p><strong>A pattern template provides a consistent means for describing a pattern.<br>模式模板提供了描述模式的一般性方法</strong></p>
+<ul>
+<li><p>Stated in more general terms, a process pattern provides you with a template [Amb98]—a consistent method for describing problem solutions within the context of the software process.<br>通俗地讲，过程模式提供一个模板，一种在软件过程背景下统一描述问题解决方案的方法。</p>
+</li>
+<li><p>Stage patterns—defines a problem associated with a framework activity for the process.<br>步骤模式——定义了与过程的框架活动相关的问题。</p>
+</li>
+<li><p>Task patterns—defines a problem associated with a software engineering action or work task and relevant to successful software engineering practice<br>任务模式——定义了与软件工程动作或工作任务相关，关系软件工程实践成败的问题。</p>
+</li>
+<li><p>Phase patterns—define the sequence of framework activities that occur with the process, even when the overall flow of activities is iterative in nature.<br>阶段模式——定义了在过程中发生的框架活动序列，即使这些活动流本质上是迭代的。</p>
+</li>
+</ul>
+<p><strong>A number of different approaches to software process assessment and improvement have been proposed over the past few decades:<br>在过去的几十年中，已经提出了许多不同的方法来评估和改进软件过程：</strong></p>
+<ul>
+<li><p>Standard CMMI Assessment Method for Process Improvement (SCAMPI) — provides a five step process assessment model that incorporates five phases: initiating, diagnosing, establishing, acting and learning.<br>用于过程改进的标准CMMI评估方法（SCAMPI）——提供了包含五个阶段的五个步骤的过程评估模型：启动，诊断，建立，执行和学习。</p>
+</li>
+<li><p>CMM-Based Appraisal for Internal Process Improvement (CBA IPI)—provides a diagnostic technique for assessing the relative maturity of a software organization; uses the SEI CMM as the basis for the assessment [Dun01]<br>基于CMM的内部流程改进评估（CBA IPI）——提供一种诊断技术，用于评估软件组织的相对成熟度；使用SEI CMM作为评估的基础[Dun01]</p>
+</li>
+<li><p>SPICE—The SPICE (ISO/IEC15504) standard defines a set of requirements for software process assessment. The intent of the standard is to assist organizations in developing an objective evaluation of the efficacy of any defined software process. [ISO08]<br>SPICE-SPICE（ISO / IEC15504）标准定义了一组软件过程评估要求。该标准的目的是帮助组织对任何定义的软件过程的有效性进行客观评估。[ISO08]</p>
+</li>
+<li><p>ISO 9001:2000  for Software—a generic standard that applies to any organization that wants to improve the overall quality of the products, systems, or services that it provides. Therefore, the standard is directly applicable to software organizations and companies. [Ant06]<br>ISO 9001:2000软件——一种通用标准，适用于希望提高其提供的产品，系统或服务的整体质量的任何组织。因此，该标准直接适用于软件组织和公司。[Ant06]</p>
+</li>
+<li><p>Assessment attempts to understand the current state of the software process with the intent of  improving it.<br>评估试图了解软件过程的当前状态，以进行改进。</p>
+</li>
+</ul>
+<h2 id="第四章-过程模型（PROCESS-MODELS）"><a href="#第四章-过程模型（PROCESS-MODELS）" class="headerlink" title="第四章 过程模型（PROCESS MODELS）"></a>第四章 过程模型（PROCESS MODELS）</h2><ul>
+<li><p><strong>The purpose of process models is to try to reduce the chaos present in developing new software products.<br>过程模型的作用减少新软件产品开发时的混乱</strong></p>
+</li>
+<li><p>A prescriptive process model strives for structure and order in software development. Activities and tasks occur sequentially with deﬁned guidelines for progress.<br>惯用过程模型力求达到软件开发的结构和秩序，其活动和任务都是都是按照过程的特定指引顺序进行的。</p>
+</li>
+<li><p><strong>Prescriptive process models deﬁne a prescribed set of process elements and a predictable process work ﬂow.<br>惯用过程模型定义了一组规定的过程元素和一个可预测的过程工作流</strong></p>
+</li>
+<li><p>The waterfall model, sometimes called the  classic life cycle , suggests a systematic, sequential approach to software development that begins with customer speciﬁcation of requirements and progresses through planning, modeling, construction, and deployment, culminating in ongoing support of the completed software<br>瀑布模型，又称经典生命模型，它提出了一个系统的、顺序的软件开发方法，从用户需求规格说明开始，通过策划、建模、构建、部署的过程，最终提供完整的软件支持。</p>
+</li>
+<li><p>A variation in the representation of the waterfall model is called the V-model.the V-model [Buc99] depicts the relationship of quality assurance actions to the actions associated with communication, modeling, and early construction activities.<br>瀑布模型的一个变体是V模型。V模型描述了质量保证动作同沟通、建模和早期构建相关动作的关系。</p>
+</li>
+<li><p><strong>The V-model illustrates how veriﬁcation and validation actions are associated with earlier engineering actions.<br>V模型阐明了验证和确认动作如何与早期工程动作相关联。</strong></p>
+</li>
+<li><p><strong>The incremental model delivers a series of releases, called increments, that provide progressively more functionality for the customer as each  increment is delivered.<br>增量模型交付一系列称为增量的版本，随着每个版本的交付，逐步为用户提供更多的功能。</strong>、</p>
+</li>
+<li><p><strong>Evolutionary process models produce an increasingly more complete version of the software with each iteration.<br>演化过程模型中，每一个迭代产生软件的一个更完整的版本</strong></p>
+</li>
+<li><p>the spiral model is an evolutionary software process model that couples the iterative nature of prototyping with the controlled and systematic aspects of the waterfall model. It provides the potential for rapid development of increasingly more complete versions of the software.<br>螺旋模型是一种演进式软件过程模型。它结合了原型的迭代性质和瀑布模型的可控性和系统性特点。它具有快速开发越来越完善的软件版本的潜力。 </p>
+</li>
+<li><p><strong>The spiral model can be adapted to apply throughout the entire life cycle of an application, from concept development to maintenance.<br>螺旋模型能运用在应用系统开发的整个生命周期，从概念开发到概念维护。</strong></p>
+</li>
+<li><p>The  concurrent development model,  sometimes called  concurrent engineering,allows a software team to represent iterative and concurrent elements of any of the process models described in this chapter.<br>并发开发模型（ concurrent development model ）有时也叫作并发工程，它允许软件团队表述本章所描述的任何过程模型中的迭代元素和并发元素。</p>
+</li>
+<li><p><strong>Project plans must be viewed as living documents; progress must be assessed often and revised to take changes into account.<br>必须将项目计划看成是活的文档，必须经常对进度进行评估并考虑变支情况，从而对其进行修改。</strong></p>
+</li>
+<li><p>THE UNIFIED PROCESS: use case driven, architecturecentric, iterative and incremental” software process<br>统一过程：用例驱动，以架构为核心，迭代并且增量的软件过程</p>
+</li>
+</ul>
+<p><strong>Phases of the Uniﬁed Process  统一过程的阶段</strong></p>
+<ul>
+<li><strong>UP  phases  are similar in intent to the generic framework activities deﬁned in this book.<br>UP阶段的目的与本书中定义的通用框架活动的目的是类似的。</strong></li>
+</ul>
+<ol>
+<li><p>The inception phase of the UP encompasses both customer communication and planning activities.<br>UP 的起始阶段（ inception phase）包括客户 沟通和策划活动。 </p>
+</li>
+<li><p>The elaboration phase  encompasses the communication and modeling activities of the generic process model.<br>细化阶段（ Elaboration Phase）包括沟通和通用过程模型的建模活动.</p>
+</li>
+<li><p>The construction phase  of the UP is identical to the construction activity deﬁ ned for the generic software process.<br>UP 的构建阶段（ construction phase）与通用软件过程中的构建活动相同。</p>
+</li>
+<li><p>The transition phase  of the UP encompasses the latter stages of the generic construction activity and the ﬁrst part of the generic deployment (delivery and feedback) activity.<br>UP 的转换阶段（ transition phase）包括通用构建活动的后期阶段以及通用部署（交付和 反馈）活动的第一部分。 </p>
+</li>
+<li><p>The production phase  of the UP coincides with the deployment activity of the generic process.<br>UP 的生产阶段（ production phase）与通用过程的部署活动一致。</p>
+</li>
+</ol>
+<h2 id="第五章-敏捷开发（AGILE-DEVELOPMENT）"><a href="#第五章-敏捷开发（AGILE-DEVELOPMENT）" class="headerlink" title="第五章 敏捷开发（AGILE DEVELOPMENT）"></a>第五章 敏捷开发（AGILE DEVELOPMENT）</h2>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://litnwu.gitee.io" rel="external nofollow noreferrer">LitnWu</a>
+                </span>
+            </div>
+            <div class="reprint__type" style="display:none">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://litnwu.gitee.io/2020/03/03/ruan-jian-gong-cheng-du-shu-bi-ji-1/">https://litnwu.gitee.io/2020/03/03/ruan-jian-gong-cheng-du-shu-bi-ji-1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://litnwu.gitee.io" target="_blank">LitnWu</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+                                    <span class="chip bg-color">软件工程</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments .vwrap {
+        box-sizing: border-box;
+        padding: 0 0 44px;
+        background-color: #F0FFF0;
+    }
+
+    #vcomments .vwrap .vheader {
+        width: 80%;
+        bottom: 0;
+        position: absolute;
+        background: #F0FFF0;
+    }
+
+    #vcomments .vinput {
+        padding: 10px 15px;
+        text-align: center;
+    }
+
+    #vcomments .vwrap .vheader .vinput {
+        border-bottom: 0px
+    }
+
+    #vcomments .vwrap .vedit .vctrl {
+        margin-top: -44px;
+        right: 0;
+        position: absolute;
+        margin-right: -3px;
+    }
+
+    #vcomments .vwrap .vrow {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 20%;
+        padding-top: 0px;
+    }
+
+    #vcomments .vrow {
+        font-size: 0;
+        padding: 0px 0;
+    }
+
+    #vcomments .vicon {
+        margin-right: 15px;
+    }
+
+    #vcomments .vrow .vcol.vcol-30 {
+        display: none
+    }
+
+    #vcomments .vedit .vctrl span.vpreview-btn {
+        display: none
+    }
+
+    #vcomments .vrow .vcol.vcol-70 {
+        width: 100%;
+    }
+
+    #vcomments .vsubmit.vbtn {
+        border-radius: 0;
+        padding: 0;
+        color: #fff;
+        line-height: 44px;
+        width: 100%;
+        border: none;
+        background: #4cbf30;
+    }
+
+    #vcomments .vcards .vcard .vh .vhead .vsys {
+        background: #F0FFF0;
+    }
+
+    #vcomments .vcards .vcard .vh .vmeta .vat {
+        font-size: 12px;
+        display: block;
+        margin-left: 15px;
+        float: right;
+        color: #fff;
+        background-color: #4cbf30;
+        line-height: 20px;
+        padding: 0 6px;
+        border-radius: 3px;
+    }
+
+    @media screen and (max-width: 520px) {
+        #vcomments .vwrap .vheader .vinput {
+            width: 25%;
+            padding: 10px 5px;
+        }
+    }
+</style>
+
+
+<!-- <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style> -->
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling"
+        style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<!-- <script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'tpny1h4nsfoPLBOVNDBcBz9t-gzGzoHsz',
+        appKey: 'OQeFK1KceWOwkBgLBAUUk4IJ',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'retro',
+        pageSize: '12',
+        lang: 'zh-cn',
+        placeholder: '编辑评论'
+    });
+</script> -->
+
+<script> 
+    new Valine({ 
+        el: '#vcomments', 
+        admin_email: '16463223@qq.com', 
+        appId: 'tpny1h4nsfoPLBOVNDBcBz9t-gzGzoHsz', 
+        appKey: 'OQeFK1KceWOwkBgLBAUUk4IJ', 
+        path: window.location.pathname, 
+        comment_count: true, 
+        notify: 'false' === 'true', 
+        verify: 'true' === 'true', 
+        visitor: 'true' === 'true', 
+        avatar: 'retro', 
+        pageSize: '12', 
+        lang: 'zh-cn', 
+        placeholder: '编辑评论', }); 
+        $(document).ready(function(){ 
+            $("#vcomments").on('click', 'span.vat',function(){ $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap")); $('textarea#veditor').focus(); }) }) 
+</script> 
+    
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script> 
+<script type="text/javascript"> 
+    jinrishici.load(function(result) { var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author 
+    document.getElementById("veditor").setAttribute("placeholder",jrsc_plac); }); 
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/03/05/fork-chuang-jian-jin-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/owmap/5.jpg" class="responsive-img" alt="fork()创建进程">
+                        
+                        <span class="card-title">fork()创建进程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            fork()创建进程fork()通过拷贝当前进程创建一个子进程。
+子进程与父进程的区别仅仅在于PID（每个进程唯一）、PPID（父进程的进程号，子进程将其设置为被拷贝进程的PID）和某些资源和统计量（例如，挂起的信号，它没有必要被继承）。
+
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%BF%9B%E7%A8%8B/">
+                        <span class="chip bg-color">进程</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/03/zi-fu-chuan-de-pai-lie-bao-han/">
+                    <div class="card-image">
+                        
+                        <img src="http://tvax4.sinaimg.cn/large/005JD0Ejgy1gcg1k37l9fj30ou0gf4mf.jpg" class="responsive-img" alt="字符串的排列包含">
+                        
+                        <span class="card-title">字符串的排列包含</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            题目（leetcode 567. 字符串的排列）给定两个字符串&nbsp;s1&nbsp;和&nbsp;s2，写一个函数来判断 s2 是否包含 s1&nbsp;的排列。
+换句话说，第一个字符串的排列之一是第二个字符串的子串。
+示例1:
+
+输
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('500')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: LitnWu<br />'
+            + '文章作者: LitnWu<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;
+                目录
+            </div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fas fa-list-ul"></i>
+        </a>
+    </div>
+    
+
+        <script src="/libs/tocbot/tocbot.min.js"></script>
+        <script>
+            $(function() {
+                tocbot.init({
+                    tocSelector: '#toc-content',
+                    contentSelector: '#articleContent',
+                    headingsOffset: -($(window).height() * 0.4 - 45),
+                    collapseDepth: Number('0'),
+                    headingSelector: 'h2, h3, h4'
+                });
+
+                // modify the toc link href to support Chinese.
+                let i = 0;
+                let tocHeading = 'toc-heading-';
+                $('#toc-content a').each(function() {
+                    $(this).attr('href', '#' + tocHeading + (++i));
+                });
+
+                // modify the heading title id to support Chinese.
+                i = 0;
+                $('#articleContent').children('h2, h3, h4').each(function() {
+                    $(this).attr('id', tocHeading + (++i));
+                });
+
+                // Set scroll toc fixed.
+                let tocHeight = parseInt($(window).height() * 0.4 - 64);
+                let $tocWidget = $('.toc-widget');
+                $(window).scroll(function() {
+                    let scroll = $(window).scrollTop();
+                    /* add post toc fixed. */
+                    if (scroll > tocHeight) {
+                        $tocWidget.addClass('toc-fixed');
+                    } else {
+                        $tocWidget.removeClass('toc-fixed');
+                    }
+                });
+
+                
+                /* 修复文章卡片 div 的宽度. */
+                let fixPostCardWidth = function(srcId, targetId) {
+                    let srcDiv = $('#' + srcId);
+                    if (srcDiv.length === 0) {
+                        return;
+                    }
+
+                    let w = srcDiv.width();
+                    if (w >= 450) {
+                        w = w + 21;
+                    } else if (w >= 350 && w < 450) {
+                        w = w + 18;
+                    } else if (w >= 300 && w < 350) {
+                        w = w + 16;
+                    } else {
+                        w = w + 14;
+                    }
+                    $('#' + targetId).width(w);
+                };
+
+                // 切换TOC目录展开收缩的相关操作.
+                const expandedClass = 'expanded';
+                let $tocAside = $('#toc-aside');
+                let $mainContent = $('#main-content');
+                $('#floating-toc-btn .btn-floating').click(function() {
+                    if ($tocAside.hasClass(expandedClass)) {
+                        $tocAside.removeClass(expandedClass).hide();
+                        $mainContent.removeClass('l9');
+                    } else {
+                        $tocAside.addClass(expandedClass).show();
+                        $mainContent.addClass('l9');
+                    }
+                    fixPostCardWidth('artDetail', 'prenext-posts');
+                });
+                
+            });
+        </script>
+    
+
+</main>
+
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="https://litnwu.gitee.io" target="_blank">LitnWu</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "2";
+                    var startDate = "8";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/reflecter510" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:499300020@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=499300020" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 499300020" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

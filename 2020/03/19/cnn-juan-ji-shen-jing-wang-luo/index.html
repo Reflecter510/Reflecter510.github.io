@@ -1,0 +1,1695 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="CNN卷积神经网络, LitnWu">
+    <meta name="description" content="卷积神经网络与传统多层神经网络传统意义上的多层神经网络是只有输入层、隐藏层、输出层。其中隐藏层的层数根据需要而定，没有明确的理论推导来说明到底多少层合适
+卷积神经网络CNN，在原来多层神经网络的基础上，加入了更加有效的特征学习部分，具体操作">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>CNN卷积神经网络 | LitnWu</title>
+    <link rel="icon" type="image/png" href="/medias/logo1.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 7.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo1.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">LitnWu</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/algorithm" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-code" style="zoom: 0.6;"></i>
+      
+      <span>算法</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/algorithm">
+          
+          <span>全部</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/leetcode">
+          
+          <span>力扣刷题</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">
+          
+          <span>动态规划</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E5%9B%9E%E6%BA%AF">
+          
+          <span>回溯</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E5%88%86%E6%B2%BB">
+          
+          <span>分治</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">
+          
+          <span>二分查找</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E6%A8%A1%E6%8B%9F">
+          
+          <span>模拟</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/C" class="waves-effect waves-light">
+      
+      <i class="fas fa-rocket" style="zoom: 0.6;"></i>
+      
+      <span>C++</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/Linux" class="waves-effect waves-light">
+      
+      <i class="fas fa-terminal" style="zoom: 0.6;"></i>
+      
+      <span>Linux</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/数据库" class="waves-effect waves-light">
+      
+      <i class="fa fa-database" style="zoom: 0.6;"></i>
+      
+      <span>数据库</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/操作系统" class="waves-effect waves-light">
+      
+      <i class="fa fa-microchip" style="zoom: 0.6;"></i>
+      
+      <span>操作系统</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags/TCP-IP" class="waves-effect waves-light">
+      
+      <i class="fa fa-link" style="zoom: 0.6;"></i>
+      
+      <span>TCP/IP</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>更多</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/Spring">
+          
+          <i class="fas fa-leaf" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Spring</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo1.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">LitnWu</div>
+        <div class="logo-desc">
+            
+            长夜将至，我将自此开始守望
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-code"></i>
+			
+			算法
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>   
+				
+                  <a href="/categories/algorithm " style="margin-left:75px";>
+				  
+		          <span>全部</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/leetcode " style="margin-left:75px";>
+				  
+		          <span>力扣刷题</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92 " style="margin-left:75px";>
+				  
+		          <span>动态规划</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E5%9B%9E%E6%BA%AF " style="margin-left:75px";>
+				  
+		          <span>回溯</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E5%88%86%E6%B2%BB " style="margin-left:75px";>
+				  
+		          <span>分治</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE " style="margin-left:75px";>
+				  
+		          <span>二分查找</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E6%A8%A1%E6%8B%9F " style="margin-left:75px";>
+				  
+		          <span>模拟</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/C" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-rocket"></i>
+			
+			C++
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/Linux" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-terminal"></i>
+			
+			Linux
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/数据库" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-database"></i>
+			
+			数据库
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/操作系统" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-microchip"></i>
+			
+			操作系统
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags/TCP-IP" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-link"></i>
+			
+			TCP/IP
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			更多
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>   
+				
+                  <a href="/categories/Spring " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-leaf" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Spring</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/categories " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/archives " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+    <!-- <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/owmap/20.jpg')"> -->
+    <div class="bg-cover pd-header post-cover" style="background-image: linear-gradient(to right, rgba(226, 74, 74, 0.7)0%, rgba(0, 162, 255, 0.7) 100%);
+    ;">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="brand">
+                        <h1 class="description center-align post-title">
+                            CNN卷积神经网络
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+    
+    #articleContent :focus {
+        outline: none;
+    }
+    
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+    
+    .toc-widget {
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: 15px 15px;
+        width: 345px;
+        padding-left: 20px;
+    }
+    
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        padding-top: 10px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+    
+    #toc-content ol {
+        padding-left: 10px;
+    }
+    
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+    
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+    
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+    
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+    
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+    
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+    
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+    
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">卷积神经网络</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-03-19
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-03-19
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    7 分
+                </div>
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="卷积神经网络与传统多层神经网络"><a href="#卷积神经网络与传统多层神经网络" class="headerlink" title="卷积神经网络与传统多层神经网络"></a>卷积神经网络与传统多层神经网络</h2><p>传统意义上的多层神经网络是只有<strong>输入层、隐藏层、输出层</strong>。其中隐藏层的层数根据需要而定，没有明确的理论推导来说明到底多少层合适</p>
+<p>卷积神经网络CNN，在原来多层神经网络的基础上，<strong>加入了更加有效的特征学习部分，具体操作就是在原来的全连接的层前面加入了部分连接的卷积层与池化层</strong>。卷积神经网络出现，使得神经网络层数得以加深，深度学习才能实现</p>
+<blockquote>
+<p>通常所说的深度学习，一般指的是这些CNN等新的结构以及一些新的方法（比如新的激活函数Relu等），解决了传统多层神经网络的一些难以解决的问题.</p>
+</blockquote>
+<h2 id="CNN发展历史"><a href="#CNN发展历史" class="headerlink" title="CNN发展历史"></a>CNN发展历史</h2><p>诞生的原因：</p>
+<p>传统神经网络对于输入的数据X（X视为矩阵）维数太高，如果是一张32x32的灰度图片，一个神经元的权重w就需要32x32，为了提取足够丰富的特征，假设需要20个神经元，则权重W（W视为矩阵）的参数个数就是32x32x20=20480个，显示图片的维度不可能是32，可能是上千，那么W的个数就很容易到上亿，这显然太大了！所以我们需要一种可以显著降低计算量的机制，因此CNN孕育而生。</p>
+<p>发展过程：</p>
+<ul>
+<li>网络结构加深</li>
+<li>加强卷积功能</li>
+<li>从分类到检测</li>
+<li>新增功能模块<br><img src="//tva1.sinaimg.cn/large/005JD0Ejgy1gczi3mee70j315o0jq79y.jpg" alt="CNN历史"></li>
+</ul>
+<h2 id="CNN结构"><a href="#CNN结构" class="headerlink" title="CNN结构"></a>CNN结构</h2><p>神经网络(neural networks)的基本组成包括输入层、隐藏层、输出层。而<strong>卷积神经网络的特点</strong>在于隐藏层分为卷积层和池化层(pooling layer，又叫下采样层)以及激活层。每一层的作用：</p>
+<ul>
+<li>卷积层：通过在原始图像上平移来提取特征</li>
+<li>激活层：增加非线性分割能力</li>
+<li>池化层：压缩数据和参数的量，减小过拟合，降低网络的复杂度，（最大池化和平均池化）<br>为了能够达到分类效果，还会有一个全连接层(FC)也就是最后的输出层，计算损失进行分类（或回归）。</li>
+</ul>
+<h2 id="输入层"><a href="#输入层" class="headerlink" title="输入层"></a>输入层</h2><p>有三种常见的数据预处理方法：</p>
+<ul>
+<li>去均值（demean）</li>
+<li>归一化</li>
+<li>PCA/白化</li>
+</ul>
+<p>对于CNN来说，一般只会做去均值+归一化，尤其是我们输入的是图像数据，我们往往只做去均值，这是为了保持原图像数据的完整性，避免失真。图像数据从数学角度来看，就是不同维度的矩阵，经过去均值后，数据的数学特性更好，对称性更好。在我们用SGD（随机梯度下降法）进行迭代优化的时候，权重w(偏差b同理)初始化的随机值对迭代速度和结果没有影响（如果不demean可能会不收敛或者迭代优化速度慢）。</p>
+<h2 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h2><p>对于卷积层，卷积层（Convolutional layer），卷积神经网络中<strong>每层卷积层由若干卷积单元(卷积核)组成</strong>，每个卷积单元的参数都是通过<strong>反向传播算法</strong>优化得到的。</p>
+<p>卷积运算的<strong>目的是提取输入的不同特征</strong>，第一层卷积层可能只能提取一些低级的特征如边缘、线条和角等层级，更多层的网路能从低级特征中迭代提取更复杂的特征。</p>
+<p><strong>什么是卷积核？</strong><br>本质就是一个<strong>很小的矩阵</strong>，如1<em>1，3</em>3，5*5等。卷积核会在原数据（很高维的大矩阵）上移动，其实就是一个个小的矩阵，在比它大很多的矩阵上移动（移动的步长一般是1，即一次移动1步），每次移动，做一次点乘，得到一个数字。该步骤会一直进行直至遍历完完整的大矩阵（原数据），如下图：</p>
+<div align="center" width="75%">
+<img width="75%" src="//dbaplus.cn/uploadfile/2016/1013/20161013104034756.gif" alt="卷积核运算">
+</div>
+
+
+<p><strong>卷积核权值共享</strong><br>这里运用了一种思想，我们称之<strong>局部关联，或者说是参数共享机制</strong>。每个神经元看做一个卷积核（又称之感受野，receptive field），<strong>卷积核对局部数据进行计算</strong>。其实很简单的理解，所谓参数共享，就是共享卷积核。不管你原来的数据长啥样，我就用这一组卷积核，一直移动计算，仅此而已。这么做的<strong>好处就是减少了传统神经网络无法解决的大计算量或者说参数数量太多的问题，并且同样可以提取原数据（如图像数据）的有效特征，并且由于计算量计算参数的减少，特征提取往往做的更好。</strong></p>
+<p>卷积操作利用了<strong>图片空间上的局部相关性</strong>，这也就是CNN与传统神经网络或机器学习的一个最大的不同点，特征的自动提取。<br>这也就是为什么卷积层往往会有多个卷积核（甚至几十个，上百个），因为<strong>权值共享后意味着每一个卷积核只能提取到一种特征</strong>，为了增加CNN的表达能力，当然需要多个核。</p>
+<h2 id="激活层"><a href="#激活层" class="headerlink" title="激活层"></a>激活层</h2><p><strong>作用：把卷积层输出结果做非线性映射</strong></p>
+<div align="center" width="75%">
+<img width="75%" src="//tva2.sinaimg.cn/large/005JD0Ejgy1gcziisw4nhj30ss0i6thh.jpg" alt="非线性映射">
+</div>
+
+<p>卷积网络结构采用激活函数。自从网络得到发展之后，大家发现原有的sigmoid这些激活函数并不能达到好的效果，所以采取新的激活函数。</p>
+<div align="center" width="75%">
+<img width="75%" src="//tvax3.sinaimg.cn/large/005JD0Ejgy1gczij9ml20j30w60g90vz.jpg" alt="激活函数">
+</div>
+
+<h2 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h2><p>又称Pooling层，主要的作用是压缩数据和参数的量（<strong>保持最显著的特征</strong>），通过去掉Feature Map中不重要的样本，进一步<strong>减少参数数量</strong>。Pooling的方法很多，通常采用<strong>最大池化</strong></p>
+<ul>
+<li>max_polling:取池化窗口的最大值</li>
+<li>avg_polling:取池化窗口的平均值</li>
+</ul>
+<h2 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h2><p>又称FC层，前面的卷积和池化相当于做<strong>特征工程</strong>，最后的全连接层在整个卷积神经网络中起到“分类器”的作用。</p>
+<ul>
+<li>如果FC层作为最后一层，再加上softmax或者wx+b，则可以分别作为分类或回归的作用，即“分类器”或“回归器”的作用</li>
+<li>如果作为倒数第2，3层的话，FC层的作用是信息融合，增强信息表达。</li>
+</ul>
+<h2 id="CNN优缺点"><a href="#CNN优缺点" class="headerlink" title="CNN优缺点"></a>CNN优缺点</h2><p>优点：</p>
+<ul>
+<li>共享卷积核，优化计算量</li>
+<li>无需手动选取特征，训练好权重，即得特征</li>
+<li>深层次的网络抽取图像信息丰富，表达效果好</li>
+</ul>
+<p>缺点： </p>
+<ul>
+<li>需要调参，需要大样本量， GPU等硬件依赖</li>
+<li>物理含义不明确（可解释性不强）</li>
+</ul>
+<h2 id="keras-在新类上微调InceptionV3"><a href="#keras-在新类上微调InceptionV3" class="headerlink" title="keras: 在新类上微调InceptionV3"></a>keras: 在新类上微调InceptionV3</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.applications.inception_v3 <span class="keyword">import</span> InceptionV3</span><br><span class="line"><span class="keyword">from</span> keras.preprocessing <span class="keyword">import</span> image</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, GlobalAveragePooling2D</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> backend <span class="keyword">as</span> K</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建不带分类器的预训练模型</span></span><br><span class="line">base_model = InceptionV3(weights=<span class="string">'imagenet'</span>, include_top=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加全局平均池化层</span></span><br><span class="line">x = base_model.output</span><br><span class="line">x = GlobalAveragePooling2D()(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加一个全连接层</span></span><br><span class="line">x = Dense(<span class="number">1024</span>, activation=<span class="string">'relu'</span>)(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加一个分类器，假设我们有200个类</span></span><br><span class="line">predictions = Dense(<span class="number">200</span>, activation=<span class="string">'softmax'</span>)(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建我们需要训练的完整模型</span></span><br><span class="line">model = Model(inputs=base_model.<span class="built_in">input</span>, outputs=predictions)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 首先，我们只训练顶部的几层（随机初始化的层）</span></span><br><span class="line"><span class="comment"># 锁住所有 InceptionV3 的卷积层</span></span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> base_model.layers:</span><br><span class="line">    layer.trainable = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译模型（一定要在锁层以后操作）</span></span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'categorical_crossentropy'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在新的数据集上训练几代</span></span><br><span class="line">model.fit_generator(...)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 现在顶层应该训练好了，让我们开始微调 Inception V3 的卷积层。</span></span><br><span class="line"><span class="comment"># 我们会锁住底下的几层，然后训练其余的顶层。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 让我们看看每一层的名字和层号，看看我们应该锁多少层呢：</span></span><br><span class="line"><span class="keyword">for</span> i, layer <span class="keyword">in</span> <span class="built_in">enumerate</span>(base_model.layers):</span><br><span class="line">   <span class="built_in">print</span>(i, layer.name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们选择训练最上面的两个 Inception block</span></span><br><span class="line"><span class="comment"># 也就是说锁住前面249层，然后放开之后的层。</span></span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> model.layers[:<span class="number">249</span>]:</span><br><span class="line">   layer.trainable = <span class="literal">False</span></span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> model.layers[<span class="number">249</span>:]:</span><br><span class="line">   layer.trainable = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们需要重新编译模型，才能使上面的修改生效</span></span><br><span class="line"><span class="comment"># 让我们设置一个很低的学习率，使用 SGD 来微调</span></span><br><span class="line"><span class="keyword">from</span> keras.optimizers <span class="keyword">import</span> SGD</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=SGD(lr=<span class="number">0.0001</span>, momentum=<span class="number">0.9</span>), loss=<span class="string">'categorical_crossentropy'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们继续训练模型，这次我们训练最后两个 Inception block</span></span><br><span class="line"><span class="comment"># 和两个全连接层</span></span><br><span class="line">model.fit_generator(...)</span><br></pre></td></tr></tbody></table></figure>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://litnwu.gitee.io" rel="external nofollow noreferrer">LitnWu</a>
+                </span>
+            </div>
+            <div class="reprint__type" style="display:none">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://litnwu.gitee.io/2020/03/19/cnn-juan-ji-shen-jing-wang-luo/">https://litnwu.gitee.io/2020/03/19/cnn-juan-ji-shen-jing-wang-luo/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://litnwu.gitee.io" target="_blank">LitnWu</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">卷积神经网络</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments .vwrap {
+        box-sizing: border-box;
+        padding: 0 0 44px;
+        background-color: #F0FFF0;
+    }
+
+    #vcomments .vwrap .vheader {
+        width: 80%;
+        bottom: 0;
+        position: absolute;
+        background: #F0FFF0;
+    }
+
+    #vcomments .vinput {
+        padding: 10px 15px;
+        text-align: center;
+    }
+
+    #vcomments .vwrap .vheader .vinput {
+        border-bottom: 0px
+    }
+
+    #vcomments .vwrap .vedit .vctrl {
+        margin-top: -44px;
+        right: 0;
+        position: absolute;
+        margin-right: -3px;
+    }
+
+    #vcomments .vwrap .vrow {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 20%;
+        padding-top: 0px;
+    }
+
+    #vcomments .vrow {
+        font-size: 0;
+        padding: 0px 0;
+    }
+
+    #vcomments .vicon {
+        margin-right: 15px;
+    }
+
+    #vcomments .vrow .vcol.vcol-30 {
+        display: none
+    }
+
+    #vcomments .vedit .vctrl span.vpreview-btn {
+        display: none
+    }
+
+    #vcomments .vrow .vcol.vcol-70 {
+        width: 100%;
+    }
+
+    #vcomments .vsubmit.vbtn {
+        border-radius: 0;
+        padding: 0;
+        color: #fff;
+        line-height: 44px;
+        width: 100%;
+        border: none;
+        background: #4cbf30;
+    }
+
+    #vcomments .vcards .vcard .vh .vhead .vsys {
+        background: #F0FFF0;
+    }
+
+    #vcomments .vcards .vcard .vh .vmeta .vat {
+        font-size: 12px;
+        display: block;
+        margin-left: 15px;
+        float: right;
+        color: #fff;
+        background-color: #4cbf30;
+        line-height: 20px;
+        padding: 0 6px;
+        border-radius: 3px;
+    }
+
+    @media screen and (max-width: 520px) {
+        #vcomments .vwrap .vheader .vinput {
+            width: 25%;
+            padding: 10px 5px;
+        }
+    }
+</style>
+
+
+<!-- <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style> -->
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling"
+        style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<!-- <script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'tpny1h4nsfoPLBOVNDBcBz9t-gzGzoHsz',
+        appKey: 'OQeFK1KceWOwkBgLBAUUk4IJ',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'retro',
+        pageSize: '12',
+        lang: 'zh-cn',
+        placeholder: '编辑评论'
+    });
+</script> -->
+
+<script> 
+    new Valine({ 
+        el: '#vcomments', 
+        admin_email: '16463223@qq.com', 
+        appId: 'tpny1h4nsfoPLBOVNDBcBz9t-gzGzoHsz', 
+        appKey: 'OQeFK1KceWOwkBgLBAUUk4IJ', 
+        path: window.location.pathname, 
+        comment_count: true, 
+        notify: 'false' === 'true', 
+        verify: 'true' === 'true', 
+        visitor: 'true' === 'true', 
+        avatar: 'retro', 
+        pageSize: '12', 
+        lang: 'zh-cn', 
+        placeholder: '编辑评论', }); 
+        $(document).ready(function(){ 
+            $("#vcomments").on('click', 'span.vat',function(){ $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap")); $('textarea#veditor').focus(); }) }) 
+</script> 
+    
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script> 
+<script type="text/javascript"> 
+    jinrishici.load(function(result) { var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author 
+    document.getElementById("veditor").setAttribute("placeholder",jrsc_plac); }); 
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/owmap/16.jpg" class="responsive-img" alt="堆、栈和静态存储区">
+                        
+                        <span class="card-title">堆、栈和静态存储区</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            C/C++程序经过编译链接后形成的二进制映像文件，这文件包含：
+
+栈
+堆
+数据段（只读数据段，已经初始化读写数据段，未初始化数据段即BBS）
+代码段
+
+
+
+
+
+
+“在C++中，内存区分为5个区，分别是堆、栈、自由存储区、全局/静态存储区、常
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%86%85%E5%AD%98/">
+                        <span class="chip bg-color">内存</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/19/new-he-malloc-de-qu-bie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/owmap/2.jpg" class="responsive-img" alt="new和malloc的区别">
+                        
+                        <span class="card-title">new和malloc的区别</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            new和malloc都可以申请一段动态内存空间：
+
+new的使用12// 调用 get_size 确定分配多少个 intint *pia = new int[get_size()];   //pia 指向第一个 int
+malloc的使用1
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%86%85%E5%AD%98/">
+                        <span class="chip bg-color">内存</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('500')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: LitnWu<br />'
+            + '文章作者: LitnWu<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;
+                目录
+            </div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fas fa-list-ul"></i>
+        </a>
+    </div>
+    
+
+        <script src="/libs/tocbot/tocbot.min.js"></script>
+        <script>
+            $(function() {
+                tocbot.init({
+                    tocSelector: '#toc-content',
+                    contentSelector: '#articleContent',
+                    headingsOffset: -($(window).height() * 0.4 - 45),
+                    collapseDepth: Number('0'),
+                    headingSelector: 'h2, h3, h4'
+                });
+
+                // modify the toc link href to support Chinese.
+                let i = 0;
+                let tocHeading = 'toc-heading-';
+                $('#toc-content a').each(function() {
+                    $(this).attr('href', '#' + tocHeading + (++i));
+                });
+
+                // modify the heading title id to support Chinese.
+                i = 0;
+                $('#articleContent').children('h2, h3, h4').each(function() {
+                    $(this).attr('id', tocHeading + (++i));
+                });
+
+                // Set scroll toc fixed.
+                let tocHeight = parseInt($(window).height() * 0.4 - 64);
+                let $tocWidget = $('.toc-widget');
+                $(window).scroll(function() {
+                    let scroll = $(window).scrollTop();
+                    /* add post toc fixed. */
+                    if (scroll > tocHeight) {
+                        $tocWidget.addClass('toc-fixed');
+                    } else {
+                        $tocWidget.removeClass('toc-fixed');
+                    }
+                });
+
+                
+                /* 修复文章卡片 div 的宽度. */
+                let fixPostCardWidth = function(srcId, targetId) {
+                    let srcDiv = $('#' + srcId);
+                    if (srcDiv.length === 0) {
+                        return;
+                    }
+
+                    let w = srcDiv.width();
+                    if (w >= 450) {
+                        w = w + 21;
+                    } else if (w >= 350 && w < 450) {
+                        w = w + 18;
+                    } else if (w >= 300 && w < 350) {
+                        w = w + 16;
+                    } else {
+                        w = w + 14;
+                    }
+                    $('#' + targetId).width(w);
+                };
+
+                // 切换TOC目录展开收缩的相关操作.
+                const expandedClass = 'expanded';
+                let $tocAside = $('#toc-aside');
+                let $mainContent = $('#main-content');
+                $('#floating-toc-btn .btn-floating').click(function() {
+                    if ($tocAside.hasClass(expandedClass)) {
+                        $tocAside.removeClass(expandedClass).hide();
+                        $mainContent.removeClass('l9');
+                    } else {
+                        $tocAside.addClass(expandedClass).show();
+                        $mainContent.addClass('l9');
+                    }
+                    fixPostCardWidth('artDetail', 'prenext-posts');
+                });
+                
+            });
+        </script>
+    
+
+</main>
+
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="https://litnwu.gitee.io" target="_blank">LitnWu</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "2";
+                    var startDate = "8";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/reflecter510" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:499300020@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=499300020" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 499300020" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

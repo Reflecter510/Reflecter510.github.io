@@ -1,0 +1,1763 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="线程与信号量, LitnWu">
+    <meta name="description" content="线程内存模型
+一组并发线程运行在一个进程上下文中
+
+每个线程都有自己独立的线程上下文。包括线程ID、栈、栈指针、程序计数器、条件码、和通用目的寄存器。
+
+每个线程和其他线程一起共享进程上下文的剩余部分。包括整个用户虚拟空间，它是由只读文本（">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>线程与信号量 | LitnWu</title>
+    <link rel="icon" type="image/png" href="/medias/logo1.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 7.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo1.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">LitnWu</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/algorithm" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-code" style="zoom: 0.6;"></i>
+      
+      <span>算法</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/algorithm">
+          
+          <span>全部</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/leetcode">
+          
+          <span>力扣刷题</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">
+          
+          <span>动态规划</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E5%9B%9E%E6%BA%AF">
+          
+          <span>回溯</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E5%88%86%E6%B2%BB">
+          
+          <span>分治</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">
+          
+          <span>二分查找</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/%E6%A8%A1%E6%8B%9F">
+          
+          <span>模拟</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/C" class="waves-effect waves-light">
+      
+      <i class="fas fa-rocket" style="zoom: 0.6;"></i>
+      
+      <span>C++</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/Linux" class="waves-effect waves-light">
+      
+      <i class="fas fa-terminal" style="zoom: 0.6;"></i>
+      
+      <span>Linux</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/数据库" class="waves-effect waves-light">
+      
+      <i class="fa fa-database" style="zoom: 0.6;"></i>
+      
+      <span>数据库</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/操作系统" class="waves-effect waves-light">
+      
+      <i class="fa fa-microchip" style="zoom: 0.6;"></i>
+      
+      <span>操作系统</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags/TCP-IP" class="waves-effect waves-light">
+      
+      <i class="fa fa-link" style="zoom: 0.6;"></i>
+      
+      <span>TCP/IP</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>更多</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories/Spring">
+          
+          <i class="fas fa-leaf" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Spring</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo1.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">LitnWu</div>
+        <div class="logo-desc">
+            
+            长夜将至，我将自此开始守望
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-code"></i>
+			
+			算法
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>   
+				
+                  <a href="/categories/algorithm " style="margin-left:75px";>
+				  
+		          <span>全部</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/leetcode " style="margin-left:75px";>
+				  
+		          <span>力扣刷题</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92 " style="margin-left:75px";>
+				  
+		          <span>动态规划</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E5%9B%9E%E6%BA%AF " style="margin-left:75px";>
+				  
+		          <span>回溯</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E5%88%86%E6%B2%BB " style="margin-left:75px";>
+				  
+		          <span>分治</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE " style="margin-left:75px";>
+				  
+		          <span>二分查找</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags/%E6%A8%A1%E6%8B%9F " style="margin-left:75px";>
+				  
+		          <span>模拟</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/C" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-rocket"></i>
+			
+			C++
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/Linux" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-terminal"></i>
+			
+			Linux
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/数据库" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-database"></i>
+			
+			数据库
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/操作系统" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-microchip"></i>
+			
+			操作系统
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags/TCP-IP" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-link"></i>
+			
+			TCP/IP
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			更多
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>   
+				
+                  <a href="/categories/Spring " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-leaf" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Spring</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/tags " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/categories " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>   
+				
+                  <a href="/archives " style="margin-left:75px";>
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+    <!-- <div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/owmap/10.jpg')"> -->
+    <div class="bg-cover pd-header post-cover" style="background-image: linear-gradient(to right, rgba(226, 74, 74, 0.7)0%, rgba(0, 162, 255, 0.7) 100%);
+    ;">
+        <div class="container" style="right: 0px;left: 0px;">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="brand">
+                        <h1 class="description center-align post-title">
+                            线程与信号量
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+    
+    #articleContent :focus {
+        outline: none;
+    }
+    
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+    
+    .toc-widget {
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: 15px 15px;
+        width: 345px;
+        padding-left: 20px;
+    }
+    
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        padding-top: 10px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+    
+    #toc-content ol {
+        padding-left: 10px;
+    }
+    
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+    
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+    
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+    
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+    
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+    
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+    
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+    
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%BA%BF%E7%A8%8B/">
+                                <span class="chip bg-color">线程</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/">
+                                <span class="chip bg-color">信号量</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85/">
+                                <span class="chip bg-color">生产者消费者</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85/">
+                                <span class="chip bg-color">读者写者</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                操作系统
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-04-08
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    11 分
+                </div>
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="线程内存模型"><a href="#线程内存模型" class="headerlink" title="线程内存模型"></a>线程内存模型</h2><ul>
+<li><p>一组并发线程运行在一个进程上下文中</p>
+</li>
+<li><p>每个线程都有自己独立的线程上下文。包括线程ID、栈、栈指针、程序计数器、条件码、和通用目的寄存器。</p>
+</li>
+<li><p>每个线程和其他线程一起共享进程上下文的剩余部分。包括整个用户虚拟空间，它是由只读文本（代码）、读/写数据、堆以及所有的共享库代码和数据区域组成。</p>
+</li>
+<li><p>寄存器是从不共享的，而虚拟内存总是共享的。</p>
+</li>
+<li><p>不同的线程栈是不对其他线程设防的。所以，如果一个线程以某种方式得到一个指向其他线程栈的指针，那么它就可以读写这个栈的任何部分。</p>
+</li>
+</ul>
+<h3 id="变量映射到内存"><a href="#变量映射到内存" class="headerlink" title="变量映射到内存"></a>变量映射到内存</h3><ul>
+<li><p>全局变量<br>定义在函数之外的变量。在运行时，虚拟内存的读/写区域只包含每个全局变量的一个实例，任何线程都可以引用。</p>
+</li>
+<li><p>本地自动变量<br>定义在函数内部但是没有static属性的变量。在运行时，每个线程的栈都包含它自己的所有本地自动变量的实例。</p>
+</li>
+<li><p>本地静态变量<br>定义在函数内部并有static属性的变量。与全局变量一样，在运行时，虚拟内存的读/写区域只包含每个全局变量的一个实例。</p>
+</li>
+</ul>
+<h3 id="共享变量"><a href="#共享变量" class="headerlink" title="共享变量"></a>共享变量</h3><p>变量的一个实例被一个以上的线程引用。</p>
+<blockquote>
+<p>本地自动变量也可以被其他线程引用，通过将指针赋给全局变量的方式。</p>
+</blockquote>
+<h2 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h2><p>具有非负整数值的全局变量，只能由两种特殊操作来处理（P操作和V操作）。</p>
+<ul>
+<li><code>P(s)</code></li>
+</ul>
+<ol>
+<li>如果<code>s</code>是非0的，那么<code>P</code>将<code>s</code>减1，并且立即返回。</li>
+<li>如果<code>s</code>为零，那么就挂起这个线程，直到<code>s</code>变为非零，再进行P操作。</li>
+</ol>
+<ul>
+<li><code>V(s)</code></li>
+</ul>
+<p>V操作将<code>s</code>加1，如果有任何线程阻塞在P操作等待<code>s</code>变为非零，那么V操作会重启这些线程中的一个。</p>
+<blockquote>
+<p>P操作中测试和减1操作是不可分的。<br>P 和 V 的定义确保了正在运行的程序绝不可能进入这样一种状态：一个正确初始化了的信号量有一个负值。</p>
+</blockquote>
+<h2 id="使用信号量来实现互斥"><a href="#使用信号量来实现互斥" class="headerlink" title="使用信号量来实现互斥"></a>使用信号量来实现互斥</h2><p>基本思想是将一个或一组相关的共享变量与一个信号量<code>s</code>（初始为1）联系起来，然后用<code>P(s)</code>和<code>V(s)</code>  操作将相应的临界区包围起来。</p>
+<blockquote>
+<p>又称为二元信号量，因为其取值总是为0或1</p>
+</blockquote>
+<ul>
+<li><strong>以提供互斥为目的的二元信号量常常也称为互斥锁（mutex）。</strong><br>在一个互斥锁上执行 P 操作称为对互斥锁加锁。类似地，执行 V 操作称为对互斥锁解锁。对一个互斥锁加了锁但是还没有解锁的线程称为占用这个互斥锁。</li>
+</ul>
+<h2 id="互斥示例"><a href="#互斥示例" class="headerlink" title="互斥示例"></a>互斥示例</h2><p>当两个或者多个线程同时对共享变量操作，那么很可能出现错误，因为两个线程的指令很可能穿插执行。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"csapp.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">thread</span><span class="params">(<span class="type">void</span> *vargp)</span></span>;  <span class="comment">/* Thread routine prototype */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Global shared variable */</span></span><br><span class="line"><span class="keyword">volatile</span> <span class="type">int</span> cnt = <span class="number">0</span>; <span class="comment">/* Counter */</span></span><br><span class="line"><span class="type">sem_t</span> mutex;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span> </span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="built_in">Sem_init</span>(&amp;mutex,<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> niters;</span><br><span class="line">    <span class="type">pthread_t</span> tid1, tid2;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Check input argument */</span></span><br><span class="line">    <span class="keyword">if</span> (argc != <span class="number">2</span>) { </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"usage: %s &lt;niters&gt;\n"</span>, argv[<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    }</span><br><span class="line">    niters = <span class="built_in">atoi</span>(argv[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Create threads and wait for them to finish */</span></span><br><span class="line">    <span class="built_in">Pthread_create</span>(&amp;tid1, <span class="literal">NULL</span>, thread, &amp;niters);</span><br><span class="line">    <span class="built_in">Pthread_create</span>(&amp;tid2, <span class="literal">NULL</span>, thread, &amp;niters);</span><br><span class="line">    <span class="built_in">Pthread_join</span>(tid1, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="built_in">Pthread_join</span>(tid2, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Check result */</span></span><br><span class="line">    <span class="keyword">if</span> (cnt != (<span class="number">2</span> * niters))</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"BOOM! cnt=%d\n"</span>, cnt);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"OK cnt=%d\n"</span>, cnt);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Thread routine */</span></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">thread</span><span class="params">(<span class="type">void</span> *vargp)</span> </span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> i, niters = *((<span class="type">int</span> *)vargp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; niters; i++) <span class="comment">//line:conc:badcnt:beginloop</span></span><br><span class="line">    {</span><br><span class="line">        <span class="built_in">P</span>(&amp;mutex);</span><br><span class="line">        cnt++;                   <span class="comment">//line:conc:badcnt:endloop</span></span><br><span class="line">        <span class="built_in">V</span>(&amp;mutex);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>解决方法是使用二元信号量PV操作以实现临界区互斥访问，即将临界区的访问“串行化”。</p>
+<h2 id="利用信号量来调度共享资源"><a href="#利用信号量来调度共享资源" class="headerlink" title="利用信号量来调度共享资源"></a>利用信号量来调度共享资源</h2><p>除了提供互斥之外，信号量的另一个重要作用是调度对共享资源的访问，即实现同步（互斥其实是作为同步的特例）。在这种情景中，一个线程用信号量操作通知另一个线程，程序状态中的某个条件已经为真了。</p>
+<h2 id="生产者消费者问题"><a href="#生产者消费者问题" class="headerlink" title="生产者消费者问题"></a>生产者消费者问题</h2><p>生产者线程和消费者线程共享一个有 n 个槽的有限缓冲区。</p>
+<ul>
+<li>生产者线程反复地生成新的项目（item），并把它们插入到缓冲区中。</li>
+<li>消费者线程不断地从缓冲区取出这些项目，然后消费（使用）它们。</li>
+</ul>
+<img src="//tva3.sinaimg.cn/large/005JD0Ejgy1gdljdnkbp5j30nw05jacy.jpg" alt="生产者消费者问题" width="45%">
+
+<p>因为插入和取出项目都涉及更新共享变量，所以我们必须保证对缓冲区的访问是互斥的。但是只保证互斥访问是不够的，我们还需要调度对缓冲区的访问。</p>
+<p>如果缓冲区是满的 （没有空的槽位），那么生产者必须等待直到有一个槽位变为可用。与之相似，如果缓冲区 是空的（没有可取用的项目），那么消费者必须等待直到有一个项目变为可用。</p>
+<h3 id="sbuf-h"><a href="#sbuf-h" class="headerlink" title="sbuf.h"></a>sbuf.h</h3><p>SBUF 操作类型为 sbuf_t 的有限缓冲区。</p>
+<ul>
+<li>项目存放在一个动态分配的 n 项整数数组（buf）中。front 和 rear 索引值记录该数组中的第一项和最后一项。</li>
+<li>三个信号量同步对缓冲区的访问。mutex 信号量提供互斥的缓冲区访问。slots 和 items 信号量分别记录空槽位和可用项目的数量。</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __SBUF_H__</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __SBUF_H__</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"csapp.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> {</span><br><span class="line">    <span class="type">int</span> *buf;          <span class="comment">/* Buffer array */</span>         </span><br><span class="line">    <span class="type">int</span> n;             <span class="comment">/* Maximum number of slots */</span></span><br><span class="line">    <span class="type">int</span> front;         <span class="comment">/* buf[(front+1)%n] is first item */</span></span><br><span class="line">    <span class="type">int</span> rear;          <span class="comment">/* buf[rear%n] is last item */</span></span><br><span class="line">    <span class="type">sem_t</span> mutex;       <span class="comment">/* Protects accesses to buf */</span></span><br><span class="line">    <span class="type">sem_t</span> slots;       <span class="comment">/* Counts available slots */</span></span><br><span class="line">    <span class="type">sem_t</span> items;       <span class="comment">/* Counts available items */</span></span><br><span class="line">} <span class="type">sbuf_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sbuf_init</span><span class="params">(<span class="type">sbuf_t</span> *sp, <span class="type">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sbuf_deinit</span><span class="params">(<span class="type">sbuf_t</span> *sp)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sbuf_insert</span><span class="params">(<span class="type">sbuf_t</span> *sp, <span class="type">int</span> item)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sbuf_remove</span><span class="params">(<span class="type">sbuf_t</span> *sp)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">/* __SBUF_H__ */</span></span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="sbuf-c"><a href="#sbuf-c" class="headerlink" title="sbuf.c"></a>sbuf.c</h3><ul>
+<li><p>sbuf_init 函数为缓冲区分配堆内存，设置front 和 rear 表示一个空的缓冲区，并为三个信号量赋初始值。这个函数在调用其他三个函数中的任何一个之前调用一次。</p>
+</li>
+<li><p>sbuf_deinit 函数是当应用程序使用完缓冲区时，释放缓冲区存储的。</p>
+</li>
+<li><p>sbuf_insert 函数等待一个可用的槽位，对互斥锁加锁，添加项目，对互斥锁解锁，然后宣布有一个新项目可用。 </p>
+</li>
+<li><p>sbuf_remove 函数是与 sbuf_insert 函数对称的。在等待一个可用的缓冲区项目之后，对互斥锁加锁，从缓冲区的前面取出该项目，对互斥锁解锁，然后发信号通知一个新的槽位可供使用。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"csapp.h"</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"sbuf.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Create an empty, bounded, shared FIFO buffer with n slots */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sbuf_init</span><span class="params">(<span class="type">sbuf_t</span> *sp, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    sp-&gt;buf = <span class="built_in">Calloc</span>(n, <span class="built_in">sizeof</span>(<span class="type">int</span>)); </span><br><span class="line">    sp-&gt;n = n;                       <span class="comment">/* Buffer holds max of n items */</span></span><br><span class="line">    sp-&gt;front = sp-&gt;rear = <span class="number">0</span>;        <span class="comment">/* Empty buffer iff front == rear */</span></span><br><span class="line">    <span class="built_in">Sem_init</span>(&amp;sp-&gt;mutex, <span class="number">0</span>, <span class="number">1</span>);      <span class="comment">/* Binary semaphore for locking */</span></span><br><span class="line">    <span class="built_in">Sem_init</span>(&amp;sp-&gt;slots, <span class="number">0</span>, n);      <span class="comment">/* Initially, buf has n empty slots */</span></span><br><span class="line">    <span class="built_in">Sem_init</span>(&amp;sp-&gt;items, <span class="number">0</span>, <span class="number">0</span>);      <span class="comment">/* Initially, buf has zero data items */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Clean up buffer sp */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sbuf_deinit</span><span class="params">(<span class="type">sbuf_t</span> *sp)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="built_in">Free</span>(sp-&gt;buf);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Insert item onto the rear of shared buffer sp */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sbuf_insert</span><span class="params">(<span class="type">sbuf_t</span> *sp, <span class="type">int</span> item)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="built_in">P</span>(&amp;sp-&gt;slots);                          <span class="comment">/* Wait for available slot */</span></span><br><span class="line">    <span class="built_in">P</span>(&amp;sp-&gt;mutex);                          <span class="comment">/* Lock the buffer */</span></span><br><span class="line">    sp-&gt;buf[sp-&gt;rear] = item;   <span class="comment">/* Insert the item */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"生产一个产品 %d \n"</span>,sp-&gt;rear);</span><br><span class="line">    sp-&gt;rear=(sp-&gt;rear+<span class="number">1</span>)%(sp-&gt;n);</span><br><span class="line">    <span class="built_in">V</span>(&amp;sp-&gt;mutex);                          <span class="comment">/* Unlock the buffer */</span></span><br><span class="line">    <span class="built_in">V</span>(&amp;sp-&gt;items);                          <span class="comment">/* Announce available item */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Remove and return the first item from buffer sp */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sbuf_remove</span><span class="params">(<span class="type">sbuf_t</span> *sp)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> item;</span><br><span class="line">    <span class="built_in">P</span>(&amp;sp-&gt;items);                          <span class="comment">/* Wait for available item */</span></span><br><span class="line">    <span class="built_in">P</span>(&amp;sp-&gt;mutex);                          <span class="comment">/* Lock the buffer */</span></span><br><span class="line">    item = sp-&gt;buf[sp-&gt;front];  <span class="comment">/* Remove the item */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"消费一个产品 %d \n"</span>, sp-&gt;front);</span><br><span class="line">    sp-&gt;front=(sp-&gt;front+<span class="number">1</span>)%(sp-&gt;n);</span><br><span class="line">    <span class="built_in">V</span>(&amp;sp-&gt;mutex);                          <span class="comment">/* Unlock the buffer */</span></span><br><span class="line">    <span class="built_in">V</span>(&amp;sp-&gt;slots);                          <span class="comment">/* Announce available slot */</span></span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"sbuf.c"</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">sbuf_t</span> buf;   <span class="comment">// 缓冲区的结构体实例</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">producer_thread</span><span class="params">(<span class="type">void</span> *vargp)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	{</span><br><span class="line">		<span class="built_in">sbuf_insert</span>(&amp;buf,cnt=(cnt+<span class="number">1</span>)%<span class="number">1000</span>);</span><br><span class="line">		<span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>)+*((<span class="type">int</span>*)vargp));</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="built_in">rand</span>()%<span class="number">10</span>+<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">consumer_thread</span><span class="params">(<span class="type">void</span> *vargp)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	{</span><br><span class="line">		<span class="built_in">sbuf_remove</span>(&amp;buf);</span><br><span class="line">		<span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>)+<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="built_in">rand</span>()%<span class="number">10</span>+<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>)); <span class="comment">// 设置随机种子</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">sbuf_init</span>(&amp;buf,<span class="number">100</span>);</span><br><span class="line">	<span class="type">pthread_t</span> producer[<span class="number">2</span>],consumer;</span><br><span class="line">	<span class="type">int</span> seed[<span class="number">2</span>]={<span class="number">2</span>,<span class="number">3</span>};  <span class="comment">// 使每个生产者随机产生的休眠时间不同</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Create threads and wait for them to finish */</span></span><br><span class="line">	<span class="built_in">Pthread_create</span>(&amp;producer[<span class="number">0</span>],<span class="literal">NULL</span>,producer_thread,seed);     <span class="comment">//生产者1</span></span><br><span class="line">	<span class="built_in">Pthread_create</span>(&amp;producer[<span class="number">1</span>],<span class="literal">NULL</span>,producer_thread,seed+<span class="number">1</span>);   <span class="comment">//生产者2</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">Pthread_create</span>(&amp;consumer,<span class="literal">NULL</span>,consumer_thread,<span class="literal">NULL</span>);    <span class="comment">// 一个消费者</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 等所有线程结束</span></span><br><span class="line">	<span class="built_in">Pthread_join</span>(producer[<span class="number">0</span>],<span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">Pthread_join</span>(producer[<span class="number">1</span>],<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">Pthread_join</span>(consumer,<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">sbuf_deinit</span>(&amp;buf);</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<img src="//tva2.sinaimg.cn/large/005JD0Ejgy1gdlmjkk0m9j30bs086wes.jpg" alt="生产者消费者" width="40%">
+
+
+<h2 id="读者写者问题"><a href="#读者写者问题" class="headerlink" title="读者写者问题"></a>读者写者问题</h2><ul>
+<li>一组并发的线程要访问一个共享对象。</li>
+<li>修改对象的线程叫做写者。只读对象的线程叫做读者。</li>
+<li>写者必须拥有对对象的独占的访问，而读者可以和无限多个其他的读者共享对象。</li>
+</ul>
+<p>读者－写者问题有几个变种，分别基于读者和写者的优先级。</p>
+<ol>
+<li>第一类读者－写者问题，读者优先，要求不要让读者等待，除非已经把使用对象的权限赋予了一个写者。换句话说，读者不会因为有一个写者在等待而等待。</li>
+<li>第二类读者－写者问题，写者优先，要求一旦一个写者准备好可以写，它就会尽可能快地完成它的写操作。同第一类问题不同，在一个写者后到达的读者必须等待，即使这个写者也是在等待。</li>
+</ol>
+<p>对这两种读者一写者问题的正确解答可能导致饥饿（starvation），饥饿就是一个线程无限期地阻塞，无法进展。例如，如果有读者不断地到达，写者就可能无限期地等待。</p>
+<h3 id="第一类读者写者"><a href="#第一类读者写者" class="headerlink" title="第一类读者写者"></a>第一类读者写者</h3><ul>
+<li><p>信号量 mutex 保护对共享变量 count 的访问，count 统计当前在临界区中的读者数量。<br>每当一个写者进入临界区时，它对互斥锁 w 加锁，每当它离开临界区时，对 w 解锁。 这就保证了任意时刻临界区中最多只有一个写者。</p>
+</li>
+<li><p>另一方面，只有第一个进入临界区的读者对 w 加锁，而只有最后一个离开临界区的读者对 w 解锁。<br>当一个读者进入和离开临界区时，如果还有其他读者在临界区中，那么这个读者会忽略互斥锁 w。这就意味着只要还有一个读者占用互斥锁 w，无限多数量的读者可以没有障碍地进入临界区。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;csapp.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> n = <span class="number">10</span>;</span><br><span class="line"><span class="type">char</span> text[<span class="number">10</span>]={<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>};</span><br><span class="line"><span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="type">sem_t</span> mutex, W;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">reader</span><span class="params">(<span class="type">void</span> *vargp)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    {</span><br><span class="line">        <span class="built_in">P</span>(&amp;mutex);</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">1</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="built_in">P</span>(&amp;W);</span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">V</span>(&amp;mutex);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"读操作： %s\n"</span>, text);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">P</span>(&amp;mutex);</span><br><span class="line">        count--;</span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">0</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="built_in">V</span>(&amp;W);</span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">V</span>(&amp;mutex);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>)+<span class="number">1</span>);</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="built_in">rand</span>()%<span class="number">10</span>+<span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">writer</span><span class="params">(<span class="type">void</span> *vargp)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    {</span><br><span class="line">        <span class="built_in">P</span>(&amp;W);</span><br><span class="line">        <span class="type">int</span> i = <span class="built_in">rand</span>();</span><br><span class="line">        text[i % n] = i % <span class="number">26</span> + <span class="string">'A'</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"写操作: text[%d]=%c \n"</span>,i%n,i % <span class="number">26</span> + <span class="string">'A'</span>);</span><br><span class="line">        <span class="built_in">V</span>(&amp;W);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>)+<span class="number">2</span>);</span><br><span class="line">        <span class="built_in">sleep</span>(<span class="built_in">rand</span>()%<span class="number">10</span>+<span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line">    <span class="built_in">sem_init</span>(&amp;mutex,<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">sem_init</span>(&amp;W,<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="type">pthread_t</span> read,write;</span><br><span class="line">    <span class="built_in">Pthread_create</span>(&amp;read,<span class="literal">NULL</span>,reader,<span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">Pthread_create</span>(&amp;write,<span class="literal">NULL</span>,writer,<span class="literal">NULL</span>);</span><br><span class="line">    <span class="built_in">Pthread_join</span>(read,<span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">Pthread_join</span>(write,<span class="literal">NULL</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gdlnrnhoc5j30cy097q3m.jpg" alt="第一类读者写者" width="40%">
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://litnwu.gitee.io" rel="external nofollow noreferrer">LitnWu</a>
+                </span>
+            </div>
+            <div class="reprint__type" style="display:none">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://litnwu.gitee.io/2020/04/07/xian-cheng-yu-xin-hao-liang/">https://litnwu.gitee.io/2020/04/07/xian-cheng-yu-xin-hao-liang/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="https://litnwu.gitee.io" target="_blank">LitnWu</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%BA%BF%E7%A8%8B/">
+                                    <span class="chip bg-color">线程</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/">
+                                    <span class="chip bg-color">信号量</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85/">
+                                    <span class="chip bg-color">生产者消费者</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85/">
+                                    <span class="chip bg-color">读者写者</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments .vwrap {
+        box-sizing: border-box;
+        padding: 0 0 44px;
+        background-color: #F0FFF0;
+    }
+
+    #vcomments .vwrap .vheader {
+        width: 80%;
+        bottom: 0;
+        position: absolute;
+        background: #F0FFF0;
+    }
+
+    #vcomments .vinput {
+        padding: 10px 15px;
+        text-align: center;
+    }
+
+    #vcomments .vwrap .vheader .vinput {
+        border-bottom: 0px
+    }
+
+    #vcomments .vwrap .vedit .vctrl {
+        margin-top: -44px;
+        right: 0;
+        position: absolute;
+        margin-right: -3px;
+    }
+
+    #vcomments .vwrap .vrow {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 20%;
+        padding-top: 0px;
+    }
+
+    #vcomments .vrow {
+        font-size: 0;
+        padding: 0px 0;
+    }
+
+    #vcomments .vicon {
+        margin-right: 15px;
+    }
+
+    #vcomments .vrow .vcol.vcol-30 {
+        display: none
+    }
+
+    #vcomments .vedit .vctrl span.vpreview-btn {
+        display: none
+    }
+
+    #vcomments .vrow .vcol.vcol-70 {
+        width: 100%;
+    }
+
+    #vcomments .vsubmit.vbtn {
+        border-radius: 0;
+        padding: 0;
+        color: #fff;
+        line-height: 44px;
+        width: 100%;
+        border: none;
+        background: #4cbf30;
+    }
+
+    #vcomments .vcards .vcard .vh .vhead .vsys {
+        background: #F0FFF0;
+    }
+
+    #vcomments .vcards .vcard .vh .vmeta .vat {
+        font-size: 12px;
+        display: block;
+        margin-left: 15px;
+        float: right;
+        color: #fff;
+        background-color: #4cbf30;
+        line-height: 20px;
+        padding: 0 6px;
+        border-radius: 3px;
+    }
+
+    @media screen and (max-width: 520px) {
+        #vcomments .vwrap .vheader .vinput {
+            width: 25%;
+            padding: 10px 5px;
+        }
+    }
+</style>
+
+
+<!-- <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style> -->
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling"
+        style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<!-- <script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'tpny1h4nsfoPLBOVNDBcBz9t-gzGzoHsz',
+        appKey: 'OQeFK1KceWOwkBgLBAUUk4IJ',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'retro',
+        pageSize: '12',
+        lang: 'zh-cn',
+        placeholder: '编辑评论'
+    });
+</script> -->
+
+<script> 
+    new Valine({ 
+        el: '#vcomments', 
+        admin_email: '16463223@qq.com', 
+        appId: 'tpny1h4nsfoPLBOVNDBcBz9t-gzGzoHsz', 
+        appKey: 'OQeFK1KceWOwkBgLBAUUk4IJ', 
+        path: window.location.pathname, 
+        comment_count: true, 
+        notify: 'false' === 'true', 
+        verify: 'true' === 'true', 
+        visitor: 'true' === 'true', 
+        avatar: 'retro', 
+        pageSize: '12', 
+        lang: 'zh-cn', 
+        placeholder: '编辑评论', }); 
+        $(document).ready(function(){ 
+            $("#vcomments").on('click', 'span.vat',function(){ $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap")); $('textarea#veditor').focus(); }) }) 
+</script> 
+    
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script> 
+<script type="text/javascript"> 
+    jinrishici.load(function(result) { var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author 
+    document.getElementById("veditor").setAttribute("placeholder",jrsc_plac); }); 
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/10/zui-chang-lian-xu-xu-lie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/owmap/17.jpg" class="responsive-img" alt="最长连续序列">
+                        
+                        <span class="card-title">最长连续序列</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            题目（leetcode 128. 最长连续序列）给定一个未排序的整数数组，找出最长连续序列的长度。
+要求算法的时间复杂度为&nbsp;O(n)。
+示例:
+
+输入:&nbsp;[100, 4, 200, 1, 3, 2]输出: 4解释: 最长
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                        <span class="chip bg-color">哈希表</span>
+                    </a>
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+                        <span class="chip bg-color">并查集</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/06/sou-suo-xuan-zhuan-pai-xu-shu-zu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/owmap/17.jpg" class="responsive-img" alt="搜索旋转排序数组">
+                        
+                        <span class="card-title">搜索旋转排序数组</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            题目（leetcode 33. 搜索旋转排序数组）假设按照升序排序的数组在预先未知的某个点上进行了旋转。
+( 例如，数组&nbsp;[0,1,2,4,5,6,7]&nbsp;可能变为&nbsp;[4,5,6,7,0,1,2]&nbsp;)。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/algorithm/" class="post-category">
+                                    algorithm
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                        <span class="chip bg-color">二分查找</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('500')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: LitnWu<br />'
+            + '文章作者: LitnWu<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;
+                目录
+            </div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fas fa-list-ul"></i>
+        </a>
+    </div>
+    
+
+        <script src="/libs/tocbot/tocbot.min.js"></script>
+        <script>
+            $(function() {
+                tocbot.init({
+                    tocSelector: '#toc-content',
+                    contentSelector: '#articleContent',
+                    headingsOffset: -($(window).height() * 0.4 - 45),
+                    collapseDepth: Number('0'),
+                    headingSelector: 'h2, h3, h4'
+                });
+
+                // modify the toc link href to support Chinese.
+                let i = 0;
+                let tocHeading = 'toc-heading-';
+                $('#toc-content a').each(function() {
+                    $(this).attr('href', '#' + tocHeading + (++i));
+                });
+
+                // modify the heading title id to support Chinese.
+                i = 0;
+                $('#articleContent').children('h2, h3, h4').each(function() {
+                    $(this).attr('id', tocHeading + (++i));
+                });
+
+                // Set scroll toc fixed.
+                let tocHeight = parseInt($(window).height() * 0.4 - 64);
+                let $tocWidget = $('.toc-widget');
+                $(window).scroll(function() {
+                    let scroll = $(window).scrollTop();
+                    /* add post toc fixed. */
+                    if (scroll > tocHeight) {
+                        $tocWidget.addClass('toc-fixed');
+                    } else {
+                        $tocWidget.removeClass('toc-fixed');
+                    }
+                });
+
+                
+                /* 修复文章卡片 div 的宽度. */
+                let fixPostCardWidth = function(srcId, targetId) {
+                    let srcDiv = $('#' + srcId);
+                    if (srcDiv.length === 0) {
+                        return;
+                    }
+
+                    let w = srcDiv.width();
+                    if (w >= 450) {
+                        w = w + 21;
+                    } else if (w >= 350 && w < 450) {
+                        w = w + 18;
+                    } else if (w >= 300 && w < 350) {
+                        w = w + 16;
+                    } else {
+                        w = w + 14;
+                    }
+                    $('#' + targetId).width(w);
+                };
+
+                // 切换TOC目录展开收缩的相关操作.
+                const expandedClass = 'expanded';
+                let $tocAside = $('#toc-aside');
+                let $mainContent = $('#main-content');
+                $('#floating-toc-btn .btn-floating').click(function() {
+                    if ($tocAside.hasClass(expandedClass)) {
+                        $tocAside.removeClass(expandedClass).hide();
+                        $mainContent.removeClass('l9');
+                    } else {
+                        $tocAside.addClass(expandedClass).show();
+                        $mainContent.addClass('l9');
+                    }
+                    fixPostCardWidth('artDetail', 'prenext-posts');
+                });
+                
+            });
+        </script>
+    
+
+</main>
+
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="https://litnwu.gitee.io" target="_blank">LitnWu</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "2";
+                    var startDate = "8";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/reflecter510" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:499300020@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=499300020" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 499300020" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
