@@ -65,8 +65,10 @@ $(function () {
     /*初始化卡片出现和消失动画*/
     AOS.init({
         easing: 'ease-in-out-sine',
+        disable: 'mobile',
         duration: 200,
-        delay: 150
+        delay: 150,
+        disable: window.innerWidth > 0
     });
 
     /*文章内容详情的一些初始化特性*/
