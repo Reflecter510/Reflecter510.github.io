@@ -65,8 +65,8 @@ $(function () {
     /*初始化卡片出现和消失动画*/
     AOS.init({
         easing: 'ease-in-out-sine',
-        duration: 150,
-        delay: 50
+        duration: 200,
+        delay: 150
     });
 
     /*文章内容详情的一些初始化特性*/
