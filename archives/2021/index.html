@@ -26,10 +26,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -630,7 +632,11 @@
                                 
                                     配置交换文件
 创建交换文件大小应不小于系统内存大小，这里分配了17G。
-123456789101112# 先关闭已有的swap空间sudo swapoff -a# 分配连续的磁盘空间，fallocate比dd命令更安全快速，空间大小参考后面
+
+# 先关闭已有的swap空间
+sudo swapoff -a
+# 分配连续的磁盘空间，fallocate比dd命令更安全快速，空间大小参考后面的表格
+sudo fal
                                 
                             </div>
                             <div class="publish-info">
@@ -771,7 +777,7 @@
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

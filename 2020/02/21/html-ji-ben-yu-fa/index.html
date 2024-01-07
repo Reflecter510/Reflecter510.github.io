@@ -26,10 +26,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -630,7 +632,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    2.7k
                 </div>
                 
 
@@ -650,30 +652,60 @@
             <div id="articleContent">
                 <p>HTML的基本语法单元称为标签。通常，标签用于指定内容的类别。对于每种标签，浏览器都有针对指定内容的默认外观规范。标签的语法是标签名称，并用尖括号（&lt;和&gt;）括起来。标签名称必须全部用小写字母书写。大多数标签成对出现：一个开始标签和一个结束标签。结束标记的名称（如果需要的话）是其对应的开始标记的名称，并在其开头加上斜杠。例如，如果标记名称为p，则其结束标记为&lt;/ p&gt;。标签及其结束标签之间出现的是标签的内容。HTML文档的浏览器显示可显示所有文档标签的内容；这是文档要描述的信息。并非所有标签都可以包含内容。</p>
 <p>开头标签及其结束标签一起为它们所包围的内容指定了一个容器。容器及其内容一起称为元素。例如，考虑以下元素：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span> This is simple stuff. <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span> This is simple stuff. <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>用于指定标签替代含义的属性写在开头标签名称及其右括号之间。它们以关键字形式指定，这意味着该属性的名称后跟一个等号和该属性的值。属性名称（如标签名称）以小写字母书写。属性值必须用双引号分隔。本章的其余部分将提供许多属性示例。</p>
 <p>程序中的注释增加了这些程序的可读性。HTML中的注释具有相同的目的。它们以HTML形式编写，格式如下：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 我是被注释掉的内容 --&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 我是被注释掉的内容 --></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>浏览器会忽略HTML注释-它们仅用于人员。注释可以根据需要分布在任意多行中。例如，您可能有以下注释：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">    嘻嘻</span></span><br><span class="line"><span class="comment">    我可以多行。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 
+    嘻嘻
+    我可以多行。
+--></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>信息注释在HTML文档中与在程序中一样重要。文档有时会有很长的标记行序列，这些序列一起构成显示的一部分。如果这样的序列前面没有说明其目的的注释，则文档阅读器可能很难确定为什么存在该序列。与程序一样，对每一行进行注释既乏味又适得其反。但是，要使文档（或程序）更易于理解，必须先注释掉标记行的逻辑集合。</p>
 <p>除了注释之外，HTML文档中可能还会出现其他几种浏览器会忽略的文本。浏览器将忽略所有无法识别的标签。他们也忽略换行符。可以指定显示内容中显示的换行符，但只能使用为此目的设计的标签。多个空格和制表符也是如此。</p>
 <p>引入HTML时，程序员发现它有点令人沮丧。在程序中，这些语句准确指定了计算机必须执行的操作。HTML标记被视为对浏览器的建议。如果保留字在程序中拼写错误，则语言实现系统通常会检测到该错误，并且不会执行该程序。但是，拼写错误的标签名称通常会导致该标签被浏览器忽略，而不会向用户表明已遗漏任何内容。甚至允许浏览器忽略他们识别的标签。此外，用户可以配置其浏览器以不同方式对特定标签做出反应。</p>
 <h2 id="标准HTML文档结构"><a href="#标准HTML文档结构" class="headerlink" title="标准HTML文档结构"></a>标准HTML文档结构</h2><p>每个HTML文档的第一行是DOCTYPE命令，该命令指定文档所遵循的特定SGML文档类型定义（DTD）。对于HTML，此声明只是以下内容：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>HTML文档必须包含四个标记<code>&lt;html&gt;</code>，<code>&lt;head&gt;</code>，<code>&lt;title&gt;</code>和<code>&lt;body&gt;</code>。标记标识文档的根元素。因此，HTML文档在DOCTYPE命令之后始终带有<code>&lt;html&gt;</code>标记，并且它们始终以结束html标记&lt;/ html&gt;结尾。html元素包含lang属性，该属性指定编写文档所用的语言，如以下元素所示：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在此示例中，语言指定为“ en”，表示英语</p>
 <p>HTML文档由两部分组成，即头和主体。head元素提供有关文档的信息，但不提供其内容。head元素始终包含两个简单元素，title元素和meta元素。meta元素用于提供有关文档的其他信息。它没有内容；相反，提供的所有信息均使用属性指定。至少，meta标签会指定用于编写文档的字符集。Web上最流行的国际字符集是8位Unicode转换格式（UTF-8）。该字符集使用1个字节到6个字节来表示一个字符，但与ASCII字符集向后兼容。通过使UTF-8中的所有单字节字符都与ASCII字符相对应，可以实现这种兼容性。以下是必要的meta元素：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>此元素末尾的斜杠表示它没有结束标记，它是一个组合的开始和结束标记。</p>
 <p>标题元素的内容由浏览器显示在其显示窗口的顶部，通常在浏览器窗口的标题栏中.</p>
 <p>body主体提供其内容.</p>
 <p>以下是说明基本结构的骨架文档：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line">&lt;!–– File name and document purpose ––&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span> = <span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span> A title for the document <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span> = <span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!––</span> <span class="token attr-name">File</span> <span class="token attr-name">name</span> <span class="token attr-name">and</span> <span class="token attr-name">document</span> <span class="token attr-name">purpose</span> <span class="token attr-name">––</span><span class="token punctuation">></span></span>
+&lt;html lang = "en">
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span> A title for the document <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+        &lt;meta charset = "utf-8" />
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+      ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>注意，我们为文档使用了一种简单的格式设置模式，类似于程序中经常使用的格式设置模式。每当元素嵌套在前一个元素内时，嵌套元素都会缩进。在本书中，我们将嵌套元素缩进两个空格，尽管该数字没有什么特别的。与程序一样，缩进模式用于增强可读性.</p>
 <h2 id="基本的标签"><a href="#基本的标签" class="headerlink" title="基本的标签"></a>基本的标签</h2><h3 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h3><p>文本通常组织在文档主体中的段落中。XHTML标准不允许将文本直接放置在文档主体中。相反，文本通常放置在段落元素的内容中，其名称为p。在显示文本时，浏览器会在浏览器窗口中的行中放入尽可能多的单词。浏览器在每行末尾提供一个换行符。如2.2节所述，浏览器会忽略文本中嵌入的换行符。</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>   </span><br><span class="line">    Mary </span><br><span class="line">had a little lamb, </span><br><span class="line">its </span><br><span class="line">fleece</span><br><span class="line"> was white as snow. </span><br><span class="line"> And everywhere that  </span><br><span class="line"> Mary went, the lamb was sure to go.</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>   
+    Mary 
+had a little lamb, 
+its 
+fleece
+ was white as snow. 
+ And everywhere that  
+ Mary went, the lamb was sure to go.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实际效果如下：</p>
 <blockquote>
 <p>   
@@ -688,8 +720,13 @@ fleece
 </blockquote>
 
 <p>请注意，源段落元素中的多个空格被单个空格代替。</p>
-<h3 id="换行符"><a href="#换行符" class="headerlink" title="换行符"></a>换行符</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">Mary had a little lamb, <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    its fleece was white as snow.</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="换行符"><a href="#换行符" class="headerlink" title="换行符"></a>换行符</h3><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+Mary had a little lamb, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/></span></span>
+    its fleece was white as snow.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实际效果如下：</p>
 <blockquote>
 <p>
@@ -701,7 +738,13 @@ Mary had a little lamb, <br>
 有时需要保留文本中的空白，即防止浏览器消除多个空格并忽略嵌入的换行符。可以使用pre标记指定。
 
 <p>请注意，pre元素的内容以等宽字体显示，而不是以默认字体显示。pre元素不仅保持源的换行符，还保留字符和行间距。</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line">Mary</span><br><span class="line">    had a    </span><br><span class="line">        little     </span><br><span class="line">               lamb</span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span>
+Mary
+    had a    
+        little     
+               lamb
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实际效果如下：</p>
 <blockquote>
 <pre>Mary
@@ -718,21 +761,44 @@ pre元素实际上可以包含任何其他标记，但那些导致段落中断�
 <p>强调元素指定其文本内容是特殊的，并应以某种表明这种区别的方式进行显示。大多数浏览器对此类内容使用斜体。</p>
 <p>强元素“强”类似于强调标签，但更是如此。浏览器通常以粗体设置强元素的内容。</p>
 <p>代码元素code用于指定等宽字体，通常用于程序代码。例如，考虑以下元素：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">code</span>&gt;</span> cost = quantity * price <span class="tag">&lt;/<span class="name">code</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span> cost = quantity * price <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>实际效果如下：</p>
 <blockquote>
 <code> cost = quantity * price </code>
 </blockquote>
 
 <p>下标和上标字符可以分别由sub和sup指定。这些不是基于内容的标签。例如，</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X<span class="tag">&lt;<span class="name">sub</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sub</span>&gt;</span><span class="tag">&lt;<span class="name">sup</span>&gt;</span>3<span class="tag">&lt;/<span class="name">sup</span>&gt;</span> + y<span class="tag">&lt;<span class="name">sub</span>&gt;</span>1<span class="tag">&lt;/<span class="name">sub</span>&gt;</span><span class="tag">&lt;<span class="name">sup</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sup</span>&gt;</span> </span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-html"><code class="language-html">X<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sub</span><span class="token punctuation">></span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sup</span><span class="token punctuation">></span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sup</span><span class="token punctuation">></span></span> + y<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sub</span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sup</span><span class="token punctuation">></span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sup</span><span class="token punctuation">></span></span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>实际效果如下：</p>
 <blockquote>
 X<sub>2</sub><sup>3</sup> + y<sub>1</sub><sup>2</sup> 
 </blockquote>
 
-<h2 id="完整例子"><a href="#完整例子" class="headerlink" title="完整例子"></a>完整例子</h2><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span></span><br><span class="line">            Wylin</span><br><span class="line">        <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>NEW WEBSITE<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"news"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>New headline 1<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>some text.some text.some text...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            ...</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"news"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h4</span>&gt;</span>New headline 2<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>some text. some text. some text...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            ...</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        ...!</span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="完整例子"><a href="#完整例子" class="headerlink" title="完整例子"></a>完整例子</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>
+            Wylin
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>NEW WEBSITE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+        ...
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>news<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>New headline 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>some text.some text.some text...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+            ...
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>news<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">></span></span>New headline 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>some text. some text. some text...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+            ...
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        ...!
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>效果：<br><img src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gc4b596ptij30wo0lmt9v.jpg"></p>
 
             </div>
@@ -1573,7 +1639,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

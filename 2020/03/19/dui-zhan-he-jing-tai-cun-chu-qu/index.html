@@ -38,10 +38,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -710,7 +712,25 @@
 <blockquote>
 <p>附加说明：<br>常量存储区（特殊的常量存储区，属于静态存储区）<br>　　1) 常量占用内存,只读状态,决不可修改<br>　　2) 常量字符串就是放在这里的，程序结束后由系统释放</p>
 </blockquote>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">0</span>; <span class="comment">//已初始化的读写数据段</span></span><br><span class="line"><span class="type">char</span> *p1; <span class="comment">//未初始化段 .bss</span></span><br><span class="line"><span class="built_in">main</span>()</span><br><span class="line">{</span><br><span class="line"><span class="type">int</span> b;            <span class="comment">// 栈</span></span><br><span class="line"><span class="type">char</span> s[] = <span class="string">"abc"</span>; <span class="comment">// 栈</span></span><br><span class="line"><span class="type">char</span> *p2;         <span class="comment">// 栈</span></span><br><span class="line"><span class="type">char</span> *p3 = <span class="string">"123456"</span>;     <span class="comment">// 123456\0在常量区，p3在栈上。</span></span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> c =<span class="number">0</span>；        <span class="comment">//全局（静态）初始化区</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//分配得来的10和20字节的区域就在堆区。</span></span><br><span class="line">p1 = (<span class="type">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">p2 = (<span class="type">char</span> *)<span class="built_in">malloc</span>(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">strcpy</span>(p1, <span class="string">"123456"</span>); <span class="comment">//123456\0放在常量区，编译器可能会将它与p3所指向的"123456"优化成一个地方。</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//已初始化的读写数据段</span>
+<span class="token keyword">char</span> <span class="token operator">*</span>p1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//未初始化段 .bss</span>
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+<span class="token keyword">int</span> b<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// 栈</span>
+<span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 栈</span>
+<span class="token keyword">char</span> <span class="token operator">*</span>p2<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// 栈</span>
+<span class="token keyword">char</span> <span class="token operator">*</span>p3 <span class="token operator">=</span> <span class="token string">"123456"</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 123456\0在常量区，p3在栈上。</span>
+
+<span class="token keyword">static</span> <span class="token keyword">int</span> c <span class="token operator">=</span><span class="token number">0</span>；        <span class="token comment" spellcheck="true">//全局（静态）初始化区</span>
+
+<span class="token comment" spellcheck="true">//分配得来的10和20字节的区域就在堆区。</span>
+p1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+p2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">strcpy</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//123456\0放在常量区，编译器可能会将它与p3所指向的"123456"优化成一个地方。</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -1532,7 +1552,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

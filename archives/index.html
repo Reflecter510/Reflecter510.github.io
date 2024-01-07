@@ -26,10 +26,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -842,7 +844,11 @@ fine-tuning和语义搜索的区别：OpenAI Q&amp;A: Finetuning GPT-3
                                 
                                     配置交换文件
 创建交换文件大小应不小于系统内存大小，这里分配了17G。
-123456789101112# 先关闭已有的swap空间sudo swapoff -a# 分配连续的磁盘空间，fallocate比dd命令更安全快速，空间大小参考后面
+
+# 先关闭已有的swap空间
+sudo swapoff -a
+# 分配连续的磁盘空间，fallocate比dd命令更安全快速，空间大小参考后面的表格
+sudo fal
                                 
                             </div>
                             <div class="publish-info">
@@ -1091,7 +1097,11 @@ fine-tuning和语义搜索的区别：OpenAI Q&amp;A: Finetuning GPT-3
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    1. 使用RaisedButton实现点击123456789101112131415161718192021222324252627* ```RoundedRectangleBorder``` ：圆角矩形* ```CircleBorder`
+                                    1. 使用RaisedButton实现点击RaisedButton有一个属性shape，可以定义按钮的形状。
+
+RoundedRectangleBorder ：圆角矩形
+CircleBorder ：圆形
+StadiumBorder ：左右两
                                 
                             </div>
                             <div class="publish-info">
@@ -1147,7 +1157,9 @@ fine-tuning和语义搜索的区别：OpenAI Q&amp;A: Finetuning GPT-3
                                     
 配置：ubuntu20.04 + 锐龙R5_3500U + 20G 
 
-搭建环境1. 安装Git123sudo apt-get install gitgit config –global user.email "test@test.com
+搭建环境1. 安装Gitsudo apt-get install git
+git config –global user.email "test@test.com"
+
                                 
                             </div>
                             <div class="publish-info">
@@ -1567,9 +1579,11 @@ VcXsrv一直黑屏解决方法：
                             <div class="summary block-with-text">
                                 
                                     配置app/build.gradle文件加入LitePal的依赖：
-123dependencies {    implementation 'org.litepal.android:core:1.3.2}
+dependencies {
+    implementation 'org.litepal.android:core:1.3.2
+}
 
-配置litepal.xml文件在
+配置litepal.xml文件在a
                                 
                             </div>
                             <div class="publish-info">
@@ -1717,9 +1731,9 @@ VcXsrv一直黑屏解决方法：
                         
                         <div class="card-action article-tags">
                             
-                            <a href="/tags/%E6%A0%91/"><span class="chip bg-color">树</span></a>
-                            
                             <a href="/tags/leetcode/"><span class="chip bg-color">leetcode</span></a>
+                            
+                            <a href="/tags/%E6%A0%91/"><span class="chip bg-color">树</span></a>
                             
                         </div>
                         
@@ -1799,7 +1813,7 @@ VcXsrv一直黑屏解决方法：
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

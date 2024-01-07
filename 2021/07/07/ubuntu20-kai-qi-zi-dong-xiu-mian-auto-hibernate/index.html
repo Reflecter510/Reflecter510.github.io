@@ -7,7 +7,11 @@
     <meta name="keywords" content="Ubuntu20开启自动休眠(Auto Hibernate), LitnWu">
     <meta name="description" content="配置交换文件
 创建交换文件大小应不小于系统内存大小，这里分配了17G。
-123456789101112# 先关闭已有的swap空间sudo swapoff -a# 分配连续的磁盘空间，fallocate比dd命令更安全快速，空间大小参考后面">
+
+# 先关闭已有的swap空间
+sudo swapoff -a
+# 分配连续的磁盘空间，fallocate比dd命令更安全快速，空间大小参考后面的表格
+sudo fal">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,10 +32,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -628,7 +634,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    444
+                    455
                 </div>
                 
 
@@ -647,28 +653,77 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="配置交换文件"><a href="#配置交换文件" class="headerlink" title="配置交换文件"></a>配置交换文件</h2><ol>
-<li><p>创建交换文件<br>大小应不小于系统内存大小，这里分配了17G。</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先关闭已有的swap空间</span></span><br><span class="line">sudo swapoff -a</span><br><span class="line"><span class="comment"># 分配连续的磁盘空间，fallocate比dd命令更安全快速，空间大小参考后面的表格</span></span><br><span class="line">sudo fallocate -l 17G /swapfile</span><br><span class="line"><span class="comment"># 修改权限</span></span><br><span class="line">sudo <span class="built_in">chmod</span> 600 /swapfile</span><br><span class="line"><span class="comment"># 启用swapfile</span></span><br><span class="line">sudo mkswap /swapfile</span><br><span class="line">sudo swapon /swapfile</span><br><span class="line"><span class="comment"># 确认结果</span></span><br><span class="line">sudo swapon --show</span><br><span class="line">free</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>使系统启动时挂载该交换文件</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'/swapfile none swap sw 0 0'</span> | sudo <span class="built_in">tee</span> -a /etc/fstab</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>配置启动内核参数<br>使系统启动时从交换文件中恢复内存</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看swapfile的UUID</span></span><br><span class="line">sudo findmnt -no UUID -T /swapfile</span><br><span class="line"><span class="comment"># 查看swap_file_offset</span></span><br><span class="line">sudo filefrag -v /swapfile | awk <span class="string">'{ if($1=="0:"){print substr($4, 1, length($4)-2)} }'</span></span><br><span class="line"><span class="comment"># 编辑grub文件</span></span><br><span class="line">sudo vim /etc/default/grub</span><br><span class="line"><span class="comment"># 将grub文件中GRUB_CMDLINE_LINUX_DEFAULT参数修改为如下形式</span></span><br><span class="line"><span class="comment"># 其中UUID和resume_offset的值更换为上面两个命令的输出</span></span><br><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=<span class="string">"quiet splash resume=UUID=86e4385d-a028-4027-9edc-a900cbbe090e resume_offset=100069376"</span></span><br><span class="line"><span class="comment"># 保存退出，然后更新grub配置</span></span><br><span class="line">sudo update-grub</span><br><span class="line"><span class="comment"># 编辑initramfs</span></span><br><span class="line">sudo vim /etc/initramfs-tools/conf.d/resume</span><br><span class="line"><span class="comment"># 加入下面一行，UUID替换为实际值</span></span><br><span class="line">resume=UUID=86e4385d-a028-4027-9edc-a900cbbe090e</span><br><span class="line"><span class="comment"># 保存退出，然后更新initramfs配置</span></span><br><span class="line">sudo update-initramfs -u</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">reboot</span><br></pre></td></tr></tbody></table></figure></li>
-<li><p>测试是否可以正常休眠</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl hibernate</span><br></pre></td></tr></tbody></table></figure></li>
+<li>创建交换文件<br>大小应不小于系统内存大小，这里分配了17G。</li>
 </ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 先关闭已有的swap空间</span>
+<span class="token function">sudo</span> swapoff -a
+<span class="token comment" spellcheck="true"># 分配连续的磁盘空间，fallocate比dd命令更安全快速，空间大小参考后面的表格</span>
+<span class="token function">sudo</span> fallocate -l 17G /swapfile
+<span class="token comment" spellcheck="true"># 修改权限</span>
+<span class="token function">sudo</span> <span class="token function">chmod</span> 600 /swapfile
+<span class="token comment" spellcheck="true"># 启用swapfile</span>
+<span class="token function">sudo</span> mkswap /swapfile
+<span class="token function">sudo</span> swapon /swapfile
+<span class="token comment" spellcheck="true"># 确认结果</span>
+<span class="token function">sudo</span> swapon --show
+<span class="token function">free</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>使系统启动时挂载该交换文件</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">'/swapfile none swap sw 0 0'</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> -a /etc/fstab
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3">
+<li>配置启动内核参数<br>使系统启动时从交换文件中恢复内存</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 查看swapfile的UUID</span>
+<span class="token function">sudo</span> findmnt -no UUID -T /swapfile
+<span class="token comment" spellcheck="true"># 查看swap_file_offset</span>
+<span class="token function">sudo</span> filefrag -v /swapfile <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{ if(<span class="token variable">$1</span>=="0:"){print substr(<span class="token variable">$4</span>, 1, length(<span class="token variable">$4</span>)-2)} }'</span>
+<span class="token comment" spellcheck="true"># 编辑grub文件</span>
+<span class="token function">sudo</span> vim /etc/default/grub
+<span class="token comment" spellcheck="true"># 将grub文件中GRUB_CMDLINE_LINUX_DEFAULT参数修改为如下形式</span>
+<span class="token comment" spellcheck="true"># 其中UUID和resume_offset的值更换为上面两个命令的输出</span>
+GRUB_CMDLINE_LINUX_DEFAULT<span class="token operator">=</span><span class="token string">"quiet splash resume=UUID=86e4385d-a028-4027-9edc-a900cbbe090e resume_offset=100069376"</span>
+<span class="token comment" spellcheck="true"># 保存退出，然后更新grub配置</span>
+<span class="token function">sudo</span> update-grub
+<span class="token comment" spellcheck="true"># 编辑initramfs</span>
+<span class="token function">sudo</span> vim /etc/initramfs-tools/conf.d/resume
+<span class="token comment" spellcheck="true"># 加入下面一行，UUID替换为实际值</span>
+resume<span class="token operator">=</span>UUID<span class="token operator">=</span>86e4385d-a028-4027-9edc-a900cbbe090e
+<span class="token comment" spellcheck="true"># 保存退出，然后更新initramfs配置</span>
+<span class="token function">sudo</span> update-initramfs -u
+<span class="token comment" spellcheck="true"># 重启</span>
+<span class="token function">reboot</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>测试是否可以正常休眠</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl hibernate
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="加入界面按钮"><a href="#加入界面按钮" class="headerlink" title="加入界面按钮"></a>加入界面按钮</h2><ol>
-<li>安装<a target="_blank" rel="noopener" href="https://extensions.gnome.org/extension/755/hibernate-status-button/">Hibernate Status Button</a>插件</li>
-<li>增加配置文件<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新建配置文件</span></span><br><span class="line">sudo vim /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla</span><br><span class="line"><span class="comment"># 添加以下内容并保存</span></span><br><span class="line">[Re-<span class="built_in">enable</span> hibernate by default <span class="keyword">in</span> upower]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.upower.hibernate</span><br><span class="line">ResultActive=<span class="built_in">yes</span></span><br><span class="line">[Re-<span class="built_in">enable</span> hibernate by default <span class="keyword">in</span> logind]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;org.freedesktop.login1;org.freedesktop.login1.hibernate-multiple-sessions;org.freedesktop.login1.hibernate-ignore-inhibit</span><br><span class="line">ResultActive=<span class="built_in">yes</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>安装<a href="https://extensions.gnome.org/extension/755/hibernate-status-button/" target="_blank" rel="noopener">Hibernate Status Button</a>插件</li>
+<li>增加配置文件</li>
 </ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 新建配置文件</span>
+<span class="token function">sudo</span> vim /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+<span class="token comment" spellcheck="true"># 添加以下内容并保存</span>
+<span class="token punctuation">[</span>Re-enable hibernate by default <span class="token keyword">in</span> upower<span class="token punctuation">]</span>
+Identity<span class="token operator">=</span>unix-user:*
+Action<span class="token operator">=</span>org.freedesktop.upower.hibernate
+ResultActive<span class="token operator">=</span>yes
+<span class="token punctuation">[</span>Re-enable hibernate by default <span class="token keyword">in</span> logind<span class="token punctuation">]</span>
+Identity<span class="token operator">=</span>unix-user:*
+Action<span class="token operator">=</span>org.freedesktop.login1.hibernate<span class="token punctuation">;</span>org.freedesktop.login1.handle-hibernate-key<span class="token punctuation">;</span>org.freedesktop.login1<span class="token punctuation">;</span>org.freedesktop.login1.hibernate-multiple-sessions<span class="token punctuation">;</span>org.freedesktop.login1.hibernate-ignore-inhibit
+ResultActive<span class="token operator">=</span>yes
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="自动挂起改成自动休眠"><a href="#自动挂起改成自动休眠" class="headerlink" title="自动挂起改成自动休眠"></a>自动挂起改成自动休眠</h2><p>打开dconf编辑器，搜索<code>power</code>，转到<code>/org/gnome/settings-daemon/power/</code>，修改下列配置如图：</p>
 <img src="https://tva1.sinaimg.cn/large/008jAwkqgy1gs8las2rwrj30p4091q41.jpg" width="80%" data-width="904" data-height="325">
 
 
 
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/af26942709c82ab1c7cd47f87">https://xie.infoq.cn/article/af26942709c82ab1c7cd47f87</a></li>
+<li><a href="https://xie.infoq.cn/article/af26942709c82ab1c7cd47f87" target="_blank" rel="noopener">https://xie.infoq.cn/article/af26942709c82ab1c7cd47f87</a></li>
 </ul>
 
             </div>
@@ -1493,7 +1548,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

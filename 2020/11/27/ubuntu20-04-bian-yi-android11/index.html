@@ -8,7 +8,9 @@
     <meta name="description" content="
 配置：ubuntu20.04 + 锐龙R5_3500U + 20G 
 
-搭建环境1. 安装Git123sudo apt-get install gitgit config –global user.email &#34;test@test.com">
+搭建环境1. 安装Gitsudo apt-get install git
+git config –global user.email &#34;test@test.com&#34;
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -29,10 +31,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -629,7 +633,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    703
+                    720
                 </div>
                 
 
@@ -650,38 +654,63 @@
                 <blockquote>
 <p>配置：ubuntu20.04 + 锐龙R5_3500U + 20G </p>
 </blockquote>
-<h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><h3 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1. 安装Git"></a>1. 安装Git</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br><span class="line">git config –global user.email <span class="string">"test@test.com"</span></span><br><span class="line">git config –global user.name <span class="string">"test"</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="2-安装Java"><a href="#2-安装Java" class="headerlink" title="2. 安装Java"></a>2. 安装Java</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:openjdk-r/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install openjdk-8-jdk</span><br></pre></td></tr></tbody></table></figure>
-
+<h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><h3 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1. 安装Git"></a>1. 安装Git</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">git</span>
+<span class="token function">git</span> config –global user.email <span class="token string">"test@test.com"</span>
+<span class="token function">git</span> config –global user.name <span class="token string">"test"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-安装Java"><a href="#2-安装Java" class="headerlink" title="2. 安装Java"></a>2. 安装Java</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> add-apt-repository ppa:openjdk-r/ppa
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> openjdk-8-jdk
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="3-配置repo"><a href="#3-配置repo" class="headerlink" title="3. 配置repo"></a>3. 配置repo</h3><p>如果你使用的是其他终端，比如zsh，则将下面的<code>.bashrc</code>替换为<code>.zshrc</code>。</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/bin</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"PATH=~/bin:\$PATH"</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</span><br><span class="line"><span class="built_in">chmod</span> a+x ~/bin/repo</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> ~/bin
+<span class="token keyword">echo</span> <span class="token string">"PATH=~/bin:\<span class="token variable">$PATH</span>"</span> <span class="token operator">>></span> ~/.bashrc
+<span class="token function">source</span> ~/.bashrc
+curl https://storage.googleapis.com/git-repo-downloads/repo <span class="token operator">></span> ~/bin/repo
+<span class="token function">chmod</span> a+x ~/bin/repo
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="4-修改-bin-repo"><a href="#4-修改-bin-repo" class="headerlink" title="4. 修改~/bin/repo"></a>4. 修改~/bin/repo</h3><p>找到REPO_URL字段，将其替换为</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REPO_URL = <span class="string">'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-bash"><code class="language-bash">REPO_URL <span class="token operator">=</span> <span class="token string">'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="5-为文件夹初始化repo"><a href="#5-为文件夹初始化repo" class="headerlink" title="5. 为文件夹初始化repo"></a>5. 为文件夹初始化repo</h3><p>创建存放源码的文件夹并进入。<strong>注意</strong>，路径不能有中文名，否则编译时会报错。</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/AndroidSrc</span><br><span class="line"><span class="built_in">cd</span> ~/AndroidSrc</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> ~/AndroidSrc
+<span class="token function">cd</span> ~/AndroidSrc
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>初始化repo</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-11.0.0_r3</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="6-安装依赖库"><a href="#6-安装依赖库" class="headerlink" title="6. 安装依赖库"></a>6. 安装依赖库</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev g++-multilib</span><br><span class="line">sudo apt-get install -y git flex bison gperf build-essential libncurses5-dev:i386</span><br><span class="line">sudo apt-get install tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386</span><br><span class="line">sudo apt-get install dpkg-dev libsdl1.2-dev libesd0-dev</span><br><span class="line">sudo apt-get install git-core gnupg flex bison gperf build-essential</span><br><span class="line">sudo apt-get install zip curl zlib1g-dev gcc-multilib g++-multilib</span><br><span class="line">sudo apt-get install libc6-dev-i386</span><br><span class="line">sudo apt-get install lib32ncurses5-dev x11proto-core-dev libx11-dev</span><br><span class="line">sudo apt-get install libgl1-mesa-dev libxml2-utils xsltproc unzip m4</span><br><span class="line">sudo apt-get install lib32z-dev ccache</span><br><span class="line">sudo apt-get install libssl-dev</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repo <span class="built_in">sync</span> –no-tags -j8</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-bash"><code class="language-bash">repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-11.0.0_r3
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="6-安装依赖库"><a href="#6-安装依赖库" class="headerlink" title="6. 安装依赖库"></a>6. 安装依赖库</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-dev g++-multilib
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> -y <span class="token function">git</span> flex bison gperf build-essential libncurses5-dev:i386
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> tofrodos python-markdown libxml2-utils xsltproc zlib1g-dev:i386
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> dpkg-dev libsdl1.2-dev libesd0-dev
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> git-core gnupg flex bison gperf build-essential
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">zip</span> curl zlib1g-dev gcc-multilib g++-multilib
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libc6-dev-i386
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> lib32ncurses5-dev x11proto-core-dev libx11-dev
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libgl1-mesa-dev libxml2-utils xsltproc unzip m4
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> lib32z-dev ccache
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libssl-dev
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><pre class="line-numbers language-bash"><code class="language-bash">repo <span class="token function">sync</span> –no-tags -j8
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>可能遇到的问题</strong></p>
 <ul>
 <li><code>RPC failed; curl 56 GnuTLS recv error (-9)</code></li>
 </ul>
 <p>网络不好，切换网络重新执行sync。</p>
 <h2 id="开始编译"><a href="#开始编译" class="headerlink" title="开始编译"></a>开始编译</h2><ul>
-<li><p>在AndroidSrc目录下执行下列操作。</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> build/envsetup.sh</span><br><span class="line">lunch aosp_x86_64-eng</span><br><span class="line">make -j8</span><br></pre></td></tr></tbody></table></figure>
-<p>其中，以无参数执行<code>lunch</code>可以自己选择编译的目标设备，<code>make</code>的<code>-j</code>参数用来指定同时编译的线程数，一般来说设置为CPU核心数x2。</p>
-</li>
-<li><p>运行模拟器</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator</span><br></pre></td></tr></tbody></table></figure></li>
+<li>在AndroidSrc目录下执行下列操作。</li>
 </ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">source</span> build/envsetup.sh
+lunch aosp_x86_64-eng
+<span class="token function">make</span> -j8
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>其中，以无参数执行<code>lunch</code>可以自己选择编译的目标设备，<code>make</code>的<code>-j</code>参数用来指定同时编译的线程数，一般来说设置为CPU核心数x2。</p>
+<ul>
+<li>运行模拟器</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash">emulator
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://tva1.sinaimg.cn/large/007P6MCBgy1gl40tt0lukj30du0pddjy.jpg" alt="2020-11-27 20-40-22 的屏幕截图" width="30%" data-width="498" data-height="913">
 
 <h2 id="编译时可能遇到的问题"><a href="#编译时可能遇到的问题" class="headerlink" title="编译时可能遇到的问题"></a>编译时可能遇到的问题</h2><ol>
@@ -1217,7 +1246,11 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 使用RaisedButton实现点击123456789101112131415161718192021222324252627* ```RoundedRectangleBorder``` ：圆角矩形* ```CircleBorder`
+                            1. 使用RaisedButton实现点击RaisedButton有一个属性shape，可以定义按钮的形状。
+
+RoundedRectangleBorder ：圆角矩形
+CircleBorder ：圆形
+StadiumBorder ：左右两
                         
                     </div>
                     <div class="publish-info">
@@ -1503,7 +1536,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

@@ -27,10 +27,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -592,12 +594,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%A0%91/">
-                                <span class="chip bg-color">树</span>
-                            </a>
-                        
                             <a href="/tags/leetcode/">
                                 <span class="chip bg-color">leetcode</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A0%91/">
+                                <span class="chip bg-color">树</span>
                             </a>
                         
                     </div>
@@ -635,7 +637,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    770
+                    738
                 </div>
                 
 
@@ -653,19 +655,111 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目（LeetCode-617-）"><a href="#题目（LeetCode-617-）" class="headerlink" title="题目（LeetCode 617.）"></a>题目（<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-two-binary-trees/">LeetCode 617.</a>）</h2><p>给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。</p>
+                <h2 id="题目（LeetCode-617-）"><a href="#题目（LeetCode-617-）" class="headerlink" title="题目（LeetCode 617.）"></a>题目（<a href="https://leetcode-cn.com/problems/merge-two-binary-trees/" target="_blank" rel="noopener">LeetCode 617.</a>）</h2><p>给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。</p>
 <p>你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 <strong>NULL</strong> 的节点将直接作为新二叉树的节点。</p>
 <p><strong>示例 1:</strong></p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">	Tree 1                     Tree 2                  </span><br><span class="line">          1                         2                             </span><br><span class="line">         / \                       / \                            </span><br><span class="line">        3   2                     1   3                        </span><br><span class="line">       /                           \   \                      </span><br><span class="line">      5                             4   7                  </span><br><span class="line">输出:</span><br><span class="line">合并后的树:</span><br><span class="line">	     3</span><br><span class="line">	    / \</span><br><span class="line">	   4   5</span><br><span class="line">	  / \   \ </span><br><span class="line">	 5   4   7</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-bash"><code class="language-bash">输入:
+    Tree 1                     Tree 2                  
+          1                         2                             
+         / \                       / \                            
+        3   2                     1   3                        
+       /                           \   \                      
+      5                             4   7                  
+输出:
+合并后的树:
+         3
+        / \
+       4   5
+      / \   \ 
+     5   4   7
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>注意:</strong> 合并必须从两个树的根节点开始。</p>
 <h2 id="新树合并"><a href="#新树合并" class="headerlink" title="新树合并"></a>新树合并</h2><p>很明显，这两个二叉树的结点位置是一一对应的，所以合并时从两棵树的根节点出发同步遍历。这里需要用到的递归来构建合并后的新树，比如当前遍历到某个结点，假设树 1 和树 2 的当前结点都不为空，那么就需要 new 一个结点，然后将递归调用求解左孩子的结果复制给结点的左孩子，递归调用求解右孩子的结果赋值给结点的右孩子，这样就能一步一步地建树。</p>
 <p>其次，如果树 1 和树 2 的当前结点都为空，那么直接返回空指针就好。而如果只有一棵树的结点为空，那么直接返回另一棵树的结点即可。</p>
 <p>不过，这样构建出来的树，有些结点是指向原来两棵树的部分结点的，如果原来的树被修改，那么就会受到影响，但这不并是题目所要求的，如果要避免这这种情况的话，就需要当只要一棵树的结点为空时，不直接返回另一棵树的结点，而是也像两棵树结点都不为空那样 new 一个新结点。</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode {</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span></span><br><span class="line"><span class="comment"> * };</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//构建新树的方式</span></span><br><span class="line">    <span class="function">TreeNode* <span class="title">dfs</span><span class="params">(TreeNode* t1, TreeNode* t2)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span>(t1 == <span class="literal">nullptr</span> &amp;&amp; t2 == <span class="literal">nullptr</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(t1 == <span class="literal">nullptr</span>){</span><br><span class="line">            <span class="comment">// 依次复制结点</span></span><br><span class="line">            <span class="comment">// TreeNode *node = new TreeNode(t2-&gt;val);</span></span><br><span class="line">            <span class="comment">// node-&gt;left = dfs(nullptr, t2-&gt;left);</span></span><br><span class="line">            <span class="comment">// node-&gt;right = dfs(nullptr, t2-&gt;right);</span></span><br><span class="line">            <span class="comment">// return node;</span></span><br><span class="line">            <span class="keyword">return</span> t2;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(t2 == <span class="literal">nullptr</span>){</span><br><span class="line">            <span class="comment">// TreeNode *node = new TreeNode(t1-&gt;val);</span></span><br><span class="line">            <span class="comment">// node-&gt;left = dfs(nullptr, t1-&gt;left);</span></span><br><span class="line">            <span class="comment">// node-&gt;right = dfs(nullptr, t1-&gt;right);</span></span><br><span class="line">            <span class="comment">// return node;</span></span><br><span class="line">            <span class="keyword">return</span> t1;</span><br><span class="line">        } </span><br><span class="line"></span><br><span class="line">        TreeNode *root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(t1-&gt;val + t2-&gt;val);        </span><br><span class="line">        root-&gt;left = <span class="built_in">dfs</span>(t1-&gt;left, t2-&gt;left);</span><br><span class="line">        root-&gt;right = <span class="built_in">dfs</span>(t1-&gt;right, t2-&gt;right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">mergeTrees</span><span class="params">(TreeNode* t1, TreeNode* t2)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(t1,t2);</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token comment" spellcheck="true">//构建新树的方式</span>
+    TreeNode<span class="token operator">*</span> <span class="token function">dfs</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> <span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> t2 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
 
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 依次复制结点</span>
+            <span class="token comment" spellcheck="true">// TreeNode *node = new TreeNode(t2->val);</span>
+            <span class="token comment" spellcheck="true">// node->left = dfs(nullptr, t2->left);</span>
+            <span class="token comment" spellcheck="true">// node->right = dfs(nullptr, t2->right);</span>
+            <span class="token comment" spellcheck="true">// return node;</span>
+            <span class="token keyword">return</span> t2<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t2 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// TreeNode *node = new TreeNode(t1->val);</span>
+            <span class="token comment" spellcheck="true">// node->left = dfs(nullptr, t1->left);</span>
+            <span class="token comment" spellcheck="true">// node->right = dfs(nullptr, t1->right);</span>
+            <span class="token comment" spellcheck="true">// return node;</span>
+            <span class="token keyword">return</span> t1<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> 
+
+        TreeNode <span class="token operator">*</span>root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TreeNode</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>val <span class="token operator">+</span> t2<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        root<span class="token operator">-</span><span class="token operator">></span>left <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">,</span> t2<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        root<span class="token operator">-</span><span class="token operator">></span>right <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">,</span> t2<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> root<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    TreeNode<span class="token operator">*</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>t1<span class="token punctuation">,</span>t2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="原地合并"><a href="#原地合并" class="headerlink" title="原地合并"></a>原地合并</h2><p>如果要优化空间复杂度的话，那么就原地合并，将树 2 合并到树 1 中并返回。</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//原地合并到 t1 的方式</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(TreeNode* t1, TreeNode* t2)</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(t1 == <span class="literal">nullptr</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span>(t2 != <span class="literal">nullptr</span>){</span><br><span class="line">            t1-&gt;val += t2-&gt;val;</span><br><span class="line">        }<span class="keyword">else</span>{</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(t1-&gt;left == <span class="literal">nullptr</span>){</span><br><span class="line">            t1-&gt;left = t2-&gt;left;</span><br><span class="line">        }<span class="keyword">else</span>{</span><br><span class="line">            <span class="built_in">merge</span>(t1-&gt;left, t2-&gt;left);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(t1-&gt;right == <span class="literal">nullptr</span>){</span><br><span class="line">            t1-&gt;right = t2-&gt;right;</span><br><span class="line">        }<span class="keyword">else</span>{</span><br><span class="line">            <span class="built_in">merge</span>(t1-&gt;right, t2-&gt;right);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">mergeTrees</span><span class="params">(TreeNode* t1, TreeNode* t2)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span>(t1 == <span class="literal">nullptr</span>)</span><br><span class="line">            <span class="built_in">swap</span>(t1, t2);</span><br><span class="line">        </span><br><span class="line">        TreeNode *head = t1;</span><br><span class="line">        <span class="built_in">merge</span>(t1, t2);</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token comment" spellcheck="true">//原地合并到 t1 的方式</span>
+    <span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+            
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t2 <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            t1<span class="token operator">-</span><span class="token operator">></span>val <span class="token operator">+</span><span class="token operator">=</span> t2<span class="token operator">-</span><span class="token operator">></span>val<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>left <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            t1<span class="token operator">-</span><span class="token operator">></span>left <span class="token operator">=</span> t2<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token function">merge</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">,</span> t2<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>right <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            t1<span class="token operator">-</span><span class="token operator">></span>right <span class="token operator">=</span> t2<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token function">merge</span><span class="token punctuation">(</span>t1<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">,</span> t2<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    TreeNode<span class="token operator">*</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span>TreeNode<span class="token operator">*</span> t1<span class="token punctuation">,</span> TreeNode<span class="token operator">*</span> t2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>t1 <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>t1<span class="token punctuation">,</span> t2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        TreeNode <span class="token operator">*</span>head <span class="token operator">=</span> t1<span class="token punctuation">;</span>
+        <span class="token function">merge</span><span class="token punctuation">(</span>t1<span class="token punctuation">,</span> t2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> head<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -728,12 +822,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%A0%91/">
-                                    <span class="chip bg-color">树</span>
-                                </a>
-                            
                                 <a href="/tags/leetcode/">
                                     <span class="chip bg-color">leetcode</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A0%91/">
+                                    <span class="chip bg-color">树</span>
                                 </a>
                             
                         </div>
@@ -1489,7 +1583,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

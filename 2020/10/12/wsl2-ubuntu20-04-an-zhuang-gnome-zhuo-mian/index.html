@@ -30,10 +30,12 @@ VcXsrv一直黑屏解决方法：
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -630,7 +632,7 @@ VcXsrv一直黑屏解决方法：
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    474
+                    476
                 </div>
                 
 
@@ -648,13 +650,15 @@ VcXsrv一直黑屏解决方法：
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>参考了这篇博客进行安装，<a target="_blank" rel="noopener" href="https://www.chengxuzhilu.com/2395.html#an_zhuang_Gnome_zhuo_mian_de_bi_yao_yuan_su">WSL2 下让 Ubuntu20.04 安装 Gnome 桌面</a>。</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>参考了这篇博客进行安装，<a href="https://www.chengxuzhilu.com/2395.html#an_zhuang_Gnome_zhuo_mian_de_bi_yao_yuan_su" target="_blank" rel="noopener">WSL2 下让 Ubuntu20.04 安装 Gnome 桌面</a>。</p>
 <p>但是在安装的过程中遇到了博客中所没有记录的错误，因此记录一下。</p>
 <h2 id="VcXsrv一直黑屏"><a href="#VcXsrv一直黑屏" class="headerlink" title="VcXsrv一直黑屏"></a>VcXsrv一直黑屏</h2><p><strong>解决方法</strong>：</p>
 <ol>
 <li>检查Windows防火墙，Windows安全中心-&gt;防火墙和网络保护-&gt;允许应用通过防火墙，然后将VcXsrv勾选上。</li>
-<li>如果使用的是XDMCP方式，检查XDMCP的 IP 地址有没有配错，使用如下命令可以查看WSL的IP地址。<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname -I | awk <span class="string">'{print $1}'</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>如果使用的是XDMCP方式，检查XDMCP的 IP 地址有没有配错，使用如下命令可以查看WSL的IP地址。</li>
 </ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">hostname</span> -I <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$1</span>}'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="sudo-apt-get-update失败"><a href="#sudo-apt-get-update失败" class="headerlink" title="sudo apt-get update失败"></a>sudo apt-get update失败</h2><p><strong>问题</strong>：<br>Temporary failure in name resolution，然后更新失败</p>
 <p><strong>解决方法</strong>：<br>域名解析失败，可以试试换一个网络，或者重启电脑。</p>
 <h2 id="无法安装Systemd-Genie"><a href="#无法安装Systemd-Genie" class="headerlink" title="无法安装Systemd-Genie"></a>无法安装Systemd-Genie</h2><p><strong>问题：</strong></p>
@@ -664,27 +668,38 @@ VcXsrv一直黑屏解决方法：
 </ul>
 <p><strong>解决方法</strong>：<br>估计是这个国外网站对中国IP有限制，直接从Github把压缩包下载下来，解压后，把里面的文件放到相应的目录。</p>
 <ul>
-<li><p>下载<a target="_blank" rel="noopener" href="https://github.com/arkane-systems/genie/files/5251229/genie.tar.gz">genie.tar.gz</a></p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/arkane-systems/genie/files/5251229/genie.tar.gz</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>解压</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf genie.tar.gz</span><br><span class="line"><span class="built_in">cd</span> systemd-genie</span><br></pre></td></tr></tbody></table></figure></li>
-<li><p>将文件复制到对应目录</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> -r usr/bin/* /usr/bin/</span><br><span class="line"><span class="built_in">cp</span> -r lib/* /lib/</span><br></pre></td></tr></tbody></table></figure></li>
-<li><p>这个时候就安装好了。</p>
-</li>
+<li>下载<a href="https://github.com/arkane-systems/genie/files/5251229/genie.tar.gz" target="_blank" rel="noopener">genie.tar.gz</a></li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/arkane-systems/genie/files/5251229/genie.tar.gz
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>解压</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">tar</span> -xzvf genie.tar.gz
+<span class="token function">cd</span> systemd-genie
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>将文件复制到对应目录</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cp</span> -r usr/bin/* /usr/bin/
+<span class="token function">cp</span> -r lib/* /lib/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>这个时候就安装好了。</li>
 </ul>
 <h2 id="root用户下genie-s报错"><a href="#root用户下genie-s报错" class="headerlink" title="root用户下genie -s报错"></a>root用户下genie -s报错</h2><p><strong>问题</strong>：<br>报错: 找不到这个文件或目录 <code>/usr/sbin/daemonize</code></p>
 <p><strong>解决方法</strong>：<br>新建一个软链接，将<code>/usr/bin/daemonize</code>链接过去。</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /usr/bin/daemonize /usr/sbin/daemonize</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="启动Gnome桌面"><a href="#启动Gnome桌面" class="headerlink" title="启动Gnome桌面"></a>启动Gnome桌面</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostname -I | awk <span class="string">'{print $1}'</span></span><br><span class="line">genie -s</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ln</span> -s /usr/bin/daemonize /usr/sbin/daemonize
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="启动Gnome桌面"><a href="#启动Gnome桌面" class="headerlink" title="启动Gnome桌面"></a>启动Gnome桌面</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">hostname</span> -I <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$1</span>}'</span>
+genie -s
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>然后打开 XLaunch 根据 IP 地址进行配置，可以将上述命令保存到脚本里方便使用。</p>
 <h2 id="退出Gnome桌面"><a href="#退出Gnome桌面" class="headerlink" title="退出Gnome桌面"></a>退出Gnome桌面</h2><p>需要在图形界面中点击关机。</p>
 <h2 id="重启WSL"><a href="#重启WSL" class="headerlink" title="重启WSL"></a>重启WSL</h2><p>以管理员身份打开Windows PowerShell，然后执行</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net stop lxxsManager</span><br><span class="line">net start lxxsManager</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-bash"><code class="language-bash">net stop lxxsManager
+net start lxxsManager
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1257,9 +1272,11 @@ VcXsrv一直黑屏解决方法：
                     <div class="summary block-with-text">
                         
                             配置app/build.gradle文件加入LitePal的依赖：
-123dependencies {    implementation 'org.litepal.android:core:1.3.2}
+dependencies {
+    implementation 'org.litepal.android:core:1.3.2
+}
 
-配置litepal.xml文件在
+配置litepal.xml文件在a
                         
                     </div>
                     <div class="publish-info">
@@ -1503,7 +1520,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

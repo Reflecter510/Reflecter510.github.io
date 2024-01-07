@@ -29,10 +29,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -637,7 +639,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    587
+                    584
                 </div>
                 
 
@@ -655,7 +657,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目（leetcode-43-字符串相乘）"><a href="#题目（leetcode-43-字符串相乘）" class="headerlink" title="题目（leetcode 43. 字符串相乘）"></a>题目（<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/multiply-strings/">leetcode 43. 字符串相乘</a>）</h2><p>给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。</p>
+                <h2 id="题目（leetcode-43-字符串相乘）"><a href="#题目（leetcode-43-字符串相乘）" class="headerlink" title="题目（leetcode 43. 字符串相乘）"></a>题目（<a href="https://leetcode-cn.com/problems/multiply-strings/" target="_blank" rel="noopener">leetcode 43. 字符串相乘</a>）</h2><p>给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。</p>
 <p><strong>示例 1:</strong></p>
 <blockquote>
 <p>输入: num1 = “2”, num2 = “3”<br>输出: “6”</p>
@@ -670,7 +672,37 @@
 <p>比如，被乘数个位 与 乘数个位 相乘，由九九八十一知乘积最多只有两位。因此，每次相乘后只需要处理两个进位。<strong>需要注意的是，n位被乘数与m位乘数相乘，结果最多m+n位，而且最高位肯定不会出现需要进位的现象</strong>，因此，只需要考虑第一位的进位。</p>
 <p>另外，就是下标怎么走的问题，由图可以很清楚地明白。其中 <code>i+j+1</code> 是第一位，<code>i+j</code>是第二位。</p>
 <p><img src="//tva4.sinaimg.cn/large/005JD0Ejgy1gctbj61ybkj31xg1ab44s.jpg" alt="竖式优化"></p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">multiply</span><span class="params">(string num1, string num2)</span> </span>{</span><br><span class="line">        <span class="type">int</span> len1 = num1.<span class="built_in">length</span>(), len2 = num2.<span class="built_in">length</span>();</span><br><span class="line">        <span class="keyword">if</span>(num1 == <span class="string">"0"</span> || num2 == <span class="string">"0"</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(len1+len2,<span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = len2<span class="number">-1</span>; i &gt;= <span class="number">0</span>;i--){</span><br><span class="line">            <span class="type">int</span> y = num2[i]-<span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=len1<span class="number">-1</span>;j&gt;=<span class="number">0</span>;j--){</span><br><span class="line">                <span class="type">int</span> x = num1[j]-<span class="string">'0'</span>;</span><br><span class="line"></span><br><span class="line">                <span class="type">int</span> sum = ans[i+j+<span class="number">1</span>] + x*y; <span class="comment">//将相乘的积和相加的和统一放在“个位”计算 </span></span><br><span class="line">                ans[i+j+<span class="number">1</span>] = sum%<span class="number">10</span>;</span><br><span class="line">                ans[i+j] += sum/<span class="number">10</span>;    <span class="comment">//最后，最高位m+n肯定不大于10，不用考虑进位</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        string answer = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i&lt;len1+len2; i++){</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">0</span> &amp;&amp; ans[i] == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            answer+=(ans[i]+<span class="string">'0'</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    string <span class="token function">multiply</span><span class="token punctuation">(</span>string num1<span class="token punctuation">,</span> string num2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> len1 <span class="token operator">=</span> num1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> len2 <span class="token operator">=</span> num2<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>num1 <span class="token operator">==</span> <span class="token string">"0"</span> <span class="token operator">||</span> num2 <span class="token operator">==</span> <span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">ans</span><span class="token punctuation">(</span>len1<span class="token operator">+</span>len2<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> len2<span class="token number">-1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">int</span> y <span class="token operator">=</span> num2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>len1<span class="token number">-1</span><span class="token punctuation">;</span>j<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">int</span> x <span class="token operator">=</span> num1<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">-</span><span class="token string">'0'</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">int</span> sum <span class="token operator">=</span> ans<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> x<span class="token operator">*</span>y<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//将相乘的积和相加的和统一放在“个位”计算 </span>
+                ans<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> sum<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>
+                ans<span class="token punctuation">[</span>i<span class="token operator">+</span>j<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> sum<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//最后，最高位m+n肯定不大于10，不用考虑进位</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        
+        string answer <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>len1<span class="token operator">+</span>len2<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            answer<span class="token operator">+</span><span class="token operator">=</span><span class="token punctuation">(</span>ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> answer<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -1499,7 +1531,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

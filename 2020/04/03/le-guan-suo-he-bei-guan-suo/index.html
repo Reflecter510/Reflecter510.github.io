@@ -30,10 +30,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -705,7 +707,15 @@
 <li>期间如果有其他对该记录做修改或加排他锁的操作，都会等待我们解锁或直接抛出异常。</li>
 </ol>
 <h3 id="使用举例"><a href="#使用举例" class="headerlink" title="使用举例"></a>使用举例</h3><p>比如MySql Innodb引擎，要使用悲观锁，我们必须关闭MySQL数据库的自动提交属性。因为MySQL默认使用autocommit模式，也就是说，当我们执行一个更新操作后，MySQL会立刻将结果进行提交。（sql语句：set autocommit=0）</p>
-<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span><span class="number">0.</span> 开始事务</span><br><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span><span class="number">1.</span> 查询出商品库存信息</span><br><span class="line"><span class="keyword">select</span> quantity <span class="keyword">from</span> items <span class="keyword">where</span> id<span class="operator">=</span><span class="number">1</span>  <span class="keyword">for</span> <span class="keyword">update</span>;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span><span class="number">2.</span> 修改商品库存为<span class="number">2</span></span><br><span class="line"><span class="keyword">update</span> items <span class="keyword">set</span> quantity<span class="operator">=</span><span class="number">2</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span><span class="number">3.</span> 提交事务</span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">//0. 开始事务</span>
+<span class="token keyword">begin</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//1. 查询出商品库存信息</span>
+<span class="token keyword">select</span> quantity <span class="token keyword">from</span> items <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span>  <span class="token keyword">for</span> <span class="token keyword">update</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//2. 修改商品库存为2</span>
+<span class="token keyword">update</span> items <span class="token keyword">set</span> quantity<span class="token operator">=</span><span class="token number">2</span> <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//3. 提交事务</span>
+<span class="token keyword">commit</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在对id = 1的记录修改前，先通过for update的方式进行加锁，然后再进行修改。</p>
 <p>如果以上修改库存的代码发生并发，同一时间只有一个线程可以开启事务并获得id=1的锁，其它的事务必须等本次事务提交之后才能执行。这样我们可以保证当前的数据不会被其它事务修改。</p>
 <p>MySQL InnoDB默认行级锁。<strong>行级锁都是基于索引的，如果一条SQL语句用不到索引是不会使用行级锁的，会使用表级锁把整张表锁住，这点需要注意。</strong></p>
@@ -720,22 +730,31 @@
 <h3 id="实现方式-1"><a href="#实现方式-1" class="headerlink" title="实现方式"></a>实现方式</h3><p>主要就是两个步骤：冲突检测和数据更新。</p>
 <p><strong>其实现方式有一种比较典型的就是CAS(Compare and Swap)。</strong></p>
 <p>CAS是项乐观锁技术，当多个线程尝试使用CAS同时更新同一个变量时，只有其中一个线程能更新变量的值，而其它线程都失败，失败的线程并不会被挂起，而是被告知这次竞争中失败，并可以再次尝试。</p>
-<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>查询出商品库存信息，quantity<span class="operator">=</span><span class="number">3</span></span><br><span class="line"><span class="keyword">select</span> quantity <span class="keyword">from</span> items <span class="keyword">where</span> id<span class="operator">=</span><span class="number">1</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>修改商品库存为<span class="number">2</span></span><br><span class="line"><span class="keyword">update</span> items <span class="keyword">set</span> quantity<span class="operator">=</span><span class="number">2</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">1</span> <span class="keyword">and</span> quantity<span class="operator">=</span><span class="number">3</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">//查询出商品库存信息，quantity=3</span>
+<span class="token keyword">select</span> quantity <span class="token keyword">from</span> items <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span>
+<span class="token comment" spellcheck="true">//修改商品库存为2</span>
+<span class="token keyword">update</span> items <span class="token keyword">set</span> quantity<span class="token operator">=</span><span class="token number">2</span> <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> quantity<span class="token operator">=</span><span class="token number">3</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>以上，我们在更新之前，先查询一下库存表中当前库存数（quantity），然后在做update的时候，以库存数作为一个修改条件。</p>
 <p>当我们提交更新的时候，判断数据库表对应记录的当前库存数与第一次取出来的库存数进行比对，如果数据库表当前库存数与第一次取出来的库存数相等，则予以更新，否则认为是过期数据。</p>
 <h4 id="ABA问题"><a href="#ABA问题" class="headerlink" title="ABA问题"></a>ABA问题</h4><p>比如说一个线程one从数据库中取出库存数3，这时候另一个线程two也从数据库中取出库存数3，并且two进行了一些操作变成了2，然后two又将库存数变成3，这时候线程one进行CAS操作发现数据库中仍然是3，然后one操作成功。尽管线程one的CAS操作成功，但是不代表这个过程就是没有问题的。</p>
 <p><img src="//tvax1.sinaimg.cn/large/005JD0Ejgy1gdglkzyqs9j30hs06ktb1.jpg" alt="ABA"></p>
 <p>解决：通过一个单独的可以顺序递增的version字段。</p>
-<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>查询出商品信息，version<span class="operator">=</span><span class="number">1</span></span><br><span class="line"><span class="keyword">select</span> version <span class="keyword">from</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">1</span></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>修改商品库存为<span class="number">2</span></span><br><span class="line"><span class="keyword">update</span> items <span class="keyword">set</span> quantity<span class="operator">=</span><span class="number">2</span>,version<span class="operator">=</span><span class="number">3</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">1</span> <span class="keyword">and</span> version<span class="operator">=</span><span class="number">2</span>;</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">//查询出商品信息，version=1</span>
+<span class="token keyword">select</span> version <span class="token keyword">from</span> <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span>
+<span class="token comment" spellcheck="true">//修改商品库存为2</span>
+<span class="token keyword">update</span> items <span class="token keyword">set</span> quantity<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>version<span class="token operator">=</span><span class="token number">3</span> <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> version<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>乐观锁每次在执行数据的修改操作时，都会带上一个版本号，一旦版本号和数据的版本号一致就可以执行修改操作并对版本号执行+1操作，否则就执行失败。因为每次操作的版本号都会随之增加，所以不会出现ABA问题，因为版本号只会增加不会减少。</p>
 <p><img src="//tva4.sinaimg.cn/large/005JD0Ejgy1gdglthtiozj30hs07tadp.jpg" alt="版本字段"></p>
 <p>除了version以外，还可以使用时间戳，因为时间戳天然具有顺序递增性。</p>
 <h4 id="高并发问题"><a href="#高并发问题" class="headerlink" title="高并发问题"></a>高并发问题</h4><p>高并发的时候，就只有一个线程可以修改成功，那么就会存在大量的失败。</p>
 <p>减小乐观锁力度，最大程度的提升吞吐率，提高并发能力：</p>
-<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>修改商品库存</span><br><span class="line"><span class="keyword">update</span> item</span><br><span class="line"><span class="keyword">set</span> quantity<span class="operator">=</span>quantity<span class="number">-1</span></span><br><span class="line"><span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> quantity <span class="operator">-</span> <span class="number">1</span> <span class="operator">&gt;</span> <span class="number">0</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">//修改商品库存</span>
+<span class="token keyword">update</span> item
+<span class="token keyword">set</span> quantity<span class="token operator">=</span>quantity<span class="token number">-1</span>
+<span class="token keyword">where</span> id <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">and</span> quantity <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">></span> <span class="token number">0</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>以上SQL语句中，如果用户下单数为1，则通过quantity - 1 &gt; 0的方式进行乐观锁控制。</p>
 <h2 id="乐观锁和悲观锁的区别"><a href="#乐观锁和悲观锁的区别" class="headerlink" title="乐观锁和悲观锁的区别"></a>乐观锁和悲观锁的区别</h2><ul>
 <li><p>乐观锁并未真正加锁，效率高。一旦锁的粒度掌握不好，更新失败的概率就会比较高，容易发生业务失败。</p>
@@ -1268,7 +1287,8 @@
   
 
 
-MySQL操作1234create database MyWeb;create table user (name varchar(10), p
+MySQL操作create database MyWeb;
+create table user (name varchar(10), pass
                         
                     </div>
                     <div class="publish-info">
@@ -1318,7 +1338,13 @@ MySQL操作1234create database MyWeb;create table user (name varchar(10), p
                     <div class="summary block-with-text">
                         
                             operator new最简易的实现方式是使用malloc进行包装。与此同时开销也很大
-123456789101112131415额外开销如下图：&lt;div align=center width=45%&gt;&lt;img width
+malloc分配出的内存大小其实不止size那么大，多出来的内存用于操作系统维护(额外开销,cookie)。
+额外开销如下图：
+
+
+
+
+// &lt;n
                         
                     </div>
                     <div class="publish-info">
@@ -1562,7 +1588,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

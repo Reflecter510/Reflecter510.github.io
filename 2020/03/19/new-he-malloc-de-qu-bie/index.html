@@ -7,8 +7,13 @@
     <meta name="keywords" content="new和malloc的区别, LitnWu">
     <meta name="description" content="new和malloc都可以申请一段动态内存空间：
 
-new的使用12// 调用 get_size 确定分配多少个 intint *pia = new int[get_size()];   //pia 指向第一个 int
-malloc的使用1">
+new的使用
+
+// 调用 get_size 确定分配多少个 int
+int *pia = new int[get_size()];   //pia 指向第一个 int
+
+
+malloc的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -29,10 +34,12 @@ malloc的使用1">
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -633,14 +640,14 @@ malloc的使用1">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    8 分
                 </div>
                 
 
@@ -653,9 +660,17 @@ malloc的使用1">
             <div id="articleContent">
                 <p>new和malloc都可以申请一段动态内存空间：</p>
 <ul>
-<li>new的使用<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用 get_size 确定分配多少个 int</span></span><br><span class="line"><span class="type">int</span> *pia = <span class="keyword">new</span> <span class="type">int</span>[<span class="built_in">get_size</span>()];   <span class="comment">//pia 指向第一个 int</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>malloc的使用<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同上，调用 get_size 确定分配多少个 int</span></span><br><span class="line"><span class="type">int</span> *pia = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="built_in">get_size</span>()*<span class="built_in">sizeof</span>(<span class="type">int</span>));</span><br></pre></td></tr></tbody></table></figure></li>
+<li>new的使用</li>
 </ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// 调用 get_size 确定分配多少个 int</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>pia <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token function">get_size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//pia 指向第一个 int</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>malloc的使用</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// 同上，调用 get_size 确定分配多少个 int</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>pia <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token function">get_size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>但二者存在区别：</p>
 <h2 id="1-申请的内存所在位置不同"><a href="#1-申请的内存所在位置不同" class="headerlink" title="1. 申请的内存所在位置不同"></a>1. 申请的内存所在位置不同</h2><p>new操作符是  从<strong>自由储存区</strong>(free store)上  为对象  动态分配  内存空间  ，而malloc函数  从<strong>堆</strong>上  动态分配  内存空间。</p>
 <blockquote>
@@ -670,9 +685,19 @@ malloc的使用1">
 </ol>
 <p><a href="/2020/03/19/dui-zhan-he-jing-tai-cun-chu-qu/">关于堆、栈、静态存储区更详细的介绍</a></p>
 <p><strong>placement new（定位 new）</strong><br>特殊地，经过重载的new运算符可以不为对象分配内存：</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> (place_address)  type</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">在使用new关键字建立一个新的对象的时候，在编译器的第二步就是调用对象的构造函数生成类对象。这一步使用的就是placement new来实现的，即在取得了一块可以容纳指定类型对象的内存之后，在这块内存上构造一个对象。</span><br><span class="line"></span><br><span class="line">&gt; 如果要使用placement new， 需要包含头文件&lt;new&gt;或者&lt;new.h&gt;</span><br><span class="line"></span><br><span class="line">使用placement new的方法:</span><br><span class="line"></span><br><span class="line">```cpp</span><br><span class="line">type *a = new (place_address) type;</span><br><span class="line">type *b = new (place_address) type (initializers);</span><br><span class="line">type *c = new (place_address) type [size];</span><br><span class="line">type *d = new (place_address) type [size] { braced initializer list };</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">new</span> <span class="token punctuation">(</span>place_address<span class="token punctuation">)</span>  type
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>place_address</code>为一个指针，代表一块内存地地址。当使用上面这种仅以一个地址调用new操作符时，new操作符不分配任何内存，只是简单地返回指针实参，然后在<code>place_address</code>指定地地址进行对象的初始化工作。</p>
+<p>在使用new关键字建立一个新的对象的时候，在编译器的第二步就是调用对象的构造函数生成类对象。这一步使用的就是placement new来实现的，即在取得了一块可以容纳指定类型对象的内存之后，在这块内存上构造一个对象。</p>
+<blockquote>
+<p>如果要使用placement new， 需要包含头文件<new>或者&lt;new.h&gt;</new></p>
+</blockquote>
+<p>使用placement new的方法:</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">type <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token punctuation">(</span>place_address<span class="token punctuation">)</span> type<span class="token punctuation">;</span>
+type <span class="token operator">*</span>b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token punctuation">(</span>place_address<span class="token punctuation">)</span> <span class="token function">type</span> <span class="token punctuation">(</span>initializers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+type <span class="token operator">*</span>c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token punctuation">(</span>place_address<span class="token punctuation">)</span> type <span class="token punctuation">[</span>size<span class="token punctuation">]</span><span class="token punctuation">;</span>
+type <span class="token operator">*</span>d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token punctuation">(</span>place_address<span class="token punctuation">)</span> type <span class="token punctuation">[</span>size<span class="token punctuation">]</span> <span class="token punctuation">{</span> braced initializer list <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>place_address</code> 是个指针</li>
 <li><code>initializers</code> 提供一个（可能为空的）以逗号分隔的初始值列表</li>
@@ -686,43 +711,70 @@ malloc的使用1">
 </blockquote>
 <h2 id="3-内存分配失败时的返回值"><a href="#3-内存分配失败时的返回值" class="headerlink" title="3. 内存分配失败时的返回值"></a>3. 内存分配失败时的返回值</h2><ul>
 <li>new内存分配失败时，会抛出bad_alloc<strong>异常</strong>，它不会返回NULL;  </li>
-<li>malloc分配内存失败时，则<strong>返回NULL</strong>。因此，在C语言中习惯在分配内存之后判断是否分配成功。<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *a = (<span class="type">int</span> *) <span class="built_in">malloc</span>( <span class="built_in">sizeof</span>(<span class="type">int</span>));</span><br><span class="line"><span class="keyword">if</span>( <span class="literal">NULL</span> == a)</span><br><span class="line">{</span><br><span class="line">    ...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>malloc分配内存失败时，则<strong>返回NULL</strong>。因此，在C语言中习惯在分配内存之后判断是否分配成功。</li>
 </ul>
-<h2 id="4-是否需要指定内存块大小"><a href="#4-是否需要指定内存块大小" class="headerlink" title="4. 是否需要指定内存块大小"></a>4. 是否需要指定内存块大小</h2><ul>
-<li>new操作符申请内存分配时无须指定内存块的大小，编译器会根据类型信息<strong>自动计算</strong></li>
-<li>malloc<strong>需要显示地指出内存的尺寸</strong>，如上的  sizeof(int)</li>
-</ul>
-<h2 id="5-是否调用构造函数-析构函数"><a href="#5-是否调用构造函数-析构函数" class="headerlink" title="5. 是否调用构造函数/析构函数"></a>5. 是否调用构造函数/析构函数</h2><ul>
-<li>new操作符来分配对象会经历3个步骤：</li>
-</ul>
-<ol>
-<li>调用<code>operator new</code>函数（对于数组是<code>operator new[]</code>）分配一块足够大的、原始的、未命名的内存空间以便存储特定类型的对象</li>
-<li>编译器运行相应的<strong>构造函数</strong>以构造对象，并为其传入初值</li>
-<li>对象构造完成后，返回一个指向该对象的指针</li>
-</ol>
-<ul>
-<li>delete操作符释放对象内存经历2个步骤：</li>
-</ul>
-<ol>
-<li>调用对象的<strong>析构函数</strong></li>
-<li>编译器调用<code>operator delete</code> (或 <code>operator delete[]</code>)函数来释放内存空间。</li>
-</ol>
-<h2 id="6-对数组的处理"><a href="#6-对数组的处理" class="headerlink" title="6. 对数组的处理"></a>6. 对数组的处理</h2><ul>
-<li>C++提供了 <code>new[]</code>和<code>delete[]</code>专门来处理数组类型。</li>
-<li>至于malloc，它并不知道你在这块内存上要放数组还是啥东西，反正它就给你一块原始的内存，再给你一个内存的地址就完事了。所以在动态分配一个数组的内存，还需要<strong>手动指定数组的大小</strong>。</li>
-</ul>
-<h2 id="7-new与malloc是否可以相互调用"><a href="#7-new与malloc是否可以相互调用" class="headerlink" title="7. new与malloc是否可以相互调用"></a>7. new与malloc是否可以相互调用</h2><ul>
-<li><code>operator new</code> 或 <code>operator delete</code> 的实现可以基于malloc</li>
-<li>而malloc的实现不可以去调用new。</li>
-</ul>
-<p>下面是编写<code>operator new</code>和<code>operator delete</code>的一种简单方式：</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span>* <span class="keyword">operator</span> <span class="title">new</span><span class="params">(<span class="type">size_t</span> size)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">void</span>* mem=<span class="built_in">malloc</span>(size);</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">NULL</span> != mem)</span><br><span class="line">        reutrn mem;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">throw</span> <span class="built_in">bad_alloc</span>();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span>* <span class="keyword">operator</span> <span class="title">delete</span><span class="params">(<span class="type">void</span>* mem)</span><span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="built_in">free</span>(mem);  </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token constant">NULL</span> <span class="token operator">==</span> a<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+```　
 
+## <span class="token number">4</span><span class="token punctuation">.</span> 是否需要指定内存块大小
+<span class="token operator">*</span> <span class="token keyword">new</span>操作符申请内存分配时无须指定内存块的大小，编译器会根据类型信息<span class="token operator">*</span><span class="token operator">*</span>自动计算<span class="token operator">*</span><span class="token operator">*</span>
+<span class="token operator">*</span> malloc<span class="token operator">*</span><span class="token operator">*</span>需要显示地指出内存的尺寸<span class="token operator">*</span><span class="token operator">*</span>，如上的  <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>
+
+ 
+
+## <span class="token number">5</span><span class="token punctuation">.</span> 是否调用构造函数<span class="token operator">/</span>析构函数
+<span class="token operator">*</span> <span class="token keyword">new</span>操作符来分配对象会经历<span class="token number">3</span>个步骤：
+<span class="token number">1</span><span class="token punctuation">.</span> 调用```<span class="token keyword">operator</span> <span class="token keyword">new</span>```函数（对于数组是```<span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span>```）分配一块足够大的、原始的、未命名的内存空间以便存储特定类型的对象
+<span class="token number">2</span><span class="token punctuation">.</span> 编译器运行相应的<span class="token operator">*</span><span class="token operator">*</span>构造函数<span class="token operator">*</span><span class="token operator">*</span>以构造对象，并为其传入初值
+<span class="token number">3</span><span class="token punctuation">.</span> 对象构造完成后，返回一个指向该对象的指针
+<span class="token operator">*</span> <span class="token keyword">delete</span>操作符释放对象内存经历<span class="token number">2</span>个步骤：
+<span class="token number">1</span><span class="token punctuation">.</span> 调用对象的<span class="token operator">*</span><span class="token operator">*</span>析构函数<span class="token operator">*</span><span class="token operator">*</span>
+<span class="token number">2</span><span class="token punctuation">.</span> 编译器调用```<span class="token keyword">operator</span> <span class="token keyword">delete</span>``` <span class="token punctuation">(</span>或 ```<span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span>```<span class="token punctuation">)</span>函数来释放内存空间。
+
+ 
+
+## <span class="token number">6</span><span class="token punctuation">.</span> 对数组的处理
+<span class="token operator">*</span> C<span class="token operator">++</span>提供了 ```<span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span>```和```<span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span>```专门来处理数组类型。
+<span class="token operator">*</span> 至于malloc，它并不知道你在这块内存上要放数组还是啥东西，反正它就给你一块原始的内存，再给你一个内存的地址就完事了。所以在动态分配一个数组的内存，还需要<span class="token operator">*</span><span class="token operator">*</span>手动指定数组的大小<span class="token operator">*</span><span class="token operator">*</span>。
+
+## <span class="token number">7</span><span class="token punctuation">.</span> <span class="token keyword">new</span>与malloc是否可以相互调用
+<span class="token operator">*</span> ```<span class="token keyword">operator</span> <span class="token keyword">new</span>``` 或 ```<span class="token keyword">operator</span> <span class="token keyword">delete</span>``` 的实现可以基于malloc
+<span class="token operator">*</span> 而malloc的实现不可以去调用<span class="token keyword">new</span>。
+
+下面是编写```<span class="token keyword">operator</span> <span class="token keyword">new</span>```和```<span class="token keyword">operator</span> <span class="token keyword">delete</span>```的一种简单方式：
+```cpp
+<span class="token keyword">void</span><span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t size<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">void</span><span class="token operator">*</span> mem<span class="token operator">=</span><span class="token function">malloc</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token constant">NULL</span> <span class="token operator">!=</span> mem<span class="token punctuation">)</span>
+        reutrn mem<span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">throw</span> <span class="token function">bad_alloc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span><span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span> mem<span class="token punctuation">)</span><span class="token keyword">noexcept</span>
+<span class="token punctuation">{</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>mem<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="8-是否可以被重载"><a href="#8-是否可以被重载" class="headerlink" title="8. 是否可以被重载"></a>8. 是否可以被重载</h2><ul>
 <li><code>operator new</code> / <code>operator delete</code>可以被重载。</li>
 </ul>
 <p>new 和 delete共有8个重载版本：</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这些版本可能抛出异常</span></span><br><span class="line"><span class="function"><span class="type">void</span> * <span class="keyword">operator</span> <span class="title">new</span><span class="params">(<span class="type">size_t</span>)</span></span>;</span><br><span class="line"><span class="type">void</span> * <span class="keyword">operator</span> <span class="keyword">new</span>[](<span class="type">size_t</span>);</span><br><span class="line"><span class="function"><span class="type">void</span> * <span class="keyword">operator</span> <span class="title">delete</span> <span class="params">(<span class="type">void</span> * )</span><span class="keyword">noexcept</span></span>;</span><br><span class="line"><span class="type">void</span> * <span class="keyword">operator</span> <span class="keyword">delete</span>[](<span class="type">void</span> *<span class="number">0</span>）<span class="keyword">noexcept</span>;</span><br><span class="line"><span class="comment">//这些版本承诺不抛出异常</span></span><br><span class="line"><span class="type">void</span> * <span class="keyword">operator</span> <span class="built_in">new</span>(<span class="type">size_t</span> ,<span class="type">nothrow_t</span>&amp;) <span class="keyword">noexcept</span>;</span><br><span class="line"><span class="type">void</span> * <span class="keyword">operator</span> <span class="keyword">new</span>[](<span class="type">size_t</span>, <span class="type">nothrow_t</span>&amp; );</span><br><span class="line"><span class="type">void</span> * <span class="keyword">operator</span> <span class="built_in">delete</span> (<span class="type">void</span> *,<span class="type">nothrow_t</span>&amp; )<span class="keyword">noexcept</span>;</span><br><span class="line"><span class="type">void</span> * <span class="keyword">operator</span> <span class="keyword">delete</span>[](<span class="type">void</span> *<span class="number">0</span>,<span class="type">nothrow_t</span>&amp; ）<span class="keyword">noexcept</span>;</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//这些版本可能抛出异常</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span> <span class="token punctuation">)</span><span class="token keyword">noexcept</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token number">0</span>）<span class="token keyword">noexcept</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//这些版本承诺不抛出异常</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t <span class="token punctuation">,</span>nothrow_t<span class="token operator">&amp;</span><span class="token punctuation">)</span> <span class="token keyword">noexcept</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t<span class="token punctuation">,</span> nothrow_t<span class="token operator">&amp;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">,</span>nothrow_t<span class="token operator">&amp;</span> <span class="token punctuation">)</span><span class="token keyword">noexcept</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">delete</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token number">0</span><span class="token punctuation">,</span>nothrow_t<span class="token operator">&amp;</span> ）<span class="token keyword">noexcept</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>malloc / free 不允许重载</li>
 </ul>
@@ -732,9 +784,19 @@ malloc的使用1">
 </ul>
 <h2 id="10-用户处理内存分配不足"><a href="#10-用户处理内存分配不足" class="headerlink" title="10. 用户处理内存分配不足"></a>10. 用户处理内存分配不足</h2><ul>
 <li>对于malloc，用户不能去编程决定不足以分配时要干什么事，只能看着malloc返回NULL。</li>
-<li>对于new，内存分配失败，抛出异常之前，它会调用一个用户指定的错误处理函数，这就是new_handler。<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> std</span><br><span class="line">{</span><br><span class="line">     <span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*new_handler)</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-　　new_handler是一个指针类型，指向了一个没有参数没有返回值的函数，即为错误处理函数。为了指向错误处理函数，客户需要调用<code>set_new_handler</code>函数，它是声明于标准库里的函数。<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> std</span><br><span class="line">{</span><br><span class="line">     <span class="function">new_handler <span class="title">set_new_handler</span><span class="params">(new_handler p )</span> <span class="title">throw</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>对于new，内存分配失败，抛出异常之前，它会调用一个用户指定的错误处理函数，这就是new_handler。</li>
 </ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> std
+<span class="token punctuation">{</span>
+     <span class="token keyword">typedef</span> <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>new_handler<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>　　new_handler是一个指针类型，指向了一个没有参数没有返回值的函数，即为错误处理函数。为了指向错误处理函数，客户需要调用<code>set_new_handler</code>函数，它是声明于标准库里的函数。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> std
+<span class="token punctuation">{</span>
+     new_handler <span class="token function">set_new_handler</span><span class="token punctuation">(</span>new_handler p <span class="token punctuation">)</span> <span class="token keyword">throw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="总结到一个表格"><a href="#总结到一个表格" class="headerlink" title="总结到一个表格"></a>总结到一个表格</h2><p>共有10个区别，如表格中所示：</p>
 <div align="center" width="75%">
 <img width="75%" src="//tvax4.sinaimg.cn/large/005JD0Ejgy1gczgg9joirj30nt0n5whs.jpg" alt="new和malloc区别">
@@ -1579,7 +1641,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

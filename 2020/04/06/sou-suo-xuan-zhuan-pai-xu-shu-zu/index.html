@@ -27,10 +27,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -635,7 +637,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    807
+                    800
                 </div>
                 
 
@@ -653,7 +655,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目（leetcode-33-搜索旋转排序数组）"><a href="#题目（leetcode-33-搜索旋转排序数组）" class="headerlink" title="题目（leetcode 33. 搜索旋转排序数组）"></a>题目（<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/">leetcode 33. 搜索旋转排序数组</a>）</h2><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
+                <h2 id="题目（leetcode-33-搜索旋转排序数组）"><a href="#题目（leetcode-33-搜索旋转排序数组）" class="headerlink" title="题目（leetcode 33. 搜索旋转排序数组）"></a>题目（<a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">leetcode 33. 搜索旋转排序数组</a>）</h2><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
 <p>( 例如，数组&nbsp;<code>[0,1,2,4,5,6,7]</code>&nbsp;可能变为&nbsp;<code>[4,5,6,7,0,1,2]</code>&nbsp;)。</p>
 <p>搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回&nbsp;<code>-1</code>&nbsp;。</p>
 <p>你可以假设数组中不存在重复的元素。</p>
@@ -672,7 +674,46 @@
 <p>回到最开始，既然不能在数据上动手脚，那就看看二分查找能不能直接在这个不是有序却有点秩序的数组上运行。最关键在于刚开始说的，<strong>数组的首和尾</strong>。</p>
 <p>在二分查找中，我们会取<code>(left+right)/2</code>作为中点<code>mid</code>，如果拿中点值和数组的首尾进行比较，就会发现，无论二分查找递归到哪一层，只要拿中点值和数组首尾比较，就能确定中点左边的区间是有序的，还是中点右边的区间是有序的。</p>
 <p>而在二分查找时，比较<code>target</code>之后，我们只会往一个方向递归，即左边或右边。那么如果<code>target</code>恰好落在上面发现的有序区间里，就直接往那一边递归，否则往另一边递归。</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">my_search</span><span class="params">(<span class="type">int</span> left, <span class="type">int</span> right, <span class="type">const</span> vector&lt;<span class="type">int</span>&gt; &amp;nums, <span class="type">const</span> <span class="type">int</span> &amp;target)</span></span></span><br><span class="line"><span class="function">    </span>{</span><br><span class="line">        <span class="keyword">if</span>(right &lt; left)<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> mid = (left+right)&gt;&gt;<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果找到</span></span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == target){</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(left == right)<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果左半边有序</span></span><br><span class="line">        <span class="keyword">if</span>(nums[mid] &gt;= nums[<span class="number">0</span>]){</span><br><span class="line">            <span class="keyword">if</span>(target&lt;nums[mid] &amp;&amp; target&gt;=nums[<span class="number">0</span>]){ <span class="comment">//如果在有序区间里</span></span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">my_search</span>(left,mid<span class="number">-1</span>,nums,target);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span>{</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">my_search</span>(mid+<span class="number">1</span>,nums.<span class="built_in">size</span>()<span class="number">-1</span>,nums,target);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 如果右半边有序</span></span><br><span class="line">        <span class="keyword">else</span>{ </span><br><span class="line">            <span class="keyword">if</span>(target&gt;nums[mid] &amp;&amp; target &lt;= nums.<span class="built_in">back</span>()){ <span class="comment">//如果在有序区间里</span></span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">my_search</span>(mid+<span class="number">1</span>,nums.<span class="built_in">size</span>()<span class="number">-1</span>,nums,target);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span>{</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">my_search</span>(left,mid<span class="number">-1</span>,nums,target);                </span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">my_search</span>(<span class="number">0</span>,nums.<span class="built_in">size</span>()<span class="number">-1</span>,nums,target);</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">my_search</span><span class="token punctuation">(</span><span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">,</span> <span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">&amp;</span>nums<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>target<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>right <span class="token operator">&lt;</span> left<span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>left<span class="token operator">+</span>right<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 如果找到</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> mid<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>left <span class="token operator">==</span> right<span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 如果左半边有序</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">>=</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>target<span class="token operator">&lt;</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> target<span class="token operator">>=</span>nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//如果在有序区间里</span>
+                <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span>mid<span class="token number">-1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// 如果右半边有序</span>
+        <span class="token keyword">else</span><span class="token punctuation">{</span> 
+            <span class="token keyword">if</span><span class="token punctuation">(</span>target<span class="token operator">></span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> target <span class="token operator">&lt;=</span> nums<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//如果在有序区间里</span>
+                <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span>mid<span class="token number">-1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>                
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> <span class="token function">search</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">my_search</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>nums<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -1267,7 +1308,8 @@
   
 
 
-MySQL操作1234create database MyWeb;create table user (name varchar(10), p
+MySQL操作create database MyWeb;
+create table user (name varchar(10), pass
                         
                     </div>
                     <div class="publish-info">
@@ -1511,7 +1553,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

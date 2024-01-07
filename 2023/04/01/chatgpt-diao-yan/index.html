@@ -29,10 +29,12 @@ fine-tuning和语义搜索的区别：OpenAI Q&amp;amp;A: Finetuning GPT-3 ">
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -654,7 +656,7 @@ fine-tuning和语义搜索的区别：OpenAI Q&amp;amp;A: Finetuning GPT-3 ">
                 <p>通过 fine-tune 训练基于 context 识别 prompt 模型，再使用此模型使用 embedding 插入上下文。</p>
 <p><img src="/2023/04/01/chatgpt-diao-yan/image-20230401123658254.png" alt="基于embedding优化的对话流程"></p>
 <p><img src="/2023/04/01/chatgpt-diao-yan/image-20230401202538636.png" alt="fine-tuning对比embedding语义搜索"></p>
-<p>fine-tuning和语义搜索的区别：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=9qq6HTr7Ocw&amp;t=592s">OpenAI Q&amp;A: Finetuning GPT-3 vs Semantic Search - which to use, when, and why? - YouTube</a></p>
+<p>fine-tuning和语义搜索的区别：<a href="https://www.youtube.com/watch?v=9qq6HTr7Ocw&amp;t=592s" target="_blank" rel="noopener">OpenAI Q&amp;A: Finetuning GPT-3 vs Semantic Search - which to use, when, and why? - YouTube</a></p>
 <h2 id="1-fine-tuning"><a href="#1-fine-tuning" class="headerlink" title="#1 fine-tuning"></a>#1 fine-tuning</h2><p>作用：<strong>预设prompt到模型里，减少多次对话重复输入prompt</strong></p>
 <p>场景：优化回答的格式、语气、情感</p>
 <blockquote>
@@ -682,10 +684,10 @@ fine-tuning和语义搜索的区别：OpenAI Q&amp;amp;A: Finetuning GPT-3 ">
 <li><p>微调只适用于GPT3模型</p>
 </li>
 </ul>
-<p>​	<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/guides/chat/is-fine-tuning-available-for-gpt-3-5-turbo">Is fine-tuning available for <code>gpt-3.5-turbo</code>?</a></p>
+<p>​	<a href="https://platform.openai.com/docs/guides/chat/is-fine-tuning-available-for-gpt-3-5-turbo" target="_blank" rel="noopener">Is fine-tuning available for <code>gpt-3.5-turbo</code>?</a></p>
 <blockquote>
 <p>自 2023 年 3 月 1 日起，您只能微调基础 GPT-3 模型。有关如何使用微调模型的更多详细信息，请参阅微调指南。 </p>
-<p>No. As of Mar 1, 2023, you can only fine-tune base GPT-3 models. See the <a target="_blank" rel="noopener" href="https://platform.openai.com/docs/guides/fine-tuning">fine-tuning guide</a> for more details on how to use fine-tuned models.</p>
+<p>No. As of Mar 1, 2023, you can only fine-tune base GPT-3 models. See the <a href="https://platform.openai.com/docs/guides/fine-tuning" target="_blank" rel="noopener">fine-tuning guide</a> for more details on how to use fine-tuned models.</p>
 </blockquote>
 <h2 id="2-embedding"><a href="#2-embedding" class="headerlink" title="#2 embedding"></a>#2 embedding</h2><p>作用：<strong>将文本转换为固定长度的连续向量</strong></p>
 <p>使用场景：语义搜索，即在数据集中搜索出与对话内容最相似的提问，作为chatgpt的对话上下文，优化回答结果。</p>
@@ -710,7 +712,7 @@ fine-tuning和语义搜索的区别：OpenAI Q&amp;amp;A: Finetuning GPT-3 ">
 <ul>
 <li>语料库转换为embedding数据集</li>
 </ul>
-<p>示例代码：<a target="_blank" rel="noopener" href="https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb">https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb</a></p>
+<p>示例代码：<a href="https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb" target="_blank" rel="noopener">https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb</a></p>
 <pre><code>1. 使用panda加载csv数据
 2. 对每一条文本数据，通过get_embedding接口转换为向量
 3. 重新保存为csv文件 
@@ -718,16 +720,16 @@ fine-tuning和语义搜索的区别：OpenAI Q&amp;amp;A: Finetuning GPT-3 ">
 <ul>
 <li>搜索最相似的文本</li>
 </ul>
-<p>示例代码：<a target="_blank" rel="noopener" href="https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb">https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb</a></p>
+<p>示例代码：<a href="https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb" target="_blank" rel="noopener">https://github.com/openai/openai-cookbook/blob/main/examples/Semantic_text_search_using_embeddings.ipynb</a></p>
 <pre><code>1. 加载csv，读取embedding向量
 2. 将输入文本转换为embedding向量
 3. 将该向量依次与数据库中的向量进行比对（cosine_similarity接口），取出相似度最大的文本
 </code></pre>
-<h2 id="3-Prompt工程"><a href="#3-Prompt工程" class="headerlink" title="# 3 Prompt工程"></a># 3 Prompt工程</h2><p>由于指令遵循<a target="_blank" rel="noopener" href="https://beta.openai.com/docs/models">模型</a>的训练方式或训练数据的方式，有一些特定的提示格式能够让chatgpt更好地理解用户提问。</p>
-<p><a target="_blank" rel="noopener" href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api">Best practices for prompt engineering with OpenAI API | OpenAI Help Center</a></p>
+<h2 id="3-Prompt工程"><a href="#3-Prompt工程" class="headerlink" title="# 3 Prompt工程"></a># 3 Prompt工程</h2><p>由于指令遵循<a href="https://beta.openai.com/docs/models" target="_blank" rel="noopener">模型</a>的训练方式或训练数据的方式，有一些特定的提示格式能够让chatgpt更好地理解用户提问。</p>
+<p><a href="https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api" target="_blank" rel="noopener">Best practices for prompt engineering with OpenAI API | OpenAI Help Center</a></p>
 <h2 id="4-数据合规"><a href="#4-数据合规" class="headerlink" title="#4 数据合规"></a>#4 数据合规</h2><blockquote>
 <p>自 2023 年 3 月 1 日起，我们会将您的 API 数据保留 30 天，但不再使用您通过 API 发送的数据来改进我们的模型。在我们的数据使用政策中了解更多信息。</p>
-<p>As of March 1st, 2023, we retain your API data for 30 days but no longer use your data sent via the API to improve our models. Learn more in our <a target="_blank" rel="noopener" href="https://openai.com/policies/usage-policies">data usage policy</a>.</p>
+<p>As of March 1st, 2023, we retain your API data for 30 days but no longer use your data sent via the API to improve our models. Learn more in our <a href="https://openai.com/policies/usage-policies" target="_blank" rel="noopener">data usage policy</a>.</p>
 </blockquote>
 <h2 id="5-疑问"><a href="#5-疑问" class="headerlink" title="#5 疑问"></a>#5 疑问</h2><ol>
 <li>通过在prompt中加入上下文context，可以让gpt从context中获取答案，为什么不能在fine-tunning的时候直接将context加入进去？参考<code>#2 fine-tuning</code>。</li>
@@ -1556,7 +1558,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

@@ -26,10 +26,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -629,7 +631,11 @@
                             <div class="summary block-with-text">
                                 
                                     第三章习题零件供应问题建表创建供应商表S
-123456create tables S(  SNO char(2) primary key,  SNAME varchar(10),  STATUS char(2),  CITY varchar
+create tables S(
+  SNO char(2) primary key,
+  SNAME varchar(10),
+  STATUS char(2),
+  CITY varchar(1
                                 
                             </div>
                             <div class="publish-info">
@@ -1025,7 +1031,8 @@
   
 
 
-MySQL操作1234create database MyWeb;create table user (name varchar(10), p
+MySQL操作create database MyWeb;
+create table user (name varchar(10), pass
                                 
                             </div>
                             <div class="publish-info">
@@ -1148,7 +1155,13 @@ MySQL操作1234create database MyWeb;create table user (name varchar(10), p
                             <div class="summary block-with-text">
                                 
                                     operator new最简易的实现方式是使用malloc进行包装。与此同时开销也很大
-123456789101112131415额外开销如下图：&lt;div align=center width=45%&gt;&lt;img width
+malloc分配出的内存大小其实不止size那么大，多出来的内存用于操作系统维护(额外开销,cookie)。
+额外开销如下图：
+
+
+
+
+// &lt;n
                                 
                             </div>
                             <div class="publish-info">
@@ -1288,7 +1301,7 @@ vector，就像它的名字——向量，可以单向生长。因此使用的�
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

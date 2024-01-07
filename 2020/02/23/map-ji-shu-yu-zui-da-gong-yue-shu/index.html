@@ -30,10 +30,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -544,7 +546,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    430
+                    424
                 </div>
                 
 
@@ -562,7 +564,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题目（Leetcode-914-卡牌分组）"><a href="#题目（Leetcode-914-卡牌分组）" class="headerlink" title="题目（Leetcode 914. 卡牌分组）"></a>题目（<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/">Leetcode 914. 卡牌分组</a>）</h2><p>给定一副牌，每张牌上都写着一个整数。</p>
+                <h2 id="题目（Leetcode-914-卡牌分组）"><a href="#题目（Leetcode-914-卡牌分组）" class="headerlink" title="题目（Leetcode 914. 卡牌分组）"></a>题目（<a href="https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/" target="_blank" rel="noopener">Leetcode 914. 卡牌分组</a>）</h2><p>给定一副牌，每张牌上都写着一个整数。</p>
 <p>此时，你需要选定一个数字 <code>X</code>，使我们可以将整副牌按下述规则分成 1 组或更多组：</p>
 <ul>
 <li>每组都有&nbsp;<code>X</code>&nbsp;张牌。</li>
@@ -596,7 +598,34 @@
 </ol>
 </blockquote>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>考察读题意的一道题，统计每种数字的个数，并求它们的最大公约数，若不为1则true。</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>{</span><br><span class="line">        <span class="keyword">return</span> x==<span class="number">0</span>?y:<span class="built_in">gcd</span>(y%x,x);</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">hasGroupsSizeX</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; deck)</span> </span>{</span><br><span class="line">        map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; cnt;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;deck.<span class="built_in">size</span>();i++)cnt[deck[i]]++;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(cnt.<span class="built_in">size</span>()==deck.<span class="built_in">size</span>())<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        map&lt;<span class="type">int</span>,<span class="type">int</span>&gt;::iterator it=cnt.<span class="built_in">begin</span>();</span><br><span class="line">        <span class="type">int</span> atom=it-&gt;second;</span><br><span class="line"></span><br><span class="line">        it++;</span><br><span class="line">        <span class="keyword">for</span>(;it!=cnt.<span class="built_in">end</span>();it++){</span><br><span class="line">            <span class="comment">//if(it-&gt;second%atom!=0)return false;  //不能这么判断，要最大公约数</span></span><br><span class="line">            <span class="comment">//错误判断1：每种数字的个数相等</span></span><br><span class="line">            <span class="comment">//错误判断2：每种数字的个数是最小个数的整数倍</span></span><br><span class="line">            <span class="comment">//最终：求所有个数的最大公约数，若存在则true</span></span><br><span class="line">            atom=<span class="built_in">gcd</span>(atom,it-&gt;second);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(atom!=<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span><span class="token keyword">int</span> y<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> x<span class="token operator">==</span><span class="token number">0</span><span class="token operator">?</span>y<span class="token operator">:</span><span class="token function">gcd</span><span class="token punctuation">(</span>y<span class="token operator">%</span>x<span class="token punctuation">,</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">bool</span> <span class="token function">hasGroupsSizeX</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> deck<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span> cnt<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>deck<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>cnt<span class="token punctuation">[</span>deck<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>cnt<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span>deck<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator it<span class="token operator">=</span>cnt<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> atom<span class="token operator">=</span>it<span class="token operator">-</span><span class="token operator">></span>second<span class="token punctuation">;</span>
+
+        it<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span>it<span class="token operator">!=</span>cnt<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>it<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//if(it->second%atom!=0)return false;  //不能这么判断，要最大公约数</span>
+            <span class="token comment" spellcheck="true">//错误判断1：每种数字的个数相等</span>
+            <span class="token comment" spellcheck="true">//错误判断2：每种数字的个数是最小个数的整数倍</span>
+            <span class="token comment" spellcheck="true">//最终：求所有个数的最大公约数，若存在则true</span>
+            atom<span class="token operator">=</span><span class="token function">gcd</span><span class="token punctuation">(</span>atom<span class="token punctuation">,</span>it<span class="token operator">-</span><span class="token operator">></span>second<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>atom<span class="token operator">!=</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> 
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1361,7 +1390,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";

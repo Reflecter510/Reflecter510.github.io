@@ -33,10 +33,12 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 7.0.0">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -660,20 +662,27 @@
 </blockquote>
 <p>（对象是指一块能存储数据并具有某种类型的内存空间）</p>
 <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>如果在一条语句中定义多个指针，则每个指针前面必须带有 *。</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ip1, *ip2;</span><br><span class="line"><span class="type">double</span> dp, *dp2;</span><br><span class="line"><span class="type">int</span> **ppi = &amp;ip1; <span class="comment">//指向指针的指针</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">*</span>ip1<span class="token punctuation">,</span> <span class="token operator">*</span>ip2<span class="token punctuation">;</span>
+<span class="token keyword">double</span> dp<span class="token punctuation">,</span> <span class="token operator">*</span>dp2<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>ppi <span class="token operator">=</span> <span class="token operator">&amp;</span>ip1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//指向指针的指针</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="获取对象的地址"><a href="#获取对象的地址" class="headerlink" title="获取对象的地址"></a>获取对象的地址</h3><p>指针存放着某个对象的地址，可以使用**取地址符 &amp;**来获取该地址，。</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival = <span class="number">42</span>;</span><br><span class="line"><span class="type">int</span> *p = &amp;ival; <span class="comment">// p 存放变量 ival 的地址，或者说 p 是指向变量 ival 的指针。</span></span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> ival <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>ival<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// p 存放变量 ival 的地址，或者说 p 是指向变量 ival 的指针。</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="利用指针访问对象"><a href="#利用指针访问对象" class="headerlink" title="利用指针访问对象"></a>利用指针访问对象</h3><p>如果一个指针指向了一个对象，则允许使用**解引用符 ***来获得该对象：</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; *p;  <span class="comment">// 输出 p 指向的对象的值</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp">cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 输出 p 指向的对象的值</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>对指针解引用会得到所指的对象，因此，如果给解引用的结果赋值，实际上也就是给指针所指的对象赋值：</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*p = <span class="number">0</span>;     <span class="comment">// p 指向的对象的值 置为 0</span></span><br><span class="line">cout &lt;&lt; *p;</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// p 指向的对象的值 置为 0</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="可以有空指针"><a href="#可以有空指针" class="headerlink" title="可以有空指针"></a>可以有空指针</h3><p>空指针不指向任何对象，在试图使用一个指针之前代码可以首先检查指针是否为空。</p>
 <p>生成空指针的方法：</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p1 = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="type">int</span> *p2 = <span class="number">0</span>;     <span class="comment">// 但是不能将一个整型0赋予指针</span></span><br><span class="line"><span class="type">int</span> *p3 = <span class="literal">NULL</span>;</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">*</span>p1 <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 但是不能将一个整型0赋予指针</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p3 <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="指针值"><a href="#指针值" class="headerlink" title="指针值"></a>指针值</h3><p>指针的值（即地址）应属于以下四种状态之一：</p>
 <ol>
 <li>指向一个对象</li>
@@ -682,12 +691,43 @@
 <li>无效指针，也就是上述情况的其他值。（试图拷贝或以其他方式访问无效指针的值都将引起错误）</li>
 </ol>
 <h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><p>给指针赋值就是给指针一个新的地址，从而指向一个新的对象：</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="type">int</span> *pi2 = &amp;i;</span><br><span class="line"><span class="type">int</span> *pi3;</span><br><span class="line"></span><br><span class="line">pi3 = pi2;</span><br><span class="line"></span><br><span class="line">*pi2 = <span class="number">510</span>;   <span class="comment">// i 变量的值改变   </span></span><br><span class="line">pi2 = <span class="number">0</span>;      <span class="comment">// pi2指针的值改变</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>pi2 <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>pi3<span class="token punctuation">;</span>
 
+pi3 <span class="token operator">=</span> pi2<span class="token punctuation">;</span>
+
+<span class="token operator">*</span>pi2 <span class="token operator">=</span> <span class="token number">510</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// i 变量的值改变   </span>
+pi2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// pi2指针的值改变</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="void-指针"><a href="#void-指针" class="headerlink" title="void* 指针"></a>void* 指针</h3><p>void* 指针是一种特殊的指针类型，可用于存放任意对象的地址。</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> obj = <span class="number">3.14</span>, &amp;pd = &amp;obj;</span><br><span class="line"><span class="type">void</span> *pv = &amp;obj;  <span class="comment">// obj 可以是任意类型的对象</span></span><br><span class="line">pv = pd;          <span class="comment">// pd 可以是任意类型的指针</span></span><br></pre></td></tr></tbody></table></figure>
-
-<figure class="highlight plaintext"><figcaption><span>指针能做的事儿比较有限，包括：</span></figcaption><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">* 拿它和别的指针比较。</span><br><span class="line">* 作为函数的输入或输出。</span><br><span class="line">* 赋给另外一个 ```void*``` 指针。</span><br><span class="line">* 不能直接操作 ```void*``` 指针所指的对象。</span><br><span class="line"></span><br><span class="line">以 ```void*``` 的视角来看，内存空间也仅仅是内存空间，没办法访问内存空间中所存的对象。</span><br><span class="line"></span><br><span class="line">## 引用</span><br><span class="line">引用就是为对象起另外一个名字，也就是别名。</span><br><span class="line"></span><br><span class="line">实际上，也可以把引用看做是通过一个指针常量来实现的，它只能绑定到初始化它的对象上。即，指向的地址不变，地址里的内容可以改变。（比如 ```int *const p;```) </span><br><span class="line"></span><br><span class="line">&gt; * 引用并非对象，相反的，它只是为一个已经存在的对象所起的另外一个名字。</span><br><span class="line">&gt; * 引用必须初始化，即必须赋初值。</span><br><span class="line"></span><br><span class="line">### 定义</span><br><span class="line">定义引用时，程序把引用和它的初始值绑定（bind）在一起，而不是将初始值拷贝给引用。</span><br><span class="line"></span><br><span class="line">允许在一条语句中定义多个引用，每一个引用标识都必须以符号 &amp; 开头：</span><br><span class="line">```cpp</span><br><span class="line">int i = 1024, i2 = 2048;</span><br><span class="line">int &amp;r = i, r2 = i2;</span><br><span class="line">int i3 = 1024, &amp;ri = i3;</span><br><span class="line">int &amp;r3 = i3, &amp;r4 = i2;</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">double</span> obj <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>pd <span class="token operator">=</span> <span class="token operator">&amp;</span>obj<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span>pv <span class="token operator">=</span> <span class="token operator">&amp;</span>obj<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// obj 可以是任意类型的对象</span>
+pv <span class="token operator">=</span> pd<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">// pd 可以是任意类型的指针</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>void*</code> 指针能做的事儿比较有限，包括：</p>
+<ul>
+<li>拿它和别的指针比较。</li>
+<li>作为函数的输入或输出。</li>
+<li>赋给另外一个 <code>void*</code> 指针。</li>
+<li>不能直接操作 <code>void*</code> 指针所指的对象。</li>
+</ul>
+<p>以 <code>void*</code> 的视角来看，内存空间也仅仅是内存空间，没办法访问内存空间中所存的对象。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>引用就是为对象起另外一个名字，也就是别名。</p>
+<p>实际上，也可以把引用看做是通过一个指针常量来实现的，它只能绑定到初始化它的对象上。即，指向的地址不变，地址里的内容可以改变。（比如 <code>int *const p;</code>) </p>
+<blockquote>
+<ul>
+<li>引用并非对象，相反的，它只是为一个已经存在的对象所起的另外一个名字。</li>
+<li>引用必须初始化，即必须赋初值。</li>
+</ul>
+</blockquote>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>定义引用时，程序把引用和它的初始值绑定（bind）在一起，而不是将初始值拷贝给引用。</p>
+<p>允许在一条语句中定义多个引用，每一个引用标识都必须以符号 &amp; 开头：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1024</span><span class="token punctuation">,</span> i2 <span class="token operator">=</span> <span class="token number">2048</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">&amp;</span>r <span class="token operator">=</span> i<span class="token punctuation">,</span> r2 <span class="token operator">=</span> i2<span class="token punctuation">;</span>
+<span class="token keyword">int</span> i3 <span class="token operator">=</span> <span class="token number">1024</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>ri <span class="token operator">=</span> i3<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">&amp;</span>r3 <span class="token operator">=</span> i3<span class="token punctuation">,</span> <span class="token operator">&amp;</span>r4 <span class="token operator">=</span> i2<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>引用不是对象，不能定义引用的引用。</li>
 <li>其他所有引用的类型都要和与之绑定的对象严格匹配。而且，引用只能绑定在对象上，而不能与字面值或某个表达式的计算结果绑定在一起。</li>
@@ -708,33 +748,63 @@
 <ol>
 <li><strong>错误</strong>：尝试返回 a 的地址给引用变量，a是存在栈里的，函数结束调用栈被销毁。</li>
 </ol>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span>&amp; <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">}      </span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">&amp;</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>      
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
 <li><strong>错误</strong>：尝试返回 a 的地址给指针，a是存在栈里的，函数结束调用栈被销毁。</li>
 </ol>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span>* <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> &amp;a;</span><br><span class="line">}    </span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>    
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li><strong>正确</strong>：函数在返回的时候，返回处产生一个临时对象，用于存放局部变量a的值的一份拷贝（变量a的右值的拷贝）</li>
 </ol>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">}    </span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>    
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="4">
 <li><strong>正确</strong>：因为返回的不是该函数的栈地址，而是静态存储区的地址。函数返回处产生一个对返回对象的“左值”s的拷贝，也就是在“左值”拷贝中存储了指向字符串常量1sfsdg的地址</li>
 </ol>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">char</span> *<span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">char</span> *s = <span class="string">"1sfsdg"</span>;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">    <span class="comment">//返回的是1sfsdg的地址，1sfsdg存储在字符常量区，也就在静态存储区。</span></span><br><span class="line">    <span class="comment">//而指针变量s的地址&amp;s是在栈上，会随着函数的调用完被销毁。</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token string">"1sfsdg"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> s<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//返回的是1sfsdg的地址，1sfsdg存储在字符常量区，也就在静态存储区。</span>
+    <span class="token comment" spellcheck="true">//而指针变量s的地址&amp;s是在栈上，会随着函数的调用完被销毁。</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
 <li><strong>错误</strong>：静态数组，在预处理阶段就在该函数的栈上分配了空间，尝试返回一个栈地址</li>
 </ol>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> *<span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> a[<span class="number">10</span>]  = {.......}；<span class="comment">//静态数组</span></span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span>  <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>；<span class="token comment" spellcheck="true">//静态数组</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="6">
 <li><strong>正确</strong>：动态数组数组的空间在堆上，而指针变量a的地址&amp;a在栈上，占4个字节，存储着堆上动态数组的首地址。</li>
 </ol>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span>  *<span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> *a = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">    <span class="comment">//变量a的左值是一个局部变量指针，存储于函数栈上，</span></span><br><span class="line">    <span class="comment">//右值 是“堆”的地址（“堆”的值是数组里面存的 值），</span></span><br><span class="line">    <span class="comment">//函数返回处产生一个对返回变量的“左值”a的拷贝，</span></span><br><span class="line">    <span class="comment">//也就是在“左值”的拷贝中存储了指向“堆”的地址。</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span>  <span class="token operator">*</span><span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//变量a的左值是一个局部变量指针，存储于函数栈上，</span>
+    <span class="token comment" spellcheck="true">//右值 是“堆”的地址（“堆”的值是数组里面存的 值），</span>
+    <span class="token comment" spellcheck="true">//函数返回处产生一个对返回变量的“左值”a的拷贝，</span>
+    <span class="token comment" spellcheck="true">//也就是在“左值”的拷贝中存储了指向“堆”的地址。</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -1552,7 +1622,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     var today = new Date();
                     var startYear = "2020";
                     var startMonth = "2";
-                    var startDate = "8";
+                    var startDate = "08";
                     var startHour = "0";
                     var startMinute = "0";
                     var startSecond = "0";
