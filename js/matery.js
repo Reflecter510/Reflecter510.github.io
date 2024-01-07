@@ -68,7 +68,7 @@ $(function () {
         disable: 'mobile',
         duration: 200,
         delay: 150,
-        disable: window.innerWidth > 0
+        disable: window.innerWidth < 1024
     });
 
     /*文章内容详情的一些初始化特性*/
